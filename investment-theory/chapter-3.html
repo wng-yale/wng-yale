@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter III: Preferences and Investor Choice — W. N. Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body class="chapter-page">
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
+        <ul class="nav-links">
+            <li><a href="chapter-2.html">&larr; Ch. II</a></li>
+            <li><a href="chapter-4.html">Ch. IV &rarr;</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="chapter">
+    <header class="chapter-header">
+        <p class="chapter-label">Chapter III</p>
+        <h1>Preferences and Investor Choice</h1>
+        <p class="chapter-deck">How investors select a single portfolio from the efficient frontier by expressing their preferences in risk-return space.</p>
+    </header>
+
+    <div class="chapter-content">
+
+        <h2>Iso-Utility Curves and Risk Aversion</h2>
+        <p><strong>Iso-utility curves</strong> are mathematical representations of investor preferences in risk-return space. More risk-averse investors demand sharply higher returns as volatility increases, while risk-tolerant investors accept lower compensation. Portfolio optimization finds the tangency point between these curves and the efficient frontier.</p>
+
+        <h2>The Shortfall Criterion</h2>
+        <p>Rather than mapping complete preference structures, investors can specify a <strong>floor return</strong> below which they wish to avoid falling. The model calculates:</p>
+        <div class="equation">
+            Shortfall Ratio = (Expected Return &minus; Floor) / Standard Deviation
+        </div>
+        <p>The portfolio maximizing this ratio has the highest probability of exceeding the floor.</p>
+
+        <h2>The Sharpe Ratio</h2>
+        <p>When the risk-free rate serves as the floor, the slope of the shortfall line is called the <strong>Sharpe Ratio</strong>. This identifies the portfolio most likely to outperform Treasury bills and has become one of the most widely used performance measures in finance.</p>
+
+        <h2>Value at Risk (VaR)</h2>
+        <p>VaR estimates potential losses over a given horizon:</p>
+        <div class="equation">
+            R<sub>VaR</sub> = R<sub>p</sub> &minus; T &times; STD<sub>p</sub>
+        </div>
+        <p>where T represents the t-statistic for a specified confidence interval. For example, a $100 million pension portfolio might have a monthly VaR of $5.4 million at the 95% confidence level.</p>
+
+        <h2>Practical Limitations</h2>
+        <p>Utility function estimation is theoretically sound but practically difficult. Safety-first methodology offers a more intuitive alternative by focusing on specific probability thresholds rather than complete preference mapping.</p>
+
+    </div>
+
+    <footer class="chapter-footer">
+        <a href="chapter-2.html" class="chapter-nav-link">&larr; Chapter II: Efficient Frontier</a>
+        <a href="chapter-4.html" class="chapter-nav-link">Chapter IV: Portfolio Approach to Risk &rarr;</a>
+    </footer>
+</article>
+
+<footer>
+    <div class="container">
+        <p>&copy; William N. Goetzmann, Yale School of Management</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter VII: Where Do Betas Come From? — W. N. Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body class="chapter-page">
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
+        <ul class="nav-links">
+            <li><a href="chapter-6.html">&larr; Ch. VI</a></li>
+            <li><a href="chapter-8.html">Ch. VIII &rarr;</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="chapter">
+    <header class="chapter-header">
+        <p class="chapter-label">Chapter VII</p>
+        <h1>Where Do Betas Come From?</h1>
+        <p class="chapter-deck">Leverage, asset vs. equity betas, and practical applications in project valuation and M&amp;A analysis.</p>
+    </header>
+
+    <div class="chapter-content">
+
+        <h2>Beta as Systematic Risk</h2>
+        <p>Beta quantifies exposure to market-wide risk &mdash; not diversifiable risk. <strong>High-technology</strong> firms exhibit elevated betas during expansions but struggle in contractions, while the <strong>food industry</strong> is a low-beta sector due to stable demand regardless of economic conditions.</p>
+
+        <h2>Practical Beta Estimation</h2>
+        <p>Beta is calculated through linear regression comparing historical security returns against market returns. The slope indicates sensitivity: a company with &beta; = 1.5 will theoretically experience 30% returns when markets rise 20%. However, betas change over time and the model may omit relevant risk factors.</p>
+
+        <h2>The Critical Role of Leverage</h2>
+        <p>Financial leverage amplifies systematic risk dramatically. Consider a cable television company:</p>
+        <ul>
+            <li><strong>Asset beta</strong> (unlevered): 0.67</li>
+            <li><strong>Equity beta</strong> (levered): 1.85</li>
+            <li>Expected return rises from 11.39% to <strong>21.41%</strong> due to debt financing</li>
+        </ul>
+        <div class="equation">
+            &beta;<sub>asset</sub> = (Equity weight &times; &beta;<sub>equity</sub>) + (Debt weight &times; &beta;<sub>debt</sub>)
+        </div>
+        <p>with debt beta typically assumed to be zero.</p>
+
+        <h2>Four Practical Applications</h2>
+        <ol>
+            <li><strong>Project Valuation</strong>: Using industry-comparable asset betas to discount cash flows for new ventures</li>
+            <li><strong>M&amp;A Analysis</strong>: Evaluating acquisition targets using estimated betas and growth rates</li>
+            <li><strong>P/E Ratios</strong>: Cross-checking discount rates against earnings multiples</li>
+            <li><strong>Capital Budgeting</strong>: Allocating project-specific discount rates rather than company-wide rates</li>
+        </ol>
+
+    </div>
+
+    <footer class="chapter-footer">
+        <a href="chapter-6.html" class="chapter-nav-link">&larr; Chapter VI: APT</a>
+        <a href="chapter-8.html" class="chapter-nav-link">Chapter VIII: Market Efficiency &rarr;</a>
+    </footer>
+</article>
+
+<footer>
+    <div class="container">
+        <p>&copy; William N. Goetzmann, Yale School of Management</p>
+    </div>
+</footer>
+
+</body>
+</html>

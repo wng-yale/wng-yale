@@ -1,6 +1,6 @@
 /* ============================================
    William N. Goetzmann — Academic Website
-   Modern, clean design with Yale blue accents
+   Modern design with Yale blue, visual cards
    ============================================ */
 
 :root {
@@ -18,7 +18,7 @@
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
     --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
     --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
-    --radius: 10px;
+    --radius: 12px;
     --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -107,11 +107,11 @@ a:hover {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 24px;
 }
 
 .nav-links a {
-    font-size: 0.875rem;
+    font-size: 0.825rem;
     font-weight: 500;
     color: rgba(255,255,255,0.85);
     letter-spacing: 0.01em;
@@ -300,99 +300,124 @@ a:hover {
     color: var(--white);
 }
 
-/* ---- Project Cards ---- */
+/* ---- Visual Project Cards ---- */
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
 }
 
-.project-card {
-    background: var(--white);
+.visual-card {
+    background: var(--card-bg, linear-gradient(135deg, #1a1a2e, #16213e));
     border-radius: var(--radius);
-    padding: 28px;
-    border: 1px solid var(--border);
+    overflow: hidden;
+    border: none;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
     transition: all var(--transition);
     opacity: 0;
     transform: translateY(20px);
+    cursor: default;
 }
 
-.project-card.visible {
+a.visual-card {
+    cursor: pointer;
+}
+
+.visual-card.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.project-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-3px);
-    border-color: var(--yale-blue-light);
+.visual-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
 }
 
-.project-card.featured {
-    border-left: 4px solid var(--accent);
-}
-
-.project-icon {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
-}
-
-.project-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-    color: var(--yale-blue);
-}
-
-.project-card p {
-    color: var(--text-secondary);
-    font-size: 0.925rem;
-    line-height: 1.6;
-}
-
-.project-tags {
+.card-visual {
+    padding: 20px 20px 0;
+    height: 140px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 14px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.project-tags span {
-    font-size: 0.72rem;
-    font-weight: 500;
-    padding: 3px 10px;
-    background: var(--yale-blue-pale);
-    color: var(--yale-blue);
-    border-radius: 20px;
-    letter-spacing: 0.01em;
+.card-illustration {
+    width: 100%;
+    height: 100%;
 }
 
-.project-link {
+.card-body {
+    padding: 20px 24px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 8px;
+}
+
+.visual-card h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.visual-card p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.visual-card em {
+    color: rgba(255,255,255,0.7);
+}
+
+.card-action {
     display: inline-block;
     margin-top: 14px;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: var(--accent);
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition);
 }
 
-.project-link:hover {
-    color: var(--yale-blue);
+a.visual-card:hover .card-action {
+    color: var(--white);
 }
 
-/* ---- Books ---- */
+.paper-link {
+    color: rgba(255,255,255,0.5);
+}
+
+/* ---- Books with Cover Images ---- */
 
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
     margin-top: 40px;
 }
 
 .book-card {
     background: var(--white);
     border-radius: var(--radius);
-    padding: 28px;
+    overflow: hidden;
     border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
     transition: all var(--transition);
     opacity: 0;
     transform: translateY(20px);
@@ -404,40 +429,126 @@ a:hover {
 }
 
 .book-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.book-cover {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: top;
+    background: linear-gradient(135deg, var(--yale-blue), var(--yale-blue-light));
 }
 
 .book-cover-placeholder {
-    width: 64px;
-    height: 80px;
-    background: linear-gradient(135deg, var(--yale-blue), var(--yale-blue-light));
-    color: var(--white);
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(135deg, var(--yale-blue) 0%, #1a3a6a 50%, var(--yale-blue-light) 100%);
+    color: rgba(255,255,255,0.7);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
     font-family: 'EB Garamond', serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 16px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.book-info {
+    padding: 20px 24px 24px;
 }
 
 .book-card h3 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: var(--yale-blue);
     margin-bottom: 4px;
+    line-height: 1.3;
 }
 
 .book-meta {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-light);
     margin-bottom: 10px;
 }
 
-.book-card p:last-child {
+.book-info p:last-child {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* ---- Textbook / Chapters ---- */
+
+.textbook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.chapter-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid var(--border);
+    transition: all var(--transition);
+    text-decoration: none;
+    color: inherit;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.chapter-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.chapter-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    border-color: var(--yale-blue-light);
+}
+
+.chapter-num {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--yale-blue), var(--yale-blue-light));
+    color: var(--white);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.chapter-review .chapter-num {
+    background: linear-gradient(135deg, var(--accent), #d4722a);
+}
+
+.chapter-info h3 {
+    font-size: 1.05rem;
+    color: var(--yale-blue);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.chapter-card:hover h3 {
+    color: var(--yale-blue-light);
+}
+
+.chapter-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 /* ---- Data Grid ---- */
@@ -527,6 +638,18 @@ a:hover {
 .teaching-card p:last-of-type {
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.project-link:hover {
+    color: var(--yale-blue);
 }
 
 /* ---- Contact ---- */
@@ -628,7 +751,8 @@ footer p {
     .project-grid,
     .books-grid,
     .data-grid,
-    .teaching-grid {
+    .teaching-grid,
+    .textbook-grid {
         grid-template-columns: 1fr;
     }
 
@@ -639,6 +763,10 @@ footer p {
     .btn {
         text-align: center;
     }
+
+    .card-visual {
+        height: 120px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -648,6 +776,11 @@ footer p {
 
     .section-title {
         font-size: 1.8rem;
+    }
+
+    .book-cover,
+    .book-cover-placeholder {
+        height: 260px;
     }
 }
 

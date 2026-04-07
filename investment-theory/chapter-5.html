@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter V: Further Explorations of the CAPM — W. N. Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="textbook.css">
+</head>
+<body class="chapter-page">
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
+        <ul class="nav-links">
+            <li><a href="chapter-4.html">&larr; Ch. IV</a></li>
+            <li><a href="chapter-6.html">Ch. VI &rarr;</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="chapter">
+    <header class="chapter-header">
+        <p class="chapter-label">Chapter V</p>
+        <h1>Further Explorations of the Capital Asset Pricing Model</h1>
+        <p class="chapter-deck">The Security Market Line, beta estimation, expectations vs. realizations, and the empirical challenges to the CAPM.</p>
+    </header>
+
+    <div class="chapter-content">
+
+        <h2>The Risk-Return Tradeoff</h2>
+        <p>Stephen Ross provided a formal argument for CAPM pricing. When an investor considers adding a small quantity of asset A to the market portfolio, the fundamental relationship emerges: <strong>beta</strong> (&beta; = cov(A,m)/var(m)) determines expected returns.</p>
+
+        <h2>The CAPM Equation</h2>
+        <div class="equation">
+            E[R<sub>i</sub>] = R<sub>f</sub> + &beta;<sub>i</sub>[E(R<sub>m</sub>) &minus; R<sub>f</sub>]
+        </div>
+        <p>Critically, this model excludes individual security volatility from the discount rate calculation, focusing instead on <strong>systematic risk</strong> via beta.</p>
+
+        <h2>The Security Market Line</h2>
+        <p>A linear relationship between risk (measured by beta) and expected return. This linearity prevents arbitrage opportunities &mdash; any curved relationship would allow investors to exploit differences through borrowing and leveraging.</p>
+
+        <h2>Expectations vs. Realizations</h2>
+        <p>Realized returns deviate from theoretical predictions due to random error:</p>
+        <div class="equation">
+            R<sub>i</sub> = R<sub>f</sub> + &beta;<sub>i</sub>[R<sub>m</sub> &minus; R<sub>f</sub>] + e<sub>i</sub>
+        </div>
+        <p>This explains why historical data rarely matches CAPM predictions precisely.</p>
+
+        <h2>A Practical Example</h2>
+        <p>Consider a pharmaceutical investment with &beta; = 0.5, R<sub>f</sub> = 5%, E[R<sub>m</sub>] = 13.5%. The required return is <strong>9.25%</strong> &mdash; independent of the project's 75% total volatility. Only systematic risk matters.</p>
+
+        <h2>Beta Estimation in Practice</h2>
+        <p>Analysts regress 60 months of security returns against market index returns (typically the S&amp;P 500), though this substitutes a proxy for the theoretical world market portfolio.</p>
+
+        <h2>Empirical Challenges</h2>
+        <p>Fama and French demonstrated that beta alone inadequately explains portfolio returns. Additional factors &mdash; book-to-market ratios, earnings-price ratios, and company size &mdash; proved significant, leading researchers toward multi-factor models.</p>
+
+    </div>
+
+    <footer class="chapter-footer">
+        <a href="chapter-4.html" class="chapter-nav-link">&larr; Chapter IV: CAPM</a>
+        <a href="chapter-6.html" class="chapter-nav-link">Chapter VI: Arbitrage Pricing &rarr;</a>
+    </footer>
+</article>
+
+<footer>
+    <div class="container">
+        <p>&copy; William N. Goetzmann, Yale School of Management</p>
+    </div>
+</footer>
+
+</body>
+</html>

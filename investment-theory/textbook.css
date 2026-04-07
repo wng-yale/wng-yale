@@ -1,0 +1,135 @@
+/* Textbook chapter styles */
+
+.chapter-page {
+    background: var(--white);
+}
+
+.chapter {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.chapter-header {
+    padding: 120px 0 48px;
+    border-bottom: 2px solid var(--yale-blue);
+    margin-bottom: 48px;
+}
+
+.chapter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+
+.chapter-header h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--yale-blue);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.chapter-deck {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.chapter-content {
+    padding-bottom: 48px;
+}
+
+.chapter-content h2 {
+    font-size: 1.5rem;
+    color: var(--yale-blue);
+    margin: 48px 0 16px;
+}
+
+.chapter-content h2:first-child {
+    margin-top: 0;
+}
+
+.chapter-content h3 {
+    font-size: 1.2rem;
+    color: var(--text);
+    margin: 32px 0 12px;
+}
+
+.chapter-content p {
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.chapter-content ul, .chapter-content ol {
+    margin: 0 0 20px 24px;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.chapter-content li {
+    margin-bottom: 6px;
+}
+
+.chapter-content strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.equation {
+    background: var(--bg-alt);
+    border-left: 3px solid var(--yale-blue);
+    padding: 16px 24px;
+    margin: 20px 0;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+    border-radius: 0 8px 8px 0;
+}
+
+.note {
+    background: var(--yale-blue-pale);
+    padding: 16px 24px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--yale-blue);
+}
+
+blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 24px;
+    margin: 20px 0;
+    background: #fef8f4;
+    border-radius: 0 8px 8px 0;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.chapter-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 48px;
+}
+
+.chapter-nav-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--yale-blue);
+    transition: color var(--transition);
+}
+
+.chapter-nav-link:hover {
+    color: var(--accent);
+}
