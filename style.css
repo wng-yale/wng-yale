@@ -271,6 +271,59 @@ a:hover {
     margin-top: 24px;
 }
 
+.about-resources {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+}
+
+.about-resources h3 {
+    font-size: 1.1rem;
+    color: var(--yale-blue);
+    margin-bottom: 8px;
+}
+
+.about-resources > p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.about-resources ul {
+    list-style: none;
+    margin: 0;
+}
+
+.about-resources li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.about-resources li:last-child {
+    border-bottom: none;
+}
+
+.about-resources li a {
+    font-weight: 500;
+}
+
+.about-resources small {
+    color: var(--text-light);
+    font-size: 0.82rem;
+}
+
+.about-resources small a {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.about-resources small a:hover {
+    color: var(--accent);
+}
+
 .btn {
     display: inline-block;
     padding: 10px 24px;
