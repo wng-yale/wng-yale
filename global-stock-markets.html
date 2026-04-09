@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Stock Markets in the Twentieth Century — Jorion &amp; Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 100px 24px 60px;
+        }
+        .page-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--yale-blue);
+            padding-bottom: 24px;
+        }
+        .page-header h1 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            color: var(--yale-blue);
+            margin-bottom: 8px;
+        }
+        .page-header .authors {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .page-header .journal {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+        .abstract {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--yale-blue);
+            padding: 20px 24px;
+            margin: 24px 0 40px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .figure-block {
+            margin: 48px 0;
+        }
+        .figure-block h2 {
+            font-size: 1.4rem;
+            color: var(--yale-blue);
+            margin-bottom: 12px;
+        }
+        .figure-block .caption {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .figure-block img {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        .figure-download {
+            margin-top: 10px;
+            font-size: 0.82rem;
+        }
+        .figure-download a {
+            color: var(--accent);
+            font-weight: 600;
+            margin-right: 16px;
+        }
+        .data-section {
+            background: var(--bg-alt);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 48px 0;
+        }
+        .data-section h2 {
+            font-size: 1.4rem;
+            color: var(--yale-blue);
+            margin-bottom: 16px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        .data-table th {
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 2px solid var(--border);
+            color: var(--yale-blue);
+            font-weight: 600;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .data-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .data-table a {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .citation-box {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 48px 0;
+        }
+        .citation-box h3 {
+            font-size: 1.1rem;
+            color: var(--yale-blue);
+            margin-bottom: 12px;
+        }
+        .citation-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            background: var(--bg-alt);
+            padding: 16px 20px;
+            border-radius: 6px;
+            font-family: 'EB Garamond', serif;
+            cursor: pointer;
+            position: relative;
+        }
+        .citation-text:hover {
+            background: var(--yale-blue-pale);
+        }
+        .citation-text::after {
+            content: 'Click to copy';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.72rem;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+        .copy-notice {
+            display: none;
+            color: var(--accent);
+            font-size: 0.82rem;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--yale-blue);
+        }
+    </style>
+</head>
+<body>
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-name">W. N. Goetzmann</a>
+        <ul class="nav-links">
+            <li><a href="index.html#financial-history">Financial History</a></li>
+            <li><a href="index.html#data">Data &amp; Tools</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="page-content">
+
+    <a href="index.html#financial-history" class="back-link">&larr; Back to Main Site</a>
+
+    <header class="page-header">
+        <h1>Global Stock Markets in the Twentieth Century</h1>
+        <p class="authors">Philippe Jorion and William N. Goetzmann</p>
+        <p class="journal"><em>The Journal of Finance</em>, Vol. LIV, No. 3, June 1999, pp. 953&ndash;980</p>
+    </header>
+
+    <div class="abstract">
+        Long-term estimates of expected return on equities are typically derived from U.S. data only.
+        There are reasons to suspect that these estimates are subject to survivorship bias, as the
+        United States is arguably the most successful capitalist system in the world. We collect a
+        database of capital appreciation indexes for 39 markets going back to the 1920s. For 1921
+        to 1996, U.S. equities had the highest real return of all countries, at 4.3 percent, versus
+        a median of 0.8 percent for other countries. The high equity premium obtained for U.S.
+        equities appears to be the exception rather than the rule.
+    </div>
+
+    <!-- Figure 1 -->
+    <div class="figure-block">
+        <h2>Figure 1. Real Returns on Global Stock Markets</h2>
+        <p class="caption">The figure displays average real returns for 39 markets over the period
+        1921 to 1996. Markets are sorted by years of existence. The graph shows that markets with
+        long histories typically have higher returns. An asterisk indicates that the market suffered
+        a long-term break. Color indicates region.</p>
+        <img src="figures/fig1_returns_vs_existence.png" alt="Returns vs. Years of Existence scatter plot">
+        <div class="figure-download">
+            <a href="figures/fig1_returns_vs_existence.png" download>Download PNG</a>
+            <a href="figures/fig1_returns_vs_existence.pdf" download>Download PDF</a>
+        </div>
+    </div>
+
+    <!-- Cumulative Growth -->
+    <div class="figure-block">
+        <h2>Growth of $1 Invested in Major Markets</h2>
+        <p class="caption">Cumulative dollar-denominated capital appreciation for eight major
+        stock markets on a logarithmic scale, 1919&ndash;1996. The United States exhibits the
+        highest long-run growth. Germany's wartime collapse and postwar recovery, and Japan's
+        extraordinary postwar expansion, are clearly visible.</p>
+        <img src="figures/fig_cumulative_growth.png" alt="Cumulative growth of $1 in major markets">
+        <div class="figure-download">
+            <a href="figures/fig_cumulative_growth.png" download>Download PNG</a>
+            <a href="figures/fig_cumulative_growth.pdf" download>Download PDF</a>
+        </div>
+    </div>
+
+    <!-- Returns Bar -->
+    <div class="figure-block">
+        <h2>Long-Term Performance of All 39 Markets</h2>
+        <p class="caption">Annualized dollar capital appreciation returns for all 39 markets
+        in the database, ranked from highest to lowest. The United States is not the highest
+        &mdash; Hungary, Uruguay, and Israel earned higher returns, but over shorter and less
+        stable periods. The median return across all countries is far below the U.S. figure,
+        supporting the survivorship bias hypothesis. Color indicates region.</p>
+        <img src="figures/fig_returns_bar.png" alt="Bar chart of returns for all 39 markets">
+        <div class="figure-download">
+            <a href="figures/fig_returns_bar.png" download>Download PNG</a>
+            <a href="figures/fig_returns_bar.pdf" download>Download PDF</a>
+        </div>
+    </div>
+
+    <!-- WWII -->
+    <div class="figure-block">
+        <h2>Figure 3. Real Stock Prices during World War II</h2>
+        <p class="caption">The figure displays the performance of equally-weighted portfolios
+        of equities measured in real terms during the war. The sample is divided into occupied,
+        allied, and neutral countries. Occupied countries show paradoxical gains due to price
+        controls and artificial trading conditions; Allied markets initially fall ~20% before
+        recovering; neutral countries (Sweden, Switzerland) remain relatively stable.</p>
+        <img src="figures/fig3_wwii.png" alt="WWII stock market performance by country group">
+        <div class="figure-download">
+            <a href="figures/fig3_wwii.png" download>Download PNG</a>
+            <a href="figures/fig3_wwii.pdf" download>Download PDF</a>
+        </div>
+    </div>
+
+    <!-- Data Downloads -->
+    <div class="data-section">
+        <h2>Download Data</h2>
+        <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:16px;">
+            Monthly capital appreciation indexes for 39 global stock markets, 1919&ndash;1996.
+            Developed markets (File 1) and emerging/other markets (File 2). Dollar-denominated
+            and real (WPI-deflated) series. Code: 0 for missing data, - for interpolated data.
+        </p>
+        <table class="data-table">
+            <thead>
+                <tr><th>File</th><th>Description</th><th>Download</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Full Workbook</td>
+                    <td>All series in one Excel file</td>
+                    <td><a href="data/jorion-goetzmann-data.xlsx" download>XLSX (554 KB)</a></td>
+                </tr>
+                <tr>
+                    <td>Dollar 1</td>
+                    <td>Dollar indexes &mdash; 17 developed markets (US, Canada, UK, W. Europe)</td>
+                    <td><a href="data/jorionDOLLAR1.csv" download>CSV</a></td>
+                </tr>
+                <tr>
+                    <td>Dollar 2</td>
+                    <td>Dollar indexes &mdash; 22 emerging/other markets (Asia, Latin America, E. Europe, etc.)</td>
+                    <td><a href="data/jorionDOLLAR2.csv" download>CSV</a></td>
+                </tr>
+                <tr>
+                    <td>Real 2</td>
+                    <td>Real (WPI-deflated) indexes &mdash; emerging/other markets</td>
+                    <td><a href="data/jorionREAL2.csv" download>CSV</a></td>
+                </tr>
+                <tr>
+                    <td>Readme</td>
+                    <td>Data description and file guide</td>
+                    <td><a href="data/jorionreadme2.txt" download>TXT</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Citation -->
+    <div class="citation-box">
+        <h3>Citation</h3>
+        <p style="font-size:0.85rem; color:var(--text-light); margin-bottom:12px;">
+            Please cite the following paper when using this data:
+        </p>
+        <div class="citation-text" id="citation" onclick="copyCitation()">
+            Jorion, Philippe, and William N. Goetzmann. "Global Stock Markets in the Twentieth Century."
+            <em>The Journal of Finance</em> 54, no. 3 (June 1999): 953&ndash;980.
+            https://doi.org/10.1111/0022-1082.00133
+        </div>
+        <p class="copy-notice" id="copy-notice">Copied to clipboard.</p>
+
+        <p style="font-size:0.82rem; color:var(--text-light); margin-top:16px;">BibTeX:</p>
+        <pre style="background:var(--bg-alt); padding:12px 16px; border-radius:6px; font-size:0.78rem; overflow-x:auto; color:var(--text-secondary); cursor:pointer;" onclick="copyBibtex()">@article{jorion1999global,
+  author  = {Jorion, Philippe and Goetzmann, William N.},
+  title   = {Global Stock Markets in the Twentieth Century},
+  journal = {The Journal of Finance},
+  volume  = {54},
+  number  = {3},
+  pages   = {953--980},
+  year    = {1999},
+  doi     = {10.1111/0022-1082.00133}
+}</pre>
+    </div>
+
+    <footer style="text-align:center; padding:32px 0; border-top:1px solid var(--border); margin-top:48px;">
+        <p style="font-size:0.82rem; color:var(--text-light);">
+            <a href="index.html">William N. Goetzmann</a> &middot; Yale School of Management &middot;
+            <a href="https://icf.som.yale.edu/">International Center for Finance</a>
+        </p>
+    </footer>
+
+</div>
+
+<script>
+function copyCitation() {
+    var text = 'Jorion, Philippe, and William N. Goetzmann. "Global Stock Markets in the Twentieth Century." The Journal of Finance 54, no. 3 (June 1999): 953-980. https://doi.org/10.1111/0022-1082.00133';
+    navigator.clipboard.writeText(text).then(function() {
+        document.getElementById('copy-notice').style.display = 'block';
+        setTimeout(function() { document.getElementById('copy-notice').style.display = 'none'; }, 2000);
+    });
+}
+function copyBibtex() {
+    var text = '@article{jorion1999global,\n  author  = {Jorion, Philippe and Goetzmann, William N.},\n  title   = {Global Stock Markets in the Twentieth Century},\n  journal = {The Journal of Finance},\n  volume  = {54},\n  number  = {3},\n  pages   = {953--980},\n  year    = {1999},\n  doi     = {10.1111/0022-1082.00133}\n}';
+    navigator.clipboard.writeText(text);
+}
+</script>
+
+</body>
+</html>
