@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Origins of the Corporation &mdash; The Bazacle Company</title>
+<style>
+  :root{
+    --bg:#f3ecd9; --surface:#fbf7ec; --ink:#26221a; --ink2:#5c5344; --muted:#8a7f6c;
+    --line:#d8ccb0; --accent:#1a5276; --price:#1f6f8b; --div:#b5442e; --maroon:#7a1414; --grid:#e7ddc6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#1a1712; --surface:#221e17; --ink:#ece5d4; --ink2:#c2b79e; --muted:#8f836b;
+           --line:#3a3327; --accent:#7fb2d6; --price:#5fb4d6; --div:#e0866f; --maroon:#d98c8c; --grid:#2c2619; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1120px;margin:0 auto;padding:26px 22px 70px}
+  .backlink{font-size:.85rem}
+  header .kicker{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--maroon);margin-top:10px}
+  h1{font-size:2.1rem;margin:.12em 0 .12em;font-weight:700;line-height:1.1}
+  .sub{color:var(--ink2);font-size:1.08rem;max-width:780px}
+  section{margin-top:34px}
+  h2{font-size:1.4rem;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:16px}
+  .lede{display:grid;grid-template-columns:1fr 300px;gap:26px;align-items:start;margin-top:20px}
+  @media(max-width:760px){.lede{grid-template-columns:1fr}}
+  .lede p{margin:0 0 14px}
+  .lede figure{margin:0}
+  .lede img{width:100%;border:1px solid var(--line);border-radius:6px;cursor:zoom-in}
+  .lede figcaption{font-size:.8rem;color:var(--muted);margin-top:6px;text-align:center}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  .controls{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;padding:12px 18px;margin-bottom:14px}
+  .ctl label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .seg button{border:0;background:transparent;color:var(--ink2);font-family:inherit;font-size:.9rem;padding:6px 13px;cursor:pointer}
+  .seg button.on{background:var(--accent);color:#fff}
+  .chk{display:flex;align-items:center;gap:7px;font-size:.92rem;color:var(--ink)}
+  .chk input{width:15px;height:15px;accent-color:var(--div)}
+  .chartbox{padding:12px 12px 6px}
+  svg{display:block;width:100%;height:auto;font-family:Georgia,serif}
+  .crosshair{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+  .tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);
+    border-radius:8px;padding:8px 10px;font-size:.82rem;box-shadow:0 6px 24px rgba(0,0,0,.16);min-width:150px;z-index:5}
+  .tip .d{font-weight:700;margin-bottom:4px}
+  .tip .r{display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .tip .sw{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px}
+  .legend{display:flex;gap:20px;padding:2px 18px 14px;font-size:.9rem;color:var(--ink2)}
+  .legend .sw{width:22px;height:3px;display:inline-block;margin-right:7px;vertical-align:middle}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+  .gallery figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .gallery img{width:100%;height:210px;object-fit:cover;display:block;cursor:zoom-in;background:#fff}
+  .gallery figcaption{padding:9px 12px;font-size:.82rem;color:var(--ink2)}
+  .gallery figcaption b{color:var(--ink);display:block;margin-bottom:2px}
+  .dl{padding:16px 18px}
+  .dl a{display:inline-block;margin:0 10px 8px 0;font-size:.9rem;padding:7px 13px;border:1px solid var(--line);
+    border-radius:6px;text-decoration:none;background:var(--surface)}
+  .dl a:hover{border-color:var(--accent)}
+  .note{font-size:.85rem;color:var(--ink2)}
+  .lightbox{position:fixed;inset:0;background:rgba(20,16,10,.9);display:none;align-items:center;justify-content:center;
+    z-index:50;cursor:zoom-out;padding:30px}
+  .lightbox img{max-width:95%;max-height:92%;box-shadow:0 10px 60px rgba(0,0,0,.6);border-radius:4px}
+  .lightbox .cap{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#eee;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="../">&larr; William N. Goetzmann &mdash; Home</a>
+  <header>
+    <div class="kicker">International Center for Finance &middot; Financial History</div>
+    <h1>The Origins of the Corporation</h1>
+    <p class="sub">The Honor del Bazacle of Toulouse &mdash; a medieval milling company whose freely
+      tradable shares are documented from 1372, making it one of the earliest joint-stock corporations
+      in recorded history and the source of the world&rsquo;s longest continuous series of share prices.</p>
+  </header>
+
+  <div class="lede">
+    <div>
+      <p>Along the Garonne at Toulouse, a company of grain mills known as the <i>Bazacle</i> divided its
+        ownership into transferable shares &mdash; the <i>uchaux</i> &mdash; as early as the twelfth century.
+        By 1372 the company kept registers of share transactions and dividend payments that survive, almost
+        unbroken, until nationalization in 1946. The Bazacle elected directors, held shareholder assemblies,
+        distributed profits, and saw its shares change hands at market prices for more than six hundred years.</p>
+      <p>With <b>David le Bris</b> (Toulouse Business School) and <b>Sébastien Pouget</b> (Toulouse School of
+        Economics), I reconstructed this record from the Toulouse municipal archives. The resulting series &mdash;
+        share prices and dividends in constant silver, 1372&ndash;1946 &mdash; lets us test the present-value
+        relation over a horizon no modern market can offer. We find that prices track the discounted value of
+        future dividends remarkably well across centuries of war, famine, revolution, and inflation.</p>
+      <p>The interactive chart below plots the full series; the gallery shows the documentary record behind it,
+        and the underlying data are free to download.</p>
+    </div>
+    <figure>
+      <img src="images/certificate.png" alt="Bazacle founder's share certificate" data-cap="Société Toulousaine du Bazacle — a bearer founder's share (part de fondateur au porteur).">
+      <figcaption>A Bazacle bearer share &mdash; <i>part de fondateur au porteur</i>.</figcaption>
+    </figure>
+  </div>
+
+  <section>
+    <h2>Six Centuries of Bazacle Share Prices</h2>
+    <div class="controls panel">
+      <div class="ctl"><label>Scale</label>
+        <div class="seg" id="segScale"><button data-v="log" class="on">Log</button><button data-v="lin">Linear</button></div>
+      </div>
+      <div class="ctl"><label>From</label><select id="fromY"></select></div>
+      <div class="ctl"><label>To</label><select id="toY"></select></div>
+      <label class="chk"><input type="checkbox" id="showDiv" checked> Show dividends</label>
+    </div>
+    <div class="chartbox panel"><div id="chart" style="position:relative"></div>
+      <div class="legend">
+        <span><span class="sw" style="background:var(--price)"></span>Share price (g silver) &mdash; left axis</span>
+        <span id="divleg"><span class="sw" style="background:var(--div)"></span>Dividend (g silver) &mdash; right axis</span>
+        <span style="color:var(--muted)">Prices average <b id="ratioLbl">20</b>&times; dividends (compare the two axes).</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Documentary Record</h2>
+    <div class="gallery" id="gallery">
+      <figure><img src="images/mill-photo.jpg" data-cap="The Bazacle mills on the Garonne at Toulouse today."><figcaption><b>The Bazacle mills</b>The milling works on the Garonne, still standing at Toulouse (now a hydroelectric station).</figcaption></figure>
+      <figure><img src="images/mill-engraving.jpg" data-cap="Early engraving of the Bazacle mills and weir on the Garonne."><figcaption><b>The mills, engraved</b>An early view of the weir and milling houses that generated the company&rsquo;s profits.</figcaption></figure>
+      <figure><img src="images/register.jpg" data-cap="A page from the Bazacle share-transfer and dividend registers, Toulouse municipal archives."><figcaption><b>The registers</b>Share transfers and dividends recorded in the company&rsquo;s books in the Toulouse archives.</figcaption></figure>
+      <figure><img src="images/archive-document.png" data-cap="An archival Bazacle document from the Toulouse municipal archives."><figcaption><b>Archive document</b>One of the manuscript records underlying the reconstructed price series.</figcaption></figure>
+      <figure><img src="images/yearbook-1912.jpg" data-cap="Bazacle company yearbook page, 1912."><figcaption><b>Company yearbook, 1912</b>A printed statement of the company near the end of its independent life.</figcaption></figure>
+      <figure><img src="images/toulouse-view.png" data-cap="A medieval city — hand-colored woodcut from the Nuremberg Chronicle (Hartmann Schedel, 1493)."><figcaption><b>A medieval city</b>Hand-colored woodcut from the Nuremberg Chronicle (1493) &mdash; the world in which the Bazacle&rsquo;s shares first traded.</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Germain Sicard (1926&ndash;2018)</h2>
+    <div class="lede">
+      <div>
+        <p>The Bazacle came to modern scholarship through <b>Germain Sicard</b>, the great legal historian
+          of Toulouse. His 1953 doctoral thesis, <i>Aux origines des sociétés anonymes: les moulins de
+          Toulouse au Moyen Âge</i>, was the first to recognize the medieval Toulouse milling companies as
+          genuine share corporations &mdash; with transferable stock, dividends, elected directors, and
+          shareholder assemblies &mdash; centuries before the trading companies usually credited with
+          inventing the form.</p>
+        <p>I had the honor of editing the English translation, <i>The Origins of Corporations: The Mills of
+          Toulouse in the Middle Ages</i> (Yale University Press, 2015), and of writing its introduction.
+          Germain and his wife were extraordinarily generous hosts and colleagues in Toulouse; in 2015 the
+          law library of the Université Toulouse Capitole was dedicated to them both. My tribute to Germain,
+          in French, is <a href="wng-introduction-to-sicard-fr.pdf" target="_blank">available here</a>.</p>
+        <div style="display:flex;gap:18px;align-items:flex-start;margin-top:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+          <a href="https://yalebooks.yale.edu/book/9780300156485/the-origins-of-corporations/" target="_blank" style="flex:0 0 auto">
+            <img src="images/sicard-book.jpg" alt="The Origins of Corporations (Yale, 2015)" style="width:96px;border:1px solid var(--line);border-radius:3px;display:block"></a>
+          <div style="font-size:.9rem">
+            <b>Germain Sicard, <i>The Origins of Corporations: The Mills of Toulouse in the Middle Ages</i></b><br>
+            Translated by Matthew Landry; edited and introduced by William N. Goetzmann. Yale University
+            Press, 2015 (Yale Series in Economic and Financial History).
+            <div style="margin-top:8px"><a href="https://yalebooks.yale.edu/book/9780300156485/the-origins-of-corporations/" target="_blank">Yale University Press &rarr;</a></div>
+          </div>
+        </div>
+      </div>
+      <figure>
+        <img src="images/germain-sicard.jpg" alt="Germain Sicard" data-cap="Germain Sicard (1926–2018), legal historian of the University of Toulouse.">
+        <figcaption>Germain Sicard (1926&ndash;2018)</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="dl panel">
+      <h2 style="border:0;margin:0 0 10px;font-size:1.05rem">Download the data</h2>
+      <a href="data/bazacle-data.xlsx" download>Full dataset (Excel) &darr;</a>
+      <a href="data/bazacle-share-prices.csv" download>Share prices &amp; dividends (CSV)</a>
+      <a href="data/bazacle.json" download>Series (JSON)</a>
+      <p class="note" id="metanote" style="margin-top:10px"></p>
+      <h3 style="font-size:.95rem;margin:18px 0 8px">Papers</h3>
+      <ul class="note" style="margin:0;padding-left:20px;line-height:1.7">
+        <li>D. le Bris, W. N. Goetzmann &amp; S. Pouget, &ldquo;The Present-Value Relation over Six Centuries:
+          The Case of the Bazacle Company,&rdquo; <i>Journal of Financial Economics</i> 132 (2019).
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2443044" target="_blank">SSRN</a></li>
+        <li>D. le Bris, W. Goetzmann &amp; S. Pouget, &ldquo;Convergent Evolution toward the Joint-Stock
+          Company,&rdquo; <i>Business History</i> 68 (2026).
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4624224" target="_blank">SSRN</a> &middot;
+          <a href="https://www.nber.org/papers/w31821" target="_blank">NBER</a></li>
+        <li>D. le Bris, S. Pouget &amp; W. Goetzmann, &ldquo;Contractual Innovation and Corporate Finance in
+          Seventeenth-Century Toulouse,&rdquo; <i>Business History Review</i> (forthcoming).
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5240106" target="_blank">SSRN</a></li>
+        <li>W. N. Goetzmann &amp; S. Pouget, &ldquo;A Shareholder Lawsuit in Fourteenth-Century Toulouse,&rdquo;
+          in <i>The Origins of Shareholder Advocacy</i> (Palgrave Macmillan, 2011).
+          <a href="https://www.researchgate.net/publication/304600837_A_Shareholder_Lawsuit_in_Fourteenth-Century_Toulouse" target="_blank">PDF</a></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<div class="lightbox" id="lightbox"><img id="lbimg" src=""><div class="cap" id="lbcap"></div></div>
+
+<script>
+let D=null;
+fetch('data/bazacle.json').then(r=>r.json()).then(d=>{
+  D=d; document.getElementById('metanote').textContent=d.meta.units;
+  const yrs=d.years, f=document.getElementById('fromY'), t=document.getElementById('toY');
+  const step=[]; for(let i=0;i<yrs.length;i+=10) step.push(yrs[i]); if(step[step.length-1]!==yrs[yrs.length-1]) step.push(yrs[yrs.length-1]);
+  step.forEach(y=>{f.add(new Option(y,y)); t.add(new Option(y,y));});
+  f.value=yrs[0]; t.value=yrs[yrs.length-1];
+  state.from=+f.value; state.to=+t.value;
+  f.onchange=()=>{state.from=+f.value; if(state.from>state.to){state.to=state.from;t.value=state.to;} render();};
+  t.onchange=()=>{state.to=+t.value; if(state.to<state.from){state.from=state.to;f.value=state.from;} render();};
+  render();
+});
+const state={scale:'log',from:0,to:9999,showDiv:true};
+document.querySelectorAll('#segScale button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#segScale button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); state.scale=b.dataset.v; render();});
+document.getElementById('showDiv').onchange=e=>{state.showDiv=e.target.checked;
+  document.getElementById('divleg').style.opacity=state.showDiv?1:.3; render();};
+
+function render(){
+  const host=document.getElementById('chart'); if(!D) return;
+  const i0=D.years.findIndex(y=>y>=state.from);
+  let i1=D.years.length-1; for(let i=D.years.length-1;i>=0;i--){if(D.years[i]<=state.to){i1=i;break;}}
+  const cs=getComputedStyle(document.documentElement);
+  const cPrice=cs.getPropertyValue('--price').trim(), cDiv=cs.getPropertyValue('--div').trim();
+  const cGrid=cs.getPropertyValue('--grid').trim(), cMut=cs.getPropertyValue('--muted').trim(), cLine=cs.getPropertyValue('--line').trim();
+  const showDiv=state.showDiv;
+  const W=Math.max(560,host.clientWidth||860), H=440, mL=66,mR=showDiv?66:18,mT=14,mB=32, pw=W-mL-mR, ph=H-mT-mB;
+  const log=state.scale==='log';
+  // ratio: median price/dividend — dividends are plotted on a secondary axis scaled by this,
+  // so the price line and (dividend × ratio) coincide when price is exactly `ratio`× the dividend.
+  const pr=[]; for(let i=0;i<D.years.length;i++){const p=D.price[i],dv=D.dividend[i]; if(p!=null&&dv!=null&&dv>0) pr.push(p/dv);}
+  pr.sort((a,b)=>a-b); const ratio=pr.length?pr[Math.floor(pr.length/2)]:20;
+  const rLbl=document.getElementById('ratioLbl'); if(rLbl) rLbl.textContent=Math.round(ratio);
+  let lo=Infinity,hi=-Infinity;
+  for(let i=i0;i<=i1;i++){const p=D.price[i]; if(p!=null&&p>0){lo=Math.min(lo,p);hi=Math.max(hi,p);}
+    if(showDiv){const dv=D.dividend[i]; if(dv!=null&&dv>0){const s=dv*ratio; lo=Math.min(lo,s);hi=Math.max(hi,s);}}}
+  if(!isFinite(lo)){host.innerHTML='';return;}
+  if(log){lo=Math.pow(10,Math.floor(Math.log10(lo)));hi=Math.pow(10,Math.ceil(Math.log10(hi)));}
+  else {lo=0; hi*=1.05;}
+  const N=i1-i0+1;
+  const X=i=>mL+(N<=1?0:(i-i0)/(N-1)*pw);
+  const Y=v=>log?(mT+ph-(Math.log10(v)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*ph):(mT+ph-(v-lo)/(hi-lo)*ph);
+  const ticksFor=(a,b)=>{const t=[]; if(log){for(let e=Math.floor(Math.log10(a));e<=Math.log10(b)+1e-9;e++)t.push(Math.pow(10,e));}
+    else {const st=niceStep(b/5); for(let v=0;v<=b;v+=st)t.push(v);} return t;};
+  const yticks=ticksFor(lo||1,hi);
+  const fmt=v=>v>=1000?Math.round(v).toLocaleString():(v>=10?Math.round(v):v.toFixed(1));
+  const xt=[]; for(let i=i0;i<=i1;i++){const y=D.years[i]; if(y%50===0)xt.push([i,y]);}
+  let svg=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin meet">`;
+  // left axis (price) gridlines + labels
+  yticks.forEach(v=>{const y=Y(v); svg+=`<line x1="${mL}" y1="${y.toFixed(1)}" x2="${mL+pw}" y2="${y.toFixed(1)}" stroke="${cGrid}"/>`
+    +`<text x="${mL-8}" y="${(y+3).toFixed(1)}" text-anchor="end" fill="${cPrice}" font-size="11">${fmt(v)}</text>`;});
+  // right axis (dividend), scaled by ratio, labels in dividend units
+  if(showDiv){const rlo=(lo||1)/ratio, rhi=hi/ratio;
+    ticksFor(rlo,rhi).forEach(v=>{const y=Y(v*ratio); if(y>=mT-1&&y<=mT+ph+1)
+      svg+=`<text x="${mL+pw+8}" y="${(y+3).toFixed(1)}" text-anchor="start" fill="${cDiv}" font-size="11">${fmt(v)}</text>`;});
+    svg+=`<line x1="${mL+pw}" y1="${mT}" x2="${mL+pw}" y2="${mT+ph}" stroke="${cLine}"/>`;
+    svg+=`<text transform="translate(${W-8},${mT+ph/2}) rotate(90)" text-anchor="middle" fill="${cDiv}" font-size="11">Dividend (g silver)</text>`;}
+  svg+=`<text transform="translate(13,${mT+ph/2}) rotate(-90)" text-anchor="middle" fill="${cPrice}" font-size="11">Share price (g silver)</text>`;
+  xt.forEach(([i,y])=>{const x=X(i); svg+=`<line x1="${x.toFixed(1)}" y1="${mT}" x2="${x.toFixed(1)}" y2="${mT+ph}" stroke="${cGrid}" opacity="0.6"/>`
+    +`<text x="${x.toFixed(1)}" y="${mT+ph+19}" text-anchor="middle" fill="${cMut}" font-size="11">${y}</text>`;});
+  svg+=`<line x1="${mL}" y1="${mT+ph}" x2="${mL+pw}" y2="${mT+ph}" stroke="${cLine}"/>`;
+  const series=[{k:'price',c:cPrice,sc:1}]; if(showDiv) series.push({k:'dividend',c:cDiv,sc:ratio});
+  for(const s of series){let d='',pen=false;
+    for(let i=i0;i<=i1;i++){const raw=D[s.k][i]; const v=raw==null?null:raw*s.sc; if(v==null||(log&&v<=0)){pen=false;continue;} const x=X(i),y=Y(v); d+=(pen?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' '; pen=true;}
+    svg+=`<path d="${d}" fill="none" stroke="${s.c}" stroke-width="${s.k==='price'?2:1.5}" stroke-linejoin="round"/>`;}
+  svg+=`<rect id="hit" x="${mL}" y="${mT}" width="${pw}" height="${ph}" fill="transparent"/>`;
+  svg+=`<line id="cross" class="crosshair" x1="0" y1="${mT}" x2="0" y2="${mT+ph}" style="display:none"/></svg>`;
+  host.innerHTML=svg+'<div class="tip" id="tip" style="display:none"></div>';
+  const svgEl=host.querySelector('svg'),tip=host.querySelector('#tip'),cross=host.querySelector('#cross'),hit=host.querySelector('#hit');
+  hit.addEventListener('mousemove',ev=>{const rect=svgEl.getBoundingClientRect(),sc=W/rect.width;
+    let i=Math.round((ev.clientX-rect.left)*sc-mL)/pw*(N-1)+i0; i=Math.max(i0,Math.min(i1,Math.round(i)));
+    const xx=X(i); cross.style.display='';cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);
+    let rows=`<div class="d">${D.years[i]}</div>`;
+    rows+=`<div class="r"><span><span class="sw" style="background:${cPrice}"></span>Price</span><b>${D.price[i]!=null?fmt(D.price[i]):'—'}</b></div>`;
+    if(state.showDiv) rows+=`<div class="r"><span><span class="sw" style="background:${cDiv}"></span>Dividend</span><b>${D.dividend[i]!=null?fmt(D.dividend[i]):'—'}</b></div>`;
+    tip.innerHTML=rows;tip.style.display='';
+    const tx=xx/sc+14,over=tx+tip.offsetWidth>rect.width; tip.style.left=(over?xx/sc-tip.offsetWidth-14:tx)+'px';
+    tip.style.top=Math.max(0,(ev.clientY-rect.top)-tip.offsetHeight/2)+'px';});
+  hit.addEventListener('mouseleave',()=>{tip.style.display='none';cross.style.display='none';});
+}
+function niceStep(x){const p=Math.pow(10,Math.floor(Math.log10(x))),e=x/p;return (e>=7.5?10:e>=3?5:e>=1.5?2:1)*p;}
+window.addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(render,150);});
+// lightbox
+const lb=document.getElementById('lightbox'),lbi=document.getElementById('lbimg'),lbc=document.getElementById('lbcap');
+document.addEventListener('click',e=>{const im=e.target.closest('img[data-cap]');
+  if(im){lbi.src=im.src;lbc.textContent=im.dataset.cap;lb.style.display='flex';}
+  else if(e.target.closest('#lightbox')) lb.style.display='none';});
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+# Chapter II: The Geography of the Efficient Frontier
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+### I. The Risk and Return of Securities
+
+Markowitz's fundamental contribution was recognizing that three measures summarize security information: the mean return (arithmetic mean), the standard deviation of returns, and correlation with other assets' returns. Using historical data from 1970 through March 1995, a comparative analysis of six asset classes demonstrates the challenge investors face:
+
+Asset classes examined include Small Stocks, S&P stocks, Corporate and Government Bonds, and MSCI (Morgan Stanley Capital International World Portfolio).
+
+Key observation: "Small stocks provide the highest return, but with the highest risk." No single asset class dominates all others. T-Bills appeal to risk-averse investors, while small stocks attract those unconcerned with volatility. No universal "best" security exists for all investors.
+
+---
+
+### II. Portfolios of Assets
+
+Rather than selecting one asset, investors typically construct diversified portfolios. The correlation coefficient—ranging from -1 to 1—measures co-movement between stock returns and is calculated as:
+
+Correlation formula: ρ(AB) = σ(AB) / (σ(A) × σ(B))
+
+Where σ(AB) represents covariance between two securities.
+
+Portfolio standard deviation calculation for two assets:
+
+σ(p) = √[W(A)² × σ(A)² + W(B)² × σ(B)² + 2 × W(A) × W(B) × ρ(AB) × σ(A) × σ(B)]
+
+Portfolio mean return: Mean(p) = W(A) × R(A) + W(B) × R(B)
+
+#### Correlation Scenarios:
+
+When correlation equals zero:
+A portfolio of 80% Security A and 20% Security B (where A has 10% mean return, 15% standard deviation; B has 20% mean return, 30% standard deviation) yields 13.4% standard deviation. Adding the riskier security actually reduces portfolio volatility—demonstrating diversification benefits.
+
+When correlation equals one (perfect positive correlation):
+Portfolio standard deviation becomes a linear combination: (0.8)(0.15) + (0.2)(0.30) = 18%. No diversification benefit exists since assets move identically.
+
+When correlation equals negative one (perfect negative correlation):
+A mixture of 0.665 Security A and 0.335 Security B produces approximately 0.075% standard deviation—nearly a perfect hedge. This scenario rarely occurs in practice except with offsetting long and short positions.
+
+---
+
+### III. More Securities and More Diversification
+
+Examining portfolios with multiple securities—all having zero correlation and identical risk—reveals significant diversification benefits. An equally-weighted portfolio of single assets progressively improves as more securities are added: one stock, then two, then three, increasing to thirty.
+
+Critical finding: "After 30 stocks, diversification is mostly achieved. There are enormous gains to diversification beyond one or two stocks."
+
+When allowing variable portfolio weights rather than equal weighting, benefits increase further. Calculating standard deviations across all possible asset combinations reveals a dominant set: the efficient frontier.
+
+The efficient frontier represents portfolios offering the maximum return for each risk level and minimum risk for each return level. For any risk level, it identifies the highest-returning portfolio; for any return level, it identifies the lowest-risk portfolio. The frontier extends from the maximum return portfolio (typically a single asset) to the minimum variance portfolio.
+
+Geographic perspective: The feasible set encompasses all possible asset combinations. The efficient frontier forms its boundary—no portfolios exist beyond this northwest edge.
+
+---
+
+### IV. Markowitz and the First Efficient Frontier
+
+Harry Markowitz created the first efficient frontier using NYSE stocks, published in Portfolio Selection (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis—a convention later reversed.
+
+---
+
+### V. An Actual Efficient Frontier Today
+
+Modern efficient frontiers, constructed using historical data (1970 through March 1995) for U.S. and international assets via optimization programs like Ibbotson EnCorr Optimizer, maintain Markowitz's foundational approach.
+
+Essential frontier characteristics:
+
+- A minimum variance portfolio exists at the frontier's lower-risk boundary
+- The maximum return portfolio consists of a single asset
+- Points B, C, D, and E represent critical transitions where the asset composition changes—where securities enter or exit the optimal combination
+- No assets appear northwest of the frontier; this boundary defines the feasible region's edge
+
+---
+
+### VI. The Efficient Frontier with the Riskless Asset
+
+Treasury Bills typically represent riskless assets, with returns designated as R(f), the risk-free rate. Since riskless assets carry zero correlation with other securities, they provide no diversification per se but enable low-risk portfolio construction.
+
+When combining all risky economy assets with riskless assets, the efficient frontier transforms into a straight line—the Capital Market Line (CML)—extending from R(f) to tangency point M on the risky-asset frontier, and beyond.
+
+This configuration represents investable portfolios if borrowing and lending at the riskless rate is possible. Portfolios between R(f) and M combine Treasury bills with portfolio M. Portfolios extending beyond M are achieved by borrowing at R(f) and investing proceeds into M.
+
+---
+
+### VII. Summary
+
+Markowitz fundamentally revolutionized portfolio selection through elegant simplicity: "All the information needed to choose the best portfolio for any given level of risk is contained in three simple statistics: mean, standard deviation and correlation." This approach requires no fundamental firm analysis—dividend policy, earnings, market share, management quality—eliminating information typically central to Wall Street analysis.
+
+Today, virtually all major portfolio managers employ optimization programs, though not always following exact recommendations. These tools evaluate fundamental risk-return trade-offs.
+
+Practical limitations: Historical mean returns may poorly predict future returns. As security count increases, correlation estimation becomes increasingly challenging and error-prone. With over 1,500 NYSE stocks, some correlations will be substantially inaccurate. The model proves sensitive to input errors.
+
+Optimal application: Markowitz optimization performs best with asset class allocation decisions, where correlation counts remain low and summary statistics are reliably estimated.
+
+---
+
+Navigation Bar
+| Previous Chapter | Next Chapter | Will's Home Page | MPPM 540 Main Menu | Table of Contents | Mail Will |
+
+© William N. Goetzmann
+YALE School of Management

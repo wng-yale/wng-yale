@@ -1,0 +1,191 @@
+# Chapter III: Preferences and Investor Choice
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+### Introduction
+
+The previous chapter presented Markowitz's portfolio selection model while omitting a crucial element: how individual investors actually choose among portfolios. Although the efficient frontier represents the superior combination of assets, it contains infinitely many possibilities. The central challenge becomes selecting one optimal portfolio from this set, requiring investors to express their preferences within risk-return space.
+
+Investors make decisions based on numerous factors that cannot be reduced to two dimensions. Furthermore, real-world investing allows strategy adjustments as circumstances change—a flexibility the single-period Markowitz model doesn't accommodate. This chapter explores methods for approximating investor preferences in mean-variance space, acknowledging their limitations when applied to multi-period decision-making.
+
+---
+
+### I. Choosing A Single Portfolio
+
+**Iso-Utility Curves and Investor Preferences**
+
+One approach involves mathematical modeling of investor preferences through iso-utility curves. These curves function like topographic map contours, representing consistent utility levels. They demonstrate how investors trade off risk against return in two-dimensional space. Like elevation lines on maps, iso-utility curves are nested, with higher curves representing greater utility levels.
+
+The mathematical foundation typically uses convenient functions—logarithmic or quadratic—to capture preference structures. The essential characteristic requires increasing return demands as risk exposure increases.
+
+**Characterizing Risk Aversion**
+
+Iso-utility curve curvature reveals investor risk preferences. Four investor types exhibit distinct curve patterns:
+
+1. More risk-averse investors: Demand sharply higher expected returns when volatility increases
+2. Moderately risk-averse investors: Show balanced return-risk requirements
+3. Less risk-averse investors: Display flatter curves with moderate return increases for additional risk
+4. Risk-loving investors: Paradoxically demand lower expected returns while assuming greater risk to maintain utility levels
+
+**Finding Optimal Portfolios**
+
+The optimization procedure identifies where the efficient frontier is tangent to the highest achievable iso-utility curve for that investor. This tangency point represents the unique portfolio providing maximum utility for risk-averse individuals.
+
+**Practical Limitations**
+
+The methodology's significant drawback involves determining individual or institutional risk aversion. Asset allocators must map client preferences—analogous to mapping unknown terrain—without certainty regarding consistency over time. Preferences may shift unpredictably between periods.
+
+---
+
+### II. Another Approach: Preferences about Distributions
+
+**The Shortfall Criterion**
+
+An alternative strategy focuses on return distribution characteristics, specifically probability mass in lower-tail regions. This "shortfall" criterion offers simplicity by avoiding complete preference mapping. Instead, investors specify a floor return—a minimum threshold they want to avoid breaching. The criterion then selects the efficient frontier portfolio minimizing the probability of returns dropping below that floor.
+
+**Mathematical Expression**
+
+For a specified floor return equal to the riskless rate (Rf), calculate this ratio for each frontier portfolio:
+
+The shortfall ratio resembles a t-statistic; higher values indicate greater probability of exceeding the floor. The portfolio maximizing this value has the highest probability of surpassing Rf.
+
+**Graphical Solution**
+
+The process can be solved graphically without complex calculations:
+
+1. Identify the floor return level on the vertical axis
+2. Find the tangency point to the efficient frontier
+3. This point minimizes probability of returns falling below the specified floor
+
+**The Sharpe Ratio**
+
+When Rf (the riskless rate) serves as the floor, the tangency line's slope equals the Sharpe Ratio. This portfolio possesses special significance: it minimizes the probability of underperforming Treasury bills economy-wide. Equivalently, it maximizes probability of delivering an equity premium—the single best portfolio for beating T-bills if forced to choose one.
+
+**Flexibility of Safety-First**
+
+The "safety-first" framework accommodates multiple approaches:
+
+1. Maximizing probability of exceeding a floor: Find the tangency point, as described above
+2. Testing feasibility: Specify both a desired floor and probability; determine whether portfolios meeting these criteria exist
+3. Finding sustainable floors: Pose the inverse question—"Given my acceptable probability, what floor can I reliably achieve?"
+
+For the third approach, set the slope equal to appropriate t-statistic values:
+- 90% confidence: slope = 1.28
+- 95% confidence: slope = 1.644
+- 99% confidence: slope = 2.32
+
+Once the slope is chosen, move the line vertically until tangent to the efficient frontier. This yields both a portfolio choice and its corresponding floor return.
+
+---
+
+### III. A Note on Value at Risk
+
+**Definition and Purpose**
+
+Value-at-Risk (VAR) measures potential portfolio losses over specified time horizons. It has become increasingly prevalent in banking (for capital requirements calculation) and investment management (for risk control). VAR provides a probability-based loss estimate given a particular confidence interval and time period.
+
+**Calculation Method**
+
+Assuming normally distributed portfolio returns, VAR calculation requires:
+
+- Rp = portfolio expected return
+- STDp = portfolio standard deviation
+- T = t-statistic for the chosen confidence interval
+- Rvar = the negative return expected at the specified confidence level
+
+Formula: Rvar = Rp - T × STDp
+
+VAR = |Rvar| × Total Portfolio Value
+
+**Practical Example**
+
+Consider a $100 million pension portfolio with 60% stocks and 40% bonds, analyzed at the 95% confidence interval over one month.
+
+Assumptions:
+- Monthly expected stock return: 1%
+- Monthly expected bond return: 0.7%
+- Stock standard deviation: 5%
+- Bond standard deviation: 3%
+- Stock-bond correlation: 0.5
+- 95% confidence t-statistic: 1.64
+
+Portfolio Expected Return Calculation:
+Rp = (0.6)(0.01) + (0.4)(0.007) = 0.0088 or 0.88%
+
+Portfolio Standard Deviation Calculation:
+STDp = √[0.6² × 0.05² + 0.4² × 0.03² + 2 × 0.5 × 0.6 × 0.4 × 0.05 × 0.03]
+STDp = 0.038 or 3.8%
+
+Value-at-Risk Calculation:
+Rvar = 0.0088 - 1.64 × 0.038 = -0.054 or -5.4%
+
+Monthly VAR = $100,000,000 × 0.054 = $5,400,000
+
+Interpretation: The portfolio is expected to experience losses of at least $5.4 million approximately one month out of every twenty, though this calculation does not suggest the remaining $94.6 million escapes risk entirely.
+
+**Key Assumptions and Limitations**
+
+This VAR approach depends on several critical assumptions:
+
+1. Normal distribution of returns: This assumption frequently breaks down when portfolios contain derivatives, producing fat-tailed distributions
+2. Historical representativeness: Estimated distributions and correlations must accurately reflect future conditions; estimation error increases significantly with numerous asset classes
+3. No return autocorrelation: The model assumes independence across periods; positive trends cause losses to compound across multiple periods
+
+---
+
+### IV. Conclusion
+
+**Challenges in Portfolio Selection**
+
+Creating efficient frontiers from historical or projected statistics involves inherent uncertainty due to statistical estimation errors. However, this uncertainty is minor compared to the difficulty of translating investor preferences into mean-standard deviation space. Economic knowledge about preferences remains limited, particularly within single-period frameworks. While economists understand that people prefer more to less and typically avoid uncompensated risk, preferences beyond these basics involve considerable speculation. Consistency across time periods remains questionable.
+
+**Utility Function Approach**
+
+The theoretical solution requires specifying an investor utility function, deriving indifference curves, and locating the highest attainable utility level within the feasible set—typically a tangency point. Practical implementation proves difficult: estimating utility functions and subsequently explaining them to investors presents major obstacles.
+
+**Safety-First Alternative**
+
+The "safety-first" approach offers a practical alternative beginning with a straightforward preference question: "What is your floor return?" Once specified, portfolio selection follows logically. This methodology allows identifying the probability of exceeding the selected floor by observing the tangency line's slope. The framework further permits portfolio identification by simultaneously specifying both a floor and probability.
+
+**Value-at-Risk Connection**
+
+Value-at-Risk represents an increasingly popular risk measurement and control method, functioning as a straightforward extension of safety-first principles when portfolio assets display normally distributed returns.
+
+---
+
+### IV. Epilogue
+
+**Simplification Through Risk-Free Securities**
+
+Introducing a genuine risk-free security dramatically simplifies portfolio decisions for all investors. The optimal choice reduces to selecting proportions of the riskless asset and a single risky portfolio (T)—the tangency portfolio:
+
+- More Risk-Averse (MRA) investors: Hold combinations of the tangency portfolio and Treasury bills
+- Less Risk-Averse (LRA) investors: Borrow at the riskless rate and invest proceeds entirely in the tangency portfolio
+
+**The Critical Question**
+
+If practitioners could definitively identify the tangency portfolio's composition, a single product could serve every investor's needs by simply varying proportions of the riskless asset and this portfolio.
+
+What constitutes portfolio T?
+
+The answer is provided in the subsequent chapter.
+
+---
+
+### References and Further Resources
+
+For additional information about utility function approaches to risk, consult Campbell Harvey's comprehensive resource on Optimal Portfolios at: http://www.duke.edu/~charvey/Classes/ba350/control/opc.htm
+
+For a comprehensive hypertext investment decision-making resource, see William Sharpe's Macro-Investment Analysis at: http://www.stanford.edu/~wfsharpe/mia/mia.htm
+
+---
+
+Navigation Bar
+Previous Chapter | Next Chapter | Will's Home Page | MPPM 540 Main Menu | Table of Contents | Mail Will
+
+© William N. Goetzmann
+YALE School of Management

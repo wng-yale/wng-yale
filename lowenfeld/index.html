@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henry Lowenfeld &mdash; The Forgotten Pioneer of Diversification</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --navy: #1a2332;
+    --navy-mid: #243044;
+    --cream: #faf6ee;
+    --cream-dark: #f0e8d8;
+    --ink: #2c2418;
+    --ink-light: #5a4e3c;
+    --accent: #8b4513;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', 'Georgia', serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.7;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #2a3a52 100%);
+    color: var(--cream);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(184,134,11,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Source Sans 3', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .hero .subtitle {
+    font-size: 1.15rem;
+    color: rgba(250,246,238,0.7);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+  .hero-date {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 0.4rem 1.2rem;
+    border-radius: 2px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+
+  /* Container */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Section headings */
+  .section-heading {
+    text-align: center;
+    padding: 4rem 0 2.5rem;
+  }
+  .section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .section-heading .rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0.8rem auto 0;
+  }
+
+  /* Intro */
+  .intro {
+    padding: 3rem 0 2rem;
+  }
+  .intro p {
+    font-size: 1.1rem;
+    max-width: 720px;
+    margin: 0 auto 1.2rem;
+    text-align: center;
+    color: var(--ink-light);
+  }
+  .intro .lead {
+    font-size: 1.25rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* Book cards */
+  .books-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+  }
+  .book-card {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .book-card-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: var(--cream);
+    padding: 2rem 2.5rem;
+    position: relative;
+  }
+  .book-card-header .book-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(184,134,11,0.25);
+    position: absolute;
+    top: 0.8rem;
+    right: 1.5rem;
+    line-height: 1;
+  }
+  .book-card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .book-card-header .book-year {
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .book-card-body {
+    padding: 2rem 2.5rem;
+  }
+  .book-card-body .summary {
+    font-size: 1.05rem;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+
+  /* Lessons */
+  .lessons {
+    list-style: none;
+    counter-reset: lesson;
+  }
+  .lessons li {
+    counter-increment: lesson;
+    padding: 1rem 0 1rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .lessons li:last-child { border-bottom: none; }
+  .lessons li::before {
+    content: counter(lesson);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+  }
+  .lesson-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .lesson-content p {
+    color: var(--ink-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Quote blocks */
+  .quote-block {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0 0.5rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .quote-block p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  .quote-block .attribution {
+    font-family: 'Source Sans 3', sans-serif;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* Chart showcase */
+  .chart-showcase {
+    background: white;
+    padding: 3rem 0;
+    margin: 2rem 0;
+  }
+  .chart-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .chart-item {
+    text-align: center;
+  }
+  .chart-item img {
+    width: 100%;
+    border: 1px solid #e0d8c8;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .chart-item .chart-label {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+  }
+  .chart-item .chart-label strong {
+    color: var(--navy);
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+  .chart-verdict {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--cream-dark);
+    border-radius: 6px;
+  }
+  .chart-verdict p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+  }
+
+  /* Key principles highlight strip */
+  .principles-strip {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    color: var(--cream);
+    padding: 4rem 2rem;
+    margin: 3rem 0;
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .principle-card {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .principle-icon {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+  }
+  .principle-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  .principle-card p {
+    font-size: 0.92rem;
+    color: rgba(250,246,238,0.7);
+    line-height: 1.6;
+  }
+
+  /* Timeline */
+  .timeline {
+    padding: 2rem 0 3rem;
+  }
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 80px;
+    padding-top: 0.1rem;
+  }
+  .timeline-text h4 {
+    font-size: 1rem;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+  .timeline-text p {
+    font-size: 0.92rem;
+    color: var(--ink-light);
+  }
+
+  /* Footer */
+  footer {
+    background: var(--navy);
+    color: rgba(250,246,238,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--gold-light); }
+
+  /* Download button */
+  .download-btn {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--gold);
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+  .download-btn:hover { background: var(--gold-light); }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .chart-pair { grid-template-columns: 1fr; }
+    .book-card-body { padding: 1.5rem; }
+    .book-card-header { padding: 1.5rem; }
+    .hero { padding: 3rem 1.5rem 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-eyebrow">The Investment Registry, London</div>
+  <h1>Henry Lowenfeld<br><em>The Forgotten Pioneer of Diversification</em></h1>
+  <p class="subtitle">
+    Forty-three years before Harry Markowitz published Modern Portfolio Theory,
+    a German-born London financier proved that geographical diversification
+    could make investment "an exact science."
+  </p>
+  <span class="hero-date">1880 &ndash; 1909</span>
+</section>
+
+<!-- Intro -->
+<section class="intro container">
+  <p class="lead">
+    Henry Lowenfeld founded the Investment Registry in 1880 and spent three decades
+    developing a systematic, data-driven approach to portfolio construction. His key insight&mdash;that
+    stocks in different countries move independently because trade cycles differ&mdash;anticipated
+    the core logic of modern diversification theory by nearly half a century.
+  </p>
+  <p>
+    Lowenfeld published three major works on investment that laid out his principles
+    with remarkable clarity. Together they form a complete system: diagnosis of the problem,
+    the theoretical solution, and practical instructions for implementation.
+  </p>
+</section>
+
+<!-- The Visual Proof -->
+<section class="chart-showcase">
+  <div class="container">
+    <div class="section-heading">
+      <h2>The Visual Proof</h2>
+      <div class="rule"></div>
+    </div>
+    <p style="text-align:center; color:#5a4e3c; max-width:680px; margin:0 auto 1rem; font-size:1.05rem;">
+      Lowenfeld's most famous contribution: two charts that tell the entire story of diversification at a glance.
+    </p>
+    <div class="chart-pair">
+      <div class="chart-item">
+        <img src="images/british_chart.png" alt="Typical Price Movement of British Securities, showing correlated movements">
+        <div class="chart-label">
+          <strong>British Securities Only</strong>
+          All twelve stocks rise and fall together, governed by the same national trade cycle.
+          When Britain suffers, <em>every</em> holding suffers.
+        </div>
+      </div>
+      <div class="chart-item">
+        <img src="images/international_chart.png" alt="Price Movements of 10 Stocks Covering Different Geographical Divisions">
+        <div class="chart-label">
+          <strong>Geographically Diversified</strong>
+          Ten stocks from ten different countries move independently.
+          When one falls, others rise&mdash;the portfolio stays stable.
+        </div>
+      </div>
+    </div>
+    <div class="chart-verdict">
+      <p>&ldquo;The whole appearance of the International Chart clearly demonstrates that as the
+      trade prosperity of each country differs from that of all other countries, so the price
+      movements of the stocks in each country differ from those of all other countries.&rdquo;</p>
+    </div>
+  </div>
+</section>
+
+<!-- Key Principles -->
+<section class="principles-strip">
+  <div style="text-align:center; margin-bottom:2.5rem;">
+    <h2 style="font-family:'Playfair Display',serif; font-size:2rem; color:white; margin-bottom:0.5rem;">
+      Lowenfeld's Core Principles
+    </h2>
+    <div style="width:60px; height:2px; background:var(--gold); margin:0 auto;"></div>
+  </div>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="principle-icon">&#9788;</div>
+      <h3>Geographical Distribution</h3>
+      <p>Split capital equally across countries with different trade cycles.
+        A depression in one quarter is counterbalanced by prosperity in another.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">&#9878;</div>
+      <h3>Poise &amp; Counterpoise</h3>
+      <p>Investment is a system of averages. Like insurance, sound investing requires
+        that falls in some holdings are offset by rises in others.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">&#8599;</div>
+      <h3>World Trade Always Grows</h3>
+      <p>Local trade may suffer cyclical depression, but the trade of the whole world
+        is perpetually expanding&mdash;the tailwind behind a global portfolio.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">&#9881;</div>
+      <h3>The Market Force</h3>
+      <p>A "third influence" beyond capital safety and income&mdash;the dominant market influence
+        of national trade conditions&mdash;controls the realisable value of stocks.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">&#10070;</div>
+      <h3>No Single Stock Is Safe</h3>
+      <p>"There is no stock in existence, the future realisable value of which is ascertainable
+        with certainty." Individual risk can never be eliminated&mdash;only averaged.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon">&#9733;</div>
+      <h3>Emerging Markets Appreciate</h3>
+      <p>Younger countries tend to increase their share of world trade. Their credit improves,
+        and their stocks "must show a special tendency to rise in value."</p>
+    </div>
+  </div>
+</section>
+
+<!-- The Three Books -->
+<section class="container">
+  <div class="section-heading">
+    <h2>The Three Books</h2>
+    <div class="rule"></div>
+  </div>
+
+  <div class="books-grid">
+
+    <!-- Book 1 -->
+    <div class="book-card">
+      <div class="book-card-header">
+        <span class="book-number">I</span>
+        <span class="book-year">c. 1907, enlarged edition 1909</span>
+        <h3>Investment an Exact Science</h3>
+      </div>
+      <div class="book-card-body">
+        <p class="summary">
+          Lowenfeld's masterwork and the theoretical foundation of his system. Using charts of actual
+          stock price movements spanning 1893&ndash;1907, he demonstrates that British securities all move in
+          lockstep&mdash;governed by a single national trade cycle&mdash;while stocks from different countries
+          move independently. The conclusion: geographical distribution of capital is the only reliable
+          method of protecting both capital and income.
+        </p>
+
+        <h4 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:0.8rem;">Key Lessons</h4>
+        <ol class="lessons">
+          <li>
+            <div class="lesson-content">
+              <h4>Every Stock Purchase Is a Speculation</h4>
+              <p>No matter how safe a security appears, its future realisable value is inherently uncertain.
+                The only defence is a system of averages&mdash;like an insurance company that cannot predict
+                individual outcomes but can predict aggregate results.</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>The "Third Influence" Dominates</h4>
+              <p>Beyond capital safety and income yield, there is a third force&mdash;national trade conditions&mdash;that
+                overwhelmingly controls the market price of even the soundest stocks. An irredeemable debenture
+                with perfectly safe income still fluctuates because of this market force.</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>Home Bias Destroys Capital</h4>
+              <p>British investors who restricted their holdings to domestic securities were "speculating on
+                that country's future trading prosperity." When Britain's trade cycle turned down,
+                all twelve stocks on Lowenfeld's British chart fell together&mdash;no diversification at all.</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>International Distribution Creates True Diversification</h4>
+              <p>Because trade cycles in different countries are unsynchronised, stocks from different
+                nations naturally form a system of "poise and counterpoise." A globally distributed portfolio
+                produces stable capital values even when individual countries suffer.</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>The World's Trade Is the Investor's Tailwind</h4>
+              <p>While any single country's trade alternates between boom and depression, world trade
+                as a whole is "constantly expanding." A globally distributed portfolio rides this secular
+                growth, creating a natural tendency for total portfolio value to appreciate.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="quote-block">
+          <p>&ldquo;It has been theoretically and practically proved that by splitting up invested capital
+            in equal proportions among a number of investments similar in quality, yet whose price
+            movements are all governed by different influences, a combination of investments is obtained
+            in which a fall in the realisable value of a portion of them is simultaneously counterbalanced
+            by a rise in the realisable value of another portion.&rdquo;</p>
+          <div class="attribution">&mdash; Investment an Exact Science, Preface</div>
+        </div>
+
+        <div class="quote-block">
+          <p>&ldquo;Precisely as a carefully-studied system of averages eliminates all taint of gambling
+            from a sound system of insurance business, so a sound system of averages, based upon the
+            Geographical Distribution of Capital, should reduce to a minimum the taint of speculation
+            from the act of investment.&rdquo;</p>
+          <div class="attribution">&mdash; Investment an Exact Science, Ch. IV</div>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:1.2rem;">
+          <a href="https://spinup-000d1a-wp-offload-media.s3.amazonaws.com/faculty/wp-content/uploads/sites/67/2019/10/lowenfeld.pdf" class="download-btn" download>Download PDF &darr;</a>
+          <a href="exact_science.txt" class="download-btn" style="background:var(--navy);">Read OCR Text &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="book-card">
+      <div class="book-card-header">
+        <span class="book-number">II</span>
+        <span class="book-year">c. 1907</span>
+        <h3>Investment Practically Considered</h3>
+      </div>
+      <div class="book-card-body">
+        <p class="summary">
+          A collection of essays reprinted from the <em>Financial Review of Reviews</em>, this is
+          Lowenfeld's practical companion to <em>Exact Science</em>. It shows the ordinary investor
+          how to evaluate individual securities, detect investment crazes, test the soundness of
+          an existing portfolio, and construct a properly balanced Investment List. It ranges into
+          public-policy territory with chapters on unjust taxation, the decline of Consols, and the
+          origins of money scares&mdash;always circling back to the lesson that uninformed, parochial
+          investing destroys capital on a national scale.
+        </p>
+
+        <h4 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:0.8rem;">Key Lessons</h4>
+        <ol class="lessons">
+          <li>
+            <div class="lesson-content">
+              <h4>Harmony Over Cherry-Picking</h4>
+              <p>Selecting individually sound stocks is not enough; the entire list must function as a
+                unified scheme. Stocks must be uniform in quality, identical in width of fluctuation,
+                and held in equal amounts, so that a fall in one is genuinely counterbalanced by a rise
+                in another. &ldquo;A badly assorted list of intrinsically sound and perfectly safe
+                investments may give most unsatisfactory results.&rdquo;</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>The Three Tests of a Sound Position</h4>
+              <p>Every investor should regularly ask: Can at least a quarter of the portfolio be
+                liquidated without loss? Does total realisable value remain fairly stable year to year?
+                Is income regular and not declining? A portfolio that fails any test is &ldquo;unworthy
+                to have any further confidence placed in it.&rdquo;</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>Seek the Unfashionable, Shun the Popular</h4>
+              <p>The stocks that receive the most newspaper ink are, almost by definition, the most
+                overpriced. Obscure but well-secured trading debentures barely moved in a decade while
+                &ldquo;marketable&rdquo; Home Railway debentures fell 25&ndash;40 points.
+                Low yield does not mean safety.</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>Treat Your Portfolio as a Living Thing</h4>
+              <p>Securities &ldquo;possess both life and growth, and like every other living thing
+                which grows they require constant supervision.&rdquo; The sound investment of today
+                is the &ldquo;neglected and obsolete industry of to-morrow.&rdquo; Cost price is
+                irrelevant; present value and present yield are the only valid basis for reckoning.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="quote-block">
+          <p>&ldquo;Just as a kitten is unable to restrain itself from eagerly jumping in pursuit of a
+            cork which is steadily drawn away from it, so the average investor finds himself impelled
+            to jump into a market which is steadily rising. It matters not to the kitten that past
+            experience has taught it that the cork is possessed of no real vitality, any more than it
+            matters to the investor that bitter experience has taught him that these spurts of artificial
+            activity in a new market are just as devoid of real life as is the inanimate cork which
+            fascinates the kitten. In both cases the attractive force is motion&mdash;motion which to
+            the unreasoning observer bears a certain resemblance to life.&rdquo;</p>
+          <div class="attribution">&mdash; Investment Practically Considered, &ldquo;Investment Crazes&rdquo;</div>
+        </div>
+
+        <div class="quote-block">
+          <p>&ldquo;The list of Brewery and Distillery stocks presents the appearance of a great
+            battlefield piled high with corpses and strewn with the shattered remains of numberless
+            victims crippled for life. If anyone should ask who profited by this craze, the only
+            possible answer would be&mdash;the Brewers, who sold their properties at high prices,
+            and the Promoters who brought out the concerns.&rdquo;</p>
+          <div class="attribution">&mdash; Investment Practically Considered, &ldquo;Investment Crazes&rdquo;</div>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:1.2rem;">
+          <a href="https://spinup-000d1a-wp-offload-media.s3.amazonaws.com/faculty/wp-content/uploads/sites/67/2019/10/InvesPracCon.pdf" class="download-btn" download>Download PDF &darr;</a>
+          <a href="practically_considered.txt" class="download-btn" style="background:var(--navy);">Read OCR Text &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="book-card">
+      <div class="book-card-header">
+        <span class="book-number">III</span>
+        <span class="book-year">January 1909</span>
+        <h3>All About Investment</h3>
+      </div>
+      <div class="book-card-body">
+        <p class="summary">
+          Written to teach ordinary British investors&mdash;from the small saver with his first
+          hundred pounds to the wealthy retiree&mdash;the fundamental principles of sound investment.
+          Lowenfeld's central argument here is that capital is &ldquo;stored-up human effort&rdquo;
+          carrying a moral responsibility, and that its preservation requires systematic geographical
+          diversification across the world's trading regions. It serves as the accessible companion
+          to <em>Exact Science</em>, translating its statistical findings into plain advice for
+          the general reader. Dedicated to British bank managers, whom Lowenfeld hoped would
+          disseminate investment knowledge to their customers.
+        </p>
+
+        <h4 style="font-family:'Playfair Display',serif; color:var(--navy); margin-bottom:0.8rem;">Key Lessons</h4>
+        <ol class="lessons">
+          <li>
+            <div class="lesson-content">
+              <h4>Capital Is Stored Human Effort</h4>
+              <p>Money is not an abstraction but crystallised human labour. Wasting capital is
+                tantamount to wasting the effort of one's fellow men. &ldquo;The smaller the capital-sum,
+                the greater should be the caution in disposing of it.&rdquo;</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>Know Your Investment Aim Before You Buy</h4>
+              <p>Lowenfeld classifies investors into ten sub-types, from the rich retiree needing only
+                capital safety to the young earner building from nothing. Each requires a different class of
+                security. Buying without knowing which type you are is &ldquo;tantamount to taking a
+                wrong kind of medicine.&rdquo;</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>Every Stock Is a Speculation</h4>
+              <p>Even Consols and Trustee securities fluctuate in value. The most dangerous investor is
+                the one who believes he has invested safely while actually running concentrated risk.
+                &ldquo;To hold stocks without realising the fact that each one of them is a speculation,
+                is like handling a revolver without knowing that it is loaded.&rdquo;</p>
+            </div>
+          </li>
+          <li>
+            <div class="lesson-content">
+              <h4>Income Must Be Subservient to Capital</h4>
+              <p>Capital is &ldquo;the root of all income.&rdquo; The difference between the highest and
+                lowest reasonable yield is only about 2.5% per annum; it would take 11 years of that extra
+                income to recover even a quarter of one's capital if lost through faulty concentration.
+                Never spend more than 85&ndash;95% of dividends received.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="quote-block">
+          <p>&ldquo;A great thinker writes a book, an imaginative artist paints an epoch-making picture,
+            a gifted musician composes an immortal opera&mdash;all these creations are bought and paid
+            for like the output of the most prosaic manufacturer. In truth, the most wondrous production
+            of the brain and the most insignificant results of manual labour receive material compensation
+            similar in quality and differing only in quantity. So that the tangible return for human effort
+            is measured by money, and money is latent energy, which in its turn commands the exertion
+            of human effort.&rdquo;</p>
+          <div class="attribution">&mdash; All About Investment, Ch. I</div>
+        </div>
+
+        <div class="quote-block">
+          <p>&ldquo;Investment is a child, with statistics as father, common sense as mother, and
+            speculation as a dissipated family relation. The closer the union between father and mother
+            for the purpose of boycotting this reprobate relation, the larger will be the heritage
+            of the legitimate heir.&rdquo;</p>
+          <div class="attribution">&mdash; All About Investment, Ch. IX</div>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:1.2rem;">
+          <a href="https://spinup-000d1a-wp-offload-media.s3.amazonaws.com/faculty/wp-content/uploads/sites/67/2019/10/AllAboutInves.pdf" class="download-btn" download>Download PDF &darr;</a>
+          <a href="all_about_investment.txt" class="download-btn" style="background:var(--navy);">Read OCR Text &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /books-grid -->
+</section>
+
+<!-- Timeline -->
+<section class="container">
+  <div class="section-heading">
+    <h2>Lowenfeld in Context</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">1880</div>
+      <div class="timeline-text">
+        <h4>The Investment Registry Founded</h4>
+        <p>Lowenfeld establishes his firm at 2 Waterloo Place, London, to advise investors
+          on the systematic management of capital.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">c.1896</div>
+      <div class="timeline-text">
+        <h4>Financial Review of Reviews Launched</h4>
+        <p>A monthly journal providing the statistical data investors need to monitor their
+          geographically distributed portfolios.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1907</div>
+      <div class="timeline-text">
+        <h4>The Diversification Charts Published</h4>
+        <p>Lowenfeld's famous paired charts&mdash;British vs. International&mdash;appear in the
+          <em>Financial Review of Reviews</em>, providing visual proof of the diversification principle.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1909</div>
+      <div class="timeline-text">
+        <h4><em>Investment an Exact Science</em> Published</h4>
+        <p>The enlarged and revised edition of his masterwork, gathering three decades of evidence
+          into a systematic treatise on geographical diversification.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">1952</div>
+      <div class="timeline-text">
+        <h4>Markowitz Publishes "Portfolio Selection"</h4>
+        <p>Harry Markowitz formalises the mathematics of diversification. The core insight&mdash;that
+          low correlation between assets reduces portfolio risk&mdash;is the same principle
+          Lowenfeld demonstrated empirically 43 years earlier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final quote -->
+<section style="background:var(--cream-dark); padding:3rem 2rem; margin-top:2rem;">
+  <div class="container" style="max-width:700px; text-align:center;">
+    <p style="font-family:'Playfair Display',serif; font-size:1.3rem; font-style:italic; color:var(--navy); line-height:1.7;">
+      &ldquo;If an investor widely distributes his capital over the earth's surface, local depression
+      in one quarter will be counterbalanced by the local trade activity in another quarter &hellip;
+      the world's perpetual trade expansion will automatically tend to increase the realisable
+      capital value of his investments year by year.&rdquo;
+    </p>
+    <p style="color:var(--gold); font-weight:600; margin-top:1rem;">
+      &mdash; Henry Lowenfeld, <em>Investment an Exact Science</em> (1909)
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>Part of the <a href="#">Investors' Monthly Manual</a> digital archive project.</p>
+  <p style="margin-top:0.5rem; font-size:0.8rem;">
+    Source texts OCR'd from original editions held in the Yale International Center for Finance collection.
+  </p>
+</footer>
+
+</body>
+</html>

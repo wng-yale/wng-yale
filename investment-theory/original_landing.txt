@@ -1,0 +1,36 @@
+# Landing Page: An Introduction to Investment Theory
+
+By William N. Goetzmann, Edwin J. Beinecke Professor of Finance, Yale School of Management
+
+## Description
+
+This is a hypertext textbook introducing investment decision-making foundations, covering portfolio theory, risk-return tradeoffs, diversification, modern asset pricing models, and capital market efficiency. The material is designed for a four-week master's-level finance module.
+
+## Book Structure
+
+The textbook comprises eight chapters plus summary materials:
+
+- Chapter I: Capital Markets and Investment Performance
+- Chapter II: Efficient Frontier basics
+- Chapter III: Investor preferences and choice
+- Chapter IV: CAPM and portfolio risk approach
+- Chapter V: Security Market Line concepts
+- Chapter VI: Arbitrage Pricing Theory
+- Chapter VII: Beta calculations and discount rates
+- Chapter VIII: Information and capital market efficiency
+
+## Book Cover Image
+
+URL: https://spinup-000d1a-wp-offload-media.s3.amazonaws.com/faculty/wp-content/uploads/sites/67/2020/02/invcover.3.gif
+
+Description: This is the textbook cover graphic for "An Introduction to Investment Theory." Based on the filename (invcover.3.gif), this appears to be the investment theory book cover image. The WebFetch tool could not provide detailed visual description of the image content (whether it contains a red curve/logo), but this is the primary cover image on the landing page.
+
+## Additional Logo
+
+URL: https://spinup-000d1a-wp-offload-media.s3.amazonaws.com/faculty/wp-content/uploads/sites/67/2020/02/som-logo38.gif
+
+Description: Yale School of Management logo, appearing at the bottom of each chapter page.
+
+## Acknowledgments
+
+The author acknowledges contributions from students, colleagues (N. Prabhala, Geert Rouwenhorst, Campbell Harvey), and Ibbotson Associates for software support. The content is copyrighted and linking is permitted but reproduction requires explicit permission.

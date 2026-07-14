@@ -92,6 +92,92 @@
     font-size: 1.2rem;
     color: var(--text);
     border-radius: 0 8px 8px 0;
+    overflow-x: auto;
+}
+
+/* KaTeX equation blocks */
+.equation .katex { font-size: 1.15em; }
+.equation-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+}
+
+/* Figures */
+.figure {
+    margin: 32px 0;
+    text-align: center;
+}
+.figure svg, .figure canvas, .figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+.figure-caption {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-top: 10px;
+    font-style: italic;
+    line-height: 1.5;
+}
+.figure-caption strong {
+    font-style: normal;
+    color: var(--text-secondary);
+}
+
+/* Tables */
+.chapter-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.95rem;
+}
+.chapter-content th {
+    background: var(--yale-blue);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+.chapter-content td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+.chapter-content tr:hover td {
+    background: var(--bg-alt);
+}
+.chapter-content td:first-child {
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* Key concept callout */
+.key-concept {
+    background: linear-gradient(135deg, #eaf4fb 0%, #f0faf8 100%);
+    border: 1px solid #c8e0f0;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 24px 0;
+}
+.key-concept h4 {
+    font-size: 0.95rem;
+    color: var(--yale-blue);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+.key-concept p {
+    font-size: 0.98rem;
+    margin-bottom: 0;
 }
 
 .note {

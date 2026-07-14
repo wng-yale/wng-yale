@@ -1,0 +1,27 @@
+# Summary Review Notes
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+## Chapter Summaries Overview
+
+The page provides condensed review notes for eight chapters covering fundamental investment concepts:
+
+**Chapter I** addresses "geometric vs. arithmetic returns," historical capital market data, an "equity premium=8.5%," and standard deviation methodology.
+
+**Chapter II** explores "risk and return," correlation principles, efficient frontier construction, and incorporating riskless assets.
+
+**Chapter III** introduces "iso-utility curves," the "shortfall approach and Sharpe ratio," and tangency portfolio selection.
+
+**Chapter IV** covers tangency portfolio theory, CAPM equilibrium, and a "'Birthday Cake' Proof" demonstration.
+
+**Chapter V** explains how "correlations drive attractiveness of stock," introduces the security market line, and discusses beta relationships.
+
+**Chapter VI** presents APT theory, arbitrage mechanics, and multi-factor systematic risk.
+
+**Chapter VII** addresses beta estimation through regression, leverage effects, and discount rate applications in valuations and M&A.
+
+**Chapter VIII** examines market efficiency, information processing, and three forms of market efficiency: weak, semi-strong, and strong.

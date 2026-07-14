@@ -1,0 +1,113 @@
+# Chapter VIII: Information and the Efficiency of the Capital Markets
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+## I. A World of Arbitrageurs
+
+The foundation rests on arbitrage principles: when opportunities to exploit differing expectations emerge, active investors will pursue them. This prevents securities from deviating substantially from the security market line. The text notes: "Opportunities for exploiting this 'Arbitrage in Expectations' are likely to be fairy rare. However, when they arise, or are discovered through research, investors will seek to exploit them."
+
+Research into expected returns and betas drives the market's information-gathering machinery. Arbitrageurs investigate cash flows, discount rates, and idiosyncratic factors -- CEO health, product quality, and similar signals. Speed matters crucially: once buying begins, prices adjust and opportunities vanish.
+
+The central question posed: How effective is this arbitrage mechanism, and how rapidly do mispricings disappear?
+
+## II. Mispricings Created by the Arrival of Information
+
+Major corporate events immediately alter expected cash flows. The Bhopal chemical disaster exemplified this -- Union Carbide's stock price collapsed within minutes. Evidence shows: "there is little evidence that you can make money by investing on yesterday's news."
+
+Federal Reserve discount rate announcements trigger same-day stock responses, not delayed reactions. The text observes: "This empirical evidence strongly indicates that, at least in the highly liquid, open-information economy of the U.S. capital markets, stock prices are Efficient."
+
+## III. Watch My (Invisible) Hand
+
+Market efficiency describes how rapidly relevant information becomes embedded in asset prices. The mechanism: overpriced assets attract short-sellers, driving prices down; underpriced securities attract buyers, driving them up.
+
+Informational efficiency differs from Pareto efficiency. It concerns information transmission speed, not allocation optimality. Two factors determine efficiency levels:
+
+1. Liquidity: Illiquid markets cannot react quickly to information
+2. Psychological factors: Markets may overreact if participants cannot rationally evaluate information's impact
+
+Nathan Rothschild exemplified sophisticated information exploitation. His European network provided early Waterloo battle intelligence. He sold Bank of England securities quietly, sparking panic selling, then purchased during the frenzy -- a profitable contrarian play.
+
+Historical price transmission studies reveal information lag: Amsterdam to London equity price movements took approximately Thursday following Monday changes -- the travel time for fast messengers crossing the English Channel.
+
+## IV. Benefits of an Efficient Market
+
+Three primary advantages emerge:
+
+1. Price stability: Arbitrage prevents massive deviations from true economic value, avoiding future crashes
+2. Reduced comparison costs: Confidence that prices reflect public information reduces shopping burdens
+3. Liquidity provision: Arbitrageurs enable securities trading for non-speculative purposes
+
+China's information restrictions at Shanghai's exchange raise questions about desirability and feasibility of limiting financial data access.
+
+## V. Market Efficiency & Corporate Managers
+
+Efficient markets eliminate managerial gamesmanship potential. Genuine news moves prices; fabricated claims produce temporary reactions followed by reversions. The text notes: "Accounting tricks don't fool anybody. Don't worry about timing accounting charges and don't worry about whether information is revealed in the footnotes or in the statements."
+
+The Sears Tower case illustrates efficiency: Management believed undervalued balance sheet assets meant underpriced stock. Actually, the market efficiently assessed the property's worth -- Sears overestimated its value, and stock pricing reflected this reality.
+
+## VI. Three Degrees of Efficiency
+
+**Strong-Form Efficiency**: All private information, including CEO-CFO communications, immediately impacts prices. Few accept this benchmark.
+
+**Semi-Strong Form Efficiency**: All publicly available information -- annual reports, news, gossip columns -- becomes embedded in prices. Most believe U.S. equity markets exhibit this characteristic. However, definitional ambiguity exists: Is internet-published information "public"? Are Freedom of Information Act documents public?
+
+**Weak-Form Efficiency**: Past security prices cannot generate excess profits. Past prices constitute public information, making weak-form efficiency imply semi-strong form, which implies strong-form.
+
+**Weak Form Testing and Technical Analysis**
+
+Technical analysts (chartists) exploit historical price patterns. A hypothetical rule: If markets rise 1%, they subsequently rise 0.5%; if they fall 1%, they subsequently fall 0.5%. Trading on such patterns could theoretically profit.
+
+The text addresses the fundamental problem: "What if everyone followed the same strategy? Wouldn't the opportunity go away?" Daily returns show weak autocorrelation (momentum), but exploitation costs -- brokerage fees, daily trading -- prevent profitable arbitrage. Prices approximate random walks.
+
+Charles Henry Dow founded the Dow index in 1896 and identified alternating bull-bear markets, attempting to time these cycles. The text observes: "The financial press (and web) are rife with market timing newsletters, purporting to find long-term patterns in the stock market."
+
+Modern hedge funds employ artificial intelligence and neural networks seeking patterns. Success remains ambiguous -- is it statistical skill or luck? The text questions: "If it works, why do they offer you the opportunity to buy their software?"
+
+## VII. Evidence For Market Efficiency
+
+**Testing Strong-Form Efficiency**
+
+Merger announcements provide natural experiments. Corporate insiders (lawyers, investment bankers, managers) typically know before public disclosure. Their illegal insider trading can generate profits, earning SEC violations. Stock prices often rise before official announcements, indicating: "the market has a tendency towards strong-form efficiency, i.e. even private information is incorporated into prices."
+
+However, public announcements typically produce large price responses, suggesting incomplete strong-form efficiency. Information leakage occurs illegally but incompletely. The text notes: "By the way, until recently, insider trading was legal in Switzerland."
+
+**Testing Semi-Strong Form Efficiency**
+
+Money managers consistently employ publicly available information for positioning, yet demonstrate no consistent risk-adjusted outperformance. The paradox: Why maintain entire analytical industries if information provides no value?
+
+Recent backtesting studies reveal surprising results. "Dogs of the Dow" strategy -- buying high-dividend-yield stocks -- appears historically profitable using publicly available information. Similarly, buying stocks after positive earnings surprises (versus expectations) generated excess returns despite information availability.
+
+The text cautions: "Does this mean that it is easy to become rich on Wall Street? Hardly!" Trading costs and liquidity constraints often eliminate apparent profits. While value investors discuss low price-to-earnings strategies, few demonstrate consistent superior track records.
+
+The conclusion: "The assumption of semi-strong form efficiency is a good first approximation for a market with as many sharp traders and with as much publicly available information as the U.S. equity market."
+
+**Testing Weak-Form Efficiency**
+
+Weak-form efficiency seemed simplest to establish, gaining widespread acceptance through the 1950s. Researchers discovered daily price patterns (momentum) since then, yet exploitation remains difficult.
+
+Extending analysis horizons reveals different patterns. Two-week return reversals -- shorting recent winners, buying recent losers -- appeared profitable. At longer horizons, mean reversion becomes evident. Eugene Fama and Ken French found some evidence that four-year returns revert toward long-term means.
+
+The text explains the challenge: "Unfortunately, this is a difficult rule to trade on with any confidence, since the cycles are so long -- in fact, they are as long as the patterns conjectured by Charles Henry Dow some 100 years ago!"
+
+**Conclusion on Patterns**
+
+Whether chartism offers opportunities remains uncertain. The text suggests: "But in all likelihood there is no easy money in charting, either. Prices for widely trades securities are pretty close to a random walk, and if they were not, then they would quickly become so, as arbitrageurs moved in to buy the stock when it is underpriced and short it when it is overpriced."
+
+Yet speculation persists: perhaps technological innovators will discover exploitable patterns through fractal geometry and artificial intelligence -- and keep quiet about profits.
+
+## VIII. Conclusion
+
+Efficient market theory provides strong approximation for liquid, free markets: "In a word, 'Quickly!'" Information impounds rapidly because arbitrageurs continuously collect, process, and trade on firm-specific information.
+
+The practical implication supports minimal trading costs and removal of speculation penalties. The text argues: "Speculators keep market prices close to economic values, and this is good, not bad."
+
+---
+
+Navigation Elements
+Summary | Will's Home Page | Table of Contents | Mail Will
+
+© W. Goetzmann, Financial Management I -- YALE School of Management

@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -17,6 +20,7 @@
         <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
         <ul class="nav-links">
             <li><a href="chapter-9.html">&larr; Ch. IX</a></li>
+            <li><a href="chapter-1.html">Ch. I &rarr;</a></li>
         </ul>
     </div>
 </nav>
@@ -25,43 +29,166 @@
     <header class="chapter-header">
         <p class="chapter-label">Review</p>
         <h1>Summary Review Notes</h1>
-        <p class="chapter-deck">Concise chapter-by-chapter review for exam preparation.</p>
+        <p class="chapter-deck">Condensed review of all chapters -- key concepts, equations, and takeaways for exam preparation.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2><a href="chapter-1.html">Chapter I &mdash; Capital Markets and Investment Performance</a></h2>
-        <p>Geometric vs. arithmetic returns, historical capital market performance (1926&ndash;1995), the 8.5% equity premium, and standard deviation as the primary risk measure.</p>
+        <h2>Chapter I: Capital Markets and Investment Performance</h2>
 
-        <h2><a href="chapter-2.html">Chapter II &mdash; The Geography of the Efficient Frontier</a></h2>
-        <p>Risk-return relationships, correlation effects on diversification, and the concept of the efficient frontier &mdash; both with and without riskless assets. The Capital Market Line.</p>
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p><strong>Geometric vs. arithmetic returns</strong> -- Geometric returns reflect actual compound growth; arithmetic returns are useful for statistical modeling. Historical capital market data (Ibbotson Associates, 1926-1995). The <strong>equity premium</strong> averaged approximately 8.5% (arithmetic). Standard deviation as the primary measure of volatility.</p>
+        </div>
 
-        <h2><a href="chapter-3.html">Chapter III &mdash; Preferences and Investor Choice</a></h2>
-        <p>Iso-utility curves, risk aversion, the Sharpe Ratio, Value at Risk, and the tangency portfolio selection approach via the shortfall criterion.</p>
+        <div class="equation">
+            <p class="equation-label">Basic Return Formula</p>
+            $$R_t = \frac{P_{t+1} - P_t + D_t}{P_t}$$
+        </div>
 
-        <h2><a href="chapter-4.html">Chapter IV &mdash; The Portfolio Approach to Risk</a></h2>
-        <p>The tangency portfolio's role in CAPM equilibrium, the Two Fund Separation Theorem, and the "Birthday Cake" proof that all investors hold the market portfolio.</p>
+        <h2>Chapter II: The Efficient Frontier</h2>
 
-        <h2><a href="chapter-5.html">Chapter V &mdash; Further Explorations of the CAPM</a></h2>
-        <p>How correlations influence stock attractiveness, the Security Market Line, the CAPM equation, and the key insight that portfolio beta equals the weighted average of component betas.</p>
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p><strong>Risk and return</strong> -- the fundamental trade-off. Correlation between assets determines diversification benefits. The <strong>efficient frontier</strong> is the set of portfolios offering maximum return for each level of risk. Adding a riskless asset creates the <strong>Capital Allocation Line</strong>.</p>
+        </div>
 
-        <h2><a href="chapter-6.html">Chapter VI &mdash; The Arbitrage Pricing Theory</a></h2>
-        <p>Ross's multi-factor alternative to the CAPM, arbitrage in expectations, macro-economic risk factors, and portfolio customization by factor exposure.</p>
+        <div class="equation">
+            <p class="equation-label">Portfolio Variance (Two Assets)</p>
+            $$\sigma_p^2 = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1 w_2 \rho_{12}\sigma_1\sigma_2$$
+        </div>
 
-        <h2><a href="chapter-7.html">Chapter VII &mdash; Where Do Betas Come From?</a></h2>
-        <p>Beta estimation through regression analysis, the amplifying effect of leverage on equity betas, and applications in discounted cash flow and M&amp;A valuation.</p>
+        <h2>Chapter III: Investor Preferences and the Tangency Portfolio</h2>
 
-        <h2><a href="chapter-8.html">Chapter VIII &mdash; Information and Market Efficiency</a></h2>
-        <p>Weak, semi-strong, and strong-form efficiency. Event studies, the speed of price adjustment, and the limits of technical analysis and active management.</p>
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p><strong>Iso-utility curves</strong> represent investor preferences over risk and return. The <strong>shortfall approach</strong> and <strong>Sharpe ratio</strong> provide practical criteria for portfolio selection. The <strong>tangency portfolio</strong> is the optimal risky portfolio -- the point where the Capital Allocation Line is tangent to the efficient frontier.</p>
+        </div>
 
-        <h2><a href="chapter-9.html">Chapter IX &mdash; Long-Term Corporate Financing</a></h2>
-        <p>The lifecycle of stocks, bonds, preferred shares, and warrants. IPOs, market-making, and the design of corporate securities.</p>
+        <div class="equation">
+            <p class="equation-label">Sharpe Ratio</p>
+            $$S = \frac{E[R_p] - R_f}{\sigma_p}$$
+        </div>
+
+        <h2>Chapter IV: The Capital Asset Pricing Model</h2>
+
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p>The <strong>tangency portfolio equals the market portfolio</strong> in equilibrium (all investors hold the same risky portfolio). The <strong>CAPM equilibrium</strong>: expected return is a linear function of beta. The <strong>"Birthday Cake" proof</strong> demonstrates that the market portfolio must be the tangency portfolio when all investors hold mean-variance optimal portfolios.</p>
+        </div>
+
+        <div class="equation">
+            <p class="equation-label">The CAPM</p>
+            $$E[R_i] = R_f + \beta_i\left(E[R_m] - R_f\right)$$
+        </div>
+
+        <h2>Chapter V: Further Explorations of the CAPM</h2>
+
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p><strong>Correlations drive attractiveness of a stock</strong> -- low correlation with the market portfolio means the asset shifts the frontier favorably. The <strong>Security Market Line</strong> plots expected return against beta. Beta is the sole risk measure: $\beta = \text{cov}(R_i, R_m)/\text{var}(R_m)$. Only systematic risk is priced.</p>
+        </div>
+
+        <div class="equation">
+            <p class="equation-label">Beta</p>
+            $$\beta_i = \frac{\text{cov}(R_i, R_m)}{\text{var}(R_m)} = \frac{\rho_{i,m}\,\sigma_i}{\sigma_m}$$
+        </div>
+
+        <h2>Chapter VI: The Arbitrage Pricing Theory</h2>
+
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p>The <strong>APT</strong> allows multiple sources of systematic risk. <strong>Arbitrage in expectations</strong>: if a security deviates from the SML, investors exploit the mispricing by going long the underpriced asset and shorting a same-beta portfolio. Multi-factor model: $E[R_i] = R_f + \sum_k \beta_{i,k}\lambda_k$. Chen, Roll, and Ross identified macro factors: inflation, GNP, investor confidence, yield curve shifts.</p>
+        </div>
+
+        <h2>Chapter VII: Where Do Betas Come From?</h2>
+
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p><strong>Beta estimation via regression</strong> of security returns on market returns (typically 60 months). <strong>Leverage increases equity beta:</strong> $\beta_{\text{equity}} = \beta_{\text{asset}} \times (D+E)/E$. <strong>Unlevering</strong> to find asset beta from comparable firms, then <strong>relevering</strong> to your own capital structure. Application to <strong>project valuation</strong>, <strong>M&amp;A</strong>, and <strong>capital budgeting</strong> -- each project should use its own beta, not the company-wide cost of capital.</p>
+        </div>
+
+        <div class="equation">
+            <p class="equation-label">Unlevering / Relevering</p>
+            $$\beta_{\text{asset}} = \frac{E}{D+E}\,\beta_{\text{equity}} \qquad \Longleftrightarrow \qquad \beta_{\text{equity}} = \beta_{\text{asset}} \times \frac{D+E}{E}$$
+        </div>
+
+        <h2>Chapter VIII: Information and Market Efficiency</h2>
+
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p><strong>Market efficiency</strong>: how rapidly information embeds in prices. Three forms: <strong>Weak</strong> (past prices), <strong>Semi-Strong</strong> (all public info), <strong>Strong</strong> (all info including private). Evidence: event studies show rapid adjustment; professional managers show no consistent outperformance; daily momentum exists but is not profitably exploitable. <strong>Random walk</strong> approximation holds for liquid markets. Efficient markets benefit investors through price stability, reduced search costs, and liquidity.</p>
+        </div>
+
+        <h2>Chapter IX: Long-Term Corporate Financing</h2>
+
+        <div class="key-concept">
+            <h4>Core Topics</h4>
+            <p>Two primary approaches: <strong>Selling ownership</strong> (stocks, warrants) and <strong>Borrowing</strong> (bonds, preferred shares). The <strong>life cycle of stock</strong>: design, IPO, exchange trading. Bond features: coupon, maturity, covenants, callability, sinking funds. <strong>Preferred shares</strong>: non-voting, senior to equity, fixed dividends. <strong>Warrants</strong>: right to purchase shares at a fixed price over a fixed period.</p>
+        </div>
+
+        <h2>Key Equations Reference</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Concept</th>
+                    <th>Equation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Return</td>
+                    <td>$R_t = (P_{t+1} - P_t + D_t)/P_t$</td>
+                </tr>
+                <tr>
+                    <td>Portfolio variance</td>
+                    <td>$\sigma_p^2 = \sum_i \sum_j w_i w_j \sigma_{ij}$</td>
+                </tr>
+                <tr>
+                    <td>Sharpe ratio</td>
+                    <td>$S = (E[R_p] - R_f)/\sigma_p$</td>
+                </tr>
+                <tr>
+                    <td>CAPM</td>
+                    <td>$E[R_i] = R_f + \beta_i(E[R_m] - R_f)$</td>
+                </tr>
+                <tr>
+                    <td>Beta</td>
+                    <td>$\beta_i = \text{cov}(R_i, R_m)/\text{var}(R_m)$</td>
+                </tr>
+                <tr>
+                    <td>APT (K factors)</td>
+                    <td>$E[R_i] = R_f + \sum_k \beta_{i,k}\lambda_k$</td>
+                </tr>
+                <tr>
+                    <td>Unlever beta</td>
+                    <td>$\beta_{\text{asset}} = [E/(D+E)]\,\beta_{\text{equity}}$</td>
+                </tr>
+                <tr>
+                    <td>Growing perpetuity</td>
+                    <td>$P = \text{CF}/(R - g)$</td>
+                </tr>
+                <tr>
+                    <td>Discount rate from P/E</td>
+                    <td>$R = 1/(P/E) + g$</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
+    </div>
+
     <footer class="chapter-footer">
-        <a href="chapter-9.html" class="chapter-nav-link">&larr; Chapter IX</a>
-        <a href="../index.html#textbook" class="chapter-nav-link">Back to Main Site &rarr;</a>
+        <a href="chapter-9.html" class="chapter-nav-link">&larr; Chapter IX: Long-Term Corporate Financing</a>
+        <a href="chapter-1.html" class="chapter-nav-link">Chapter I: Capital Markets &rarr;</a>
     </footer>
 </article>
 

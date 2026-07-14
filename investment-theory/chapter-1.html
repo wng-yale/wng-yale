@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -30,35 +33,198 @@
 
     <div class="chapter-content">
 
-        <h2>Why Investors Invest</h2>
-        <p>People invest for many reasons: to save for future needs, to accumulate wealth, and sometimes for charitable objectives. From an economic perspective, the primary measure of investment success is <strong>the rate of return</strong>.</p>
+        <h2>Overview</h2>
+        <p>Securities are nothing more than promises of future payment, distributed through intermediaries like investment banks. These can be traded on exchanges such as the NYSE, AMEX, and NASDAQ.</p>
+        <p>Securities vary widely in complexity, from straightforward bonds to sophisticated structured notes. The fundamental characteristic shared across all securities is that they represent economic claims against future benefits, always incorporating a time dimension.</p>
 
-        <h2>Defining Returns</h2>
-        <p>Returns measure wealth growth as percentages. The basic formula, adjusted for dividends, is:</p>
-        <div class="equation">
-            R<sub>t</sub> = [P<sub>t+1</sub> &minus; P<sub>t</sub> + D<sub>t</sub>] / P<sub>t</sub>
+        <div class="key-concept">
+            <h4>Key Concept</h4>
+            <p>All securities, no matter how complex, share one essential feature: they are <strong>economic claims against future benefits</strong>, and therefore always incorporate a time dimension.</p>
         </div>
-        <p>where P represents price and D represents dividends.</p>
 
-        <h2>Arithmetic vs. Geometric Returns</h2>
-        <p>These two measures differ significantly. <strong>Geometric returns</strong> better reflect the actual investor experience over multiple periods, while <strong>arithmetic returns</strong> suit statistical modeling with single-period horizons.</p>
-        <p>Consider an investment that doubles in the first year and halves in the second. The arithmetic average return is 25%, but the geometric return is 0% &mdash; reflecting the fact that the investor is back where they started.</p>
+        <h2>I. Finance from the Investor's Perspective</h2>
+        <p>This module shifts focus from corporate decision-making to the investor's perspective. We examine how shareholders and bondholders who hold portfolios &mdash; collections of different securities &mdash; make financial decisions. The central question addressed is:</p>
+        <blockquote>What rate of return will investors demand to hold a risky security?</blockquote>
 
-        <h2>Historical Capital Markets Data</h2>
-        <p>Using data from Ibbotson Associates for the period 1926&ndash;1995:</p>
+        <h2>II. Why Investors Invest</h2>
+        <p>Primary motivations for purchasing securities include savings for future needs and wealth accumulation. Some investors accept high-risk ventures, such as lottery tickets, for potential significant payoffs. Additional motivations include charitable objectives, though these generate non-economic dividends and prove difficult to evaluate systematically.</p>
+
+        <h2>III. Definition of Rates of Return</h2>
+        <p>Return represents the growth in wealth resulting from an investment, expressed as a percentage for comparability. The basic formula is:</p>
+
+        <div class="equation">
+            <p class="equation-label">Simple Return</p>
+            $$R_t = \frac{P_{t+1} - P_t}{P_t} = \frac{P_{t+1}}{P_t} - 1$$
+        </div>
+
+        <p>When dividends are included, the total return becomes:</p>
+
+        <div class="equation">
+            <p class="equation-label">Total Return with Dividends</p>
+            $$R_t = \frac{P_{t+1} - P_t + D_t}{P_t}$$
+        </div>
+
+        <p>where $P_t$ is the price at time $t$, $P_{t+1}$ is the price at time $t+1$, and $D_t$ represents dividends paid during the period.</p>
+
+        <h2>IV. Arithmetic vs. Geometric Rates of Return</h2>
+        <p>Two different averaging methods exist for summarizing returns over multiple periods:</p>
+
+        <div class="equation">
+            <p class="equation-label">Arithmetic Mean Return</p>
+            $$\bar{R}_A = \frac{1}{T}\sum_{t=1}^{T} R_t$$
+        </div>
+
+        <div class="equation">
+            <p class="equation-label">Geometric Mean Return</p>
+            $$\bar{R}_G = \left[\prod_{t=1}^{T}(1 + R_t)\right]^{1/T} - 1$$
+        </div>
+
+        <p>Consider an illustrative example: $P_0 = \$100$, $R_1 = -50\%$, $R_2 = +100\%$. After the first period, wealth falls to $50; after the second, it returns to $100. The arithmetic average return is $\frac{-50\% + 100\%}{2} = 25\%$, but the geometric average is $\sqrt{(0.50)(2.00)} - 1 = 0\%$.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Arithmetic vs. Geometric Returns</h4>
+            <p>The <strong>geometric return</strong> better reflects the actual investment experience (compound growth), while the <strong>arithmetic return</strong> suits single-period statistical models. The geometric mean is always less than or equal to the arithmetic mean, with the gap increasing as volatility rises.</p>
+        </div>
+
+        <h2>V. Capital Market History</h2>
+
+        <h3>The 1980s</h3>
+        <p>The 1980s represented exceptional returns for stock investors, with S&amp;P 500 performance showing substantial growth.</p>
+
+        <h3>The 1930s</h3>
+        <p>This decade experienced severe market crashes globally:</p>
+        <blockquote>U.S. stock investors experienced a zero percent return for the eleven-year period from 12/1929 to 12/1939.</blockquote>
+
+        <h3>Long-Term Performance (1926&ndash;1995)</h3>
+        <p>Over 68 years, a dollar invested in the S&amp;P 500 grew to approximately $800, while corporate bonds grew to only $40. The stock line displays far greater volatility than the bond line, but the terminal wealth difference is dramatic.</p>
+
+        <div class="note">
+            <strong>Data note:</strong> The original text used Ibbotson Associates data through March 1995. Modern Ibbotson/Morningstar data extending through recent years shows the same fundamental patterns &mdash; stocks dramatically outperform bonds over long horizons, but with substantially greater year-to-year volatility.
+        </div>
+
+        <div class="figure">
+            <img src="figures/wealth_growth.svg" alt="Growth of $1 invested in stocks vs bonds, 1926 to 2024" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 1.1.</strong> Growth of $1 invested in U.S. stocks, bonds, and Treasury bills (1926&ndash;2024, log scale). Computed from SBBI data. Stocks dramatically outperform bonds over long horizons, but with substantially greater year-to-year volatility.</p>
+        </div>
+
+        <h2>VI. The Risk Premium</h2>
+        <p>The return differential between stocks and bonds is attributed to risk differences. "Volatility" describes the shakier performance of stocks compared to bonds. Investors are <strong>risk-averse</strong> &mdash; they prefer less risk when other factors remain equal. This motivates the concept of the <strong>risk premium</strong>: the additional return demanded for holding risky securities versus riskless alternatives like Treasury Bills.</p>
+
+        <div class="equation">
+            <p class="equation-label">Equity Premium</p>
+            $$\text{Equity Premium} = \bar{R}_{\text{stocks}} - \bar{R}_{\text{T-bills}}$$
+        </div>
+
+        <p>From 1926&ndash;1995, the equity premium was approximately <strong>9%</strong> (arithmetic) or <strong>6%</strong> (geometric) annually.</p>
+
+        <h3>Summary Statistics (1926&ndash;March 1995)</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Investment</th>
+                    <th>Geometric Mean</th>
+                    <th>Arithmetic Mean</th>
+                    <th>Std. Dev.</th>
+                    <th>High Return</th>
+                    <th>Low Return</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>S&amp;P 500 Total Return</td>
+                    <td>10.30%</td>
+                    <td>12.45%</td>
+                    <td>22.28%</td>
+                    <td>42.56%</td>
+                    <td>&minus;29.73%</td>
+                </tr>
+                <tr>
+                    <td>U.S. Small Stocks TR</td>
+                    <td>12.28%</td>
+                    <td>17.28%</td>
+                    <td>35.94%</td>
+                    <td>73.46%</td>
+                    <td>&minus;36.74%</td>
+                </tr>
+                <tr>
+                    <td>U.S. LT Govt. Bonds TR</td>
+                    <td>4.91%</td>
+                    <td>5.21%</td>
+                    <td>8.00%</td>
+                    <td>15.23%</td>
+                    <td>&minus;8.41%</td>
+                </tr>
+                <tr>
+                    <td>U.S. LT Corp. Bonds TR</td>
+                    <td>5.49%</td>
+                    <td>5.73%</td>
+                    <td>7.16%</td>
+                    <td>13.76%</td>
+                    <td>&minus;8.90%</td>
+                </tr>
+                <tr>
+                    <td>U.S. 30-day T-Bills</td>
+                    <td>3.70%</td>
+                    <td>3.70%</td>
+                    <td>0.96%</td>
+                    <td>1.35%</td>
+                    <td>&minus;0.06%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.88rem; color: #999; margin-top: -12px;">Source: Ibbotson Associates</p>
+
+        <h2>VII. Standard Deviation as a Measure of Risk</h2>
+
+        <p>Standard deviation quantifies volatility mathematically as the square root of the variance. It calculates the average spread of observations around the mean:</p>
+
+        <div class="equation">
+            <p class="equation-label">Standard Deviation</p>
+            $$\sigma = \sqrt{\frac{1}{T-1}\sum_{t=1}^{T}\left(R_t - \bar{R}\right)^2}$$
+        </div>
+
+        <p>For S&amp;P 500 returns (approximately $\sigma = 22.28\%$), assuming a normal distribution, approximately two-thirds of observations should fall within one standard deviation of the mean:</p>
+
+        <div class="equation">
+            $$\bar{R} \pm \sigma \approx 12.45\% \pm 22.28\% = [-9.83\%,\; 34.73\%]$$
+        </div>
+
+        <div class="figure">
+            <img src="figures/return_distribution.svg" alt="Distribution of annual S&P 500 returns" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 1.2.</strong> Distribution of S&amp;P 500 annual returns, computed from SBBI data. The histogram shows the &plusmn;1 standard deviation range containing roughly 68% of observations. Actual return distributions exhibit "fatter tails" than the normal distribution predicts.</p>
+        </div>
+
+        <h3>Limitations of Standard Deviation</h3>
+        <p>The chapter acknowledges several limitations:</p>
         <ul>
-            <li>$1 invested in stocks in 1926 grew to <strong>$889</strong> by 1995</li>
-            <li>$1 invested in bonds reached approximately <strong>$40</strong></li>
-            <li>The 1980s saw strong stock performance</li>
-            <li>The 1930s were devastating &mdash; effectively zero return from 1929 to 1939</li>
+            <li>Standard deviation equally weights high and low returns</li>
+            <li>It heavily weights extreme observations</li>
+            <li>It ignores distribution shape (skewness and kurtosis)</li>
         </ul>
+        <p>However, the benefits include providing a single comparable risk measure enabling portfolio analysis decisions.</p>
 
-        <h2>The Risk Premium</h2>
-        <p>Stock volatility exceeded bonds significantly. The <strong>equity premium</strong> &mdash; stock returns minus T-Bill returns &mdash; averaged approximately 9% arithmetically and 6% geometrically. This premium compensates investors for bearing the higher risk of equities.</p>
+        <p>There is evidence that stock returns may follow "stable" distributions with undefined variance rather than normal distributions, a hypothesis advanced by Benoit Mandelbrot. Return distributions show "fatter tails" than log-normal predictions suggest &mdash; extreme events (both positive and negative) occur more frequently than a normal model predicts.</p>
 
-        <h2>Risk Measurement</h2>
-        <p><strong>Standard deviation</strong> quantifies volatility. The S&amp;P 500 returns show approximately 22.28% standard deviation. However, fat-tailed distributions suggest returns may not be perfectly log-normal &mdash; extreme events occur more frequently than a normal distribution predicts.</p>
+        <div class="key-concept">
+            <h4>Key Concept: Standard Deviation as Risk</h4>
+            <p>Standard deviation provides a single, comparable measure of risk that enables systematic portfolio analysis. Despite its limitations &mdash; especially its assumption of symmetric, normally distributed returns &mdash; it remains the foundational risk measure in modern portfolio theory.</p>
+        </div>
 
+        <div class="note">
+            <strong>Interactive Tool:</strong> Explore these concepts interactively using the
+            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        </div>
+
+    </div>
+
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
     </div>
 
     <footer class="chapter-footer">

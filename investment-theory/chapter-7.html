@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -26,42 +29,360 @@
     <header class="chapter-header">
         <p class="chapter-label">Chapter VII</p>
         <h1>Where Do Betas Come From?</h1>
-        <p class="chapter-deck">Leverage, asset vs. equity betas, and practical applications in project valuation and M&amp;A analysis.</p>
+        <p class="chapter-deck">Beta as a risk measure, financial leverage and beta, unlevering and relevering, and capital budgeting applications.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>Beta as Systematic Risk</h2>
-        <p>Beta quantifies exposure to market-wide risk &mdash; not diversifiable risk. <strong>High-technology</strong> firms exhibit elevated betas during expansions but struggle in contractions, while the <strong>food industry</strong> is a low-beta sector due to stable demand regardless of economic conditions.</p>
+        <h2>I. Beta Risk</h2>
 
-        <h2>Practical Beta Estimation</h2>
-        <p>Beta is calculated through linear regression comparing historical security returns against market returns. The slope indicates sensitivity: a company with &beta; = 1.5 will theoretically experience 30% returns when markets rise 20%. However, betas change over time and the model may omit relevant risk factors.</p>
+        <p>In the previous chapter, we focused on the Arbitrage Pricing Theory as an alternative model to the classical CAPM. In fact, the CAPM is not inconsistent with the APT. Although its intellectual foundations differ, the two theories are basically arguments that the expected return of a security (i.e. the appropriate discount rate for its cash flows!) is a linear function of systematic risk. The major difference in practice between the CAPM and the APT is that the CAPM uses one risk variable, the market portfolio, while the APT uses several. The APT factors are typically macro-economic -- they are related broadly to the economy. None the less, these factors will also affect the market portfolio. Thus, when you use the CAPM, the one single factor will reflect the variation in the APT factors.</p>
 
-        <h2>The Critical Role of Leverage</h2>
-        <p>Financial leverage amplifies systematic risk dramatically. Consider a cable television company:</p>
-        <ul>
-            <li><strong>Asset beta</strong> (unlevered): 0.67</li>
-            <li><strong>Equity beta</strong> (levered): 1.85</li>
-            <li>Expected return rises from 11.39% to <strong>21.41%</strong> due to debt financing</li>
-        </ul>
-        <div class="equation">
-            &beta;<sub>asset</sub> = (Equity weight &times; &beta;<sub>equity</sub>) + (Debt weight &times; &beta;<sub>debt</sub>)
+        <p>So far, we have used beta as a way of calculating expected returns, but in fact, it is also a risk measure. What kind of risk does it measure, exactly? It certainly does not measure exposure to diversifiable risk, since CAPM and APT assume that investors are diversified. Instead, it captures <strong>systematic risk</strong> -- risk common to the entire economic system, the market. Macro-economists call this business cycle risk, and have noted that major industrial economies have historically fluctuated through periods of boom to periods of bust. Stock prices are barometers of expectations about these cycles. In fact the first widely quoted index, the Dow Jones Average, was used by its creator to try and identify peaks and troughs in the market. These are called "Bull" and "Bear" markets, and they are of interest to all investors because it is virtually impossible to avoid broad market trends.</p>
+
+        <p>When the market crashes, as it did in the early 1930's and in the early 1970's, for instance, few stocks are unaffected, however some stocks are more severely hurt by a crash than others. Stocks that drop dramatically when the market falls are those with high betas. The good news is that these same high-beta stocks recover more quickly when the market changes from a "Bear" to a "Bull." Betas tend to be related to industry. High-technology, for instance, is a high-beta industry. The food industry is a low beta industry. The expectations about future cash flows of high technology are high when the economy is in a period of expansion, growth and development but low when it contracts. On the other hand, the food industry is relatively isolated from broad market booms and busts because people always need to eat!</p>
+
+        <div class="figure">
+            <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowB7" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#00356b"/>
+                    </marker>
+                </defs>
+                <!-- Axes -->
+                <line x1="60" y1="340" x2="480" y2="340" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowB7)"/>
+                <line x1="260" y1="370" x2="260" y2="20" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowB7)"/>
+                <text x="480" y="360" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Market Return (R_m)</text>
+                <text x="275" y="35" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Security Return (R_i)</text>
+                <!-- High beta line (steep) -->
+                <line x1="130" y1="320" x2="420" y2="60" stroke="#bd5319" stroke-width="2.5"/>
+                <text x="425" y="58" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#bd5319">High beta (tech)</text>
+                <text x="425" y="72" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">beta = 1.5</text>
+                <!-- Medium beta line -->
+                <line x1="110" y1="290" x2="430" y2="100" stroke="#00356b" stroke-width="2"/>
+                <text x="435" y="98" font-family="Inter, sans-serif" font-size="11" fill="#00356b">Market (beta = 1)</text>
+                <!-- Low beta line (shallow) -->
+                <line x1="100" y1="250" x2="440" y2="160" stroke="#2d8f4e" stroke-width="2.5"/>
+                <text x="445" y="158" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#2d8f4e">Low beta (food)</text>
+                <text x="445" y="172" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">beta = 0.5</text>
+                <!-- Zero reference -->
+                <text x="252" y="356" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#666">0</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 7.1.</strong> Securities with different betas respond differently to market movements. High-beta stocks (tech) swing more; low-beta stocks (food/utilities) are more stable.</p>
         </div>
-        <p>with debt beta typically assumed to be zero.</p>
 
-        <h2>Four Practical Applications</h2>
+        <p>The relationship between the returns of the security and the market factor can be seen by plotting market returns on one axis and the returns for one company over the same period on the other. For virtually all stocks in the economy, this relation will be positive. Most securities have some degree of positive exposure to bull and bear market cycles. In fact, we quantify this exposure by the slope of the regression line estimated from this graph. The steeper the slope, the more systematic risk; the shallower the slope, the less exposed the company is to the market factor.</p>
+
+        <p>The coefficient quantifies the expected return for the stock, depending upon the actual return of the market. For instance, consider a company with a beta of 1.5. If the market return is 20 percentage points over the T-bill rate in one year, then we expect the stock return to be 30 percentage points over T-bills in that year.</p>
+
+        <p>In practice, this is the way that a company's beta is measured, and consequently, this is how the discount rate is estimated. The analyst obtains historical returns on the company, and compares them via linear regression to the market factor, or macro-economic factors if APT is used. It is important to note that a low beta does not mean that the standard deviation of the company's return is low. Even though the relationship to the market index may be almost flat, the variation in company returns can be large. Thus, volatile securities can and often do have low market betas.</p>
+
+        <div class="note">
+            <strong>Note:</strong> Although linear regression is an easy statistical tool to use to estimate betas, remember that it only provides an estimate. Betas can and do change over time, as companies change their business. The regression assumes that betas are fixed over the estimation period. This is why analysts use a limited time period, say five years, to obtain beta.
+        </div>
+
+        <p>There are additional validity concerns. You may not have the right regressors in your model. This is an APT vs. CAPM issue. The factor (e.g. S&amp;P 500) may not completely capture systematic risk exposure. Suppose a company is very exposed to interest rate risk, but has a moderately low S&amp;P 500 beta. If interest rate risk demands market compensation by portfolio investors, then you will be underestimating the systematic risk of the company if you only use the S&amp;P 500 when calculating the expected return and discount rate via a single-factor model.</p>
+
+        <p>There are finally some crucial data issues. You might not have enough accurate data for beta estimation. When you only have a few points, the slope in the regression has a high standard error and you cannot trust it. When the t-statistic of beta is low, sometimes you cannot even reject the hypothesis that beta is different from zero, even though economic reasoning suggests that the firm is exposed to business cycle risk, or factor risk. In that case, trust economics, not statistics.</p>
+
+        <p>The most extreme case of not enough data is when you have to estimate the beta of a firm that is not publicly traded. In that case, what do you do? Analysts usually rely upon "comparable" firm's betas. That is, they look for betas of firms in the same industry, and assume that the systematic risk exposures are the same throughout the industry. There is one other crucial thing to control for when using comparable betas, and that is, <strong>leverage</strong>.</p>
+
+        <h2>II. Financial Leverage and Beta</h2>
+
+        <p>Even firms within one industry have different levels of debt, and increasing debt increases leverage. <strong>Increasing leverage increases beta.</strong> Recall, in the APT arbitrage in expectations example, that we could "synthesize" a security with a beta of 1.3 by borrowing 30% of our wealth, and investing the total in an asset with a beta of one. We moved out the security market line by borrowing.</p>
+
+        <p>Suppose, for instance, that investor $A$ holds a portfolio of $100 invested in an S&amp;P 500 index trust. In order to increase his expected return, investor $B$, who also has $100, borrows an additional $30 for one year at 0% interest, and invests $130 in the S&amp;P 500 index trust.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Investor A (unlevered)</th>
+                    <th>Investor B (levered)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Market rises 10%</td>
+                    <td>$110 (gain of 10%)</td>
+                    <td>$143 &minus; $30 = $113 (gain of 13%)</td>
+                </tr>
+                <tr>
+                    <td>Market falls 10%</td>
+                    <td>$90 (loss of 10%)</td>
+                    <td>$117 &minus; $30 = $87 (loss of 13%)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>$B$'s leverage increased his exposure to market risk. Leverage can be used by corporations as well as individuals to increase their expected returns, and in fact, this is exactly what some firms do. Even if they are in a low-beta business, such as a utility, they can increase expected return through leverage.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Leverage Amplifies Beta</h4>
+            <p>Borrowing to invest (leverage) amplifies both gains and losses. A levered position in a beta-1 asset creates a higher effective beta. Corporations achieve the same effect by issuing debt.</p>
+        </div>
+
+        <h2>III. Leverage and the Cable T.V. Industry</h2>
+
+        <p>The cable television industry is a utility. If we could observe an unlevered cable company, it would undoubtedly have a low beta. Good television reception is like food, people can't seem to live without it, even in a recession. Thus, it is not as cyclical as some other businesses. Empirical research has shown that the beta of the average all-equity cable TV company (called an <strong>asset beta</strong>) is 0.67, but most firms borrow more than their total equity value! Thus, the beta of their equity (that is, the beta measured by regression of stock returns on the market) is greater than one: <strong>1.85</strong>.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Measure</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Asset beta (unlevered)</td>
+                    <td>0.67</td>
+                </tr>
+                <tr>
+                    <td>Equity beta (levered)</td>
+                    <td>1.85</td>
+                </tr>
+                <tr>
+                    <td>Expected return (asset beta, unlevered)</td>
+                    <td>11.39%</td>
+                </tr>
+                <tr>
+                    <td>Expected return (equity beta, levered)</td>
+                    <td>21.41%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="figure">
+            <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowLev" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#00356b"/>
+                    </marker>
+                </defs>
+                <!-- Axes -->
+                <line x1="70" y1="300" x2="470" y2="300" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowLev)"/>
+                <line x1="70" y1="300" x2="70" y2="30" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowLev)"/>
+                <text x="270" y="335" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Beta</text>
+                <text x="25" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b" transform="rotate(-90,25,165)">Expected Return</text>
+                <!-- SML -->
+                <line x1="70" y1="250" x2="440" y2="62" stroke="#00356b" stroke-width="2"/>
+                <text x="445" y="60" font-family="Inter, sans-serif" font-size="11" fill="#00356b">SML</text>
+                <!-- Rf -->
+                <text x="58" y="248" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#00356b">R_f = 5.5%</text>
+                <!-- Asset beta point -->
+                <circle cx="165" cy="213" r="7" fill="#2d8f4e"/>
+                <text x="175" y="230" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">Asset beta = 0.67</text>
+                <text x="175" y="242" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">E[R] = 11.39%</text>
+                <!-- Equity beta point -->
+                <circle cx="340" cy="113" r="7" fill="#bd5319"/>
+                <text x="350" y="108" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">Equity beta = 1.85</text>
+                <text x="350" y="120" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">E[R] = 21.41%</text>
+                <!-- Arrow showing leverage effect -->
+                <path d="M 172,210 C 220,160 290,130 333,116" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowLev)"/>
+                <text x="230" y="150" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">Leverage effect</text>
+                <!-- Beta scale -->
+                <text x="165" y="315" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">0.67</text>
+                <text x="340" y="315" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">1.85</text>
+                <line x1="165" y1="300" x2="165" y2="305" stroke="#666" stroke-width="1"/>
+                <line x1="340" y1="300" x2="340" y2="305" stroke="#666" stroke-width="1"/>
+            </svg>
+            <p class="figure-caption"><strong>Figure 7.2.</strong> Cable TV industry: leverage moves the firm from a low asset beta (0.67) to a high equity beta (1.85) along the security market line, dramatically increasing expected return.</p>
+        </div>
+
+        <h3>How Do We Calculate the Asset Beta?</h3>
+
+        <p>For that matter, suppose I had a company whose leverage differed from the average? This is fairly straightforward to do. To determine your firm's beta from industry norms, assume that the company is a portfolio of two securities: a debt security and an equity security. In fact, from the perspective of an investor who can potentially buy up all outstanding stocks and bonds of the company, it is. Thus, the beta of the company is the weighted average of the betas of the two parts. It is typical to assume that the beta of debt is zero, which vastly simplifies estimation and calculation, but is only approximately correct.</p>
+
+        <div class="figure">
+            <svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Company box -->
+                <rect x="30" y="60" width="120" height="80" rx="8" fill="#f0f4f8" stroke="#00356b" stroke-width="2"/>
+                <text x="90" y="95" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#00356b">Company</text>
+                <text x="90" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#666">Asset beta</text>
+                <!-- Equals sign -->
+                <text x="175" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#00356b">=</text>
+                <!-- Debt box -->
+                <rect x="205" y="30" width="110" height="60" rx="8" fill="#fef0e8" stroke="#bd5319" stroke-width="2"/>
+                <text x="260" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#bd5319">Debt</text>
+                <text x="260" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">beta_D ~ 0</text>
+                <!-- Plus -->
+                <text x="340" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" fill="#00356b">+</text>
+                <!-- Equity box -->
+                <rect x="365" y="30" width="110" height="60" rx="8" fill="#eaf4fb" stroke="#00356b" stroke-width="2"/>
+                <text x="420" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#00356b">Equity</text>
+                <text x="420" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">beta_E (observed)</text>
+                <!-- Weight labels -->
+                <text x="260" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">weight: D/(D+E)</text>
+                <text x="420" y="120" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#00356b">weight: E/(D+E)</text>
+                <!-- Formula -->
+                <text x="240" y="165" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b">beta_asset = [D/(D+E)] x 0 + [E/(D+E)] x beta_equity</text>
+                <text x="240" y="185" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#00356b">beta_asset = [E/(D+E)] x beta_equity</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 7.3.</strong> A firm viewed as a portfolio of debt and equity. The asset beta is a weighted average of the component betas.</p>
+        </div>
+
+        <p>To apply this approach:</p>
+
         <ol>
-            <li><strong>Project Valuation</strong>: Using industry-comparable asset betas to discount cash flows for new ventures</li>
-            <li><strong>M&amp;A Analysis</strong>: Evaluating acquisition targets using estimated betas and growth rates</li>
-            <li><strong>P/E Ratios</strong>: Cross-checking discount rates against earnings multiples</li>
-            <li><strong>Capital Budgeting</strong>: Allocating project-specific discount rates rather than company-wide rates</li>
+            <li><strong>Find the average industry beta of equity</strong> (by regression or reference book)</li>
+            <li><strong>Find the average industry leverage:</strong>
+                <ul>
+                    <li>Weight on debt: $\frac{D}{D+E}$</li>
+                    <li>Weight on equity: $\frac{E}{D+E}$</li>
+                    <li>where $E$ = market value of equity (shares $\times$ price/share)</li>
+                    <li>and $D$ = market value of debt (face value is the usual approximation)</li>
+                </ul>
+            </li>
+            <li><strong>Find the "unlevered" asset beta</strong> of the industry, assuming $\beta_{\text{debt}} = 0$:</li>
         </ol>
+
+        <div class="equation">
+            <p class="equation-label">Unlevering Beta</p>
+            $$\beta_{\text{asset}} = \frac{E}{D + E} \times \beta_{\text{equity}}$$
+        </div>
+
+        <p>Then re-lever to your own firm's debt level:</p>
+
+        <div class="equation">
+            <p class="equation-label">Relevering Beta</p>
+            $$\beta_{\text{equity}}^{\text{new}} = \beta_{\text{asset}} \times \frac{D_{\text{new}} + E_{\text{new}}}{E_{\text{new}}}$$
+        </div>
+
+        <div class="key-concept">
+            <h4>Key Concept: Asset Beta vs. Equity Beta</h4>
+            <p>The <em>asset beta</em> reflects the underlying business risk of the firm. The <em>equity beta</em> reflects both business risk and financial leverage. When using comparable firms, always unlever the equity beta first to get the asset beta, then relever to your firm's own capital structure.</p>
+        </div>
+
+        <h2>IV. Capital Budgeting Applications of Levered Betas: Discounting Cash Flows</h2>
+
+        <p>Leverage can have a huge effect on financial decisions. For instance, suppose that you ignored the effect of leverage in the cable television industry. You might draw the mistaken conclusion that cable T.V. assets are unusually sensitive to business cycle fluctuations, when in fact they are relatively stable. This has immediate implications for investment decisions.</p>
+
+        <h3>Example 1: Project Valuation</h3>
+
+        <p>Suppose you are an analyst working for AT&amp;T, the telephone company. The company has a large cash "war chest" for investment in new opportunities and it is considering a move into providing local cable television service. It is currently evaluating the profitability of bidding on the franchise for the borough of Queens, in New York City. You have been asked to evaluate an all-equity investment in this new cable system.</p>
+
+        <p>Based upon estimates of subscriber rates, you calculate that the project will have net cash flows of $234 million/year, and for simplicity, assume that this can be considered a perpetuity, with no future growth or decline in cash flows. What is your estimate of the value of the project?</p>
+
+        <p>You have the cash flows, but you need the discount rate. Obviously, since there is no existing Queens cable company you cannot observe the historical beta, but you can use the industry norms. In this case, the cable T.V. asset beta = 0.67. Assume the current riskless rate is $R_f = 5.5\%$, and you take the equity premium to be the long-term historical average: $\text{ERP} = 8.5\%$.</p>
+
+        <div class="equation">
+            <p class="equation-label">Project Value (Perpetuity)</p>
+            $$\text{Project Value} = \frac{\text{Annual net cash flow}}{R_f + \beta_{\text{asset}} \times \text{ERP}} = \frac{\$234}{0.055 + 0.67 \times 0.085} = \$2.09 \text{ Billion}$$
+        </div>
+
+        <h3>Example 2: Merger and Acquisition Application</h3>
+
+        <p>Another way firms move into a new industry is through acquisition -- that is, to buy the outstanding stock of another firm. Suppose you are an AT&amp;T analyst, and were considering the purchase of a successful cable television company CableVision, a firm with $3.6 billion in outstanding equity. Assume you have estimated CableVision's equity beta as 2, and that the earnings are $150/year. Also, assume that Paul Kagan, the media industry security analyst, estimates the growth in earnings to be 18% per year.</p>
+
+        <p>To begin your analysis, assume earnings are a good estimate of net cash flow. Use analysts' forecast of earnings growth to apply perpetuity model with growth:</p>
+
+        <div class="equation">
+            <p class="equation-label">Growing Perpetuity Valuation</p>
+            $$P = \frac{\text{Earnings}}{R - g}$$
+        </div>
+
+        <p>Estimate $R$ from the equity beta:</p>
+
+        <div class="equation">
+            $$R = 0.055 + 2 \times 0.085 = 0.225 = 22.5\%$$
+        </div>
+
+        <div class="equation">
+            $$P = \frac{\$150}{0.225 - 0.18} = \$3.33 \text{ Billion}$$
+        </div>
+
+        <p>In other words, maybe CableVision is slightly overpriced (market value $3.6B vs. model value $3.33B).</p>
+
+        <h3>Example 3: P/E Ratios as Approximate Discount Rates</h3>
+
+        <p>There are many reasons why the perpetuity model is not an exact formula for corporate valuation. First, it assumes no uncertainty about future cash flows or future discount rates. Second, it is a highly stylized model of future cash flows. Third, it requires estimation of inputs that cannot always be correctly estimated, e.g. the growth of earnings. None-the-less, P/E ratios must have some relationship to discount rates. Note that if:</p>
+
+        <div class="equation">
+            $$P = \frac{E}{R - g} \quad \Rightarrow \quad R = \frac{E}{P} + g = \frac{1}{P/E} + g$$
+        </div>
+
+        <p>This $R$ is calculated from earnings and price, not from beta, so it is an independent check on the level of systematic risk. $R$ may be calculated and compared to the CAPM/APT discount rate.</p>
+
+        <p>For example, if CableVision $P/E = 3{,}600/150 = 24$, then:</p>
+
+        <div class="equation">
+            $$R_{P/E} = \frac{1}{24} + 0.18 = 0.042 + 0.18 = 0.221 = 22.1\%$$
+        </div>
+
+        <p>Matching the CAPM/APT discount rate pretty well.</p>
+
+        <div class="note">
+            <strong>Note:</strong> The P/E ratio provides an independent check. When $R_{P/E}$ roughly matches $R_{\text{CAPM}}$, it increases confidence in the discount rate estimate. Large discrepancies may signal mispricing or model error.
+        </div>
+
+        <h3>Example 4: Project Choice</h3>
+
+        <p>The firm itself may be thought of as a portfolio of projects, each with a project (i.e. asset) beta. In this setting, cash flows from each project should be discounted at the rate appropriate to that project. This is important, because the wrong discount rate may result in an incorrect capital budgeting decision. For instance, what if you discounted every project at the company cost of capital?</p>
+
+        <div class="figure">
+            <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowPC" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#00356b"/>
+                    </marker>
+                </defs>
+                <!-- Axes -->
+                <line x1="70" y1="320" x2="480" y2="320" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowPC)"/>
+                <line x1="70" y1="320" x2="70" y2="30" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowPC)"/>
+                <text x="280" y="355" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Project Beta</text>
+                <text x="25" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b" transform="rotate(-90,25,175)">Expected Return / IRR</text>
+                <!-- SML -->
+                <line x1="70" y1="260" x2="450" y2="72" stroke="#00356b" stroke-width="2.5"/>
+                <text x="455" y="68" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#00356b">SML</text>
+                <!-- Company cost of capital line (horizontal) -->
+                <line x1="70" y1="170" x2="450" y2="170" stroke="#999" stroke-width="1.5" stroke-dasharray="6,4"/>
+                <text x="455" y="173" font-family="Inter, sans-serif" font-size="10" fill="#999">Company</text>
+                <text x="455" y="185" font-family="Inter, sans-serif" font-size="10" fill="#999">cost of capital</text>
+                <!-- Firm beta on SML -->
+                <circle cx="260" cy="170" r="5" fill="#00356b"/>
+                <text x="270" y="162" font-family="Inter, sans-serif" font-size="10" fill="#00356b">Firm</text>
+                <!-- Good low-beta project (rejected wrongly) -->
+                <circle cx="150" cy="200" r="6" fill="#2d8f4e"/>
+                <text x="105" y="195" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">Good project</text>
+                <text x="105" y="207" text-anchor="end" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">(wrongly rejected)</text>
+                <!-- Bad high-beta project (accepted wrongly) -->
+                <circle cx="380" cy="120" r="6" fill="#c0392b"/>
+                <text x="395" y="115" font-family="Inter, sans-serif" font-size="10" fill="#c0392b">Bad project</text>
+                <text x="395" y="127" font-family="Inter, sans-serif" font-size="10" fill="#c0392b">(wrongly accepted)</text>
+                <!-- Shaded regions -->
+                <polygon points="70,260 70,170 260,170 150,215" fill="#2d8f4e" fill-opacity="0.08"/>
+                <polygon points="260,170 450,170 450,72 380,125" fill="#c0392b" fill-opacity="0.08"/>
+            </svg>
+            <p class="figure-caption"><strong>Figure 7.4.</strong> The danger of using a single company cost of capital for all projects. Low-beta projects above the SML (valuable) are rejected, while high-beta projects below the SML (value-destroying) are accepted.</p>
+        </div>
+
+        <p>You will reject some worthwhile projects with low betas, and you will accept high beta projects that make the firm riskier. You will end up selecting for exposure to systematic risk. What if you take projects below your company cost of capital? Doesn't this mean that you will be borrowing at a higher rate than your projects are yielding? No! Accepting lower beta projects will lower the expected return of the firm and thus lower the financing costs proportionally.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Project-Specific Discount Rates</h4>
+            <p>Each project should be discounted at a rate reflecting its own systematic risk, not the firm's overall cost of capital. Using a single company-wide rate biases decisions toward high-beta projects and away from valuable low-beta investments.</p>
+        </div>
+
+        <h2>V. Conclusion</h2>
+
+        <p>CAPM betas and APT factor loadings are more than inputs to estimates of expected returns. They are measures of the systematic risk of the company or the portfolio. Both asset pricing models are linear, which implies that the betas measure the amount that actual returns for a security are expected to change when the market (or macro-economic factor) changes. In practice, betas are estimated with historical data, using regression techniques. When historical data is not available, industry comparables are used, and adjustments are made for leverage.</p>
+
+        <p>Firms may use leverage to adjust their expected return and systematic risk exposure just as investors do. The beta of the underlying asset held by the firm may be much lower than the observed beta of the stock of the company, if the company is highly levered. We used the Cable T.V. industry to explore how to lever and unlever the beta of companies. This method can be applied to a number of corporate finance problems, including decisions about investment and acquisition.</p>
 
     </div>
 
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
+    </div>
+
     <footer class="chapter-footer">
-        <a href="chapter-6.html" class="chapter-nav-link">&larr; Chapter VI: APT</a>
-        <a href="chapter-8.html" class="chapter-nav-link">Chapter VIII: Market Efficiency &rarr;</a>
+        <a href="chapter-6.html" class="chapter-nav-link">&larr; Chapter VI: The Arbitrage Pricing Theory</a>
+        <a href="chapter-8.html" class="chapter-nav-link">Chapter VIII: Information and Market Efficiency &rarr;</a>
     </footer>
 </article>
 

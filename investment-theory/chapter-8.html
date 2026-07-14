@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter VIII: Information and the Efficiency of Capital Markets — W. N. Goetzmann</title>
+    <title>Chapter VIII: Information and the Efficiency of the Capital Markets — W. N. Goetzmann</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -25,42 +28,223 @@
 <article class="chapter">
     <header class="chapter-header">
         <p class="chapter-label">Chapter VIII</p>
-        <h1>Information and the Efficiency of Capital Markets</h1>
-        <p class="chapter-deck">How rapidly and completely asset prices incorporate relevant information &mdash; the three forms of market efficiency.</p>
+        <h1>Information and the Efficiency of the Capital Markets</h1>
+        <p class="chapter-deck">How information becomes embedded in prices, the three forms of market efficiency, and the evidence for and against efficient markets.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>What Is Market Efficiency?</h2>
-        <p>Market efficiency reflects Adam Smith's "invisible hand" &mdash; arbitrageurs exploiting mispricings drive prices toward fair economic value. The question is how rapidly and completely this process occurs.</p>
+        <h2>I. A World of Arbitrageurs</h2>
 
-        <h2>Weak-Form Efficiency</h2>
-        <p>Past price patterns cannot generate excess profits. While daily momentum exists in the data, trading costs typically eliminate profits from exploiting these patterns. Technical analysts who rely solely on price charts face a formidable empirical challenge.</p>
+        <p>The foundation rests on arbitrage principles: when opportunities to exploit differing expectations emerge, active investors will pursue them. This prevents securities from deviating substantially from the security market line. Opportunities for exploiting this "Arbitrage in Expectations" are likely to be fairly rare. However, when they arise, or are discovered through research, investors will seek to exploit them.</p>
 
-        <h2>Semi-Strong Form Efficiency</h2>
-        <p>All <strong>publicly available information</strong> is reflected in prices. This approximates reality in U.S. equity markets, though some backtested strategies &mdash; dividend yield screening, earnings surprises &mdash; show historical profitability. The key question: do these profits persist out of sample?</p>
+        <p>Research into expected returns and betas drives the market's information-gathering machinery. Arbitrageurs investigate cash flows, discount rates, and idiosyncratic factors -- CEO health, product quality, and similar signals. Speed matters crucially: once buying begins, prices adjust and opportunities vanish.</p>
 
-        <h2>Strong-Form Efficiency</h2>
-        <p>Even <strong>private information</strong> is impounded in prices. Merger case studies reveal a "tendency" toward this form through pre-announcement price movements, though the public announcement typically still causes price reactions.</p>
+        <p>The central question: <strong>How effective is this arbitrage mechanism, and how rapidly do mispricings disappear?</strong></p>
 
-        <h2>Key Evidence</h2>
-        <p>Event studies show stock prices react within minutes to major corporate news. Discount rate announcements are reflected in prices the same day &mdash; <em>not the next day</em>. This speed of adjustment is the hallmark of an efficient market.</p>
+        <h2>II. Mispricings Created by the Arrival of Information</h2>
 
-        <h2>Practical Implications</h2>
-        <ul>
-            <li>Accounting tricks cannot fool efficient markets for long</li>
-            <li>Corporate managers cannot systematically mislead investors about asset values</li>
-            <li>Arbitrageurs provide beneficial liquidity and keep prices near fundamental values</li>
-            <li>Information that is easier to obtain is more likely already priced in</li>
-        </ul>
-        <blockquote>What if everyone followed the same strategy? Wouldn't the opportunity go away?</blockquote>
-        <p>Market efficiency remains "a good first approximation" for liquid, free markets.</p>
+        <p>Major corporate events immediately alter expected cash flows. The Bhopal chemical disaster exemplified this -- Union Carbide's stock price collapsed within minutes. The evidence shows that there is little evidence that you can make money by investing on yesterday's news.</p>
+
+        <p>Federal Reserve discount rate announcements trigger same-day stock responses, not delayed reactions. This empirical evidence strongly indicates that, at least in the highly liquid, open-information economy of the U.S. capital markets, stock prices are <strong>efficient</strong>.</p>
+
+        <div class="figure">
+            <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="arrowEV" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#00356b"/>
+                    </marker>
+                </defs>
+                <!-- Axes -->
+                <line x1="70" y1="320" x2="480" y2="320" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowEV)"/>
+                <line x1="70" y1="320" x2="70" y2="30" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowEV)"/>
+                <text x="280" y="355" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Days relative to event</text>
+                <text x="25" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b" transform="rotate(-90,25,175)">Cumulative Abnormal Return</text>
+                <!-- Day markers -->
+                <text x="120" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">-20</text>
+                <text x="195" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">-10</text>
+                <text x="270" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">0</text>
+                <text x="345" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">+10</text>
+                <text x="420" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">+20</text>
+                <!-- Event day vertical -->
+                <line x1="270" y1="315" x2="270" y2="45" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
+                <text x="275" y="42" font-family="Inter, sans-serif" font-size="10" fill="#999">Event day</text>
+                <!-- Zero line -->
+                <line x1="70" y1="220" x2="470" y2="220" stroke="#ddd" stroke-width="1"/>
+                <text x="65" y="224" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#999">0</text>
+                <!-- Positive event (good news) - CAR rises at event, flat after -->
+                <polyline points="120,220 135,218 150,217 165,215 180,213 195,210 210,208 225,205 240,203 255,198 265,185 270,120 275,118 285,117 300,118 315,119 330,118 345,120 360,119 375,118 390,120 405,119 420,118" fill="none" stroke="#2d8f4e" stroke-width="2.5"/>
+                <text x="425" y="115" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#2d8f4e">Good news</text>
+                <!-- Negative event (bad news) - CAR drops at event, flat after -->
+                <polyline points="120,220 135,222 150,223 165,225 180,228 195,230 210,233 225,235 240,238 255,242 265,255 270,305 275,307 285,308 300,306 315,305 330,307 345,305 360,306 375,308 390,306 405,307 420,305" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+                <text x="425" y="310" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#c0392b">Bad news</text>
+                <!-- Annotations -->
+                <text x="290" y="80" font-family="Inter, sans-serif" font-size="10" fill="#00356b">Price adjusts immediately;</text>
+                <text x="290" y="93" font-family="Inter, sans-serif" font-size="10" fill="#00356b">no post-event drift</text>
+                <!-- Pre-event leakage annotation -->
+                <text x="170" y="190" font-family="Inter, sans-serif" font-size="9" fill="#666">Slight pre-event</text>
+                <text x="170" y="201" font-family="Inter, sans-serif" font-size="9" fill="#666">leakage</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 8.1.</strong> Event study: Cumulative Abnormal Returns (CAR) around a corporate event. In efficient markets, prices adjust immediately on the event day with no post-announcement drift. Slight pre-event drift may indicate information leakage.</p>
+        </div>
+
+        <h2>III. Watch My (Invisible) Hand</h2>
+
+        <p>Market efficiency describes how rapidly relevant information becomes embedded in asset prices. The mechanism: overpriced assets attract short-sellers, driving prices down; underpriced securities attract buyers, driving them up.</p>
+
+        <p>Informational efficiency differs from Pareto efficiency. It concerns information transmission speed, not allocation optimality. Two factors determine efficiency levels:</p>
+
+        <ol>
+            <li><strong>Liquidity:</strong> Illiquid markets cannot react quickly to information</li>
+            <li><strong>Psychological factors:</strong> Markets may overreact if participants cannot rationally evaluate information's impact</li>
+        </ol>
+
+        <p>Nathan Rothschild exemplified sophisticated information exploitation. His European network provided early Waterloo battle intelligence. He sold Bank of England securities quietly, sparking panic selling, then purchased during the frenzy -- a profitable contrarian play.</p>
+
+        <p>Historical price transmission studies reveal information lag: Amsterdam to London equity price movements took approximately Thursday following Monday changes -- the travel time for fast messengers crossing the English Channel.</p>
+
+        <div class="note">
+            <strong>Note:</strong> Information speed determines market efficiency. In the 18th century, cross-channel messenger travel time created multi-day lags. Today, electronic markets transmit information in milliseconds.
+        </div>
+
+        <h2>IV. Benefits of an Efficient Market</h2>
+
+        <p>Three primary advantages emerge:</p>
+
+        <ol>
+            <li><strong>Price stability:</strong> Arbitrage prevents massive deviations from true economic value, avoiding future crashes</li>
+            <li><strong>Reduced comparison costs:</strong> Confidence that prices reflect public information reduces shopping burdens</li>
+            <li><strong>Liquidity provision:</strong> Arbitrageurs enable securities trading for non-speculative purposes</li>
+        </ol>
+
+        <p>China's information restrictions at Shanghai's exchange raise questions about desirability and feasibility of limiting financial data access.</p>
+
+        <h2>V. Market Efficiency and Corporate Managers</h2>
+
+        <p>Efficient markets eliminate managerial gamesmanship potential. Genuine news moves prices; fabricated claims produce temporary reactions followed by reversions. Accounting tricks don't fool anybody. Don't worry about timing accounting charges and don't worry about whether information is revealed in the footnotes or in the statements.</p>
+
+        <p>The Sears Tower case illustrates efficiency: Management believed undervalued balance sheet assets meant underpriced stock. Actually, the market efficiently assessed the property's worth -- Sears overestimated its value, and stock pricing reflected this reality.</p>
+
+        <h2>VI. Three Degrees of Efficiency</h2>
+
+        <div class="figure">
+            <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
+                <!-- Nested circles (Venn-like) -->
+                <!-- Strong form (outermost) -->
+                <ellipse cx="260" cy="170" rx="220" ry="140" fill="#00356b" fill-opacity="0.06" stroke="#00356b" stroke-width="2"/>
+                <text x="260" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#00356b">Strong Form</text>
+                <text x="260" y="56" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">All information (public + private)</text>
+                <!-- Semi-strong form -->
+                <ellipse cx="260" cy="185" rx="165" ry="105" fill="#4a90d9" fill-opacity="0.08" stroke="#4a90d9" stroke-width="2"/>
+                <text x="260" y="96" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#4a90d9">Semi-Strong Form</text>
+                <text x="260" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">All publicly available information</text>
+                <!-- Weak form (innermost) -->
+                <ellipse cx="260" cy="200" rx="105" ry="70" fill="#2d8f4e" fill-opacity="0.08" stroke="#2d8f4e" stroke-width="2"/>
+                <text x="260" y="185" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#2d8f4e">Weak Form</text>
+                <text x="260" y="201" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">Past prices &amp;</text>
+                <text x="260" y="215" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">trading volumes</text>
+                <!-- Examples in each ring -->
+                <text x="430" y="150" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#00356b">CEO insider knowledge</text>
+                <text x="430" y="163" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#00356b">Pre-announcement info</text>
+                <text x="400" y="240" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#4a90d9">Annual reports, news</text>
+                <text x="400" y="253" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#4a90d9">Analyst reports, P/E ratios</text>
+                <text x="260" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#2d8f4e">Historical charts</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 8.2.</strong> The three forms of market efficiency. Each form subsumes the one inside it: strong-form implies semi-strong, which implies weak-form efficiency.</p>
+        </div>
+
+        <h3>Strong-Form Efficiency</h3>
+
+        <p>All private information, including CEO-CFO communications, immediately impacts prices. Few accept this benchmark.</p>
+
+        <h3>Semi-Strong Form Efficiency</h3>
+
+        <p>All publicly available information -- annual reports, news, gossip columns -- becomes embedded in prices. Most believe U.S. equity markets exhibit this characteristic. However, definitional ambiguity exists: Is internet-published information "public"? Are Freedom of Information Act documents public?</p>
+
+        <h3>Weak-Form Efficiency</h3>
+
+        <p>Past security prices cannot generate excess profits. Past prices constitute public information, making weak-form efficiency a subset of semi-strong form, which is a subset of strong-form.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Three Forms of EMH</h4>
+            <p><strong>Weak form:</strong> past prices cannot predict future returns. <strong>Semi-strong form:</strong> all public information is reflected in prices. <strong>Strong form:</strong> even private/insider information is reflected. Each form implies all weaker forms below it.</p>
+        </div>
+
+        <h3>Weak Form Testing and Technical Analysis</h3>
+
+        <p>Technical analysts (chartists) exploit historical price patterns. A hypothetical rule: If markets rise 1%, they subsequently rise 0.5%; if they fall 1%, they subsequently fall 0.5%. Trading on such patterns could theoretically profit.</p>
+
+        <p>The fundamental problem: What if everyone followed the same strategy? Wouldn't the opportunity go away? Daily returns show weak autocorrelation (momentum), but exploitation costs -- brokerage fees, daily trading -- prevent profitable arbitrage. Prices approximate random walks.</p>
+
+        <p>Charles Henry Dow founded the Dow index in 1896 and identified alternating bull-bear markets, attempting to time these cycles. The financial press (and web) are rife with market timing newsletters, purporting to find long-term patterns in the stock market.</p>
+
+        <p>Modern hedge funds employ artificial intelligence and neural networks seeking patterns. Success remains ambiguous -- is it statistical skill or luck? If it works, why do they offer you the opportunity to buy their software?</p>
+
+        <h2>VII. Evidence For Market Efficiency</h2>
+
+        <h3>Testing Strong-Form Efficiency</h3>
+
+        <p>Merger announcements provide natural experiments. Corporate insiders (lawyers, investment bankers, managers) typically know before public disclosure. Their illegal insider trading can generate profits, earning SEC violations. Stock prices often rise before official announcements, indicating that the market has a tendency towards strong-form efficiency, i.e. even private information is incorporated into prices.</p>
+
+        <p>However, public announcements typically produce large price responses, suggesting incomplete strong-form efficiency. Information leakage occurs illegally but incompletely.</p>
+
+        <div class="note">
+            <strong>Note:</strong> By the way, until recently, insider trading was legal in Switzerland. The legality and enforcement of insider trading rules varies across markets and time periods.
+        </div>
+
+        <h3>Testing Semi-Strong Form Efficiency</h3>
+
+        <p>Money managers consistently employ publicly available information for positioning, yet demonstrate no consistent risk-adjusted outperformance. The paradox: Why maintain entire analytical industries if information provides no value?</p>
+
+        <p>Recent backtesting studies reveal surprising results. The "Dogs of the Dow" strategy -- buying high-dividend-yield stocks -- appears historically profitable using publicly available information. Similarly, buying stocks after positive earnings surprises (versus expectations) generated excess returns despite information availability.</p>
+
+        <p>Does this mean that it is easy to become rich on Wall Street? Hardly! Trading costs and liquidity constraints often eliminate apparent profits. While value investors discuss low price-to-earnings strategies, few demonstrate consistent superior track records.</p>
+
+        <p>The conclusion: The assumption of semi-strong form efficiency is a good first approximation for a market with as many sharp traders and with as much publicly available information as the U.S. equity market.</p>
+
+        <h3>Testing Weak-Form Efficiency</h3>
+
+        <p>Weak-form efficiency seemed simplest to establish, gaining widespread acceptance through the 1950s. Researchers discovered daily price patterns (momentum) since then, yet exploitation remains difficult.</p>
+
+        <p>Extending analysis horizons reveals different patterns. Two-week return reversals -- shorting recent winners, buying recent losers -- appeared profitable. At longer horizons, mean reversion becomes evident. Eugene Fama and Ken French found some evidence that four-year returns revert toward long-term means.</p>
+
+        <p>Unfortunately, this is a difficult rule to trade on with any confidence, since the cycles are so long -- in fact, they are as long as the patterns conjectured by Charles Henry Dow some 100 years ago!</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Patterns at Different Horizons</h4>
+            <p>Short-run: weak momentum (days). Medium-run: reversals (weeks). Long-run: mean reversion (years). All are difficult to exploit profitably due to trading costs, statistical uncertainty, and the long horizons required.</p>
+        </div>
+
+        <h3>Conclusion on Patterns</h3>
+
+        <p>Whether chartism offers opportunities remains uncertain. But in all likelihood there is no easy money in charting, either. Prices for widely traded securities are pretty close to a random walk, and if they were not, then they would quickly become so, as arbitrageurs moved in to buy the stock when it is underpriced and short it when it is overpriced.</p>
+
+        <p>Yet speculation persists: perhaps technological innovators will discover exploitable patterns through fractal geometry and artificial intelligence -- and keep quiet about profits.</p>
+
+        <h2>VIII. Conclusion</h2>
+
+        <p>Efficient market theory provides a strong approximation for liquid, free markets. How quickly does information get incorporated into prices? In a word, "Quickly!" Information impounds rapidly because arbitrageurs continuously collect, process, and trade on firm-specific information.</p>
+
+        <p>The practical implication supports minimal trading costs and removal of speculation penalties. Speculators keep market prices close to economic values, and this is good, not bad.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: The Efficient Markets Hypothesis</h4>
+            <p>In liquid, well-regulated markets with many informed participants, prices rapidly reflect available information. While not perfectly efficient, U.S. equity markets are sufficiently efficient that consistently beating the market after costs is extremely difficult. The EMH is a useful working assumption, not an exact description of reality.</p>
+        </div>
 
     </div>
 
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
+    </div>
+
     <footer class="chapter-footer">
-        <a href="chapter-7.html" class="chapter-nav-link">&larr; Chapter VII: Betas</a>
-        <a href="chapter-9.html" class="chapter-nav-link">Chapter IX: Corporate Financing &rarr;</a>
+        <a href="chapter-7.html" class="chapter-nav-link">&larr; Chapter VII: Where Do Betas Come From?</a>
+        <a href="chapter-9.html" class="chapter-nav-link">Chapter IX: Long-Term Corporate Financing &rarr;</a>
     </footer>
 </article>
 

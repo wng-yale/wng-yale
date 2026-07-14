@@ -1,0 +1,93 @@
+# Chapter I: Capital Markets and Investment Performance
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+## Overview Section
+
+The chapter introduces the concept of securities as financial instruments. "Securities are nothing more than promises of future payment" distributed through intermediaries like investment banks. These can be traded on exchanges such as the NYSE, AMEX, and NASDAQ.
+
+Securities vary widely in complexity, from straightforward bonds to sophisticated structured notes. The fundamental characteristic shared across all securities is that they represent "economic claims against future benefits," always incorporating a time dimension.
+
+## I. Finance from the Investor's Perspective
+
+This section shifts focus from corporate decision-making to investor perspectives. The module examines how shareholders and bondholders who hold portfolios—collections of different securities—make financial decisions. The central question addressed is: "What rate of return will investors demand to hold a risky security?"
+
+## II. Why Investors Invest
+
+Primary motivations for purchasing securities include savings for future needs and wealth accumulation. Some investors accept high-risk ventures, such as lottery tickets, for potential significant payoffs. Additional motivations include charitable objectives, though the chapter notes these generate non-economic dividends and prove difficult to evaluate systematically.
+
+## III. Definition of Rates of Return
+
+Return represents "the growth in wealth resulting from that investment," expressed as a percentage for comparability. The basic formula presented is: Rt = [Pt+1 - Pt]/Pt, which simplifies to Rt = [Pt+1/Pt] - 1.
+
+When dividends are included: Rt = [Pt+1 - Pt + Dt]/Pt
+
+## IV. Arithmetic vs. Geometric Rates of Return
+
+Two different averaging methods exist:
+
+Arithmetic mean: Simple average of returns
+Geometric mean: Accounts for compounding effects
+
+The chapter illustrates with an example: P₀ = $100, R₁ = -50%, R₂ = +100%. Arithmetic average: 25%; Geometric average: 0%.
+
+The geometric return better reflects actual investment experience, while arithmetic returns suit single-period statistical models.
+
+## V. Capital Market History
+
+### 1980s Performance
+The document notes the 1980s represented exceptional returns for stock investors, with S&P 500 performance showing substantial growth.
+
+### 1930s Performance
+This decade experienced severe market crashes globally. "U.S. stock investors experienced a zero percent return for the eleven-year period from 12/1929 to 12/1939."
+
+### Long-Term Performance (1926-1995)
+Over 68 years, a dollar invested in the S&P 500 grew to approximately $800, while corporate bonds grew to $40. The stock line displays greater volatility than the bond line.
+
+## VI. Risk Premium
+
+The return differential between stocks and bonds is attributed to risk differences. "Volatility" describes the shakier performance of stocks compared to bonds.
+
+The document defines "risk-aversion" as investor preference for less risk when other factors remain equal. This motivates the concept of risk premium—the additional return demanded for holding risky securities versus riskless alternatives like Treasury Bills.
+
+Equity Premium calculation: The difference between S&P total return and 30-day T-Bill return equals approximately 9% (arithmetic) or 6% (geometric) annually from 1926-1995.
+
+### Summary Statistics Table (1926-March 1995):
+
+| Investment | Geometric Mean | Arithmetic Mean | Std Dev | High Return | Low Return |
+|---|---|---|---|---|---|
+| S&P Total Return | 10.30 | 12.45 | 22.28 | 42.56 | -29.73 |
+| U.S. Small Stock TR | 12.28 | 17.28 | 35.94 | 73.46 | -36.74 |
+| U.S. LT Govt TR | 4.91 | 5.21 | 8.00 | 15.23 | -8.41 |
+| U.S. LT Corp. TR | 5.49 | 5.73 | 7.16 | 13.76 | -8.90 |
+| U.S. 30-day T-Bills | 3.70 | 3.70 | .96 | 1.35 | -0.06 |
+
+Source: Ibbotson Associates
+
+## VII. Standard Deviation as a Measure of Risk
+
+Standard deviation quantifies volatility mathematically as "the square root of the variance." The formula calculates the average spread of observations.
+
+For S&P 500 returns (approximately 22.28% standard deviation), assuming normal distribution, approximately two-thirds of observations should fall within one standard deviation of the mean: range from -9.93% to 34.73%.
+
+The chapter acknowledges limitations: standard deviation equally weights high and low returns, heavily weights extreme observations, and ignores distribution shape. However, benefits include providing a single comparable risk measure enabling portfolio analysis decisions.
+
+The chapter notes evidence that stock returns may follow "stable" distributions with undefined variance rather than normal distributions, citing Benoit Mandelbrot's hypothesis. Return distributions show "fatter tails" than log-normal predictions suggest.
+
+## Internet Scavenger Hunt
+
+The chapter concludes with challenges to locate:
+
+- Historical return information on Microsoft, Inc.
+- Historical return information on the Fidelity Magellan Fund
+- Top five U.S. investment banks
+- Largest capital appreciation returns on S&P 500 companies
+- Current U.S. Treasury bond yields
+
+## Navigation
+
+Links provided to: Next Chapter, Will's Home Page, MPPM 540 Main Menu, Table of Contents, and contact email.

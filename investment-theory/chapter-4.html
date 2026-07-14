@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -17,7 +20,6 @@
         <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
         <ul class="nav-links">
             <li><a href="chapter-3.html">&larr; Ch. III</a></li>
-            <li><a href="chapter-5.html">Ch. V &rarr;</a></li>
         </ul>
     </div>
 </nav>
@@ -26,34 +28,247 @@
     <header class="chapter-header">
         <p class="chapter-label">Chapter IV</p>
         <h1>The Portfolio Approach to Risk</h1>
-        <p class="chapter-deck">The Capital Asset Pricing Model, the tangency portfolio, and why all investors want to hold the same portfolio of risky assets.</p>
+        <p class="chapter-deck">The Capital Asset Pricing Model, Two Fund Separation, and the meaning of portfolio risk.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>The Tangency Portfolio Discovery</h2>
-        <p>In the 1960s, financial researchers building on Markowitz's work realized a profound implication: if all investors can borrow and lend at a riskless rate, <strong>all investors would want to hold precisely the same portfolio of risky assets</strong> &mdash; the tangency portfolio. This is the Two Fund Separation Theorem.</p>
+        <h2>I. The Quest for the Tangency Portfolio</h2>
 
-        <h2>The Capital Asset Pricing Model</h2>
-        <p>William Sharpe and others developed the <strong>CAPM</strong> to identify the tangency portfolio. The model operates under key assumptions including perfect asset divisibility, unanimous investor agreement on inputs, and a two-period economy.</p>
+        <p>In the 1960s, financial researchers working with Harry Markowitz's mean-variance model of portfolio construction made a remarkable discovery that would change investment theory and practice in the United States and the world. The discovery was based upon an idealized model of the markets, in which all the world's risky assets were included in the investor opportunity set and one riskless asset existed, allowing both more and less risk-averse investors to find their optimal portfolio along the tangency ray.</p>
 
-        <h2>The Birthday Cake Proof</h2>
-        <p>The core CAPM argument uses an elegant metaphor: the tangency portfolio will be a <strong>value-weighted mix of all assets in the world</strong>. Imagine a cake sliced horizontally by company size (market capitalization) and vertically by investor wealth. Each investor naturally holds assets weighted by their proportion of global wealth:</p>
-        <div class="equation">
-            weight on asset i = (price &times; shares) / world wealth
+        <div class="figure">
+            <img src="figures/capital_market_line.svg" alt="Capital Market Line showing Two Fund Separation" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 4.1.</strong> Two Fund Separation, computed from SBBI data. All investors hold the same tangency portfolio $T$ of risky assets. More risk-averse (MRA) investors mix $T$ with T-bills; less risk-averse (LRA) investors borrow at $R_f$ to lever up their position in $T$.</p>
         </div>
 
-        <h2>Implications for Investing</h2>
-        <p>The CAPM suggests that the S&amp;P 500 &mdash; already a capital-weighted portfolio &mdash; approximates the optimal tangency portfolio. This legitimized <strong>index fund strategies</strong> emphasizing low-cost, buy-and-hold approaches requiring minimal trading.</p>
+        <p>Assuming that investors could borrow and lend at the riskless rate, this simple diagram suggested that everyone in the world would want to hold precisely the <em>same</em> portfolio of risky assets! That portfolio, identified at the point of tangency, represents some portfolio mix of the world's assets. Identify it, and the world will beat a path to your door.</p>
 
-        <h2>Critical Limitations</h2>
-        <p>Markets aren't always in equilibrium, investors don't hold truly global portfolios, and human capital isn't tradable. Yet the CAPM remains valuable both as an investment prescription and as a framework for understanding how securities should be priced based on their contribution to portfolio risk.</p>
+        <div class="key-concept">
+            <h4>Key Concept: Two Fund Separation Theorem</h4>
+            <p>The tangency portfolio became the centerpiece of a classical model in finance. The "Two Fund Separation Theorem" argues that all investors will make their choice between two funds: the risky tangency portfolio and the riskless "fund." Every investor holds the same risky portfolio &mdash; they differ only in leverage.</p>
+        </div>
+
+        <p>Identifying this tangency portfolio is harder than it looks. Recall that a major difficulty in estimating an efficient frontier accurately is that errors grow as the number of assets increase. You cannot just dump all the means, standard deviations, and correlations for the world's assets into an optimizer and turn the crank. If you did, you would get a nonsensical answer. Sadly enough, empirical research was not the answer, due to statistical estimation problems.</p>
+
+        <p>The answer to the question came from theory. Financial economist <strong>William Sharpe</strong> is one of the creators of the "Capital Asset Pricing Model," a theory which began as a quest to identify the tangency portfolio. Since that time, it has developed into much, much more. In fact, the CAPM, as it is called, is the predominant model used for estimating equity risk and return.</p>
+
+        <h2>II. The Capital Asset Pricing Model</h2>
+
+        <p>Because the CAPM is a theory, we must assume for argument that:</p>
+
+        <ol>
+            <li>All assets in the world are traded</li>
+            <li>All assets are infinitely divisible</li>
+            <li>All investors in the world collectively hold all assets</li>
+            <li>For every borrower, there is a lender</li>
+            <li>There is a riskless security in the world</li>
+            <li>All investors borrow and lend at the riskless rate</li>
+            <li>Everyone agrees on the inputs to the Mean-STD picture</li>
+            <li>Preferences are well-described by simple utility functions</li>
+            <li>Security distributions are normal, or at least well described by two parameters</li>
+            <li>There are only two periods of time in our world</li>
+        </ol>
+
+        <p>This is a long list of requirements, and together they describe the capitalist's ideal world. Everything may be bought and sold in perfectly liquid fractional amounts &mdash; even human capital! There is a perfect, safe haven for risk-averse investors, i.e. the riskless asset. This means that everyone is an equally good credit risk! No one has any informational advantage in the CAPM world. Everyone has already generously shared all of their knowledge about the future risk and return of the securities, so no one disagrees about expected returns. All customer preferences are an open book &mdash; risk attitudes are well described by a simple utility function. There is no mystery about the shape of the future return distributions. Last but not least, decisions are not complicated by the ability to change your mind through time. You invest irrevocably at one point, and reap the rewards of your investment in the next period &mdash; at which time you and the investment problem cease to exist. Terminal wealth is measured at that time.</p>
+
+        <blockquote>He who dies with the most toys wins! The technical name for this setting is "a frictionless one-period, multi-asset economy with no asymmetric information."</blockquote>
+
+        <p>The CAPM argues that these assumptions imply that the tangency portfolio will be a <strong>value-weighted mix of all the assets in the world</strong>.</p>
+
+        <h3>The Equilibrium Proof</h3>
+
+        <p>The proof is an elegant equilibrium argument. It begins with the assertion that all risky assets in the world may be regarded as "slices" of a global wealth portfolio. We may graphically represent this as a large, square "cake," sliced horizontally in varying widths. The widths are proportional to the size of each company &mdash; determined by the number of shares times the price per share.</p>
+
+        <div class="figure">
+            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CAPM equilibrium proof: the cake diagram">
+                <!-- The "cake" - horizontal slices (companies) -->
+                <rect x="100" y="40" width="240" height="320" fill="none" stroke="#00356b" stroke-width="2"/>
+                <!-- Company slices -->
+                <rect x="100" y="40" width="240" height="50" fill="#00356b" fill-opacity="0.15"/>
+                <rect x="100" y="90" width="240" height="80" fill="#00356b" fill-opacity="0.08"/>
+                <rect x="100" y="170" width="240" height="40" fill="#00356b" fill-opacity="0.20"/>
+                <rect x="100" y="210" width="240" height="60" fill="#00356b" fill-opacity="0.05"/>
+                <rect x="100" y="270" width="240" height="30" fill="#00356b" fill-opacity="0.12"/>
+                <rect x="100" y="300" width="240" height="60" fill="#00356b" fill-opacity="0.18"/>
+                <!-- Company labels -->
+                <text x="220" y="70" text-anchor="middle" font-size="11" fill="#00356b" font-family="Inter, sans-serif">Company A</text>
+                <text x="220" y="135" text-anchor="middle" font-size="11" fill="#00356b" font-family="Inter, sans-serif">Company B (larger)</text>
+                <text x="220" y="195" text-anchor="middle" font-size="11" fill="#00356b" font-family="Inter, sans-serif">Co. C</text>
+                <text x="220" y="245" text-anchor="middle" font-size="11" fill="#00356b" font-family="Inter, sans-serif">Company D</text>
+                <text x="220" y="290" text-anchor="middle" font-size="10" fill="#00356b" font-family="Inter, sans-serif">E</text>
+                <text x="220" y="335" text-anchor="middle" font-size="11" fill="#00356b" font-family="Inter, sans-serif">Company F</text>
+                <text x="220" y="25" font-size="13" text-anchor="middle" fill="#333" font-weight="600" font-family="Inter, sans-serif">By Company (horizontal)</text>
+                <!-- Arrow -->
+                <text x="380" y="200" font-size="28" fill="#666" font-family="Inter, sans-serif">&rarr;</text>
+                <!-- The "cake" - vertical slices (investors) -->
+                <rect x="430" y="40" width="240" height="320" fill="none" stroke="#bd5319" stroke-width="2"/>
+                <!-- Investor slices -->
+                <rect x="430" y="40" width="70" height="320" fill="#bd5319" fill-opacity="0.08"/>
+                <rect x="500" y="40" width="40" height="320" fill="#bd5319" fill-opacity="0.15"/>
+                <rect x="540" y="40" width="55" height="320" fill="#bd5319" fill-opacity="0.05"/>
+                <rect x="595" y="40" width="30" height="320" fill="#bd5319" fill-opacity="0.12"/>
+                <rect x="625" y="40" width="45" height="320" fill="#bd5319" fill-opacity="0.18"/>
+                <!-- Investor labels -->
+                <text x="465" y="380" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Investor 1</text>
+                <text x="520" y="380" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Inv 2</text>
+                <text x="567" y="380" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Investor 3</text>
+                <text x="610" y="380" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">4</text>
+                <text x="647" y="380" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Inv 5</text>
+                <text x="550" y="25" font-size="13" text-anchor="middle" fill="#333" font-weight="600" font-family="Inter, sans-serif">By Investor (vertical)</text>
+                <!-- Annotation -->
+                <text x="550" y="200" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Same proportions</text>
+                <text x="550" y="215" text-anchor="middle" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">in each slice!</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 4.2.</strong> The CAPM equilibrium argument. The global wealth "cake" can be sliced by company (horizontally) or by investor (vertically). Since all investors hold the same risky portfolio weights, each vertical slice has the same proportions. The weights equal each company's share of total world wealth.</p>
+        </div>
+
+        <p>Here is the equilibrium part of the argument: Assume that all investors in the world collectively hold all the assets in the world, and that, for every borrower at the riskless rate there is a lender. This last condition is needed so that we can claim that the positions in the riskless asset "net out" across all investors.</p>
+
+        <p>From the two-fund separation picture, we already know that all investors will hold the same portfolio of risky assets, i.e. that the weights for each risky asset $j$ will be the same across all investor portfolios. This knowledge allows us to cut the cake in another direction: vertically. As with companies, we vary the width of the slice according to the wealth of the individual.</p>
+
+        <p>Notice that each vertical "slice" is a portfolio, and the weights are given by the relative asset values of the companies. We can calculate what the weights are exactly:</p>
+
+        <div class="equation">
+            <p class="equation-label">CAPM Portfolio Weight</p>
+            $$w_i = \frac{P_i \times N_i}{W_{\text{world}}}$$
+        </div>
+
+        <p>where $P_i$ is the price of asset $i$, $N_i$ is the number of shares, and $W_{\text{world}}$ is total world wealth. Each investor's portfolio weight is exactly proportional to the percentage that the firm represents of the world's assets.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: The CAPM Result</h4>
+            <p>The tangency portfolio is a <strong>capital-weighted portfolio of all the world's assets</strong>. This is not an empirical finding &mdash; it is a theoretical conclusion that follows from the equilibrium assumptions. Every investor holds the "market portfolio."</p>
+        </div>
+
+        <h2>III. Investment Implications</h2>
+
+        <p>The CAPM tells us that all investors will want to hold "capital-weighted" portfolios of global wealth. In the 1960s when the CAPM was developed, this solution looked a lot like a portfolio that was already familiar to many people: the <strong>S&amp;P 500</strong>. The S&amp;P 500 is a capital-weighted portfolio of most of the U.S.'s largest stocks. At that time, the U.S. was the world's largest market, and thus, it seemed to be a fair approximation to the "cake."</p>
+
+        <blockquote>Amazingly, the answer was right under our noses &mdash; the tangency portfolio must be something like the S&amp;P 500!</blockquote>
+
+        <p>Not coincidentally, widespread use of <strong>index funds</strong> began about this time. Index funds are mutual funds and/or money managers who simply match the performance of the S&amp;P. Many institutions and individuals discovered the virtues of indexing:</p>
+        <ul>
+            <li><strong>Minimal trading costs:</strong> Capital-weighted portfolios automatically adjust to changes in value when stocks grow, so investors need not change their weights all the time &mdash; it is a "buy-and-hold" portfolio</li>
+            <li><strong>Competitive performance:</strong> There was little evidence at the time that active portfolio management beat the S&amp;P index &mdash; so why not simply index?</li>
+        </ul>
+
+        <div class="note">
+            <strong>Modern context:</strong> Today, global index funds encompass far more than the S&amp;P 500. Total-world-market funds (e.g., MSCI ACWI) capture developed and emerging markets, more closely approximating the theoretical "world wealth portfolio" that the CAPM prescribes. The growth of passive indexing from the 1970s through the present &mdash; now representing trillions in assets under management &mdash; is a direct legacy of the CAPM insight.
+        </div>
+
+        <h2>IV. Is the CAPM True?</h2>
+
+        <p>Any theory is only strictly valid if its assumptions are true. There are a few nettlesome issues that call into question the validity of the CAPM:</p>
+
+        <ul>
+            <li>Is the world in equilibrium?</li>
+            <li>Do you hold the value-weighted world wealth portfolio?</li>
+            <li>Can you even come close?</li>
+            <li>What about "human capital?"</li>
+        </ul>
+
+        <p>While these problems may violate the letter of the law, perhaps the spirit of the CAPM is correct. That is, the theory may be a good <em>prescription</em> for investment policy. It tells investors to choose a very reasonable, diversified and low-cost portfolio. It also moves them into global assets, i.e. towards investments that are not too correlated with their personal human capital. In fact, even if the CAPM is approximately correct, it will have a major impact upon how investors regard individual securities. Why?</p>
+
+        <h2>V. Portfolio Risk</h2>
+
+        <p>Suppose you were a CAPM-style investor holding the world wealth portfolio, and someone offered you another stock to invest in. What rate of return would you demand to hold this stock? The answer <em>before</em> the CAPM might have depended upon the standard deviation of a stock's returns. <em>After</em> the CAPM, it is clear that you care about the effect of this stock on the <strong>tangency portfolio</strong>.</p>
+
+        <p>The introduction of asset $A$ into the portfolio will move the tangency portfolio. The extent of this movement determines the price you are willing to pay (alternately, the return you demand) for holding asset $A$. The lower the average correlation $A$ has with the rest of the assets in the portfolio, the more the frontier &mdash; and hence $T$ &mdash; will move to the left. This is good news for the investor: if $A$ moves your portfolio left, you will demand lower expected return because it improves your portfolio risk-return profile.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Why it's Called the Capital Asset <em>Pricing</em> Model</h4>
+            <p>The CAPM explains relative security prices in terms of a security's contribution to the risk of the <strong>whole portfolio</strong>, not its individual standard deviation. What matters is not how volatile a stock is on its own, but how it co-moves with the market. This co-movement is measured by <strong>beta</strong> ($\beta$).</p>
+        </div>
+
+        <p>The CAPM pricing relationship can be expressed as:</p>
+
+        <div class="equation">
+            <p class="equation-label">The CAPM Equation</p>
+            $$E(R_i) = R_f + \beta_i \left[E(R_M) - R_f\right]$$
+        </div>
+
+        <p>where beta measures the sensitivity of asset $i$'s return to the market return:</p>
+
+        <div class="equation">
+            <p class="equation-label">Beta</p>
+            $$\beta_i = \frac{\text{Cov}(R_i, R_M)}{\text{Var}(R_M)} = \frac{\sigma_{iM}}{\sigma_M^2}$$
+        </div>
+
+        <div class="figure">
+            <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Security Market Line">
+                <!-- axes -->
+                <line x1="80" y1="20" x2="80" y2="350" stroke="#999" stroke-width="1"/>
+                <line x1="80" y1="350" x2="660" y2="350" stroke="#999" stroke-width="1"/>
+                <text x="370" y="390" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Beta (&beta;)</text>
+                <text x="25" y="185" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 185)">Expected Return</text>
+                <!-- Beta axis labels -->
+                <text x="80" y="368" text-anchor="middle" font-size="11" fill="#666" font-family="Inter, sans-serif">0</text>
+                <text x="270" y="368" text-anchor="middle" font-size="11" fill="#666" font-family="Inter, sans-serif">0.5</text>
+                <text x="460" y="368" text-anchor="middle" font-size="11" fill="#666" font-family="Inter, sans-serif">1.0</text>
+                <text x="650" y="368" text-anchor="middle" font-size="11" fill="#666" font-family="Inter, sans-serif">1.5</text>
+                <!-- Grid -->
+                <line x1="270" y1="345" x2="270" y2="350" stroke="#ccc" stroke-width="1"/>
+                <line x1="460" y1="345" x2="460" y2="350" stroke="#ccc" stroke-width="1"/>
+                <line x1="650" y1="345" x2="650" y2="350" stroke="#ccc" stroke-width="1"/>
+                <!-- Rf point -->
+                <circle cx="80" cy="280" r="5" fill="#2a9d2a"/>
+                <text x="92" y="278" font-size="11" fill="#2a9d2a" font-weight="600" font-family="Inter, sans-serif">R<tspan font-size="8" dy="2">f</tspan></text>
+                <!-- Security Market Line -->
+                <line x1="80" y1="280" x2="650" y2="80" stroke="#bd5319" stroke-width="2.5"/>
+                <!-- Market portfolio at beta = 1 -->
+                <circle cx="460" cy="147" r="7" fill="#00356b" stroke="white" stroke-width="2"/>
+                <text x="472" y="142" font-size="12" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">Market (M)</text>
+                <text x="472" y="157" font-size="10" fill="#666" font-family="Inter, sans-serif">&beta; = 1</text>
+                <!-- SML label -->
+                <text x="580" y="95" font-size="13" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">SML</text>
+                <!-- Undervalued stock above line -->
+                <circle cx="350" cy="155" r="5" fill="#2a9d2a"/>
+                <text x="362" y="152" font-size="10" fill="#2a9d2a" font-weight="600" font-family="Inter, sans-serif">Undervalued</text>
+                <text x="362" y="165" font-size="10" fill="#2a9d2a" font-family="Inter, sans-serif">(positive alpha)</text>
+                <!-- Overvalued stock below line -->
+                <circle cx="350" cy="240" r="5" fill="#c00"/>
+                <text x="362" y="237" font-size="10" fill="#c00" font-weight="600" font-family="Inter, sans-serif">Overvalued</text>
+                <text x="362" y="250" font-size="10" fill="#c00" font-family="Inter, sans-serif">(negative alpha)</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 4.3.</strong> The Security Market Line (SML). Expected return is a linear function of beta &mdash; a security's contribution to portfolio risk. Securities above the line are undervalued (positive alpha); those below are overvalued.</p>
+        </div>
+
+        <h2>VI. Conclusion</h2>
+
+        <p>The CAPM is a theoretical solution to the identity of the tangency portfolio. It uses some ideal assumptions about the economy to argue that the capital-weighted world wealth portfolio is the tangency portfolio, and that every investor will hold this same portfolio of risky assets. Even though it is clear they do not, the CAPM is still a very useful tool. It has been taken as a prescription for the investment portfolio, as well as a tool for estimating an expected rate of return.</p>
+
+        <p>The CAPM's practical legacy is enormous:</p>
+        <ul>
+            <li>It provided the intellectual foundation for <strong>index fund investing</strong></li>
+            <li>It shifted focus from individual stock volatility to <strong>portfolio contribution</strong> (beta)</li>
+            <li>It established the <strong>Security Market Line</strong> as a benchmark for evaluating investment performance (alpha)</li>
+            <li>It remains the predominant model for <strong>estimating equity cost of capital</strong> in corporate finance</li>
+        </ul>
+
+        <div class="note">
+            <strong>Looking ahead:</strong> In the next chapter, we examine the second major use of the CAPM &mdash; estimating expected rates of return for individual securities using beta, and the empirical evidence for and against the model.
+        </div>
+
+        <div class="note">
+            <strong>Interactive Tool:</strong> Explore these concepts interactively using the
+            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        </div>
 
     </div>
 
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
+    </div>
+
     <footer class="chapter-footer">
-        <a href="chapter-3.html" class="chapter-nav-link">&larr; Chapter III: Preferences</a>
-        <a href="chapter-5.html" class="chapter-nav-link">Chapter V: Further CAPM &rarr;</a>
+        <a href="chapter-3.html" class="chapter-nav-link">&larr; Chapter III: Preferences &amp; Choice</a>
+        <a href="../index.html#textbook" class="chapter-nav-link">Table of Contents &rarr;</a>
     </footer>
 </article>
 

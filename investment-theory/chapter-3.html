@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -26,38 +29,300 @@
     <header class="chapter-header">
         <p class="chapter-label">Chapter III</p>
         <h1>Preferences and Investor Choice</h1>
-        <p class="chapter-deck">How investors select a single portfolio from the efficient frontier by expressing their preferences in risk-return space.</p>
+        <p class="chapter-deck">Utility functions, iso-utility curves, the safety-first criterion, the Sharpe Ratio, and Value at Risk.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>Iso-Utility Curves and Risk Aversion</h2>
-        <p><strong>Iso-utility curves</strong> are mathematical representations of investor preferences in risk-return space. More risk-averse investors demand sharply higher returns as volatility increases, while risk-tolerant investors accept lower compensation. Portfolio optimization finds the tangency point between these curves and the efficient frontier.</p>
+        <h2>Introduction</h2>
 
-        <h2>The Shortfall Criterion</h2>
-        <p>Rather than mapping complete preference structures, investors can specify a <strong>floor return</strong> below which they wish to avoid falling. The model calculates:</p>
+        <p>The previous chapter presented Markowitz's portfolio selection model while omitting a crucial element: how individual investors actually <em>choose</em> among portfolios. Although the efficient frontier represents the superior combination of assets, it contains infinitely many possibilities. The central challenge becomes selecting one optimal portfolio from this set, requiring investors to express their preferences within risk-return space.</p>
+
+        <p>Investors make decisions based on numerous factors that cannot be reduced to two dimensions. Furthermore, real-world investing allows strategy adjustments as circumstances change &mdash; a flexibility the single-period Markowitz model doesn't accommodate. This chapter explores methods for approximating investor preferences in mean-variance space, acknowledging their limitations when applied to multi-period decision-making.</p>
+
+        <h2>I. Choosing a Single Portfolio</h2>
+
+        <h3>Iso-Utility Curves and Investor Preferences</h3>
+
+        <p>One approach involves mathematical modeling of investor preferences through <strong>iso-utility curves</strong>. These curves function like topographic map contours, representing consistent utility levels. They demonstrate how investors trade off risk against return in two-dimensional space. Like elevation lines on maps, iso-utility curves are nested, with higher curves representing greater utility levels.</p>
+
+        <p>The mathematical foundation typically uses convenient functions &mdash; logarithmic or quadratic &mdash; to capture preference structures. The essential characteristic requires increasing return demands as risk exposure increases. A common form:</p>
+
         <div class="equation">
-            Shortfall Ratio = (Expected Return &minus; Floor) / Standard Deviation
+            <p class="equation-label">Utility Function</p>
+            $$U = \bar{R}_p - \frac{1}{2}\lambda\,\sigma_p^2$$
         </div>
-        <p>The portfolio maximizing this ratio has the highest probability of exceeding the floor.</p>
 
-        <h2>The Sharpe Ratio</h2>
-        <p>When the risk-free rate serves as the floor, the slope of the shortfall line is called the <strong>Sharpe Ratio</strong>. This identifies the portfolio most likely to outperform Treasury bills and has become one of the most widely used performance measures in finance.</p>
+        <p>where $\lambda$ is the investor's risk-aversion coefficient. Higher $\lambda$ means more risk aversion.</p>
 
-        <h2>Value at Risk (VaR)</h2>
-        <p>VaR estimates potential losses over a given horizon:</p>
+        <h3>Characterizing Risk Aversion</h3>
+
+        <p>Iso-utility curve curvature reveals investor risk preferences. Four investor types exhibit distinct curve patterns:</p>
+
+        <ol>
+            <li><strong>More risk-averse investors:</strong> Demand sharply higher expected returns when volatility increases (steep curves)</li>
+            <li><strong>Moderately risk-averse investors:</strong> Show balanced return-risk requirements</li>
+            <li><strong>Less risk-averse investors:</strong> Display flatter curves with moderate return increases for additional risk</li>
+            <li><strong>Risk-loving investors:</strong> Paradoxically demand <em>lower</em> expected returns while assuming greater risk to maintain utility levels</li>
+        </ol>
+
+        <div class="figure">
+            <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Iso-utility curves and optimal portfolio selection">
+                <!-- axes -->
+                <line x1="80" y1="20" x2="80" y2="390" stroke="#999" stroke-width="1"/>
+                <line x1="80" y1="390" x2="660" y2="390" stroke="#999" stroke-width="1"/>
+                <text x="370" y="430" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Standard Deviation (&sigma;)</text>
+                <text x="25" y="200" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 200)">Expected Return</text>
+                <!-- Efficient frontier -->
+                <path d="M170,270 Q135,210 170,150 Q220,75 360,55 Q500,45 600,100" fill="none" stroke="#00356b" stroke-width="2.5"/>
+                <!-- Iso-utility curves for more risk-averse investor (steep) -->
+                <path d="M120,180 Q200,170 280,230 Q340,270 400,340" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="6,3"/>
+                <path d="M120,130 Q200,120 280,175 Q340,215 400,280" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="6,3"/>
+                <path d="M120,85 Q200,75 260,120 Q320,165 380,230" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="6,3"/>
+                <!-- Tangency point for risk-averse investor -->
+                <circle cx="200" cy="175" r="7" fill="#bd5319" stroke="white" stroke-width="2"/>
+                <text x="210" y="170" font-size="11" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">P*</text>
+                <text x="210" y="184" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">(more risk-averse)</text>
+                <!-- Iso-utility curves for less risk-averse investor (flatter) -->
+                <path d="M200,200 Q300,185 400,190 Q500,200 600,230" fill="none" stroke="#2a9d2a" stroke-width="1.5" stroke-dasharray="6,3"/>
+                <path d="M200,140 Q300,125 400,125 Q500,130 600,155" fill="none" stroke="#2a9d2a" stroke-width="1.5" stroke-dasharray="6,3"/>
+                <path d="M200,80 Q300,68 400,65 Q500,70 600,90" fill="none" stroke="#2a9d2a" stroke-width="1.5" stroke-dasharray="6,3"/>
+                <!-- Tangency for less risk-averse -->
+                <circle cx="380" cy="60" r="7" fill="#2a9d2a" stroke="white" stroke-width="2"/>
+                <text x="390" y="55" font-size="11" fill="#2a9d2a" font-weight="600" font-family="Inter, sans-serif">P*</text>
+                <text x="390" y="70" font-size="10" fill="#2a9d2a" font-family="Inter, sans-serif">(less risk-averse)</text>
+                <!-- Labels -->
+                <text x="410" y="340" font-size="11" fill="#bd5319" font-family="Inter, sans-serif">Steep iso-utility curves</text>
+                <text x="610" y="230" font-size="11" fill="#2a9d2a" font-family="Inter, sans-serif">Flat curves</text>
+                <!-- Arrow annotation -->
+                <text x="120" y="50" font-size="11" fill="#666" font-family="Inter, sans-serif">Higher utility &uarr;</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 3.1.</strong> Iso-utility curves and optimal portfolio selection. More risk-averse investors (steep curves, red) select portfolios nearer the minimum-variance end. Less risk-averse investors (flatter curves, green) select portfolios further along the frontier, accepting more risk for higher expected return.</p>
+        </div>
+
+        <h3>Finding Optimal Portfolios</h3>
+
+        <p>The optimization procedure identifies where the efficient frontier is <strong>tangent</strong> to the highest achievable iso-utility curve for that investor. This tangency point represents the unique portfolio providing maximum utility for risk-averse individuals.</p>
+
+        <h3>Practical Limitations</h3>
+
+        <p>The methodology's significant drawback involves determining individual or institutional risk aversion. Asset allocators must map client preferences &mdash; analogous to mapping unknown terrain &mdash; without certainty regarding consistency over time. Preferences may shift unpredictably between periods.</p>
+
+        <h2>II. Another Approach: Preferences about Distributions</h2>
+
+        <h3>The Shortfall Criterion</h3>
+
+        <p>An alternative strategy focuses on return distribution characteristics, specifically probability mass in lower-tail regions. This <strong>"shortfall" criterion</strong> offers simplicity by avoiding complete preference mapping. Instead, investors specify a <em>floor return</em> &mdash; a minimum threshold they want to avoid breaching. The criterion then selects the efficient frontier portfolio minimizing the probability of returns dropping below that floor.</p>
+
+        <h3>Mathematical Expression</h3>
+
+        <p>For a specified floor return equal to the riskless rate $R_f$, calculate this ratio for each frontier portfolio:</p>
+
         <div class="equation">
-            R<sub>VaR</sub> = R<sub>p</sub> &minus; T &times; STD<sub>p</sub>
+            <p class="equation-label">Shortfall Ratio</p>
+            $$S = \frac{\bar{R}_p - R_f}{\sigma_p}$$
         </div>
-        <p>where T represents the t-statistic for a specified confidence interval. For example, a $100 million pension portfolio might have a monthly VaR of $5.4 million at the 95% confidence level.</p>
 
-        <h2>Practical Limitations</h2>
-        <p>Utility function estimation is theoretically sound but practically difficult. Safety-first methodology offers a more intuitive alternative by focusing on specific probability thresholds rather than complete preference mapping.</p>
+        <p>The shortfall ratio resembles a $t$-statistic; higher values indicate greater probability of exceeding the floor. The portfolio maximizing this value has the highest probability of surpassing $R_f$.</p>
+
+        <h3>Graphical Solution</h3>
+
+        <p>The process can be solved graphically without complex calculations:</p>
+        <ol>
+            <li>Identify the floor return level on the vertical axis</li>
+            <li>Draw a line from this point tangent to the efficient frontier</li>
+            <li>This tangency point minimizes the probability of returns falling below the specified floor</li>
+        </ol>
+
+        <h3>The Sharpe Ratio</h3>
+
+        <p>When $R_f$ (the riskless rate) serves as the floor, the tangency line's slope equals the <strong>Sharpe Ratio</strong>:</p>
+
+        <div class="equation">
+            <p class="equation-label">Sharpe Ratio</p>
+            $$\text{Sharpe Ratio} = \frac{\bar{R}_p - R_f}{\sigma_p}$$
+        </div>
+
+        <p>The portfolio maximizing this ratio possesses special significance: it minimizes the probability of underperforming Treasury bills economy-wide. Equivalently, it maximizes the probability of delivering an equity premium &mdash; the single best portfolio for beating T-bills if forced to choose one.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: The Sharpe Ratio</h4>
+            <p>The Sharpe Ratio measures return per unit of risk relative to the risk-free rate. The portfolio maximizing it is the <strong>tangency portfolio</strong> &mdash; the same portfolio $M$ that defines the Capital Market Line. It is the single best risky portfolio for any investor who can borrow or lend at the risk-free rate.</p>
+        </div>
+
+        <h3>Flexibility of Safety-First</h3>
+
+        <p>The "safety-first" framework accommodates multiple approaches:</p>
+        <ol>
+            <li><strong>Maximizing probability of exceeding a floor:</strong> Find the tangency point as described above</li>
+            <li><strong>Testing feasibility:</strong> Specify both a desired floor and probability; determine whether portfolios meeting these criteria exist</li>
+            <li><strong>Finding sustainable floors:</strong> Pose the inverse question &mdash; "Given my acceptable probability, what floor can I reliably achieve?"</li>
+        </ol>
+
+        <p>For the third approach, set the slope equal to appropriate $t$-statistic values:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Confidence Level</th>
+                    <th>Required Slope ($t$-value)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>90%</td>
+                    <td>1.28</td>
+                </tr>
+                <tr>
+                    <td>95%</td>
+                    <td>1.644</td>
+                </tr>
+                <tr>
+                    <td>99%</td>
+                    <td>2.32</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Once the slope is chosen, move the line vertically until tangent to the efficient frontier. This yields both a portfolio choice and its corresponding floor return.</p>
+
+        <h2>III. A Note on Value at Risk</h2>
+
+        <h3>Definition and Purpose</h3>
+
+        <p><strong>Value-at-Risk (VaR)</strong> measures potential portfolio losses over specified time horizons. It has become increasingly prevalent in banking (for capital requirements calculation) and investment management (for risk control). VaR provides a probability-based loss estimate given a particular confidence interval and time period.</p>
+
+        <h3>Calculation Method</h3>
+
+        <p>Assuming normally distributed portfolio returns, VaR calculation requires the portfolio expected return $\bar{R}_p$, portfolio standard deviation $\sigma_p$, and the $t$-statistic $T$ for the chosen confidence interval:</p>
+
+        <div class="equation">
+            <p class="equation-label">VaR Return Threshold</p>
+            $$R_{\text{VaR}} = \bar{R}_p - T \cdot \sigma_p$$
+        </div>
+
+        <div class="equation">
+            <p class="equation-label">Value at Risk (dollars)</p>
+            $$\text{VaR} = |R_{\text{VaR}}| \times \text{Total Portfolio Value}$$
+        </div>
+
+        <div class="figure">
+            <svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Value at Risk diagram">
+                <!-- axes -->
+                <line x1="80" y1="280" x2="620" y2="280" stroke="#999" stroke-width="1"/>
+                <line x1="80" y1="20" x2="80" y2="280" stroke="#999" stroke-width="1"/>
+                <text x="350" y="320" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Portfolio Return</text>
+                <text x="25" y="150" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 150)">Probability</text>
+                <!-- Normal distribution curve -->
+                <path d="M100,278 Q140,275 180,268 Q220,250 250,220 Q290,160 320,100 Q340,55 350,40 Q360,55 380,100 Q410,160 450,220 Q480,250 520,268 Q560,275 600,278" fill="#00356b" fill-opacity="0.08" stroke="#00356b" stroke-width="2"/>
+                <!-- VaR shaded region (left tail) -->
+                <path d="M100,278 Q140,275 180,268 Q200,260 215,250 L215,280 L100,280 Z" fill="#bd5319" fill-opacity="0.35" stroke="none"/>
+                <!-- VaR line -->
+                <line x1="215" y1="250" x2="215" y2="295" stroke="#bd5319" stroke-width="2"/>
+                <text x="215" y="308" text-anchor="middle" font-size="11" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">R<tspan font-size="8" dy="3">VaR</tspan></text>
+                <!-- Mean line -->
+                <line x1="350" y1="40" x2="350" y2="295" stroke="#00356b" stroke-width="1" stroke-dasharray="4,3"/>
+                <text x="350" y="308" text-anchor="middle" font-size="11" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">Mean</text>
+                <!-- Arrow showing T*sigma -->
+                <line x1="220" y1="270" x2="345" y2="270" stroke="#666" stroke-width="1"/>
+                <text x="283" y="265" text-anchor="middle" font-size="11" fill="#666" font-family="Inter, sans-serif">T x &sigma;<tspan font-size="8" dy="2">p</tspan></text>
+                <!-- 5% label -->
+                <text x="150" y="268" font-size="12" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">5%</text>
+                <!-- 95% label -->
+                <text x="430" y="200" font-size="12" fill="#00356b" font-family="Inter, sans-serif">95% of outcomes</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 3.2.</strong> Value at Risk (VaR) at the 95% confidence level. The shaded left tail represents the 5% probability of losses exceeding the VaR threshold. $R_{\text{VaR}} = \bar{R}_p - T \cdot \sigma_p$.</p>
+        </div>
+
+        <h3>Practical Example</h3>
+
+        <p>Consider a $100 million pension portfolio with 60% stocks and 40% bonds, analyzed at the 95% confidence interval over one month.</p>
+
+        <p><strong>Assumptions:</strong></p>
+        <ul>
+            <li>Monthly expected stock return: 1%</li>
+            <li>Monthly expected bond return: 0.7%</li>
+            <li>Stock standard deviation: 5%</li>
+            <li>Bond standard deviation: 3%</li>
+            <li>Stock-bond correlation: 0.5</li>
+            <li>95% confidence $t$-statistic: 1.64</li>
+        </ul>
+
+        <p><strong>Portfolio Expected Return:</strong></p>
+        <div class="equation">
+            $$\bar{R}_p = (0.6)(0.01) + (0.4)(0.007) = 0.0088 \;(0.88\%)$$
+        </div>
+
+        <p><strong>Portfolio Standard Deviation:</strong></p>
+        <div class="equation">
+            $$\sigma_p = \sqrt{(0.6)^2(0.05)^2 + (0.4)^2(0.03)^2 + 2(0.5)(0.6)(0.4)(0.05)(0.03)} = 0.038 \;(3.8\%)$$
+        </div>
+
+        <p><strong>Value-at-Risk:</strong></p>
+        <div class="equation">
+            $$R_{\text{VaR}} = 0.0088 - 1.64 \times 0.038 = -0.054 \;(-5.4\%)$$
+            $$\text{Monthly VaR} = \$100{,}000{,}000 \times 0.054 = \$5{,}400{,}000$$
+        </div>
+
+        <p>The portfolio is expected to experience losses of at least $5.4 million approximately one month out of every twenty, though this calculation does not suggest the remaining $94.6 million escapes risk entirely.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: Value at Risk</h4>
+            <p>VaR expresses portfolio risk as a dollar amount: "With X% confidence, we will not lose more than $Y over the next period." It is a direct extension of the safety-first framework and requires the same normality assumptions. VaR is widely used in banking regulation and institutional risk management.</p>
+        </div>
+
+        <h3>Key Assumptions and Limitations</h3>
+        <ol>
+            <li><strong>Normal distribution of returns:</strong> This assumption frequently breaks down when portfolios contain derivatives, producing fat-tailed distributions</li>
+            <li><strong>Historical representativeness:</strong> Estimated distributions and correlations must accurately reflect future conditions; estimation error increases significantly with numerous asset classes</li>
+            <li><strong>No return autocorrelation:</strong> The model assumes independence across periods; positive trends cause losses to compound across multiple periods</li>
+        </ol>
+
+        <h2>IV. Conclusion</h2>
+
+        <p>Creating efficient frontiers from historical or projected statistics involves inherent uncertainty due to statistical estimation errors. However, this uncertainty is minor compared to the difficulty of translating investor preferences into mean-standard deviation space. Economic knowledge about preferences remains limited, particularly within single-period frameworks. While economists understand that people prefer more to less and typically avoid uncompensated risk, preferences beyond these basics involve considerable speculation. Consistency across time periods remains questionable.</p>
+
+        <p>The theoretical solution requires specifying an investor utility function, deriving indifference curves, and locating the highest attainable utility level within the feasible set &mdash; typically a tangency point. Practical implementation proves difficult: estimating utility functions and subsequently explaining them to investors presents major obstacles.</p>
+
+        <p>The <strong>"safety-first" approach</strong> offers a practical alternative beginning with a straightforward preference question: "What is your floor return?" Once specified, portfolio selection follows logically. This methodology allows identifying the probability of exceeding the selected floor by observing the tangency line's slope. The framework further permits portfolio identification by simultaneously specifying both a floor and probability.</p>
+
+        <p><strong>Value-at-Risk</strong> represents an increasingly popular risk measurement and control method, functioning as a straightforward extension of safety-first principles when portfolio assets display normally distributed returns.</p>
+
+        <h2>Epilogue: Simplification Through Risk-Free Securities</h2>
+
+        <p>Introducing a genuine risk-free security dramatically simplifies portfolio decisions for all investors. The optimal choice reduces to selecting proportions of the riskless asset and a single risky portfolio ($T$) &mdash; the tangency portfolio:</p>
+
+        <ul>
+            <li><strong>More risk-averse (MRA) investors:</strong> Hold combinations of the tangency portfolio and Treasury bills</li>
+            <li><strong>Less risk-averse (LRA) investors:</strong> Borrow at the riskless rate and invest proceeds entirely in the tangency portfolio</li>
+        </ul>
+
+        <p>If practitioners could definitively identify the tangency portfolio's composition, a single product could serve every investor's needs by simply varying proportions of the riskless asset and this portfolio.</p>
+
+        <blockquote>What constitutes portfolio T? The answer is provided in the subsequent chapter.</blockquote>
+
+        <div class="note">
+            <strong>Further reading:</strong> For utility function approaches to risk, see Campbell Harvey's resource on Optimal Portfolios. For a comprehensive hypertext investment decision-making resource, see William Sharpe's <em>Macro-Investment Analysis</em>.
+        </div>
+
+        <div class="note">
+            <strong>Interactive Tool:</strong> Explore these concepts interactively using the
+            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        </div>
 
     </div>
 
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
+    </div>
+
     <footer class="chapter-footer">
-        <a href="chapter-2.html" class="chapter-nav-link">&larr; Chapter II: Efficient Frontier</a>
+        <a href="chapter-2.html" class="chapter-nav-link">&larr; Chapter II: The Efficient Frontier</a>
         <a href="chapter-4.html" class="chapter-nav-link">Chapter IV: Portfolio Approach to Risk &rarr;</a>
     </footer>
 </article>

@@ -1,0 +1,101 @@
+# Chapter IV: The Portfolio Approach to Risk
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+### I. The Quest For the Tangency Portfolio
+
+In the 1960's financial researchers working with Harry Markowitz's mean-variance model of portfolio construction made a remarkable discovery that would change investment theory and practice in the United States and the world. The discovery was based upon an idealized model of the markets, in which all the world's risky assets were included in the investor opportunity set and one riskless asset existed, allowing both more and less risk averse investors to find their optimal portfolio along the tangency ray.
+
+[Image reference: twoinv.1-1.gif showing two investor portfolios]
+
+Assuming that investors could borrow and lend at the riskless rate, this simple diagram suggested that everyone in the world would want to hold precisely the same portfolio of risky assets! That portfolio, identified at the point of tangency, represents some portfolio mix of the world's assets. Identify it, and the world will beat a path to your door. The tangency portfolio soon became the centerpiece of a classical model in finance. The associated argument about investor choice is called the "Two Fund Separation Theorem" because it argues that all investors will make their choice between two funds: the risky tangency portfolio and the riskless "fund".
+
+Identifying this tangency portfolio is harder than it looks. Recall that a major difficulty in estimating an efficient frontier accurately is that errors grow as the number of assets increase. You cannot just dump all the means, std's and correlations for the world's assets into an optimizer and turn the crank. If you did, you would get a nonsensical answer. Sadly enough, empirical research was not the answer, due to statistical estimation problems.
+
+The answer to the question came from theory. Financial economist William Sharpe is one of the creators of the "Capital Asset Pricing Model," a theory which began as a quest to identify the tangency portfolio. Since that time, it has developed into much, much more. In fact, the CAPM, as it is called, is the predominant model used for estimating equity risk and return.
+
+---
+
+### II. The Capital Asset Pricing Model
+
+Because the CAPM is a theory, we must assume for argument that ...
+
+1. All assets in the world are traded
+2. All assets are infinitely divisible
+3. All investors in the world collectively hold all assets
+4. For every borrower, there is a lender
+5. There is a riskless security in the world
+6. All investors borrow and lend at the riskless rate
+7. Everyone agrees on the inputs to the Mean-STD picture
+8. Preferences are well-described by simple utility functions
+9. Security distributions are normal, or at least well described by two parameters
+10. There are only two periods of time in our world
+
+This is a long list of requirements, and together they describe the capitalist's ideal world. Everything may be bought and sold in perfectly liquid fractional amounts -- even human capital! There is a perfect, safe haven for risk-averse investors i.e. the riskless asset. This means that everyone is an equally good credit risk! No one has any informational advantage in the CAPM world. Everyone has already generously shared all of their knowledge about the future risk and return of the securities, so no one disagrees about expected returns. All customer preferences are an open book -- risk attitudes are well described by a simple utility function. There is no mystery about the shape of the future return distributions. Last but not least, decisions are not complicated by the ability to change your mind through time. You invest irrevocably at one point, and reap the rewards of your investment in the next period -- at which time you and the investment problem cease to exist. Terminal wealth is measured at that time. I.e. he who dies with the most toys wins! The technical name for this setting is "A frictionless one-period, multi-asset economy with no asymmetric information."
+
+The CAPM argues that these assumptions imply that the tangency portfolio will be a value-weighted mix of all the assets in the world.
+
+The proof is actually an elegant equilibrium argument. It begins with the assertion that all risky assets in the world may be regarded as "slices" of a global wealth portfolio. We may graphically represent this as a large, square "cake," sliced horizontally in varying widths. The widths are proportional to the size of each company. Size in this case is determined by the number of shares times the price per share.
+
+[Image reference: equan_4_1.gif showing cake sliced horizontally]
+
+Here is the equilibrium part of the argument: Assume that all investors in the world collectively hold all the assets in the world, and that, for every borrower at the riskless rate there is a lender. This last condition is needed so that we can claim that the positions in the riskless asset "net-out" across all investors.
+
+From the two-fund separation picture above, we already know that all investors will hold the same portfolio of risky assets, i.e. that the weights for each risky asset j will be the same across all investor portfolios. This knowledge allows us to cut the cake in another direction: vertically. As with companies, we vary the width of the slice according to the wealth of the individual.
+
+[Image reference: equan_4_2.gif showing cake sliced vertically]
+
+Notice that each vertical "slice" is a portfolio, and the weights are given by the relative asset values of the companies. We can calculate what the weights are exactly:
+
+weight on asset i = [price i x shares i] / world wealth
+
+Each investor's portfolio weight is exactly proportional to the percentage that the firm represents of the world's assets. There you have it: the tangency portfolio is a capital-weighted portfolio of all the world's assets.
+
+---
+
+### III. Investment Implications
+
+The CAPM tells us that all investors will want to hold "capital-weighted" portfolios of global wealth. In the 1960's when the CAPM was developed, this solution looked a lot like a portfolio that was already familiar to many people: the S&P 500. The S&P 500 is a capital-weighted portfolio of most of the U.S.'s largest stocks. At that time, the U.S. was the world's largest market, and thus, it seemed to be a fair approximation to the "cake." Amazingly, the answer was right under our noses -- the tangency portfolio must be something like the S&P 500! Not co-incidentally, widespread use of index funds began about this time. Index funds are mutual funds and/or money managers who simply match the performance of the S&P. Many institutions and individuals discovered the virtues of indexing. Trading costs were minimal in this strategy: capital-weighted portfolios automatically adjust to changes in value when stocks grow, so that investors need not change their weights all the time -- it is a "buy-and-hold" portfolio. There was also little evidence at the time that active portfolio management beat the S&P index -- so why not?
+
+---
+
+### IV. Is the CAPM true?
+
+Any theory is only strictly valid if its assumptions are true. There are a few nettlesome issues that call into question the validity of the CAPM:
+
+* Is the world in equilibrium?
+* Do you hold the value-weighted world wealth portfolio?
+* Can you even come close?
+* What about "human capital?"
+
+While these problems may violate the letter of the law, perhaps the spirit of the CAPM is correct. That is, the theory may me a good prescription for investment policy. It tells investors to choose a very reasonable, diversified and low cost portfolio. It also moves them into global assets, i.e. towards investments that are not too correlated with their personal human capital. In fact, even if the CAPM is approximately correct, it will have a major impact upon how investors regard individual securities. Why?
+
+---
+
+### V. Portfolio Risk
+
+Suppose you were a CAPM-style investor holding the world wealth portfolio, and someone offered you another stock to invest in. What rate of return would you demand to hold this stock? The answer before the CAPM might have depended upon the standard deviation of a stock's returns. After the CAPM, it is clear that you care about the effect of this stock on the TANGENCY portfolio. The diagram shows that the introduction of asset A into the portfolio will move the tangency portfolio from T(1) to T(2).
+
+[Image reference: tmove.1.gif showing tangency portfolio movement]
+
+The extent of this movement determines the price you are willing to pay (alternately, the return you demand) for holding asset A. The lower the average correlation A has with the rest of the assets in the portfolio, the more the frontier, and hence T, will move to the left. This is good news for the investor -- if A moves your portfolio left, you will demand lower expected return because it improves your portfolio risk-return profile. This is why the CAPM is called the "Capital Asset Pricing Model." It explains relative security prices in terms of a security's contribution to the risk of the whole portfolio, not its individual standard deviation.
+
+---
+
+### VI. Conclusion
+
+The CAPM is a theoretical solution to the identity of the tangency portfolio. It uses some ideal assumptions about the economy to argue that the capital weighted world wealth portfolio is the tangency portfolio, and that every investor will hold this same portfolio of risky assets. Even though it is clear they do not, the CAPM is still a very useful tool. It has been taken as a prescription for the investment portfolio, as well as a tool for estimating an expected rate of return. In the next chapter, we will take a look at the second of these two uses.
+
+---
+
+Navigation Bar
+Previous Chapter | Next Chapter | Will's Home Page | MPPM 540 Main Menu | Table of Contents | Mail Will
+
+![SOM Logo](https://spinup-000d1a-wp-offload-media.s3.amazonaws.com/faculty/wp-content/uploads/sites/67/2020/02/som-logo38.gif)
+
+© William N. Goetzmann
+YALE School of Management

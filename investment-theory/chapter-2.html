@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body class="chapter-page">
 
@@ -26,36 +29,217 @@
     <header class="chapter-header">
         <p class="chapter-label">Chapter II</p>
         <h1>The Geography of the Efficient Frontier</h1>
-        <p class="chapter-deck">How portfolio construction and diversification create optimal investment opportunities through Modern Portfolio Theory.</p>
+        <p class="chapter-deck">Portfolio diversification, the Markowitz model, and the Capital Market Line.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>Markowitz's Revolutionary Insight</h2>
-        <p>Harry Markowitz transformed investment analysis by proposing that the relevant information about securities can be summarized by three measures: <strong>the mean return</strong>, <strong>the standard deviation of returns</strong>, and <strong>the correlation with other assets' returns</strong>.</p>
+        <h2>I. The Risk and Return of Securities</h2>
 
-        <h2>Risk-Return Characteristics</h2>
-        <p>Using historical data (1970&ndash;3/1995), six asset classes can be plotted by annual standard deviation and average returns: small stocks (highest return, highest risk), S&amp;P stocks, corporate bonds, government bonds, T-Bills (lowest risk), and MSCI international stocks. No single asset dominates for all investors.</p>
+        <p>Markowitz's fundamental contribution was recognizing that three measures summarize all the information needed about securities for portfolio selection: the <strong>mean return</strong> (arithmetic mean), the <strong>standard deviation</strong> of returns, and the <strong>correlation</strong> with other assets' returns.</p>
 
-        <h2>Correlation and Diversification</h2>
-        <p>The portfolio standard deviation depends critically on the <strong>correlation</strong> between assets:</p>
+        <p>Using historical data from 1970 through March 1995, a comparative analysis of six asset classes demonstrates the challenge investors face. Asset classes examined include Small Stocks, S&amp;P stocks, Corporate and Government Bonds, T-Bills, and the MSCI World Portfolio.</p>
+
+        <div class="note">
+            <strong>Data note:</strong> The original text used Ibbotson Associates data from 1970 through March 1995. Modern data series extending through recent years confirm the same fundamental risk-return relationships across asset classes.
+        </div>
+
+        <blockquote>Small stocks provide the highest return, but with the highest risk.</blockquote>
+
+        <p>No single asset class dominates all others. T-Bills appeal to risk-averse investors, while small stocks attract those unconcerned with volatility. No universal "best" security exists for all investors.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept</h4>
+            <p>No single asset class is universally "best." The optimal choice depends on the investor's willingness to bear risk &mdash; which leads naturally to the idea of <strong>combining</strong> assets into portfolios.</p>
+        </div>
+
+        <h2>II. Portfolios of Assets</h2>
+
+        <p>Rather than selecting one asset, investors typically construct diversified portfolios. The <strong>correlation coefficient</strong> &mdash; ranging from $-1$ to $+1$ &mdash; measures co-movement between stock returns:</p>
+
+        <div class="equation">
+            <p class="equation-label">Correlation Coefficient</p>
+            $$\rho_{AB} = \frac{\sigma_{AB}}{\sigma_A \cdot \sigma_B}$$
+        </div>
+
+        <p>where $\sigma_{AB}$ represents the covariance between securities A and B.</p>
+
+        <p>The portfolio standard deviation for two assets is:</p>
+
+        <div class="equation">
+            <p class="equation-label">Two-Asset Portfolio Standard Deviation</p>
+            $$\sigma_p = \sqrt{w_A^2 \sigma_A^2 + w_B^2 \sigma_B^2 + 2\, w_A\, w_B\, \rho_{AB}\, \sigma_A\, \sigma_B}$$
+        </div>
+
+        <p>And the portfolio mean return is simply the weighted average:</p>
+
+        <div class="equation">
+            <p class="equation-label">Portfolio Expected Return</p>
+            $$\bar{R}_p = w_A \bar{R}_A + w_B \bar{R}_B$$
+        </div>
+
+        <h3>Correlation Scenarios</h3>
+
+        <p>Consider Security A with $\bar{R}_A = 10\%$, $\sigma_A = 15\%$ and Security B with $\bar{R}_B = 20\%$, $\sigma_B = 30\%$. A portfolio of 80% A and 20% B yields very different risk depending on correlation:</p>
+
+        <p><strong>When $\rho = 0$ (uncorrelated):</strong></p>
+        <div class="equation">
+            $$\sigma_p = \sqrt{(0.8)^2(0.15)^2 + (0.2)^2(0.30)^2 + 0} = 13.4\%$$
+        </div>
+        <p>Adding the riskier security actually <em>reduces</em> portfolio volatility from 15% to 13.4% &mdash; demonstrating the power of diversification.</p>
+
+        <p><strong>When $\rho = +1$ (perfect positive correlation):</strong></p>
+        <div class="equation">
+            $$\sigma_p = w_A \sigma_A + w_B \sigma_B = (0.8)(0.15) + (0.2)(0.30) = 18\%$$
+        </div>
+        <p>No diversification benefit exists since assets move in lockstep.</p>
+
+        <p><strong>When $\rho = -1$ (perfect negative correlation):</strong></p>
+        <p>A mixture of 66.5% Security A and 33.5% Security B produces approximately zero standard deviation &mdash; a nearly perfect hedge. This scenario rarely occurs in practice except with offsetting long and short positions.</p>
+
+        <div class="figure">
+            <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Effect of correlation on portfolio risk">
+                <defs>
+                    <marker id="arrowhead2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                        <polygon points="0 0, 8 3, 0 6" fill="#666"/>
+                    </marker>
+                </defs>
+                <!-- axes -->
+                <line x1="80" y1="20" x2="80" y2="380" stroke="#999" stroke-width="1"/>
+                <line x1="80" y1="380" x2="660" y2="380" stroke="#999" stroke-width="1"/>
+                <text x="370" y="420" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Standard Deviation (&sigma;)</text>
+                <text x="25" y="200" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 200)">Expected Return</text>
+                <!-- Point A -->
+                <circle cx="230" cy="280" r="6" fill="#00356b"/>
+                <text x="218" y="300" font-size="12" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">A</text>
+                <text x="218" y="315" font-size="10" fill="#666" font-family="Inter, sans-serif">10%, 15%</text>
+                <!-- Point B -->
+                <circle cx="480" cy="100" r="6" fill="#bd5319"/>
+                <text x="490" y="95" font-size="12" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">B</text>
+                <text x="490" y="110" font-size="10" fill="#666" font-family="Inter, sans-serif">20%, 30%</text>
+                <!-- rho = +1 (straight line) -->
+                <line x1="230" y1="280" x2="480" y2="100" stroke="#aaa" stroke-width="2" stroke-dasharray="8,4"/>
+                <text x="390" y="165" font-size="11" fill="#888" font-family="Inter, sans-serif">&rho; = +1</text>
+                <!-- rho = 0 (curved left) -->
+                <path d="M230,280 Q140,200 250,150 Q350,110 480,100" fill="none" stroke="#00356b" stroke-width="2.5"/>
+                <text x="148" y="185" font-size="11" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">&rho; = 0</text>
+                <!-- rho = -1 (kinked to y-axis) -->
+                <path d="M230,280 L95,160 L480,100" fill="none" stroke="#bd5319" stroke-width="2.5"/>
+                <text x="95" y="145" font-size="11" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">&rho; = &minus;1</text>
+                <!-- zero-risk point -->
+                <circle cx="95" cy="160" r="5" fill="#bd5319" stroke="white" stroke-width="2"/>
+                <text x="100" y="175" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Zero risk!</text>
+            </svg>
+            <p class="figure-caption"><strong>Figure 2.1.</strong> Effect of correlation on portfolio risk for two assets. Lower correlation bends the opportunity set leftward, creating diversification benefits. At $\rho = -1$, risk can be eliminated entirely.</p>
+        </div>
+
+        <div class="key-concept">
+            <h4>Key Concept: Diversification</h4>
+            <p>When correlation is less than +1, combining assets reduces portfolio risk below the weighted average of individual risks. The lower the correlation, the greater the diversification benefit. This is the mathematical foundation of the old adage: "don't put all your eggs in one basket."</p>
+        </div>
+
+        <div class="figure">
+            <img src="figures/correlation_matrix.svg" alt="Asset class correlation matrix heatmap" style="width:100%; max-width:620px;">
+            <p class="figure-caption"><strong>Figure 2.1b.</strong> Correlation matrix for major U.S. asset classes, computed from SBBI data. Lower correlations (cooler colors) indicate greater diversification potential when assets are combined in a portfolio.</p>
+        </div>
+
+        <h2>III. More Securities and More Diversification</h2>
+
+        <p>Examining portfolios with multiple securities &mdash; all having zero correlation and identical risk &mdash; reveals significant diversification benefits. An equally-weighted portfolio progressively improves as more securities are added.</p>
+
+        <div class="figure">
+            <img src="figures/diversification_benefit.svg" alt="Diversification benefit: portfolio risk vs number of stocks" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 2.1c.</strong> The diversification curve: portfolio standard deviation falls rapidly as the number of equally-weighted, uncorrelated holdings increases, but flattens after roughly 25&ndash;30 securities.</p>
+        </div>
+
+        <blockquote>After 30 stocks, diversification is mostly achieved. There are enormous gains to diversification beyond one or two stocks.</blockquote>
+
+        <p>When allowing variable portfolio weights rather than equal weighting, benefits increase further. Calculating standard deviations across all possible asset combinations reveals a dominant set: the <strong>efficient frontier</strong>.</p>
+
+        <p>The efficient frontier represents portfolios offering the <em>maximum return for each risk level</em> and <em>minimum risk for each return level</em>. The frontier extends from the maximum return portfolio (typically a single asset) to the minimum variance portfolio.</p>
+
+        <p><strong>Geographic perspective:</strong> The feasible set encompasses all possible asset combinations. The efficient frontier forms its northwest boundary &mdash; no portfolios exist beyond this edge.</p>
+
+        <div class="figure">
+            <img src="figures/efficient_frontier.svg" alt="Markowitz efficient frontier computed from SBBI data" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 2.2.</strong> The Markowitz efficient frontier, computed from SBBI asset class data. The bold curve represents the efficient frontier &mdash; no portfolio exists to the northwest. Interior points are dominated: for any given risk level, a higher-returning portfolio exists on the frontier.</p>
+        </div>
+
+        <h2>IV. Markowitz and the First Efficient Frontier</h2>
+
+        <p>Harry Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis &mdash; a convention later reversed.</p>
+
+        <div class="note">
+            <strong>Historical note:</strong> Markowitz's 1952 paper and 1959 monograph laid the groundwork for all of modern portfolio theory. He shared the 1990 Nobel Prize in Economics with William Sharpe and Merton Miller for this contribution.
+        </div>
+
+        <h2>V. An Actual Efficient Frontier Today</h2>
+
+        <p>Modern efficient frontiers, constructed using historical data for U.S. and international assets via optimization programs, maintain Markowitz's foundational approach.</p>
+
+        <p>Essential frontier characteristics:</p>
         <ul>
-            <li><strong>Zero correlation</strong>: A portfolio mixing 80% Security A with 20% Security B reduces volatility despite B being riskier individually</li>
-            <li><strong>Perfect correlation (+1)</strong>: No diversification benefit; portfolio risk is a linear combination</li>
-            <li><strong>Negative correlation (&minus;1)</strong>: Extreme hedging potential, nearly eliminating risk</li>
+            <li>A <strong>minimum variance portfolio</strong> exists at the frontier's lower-risk boundary</li>
+            <li>The <strong>maximum return portfolio</strong> consists of a single asset</li>
+            <li>Critical transition points exist where the asset composition changes &mdash; where securities enter or exit the optimal combination</li>
+            <li>No assets appear northwest of the frontier; this boundary defines the feasible region's edge</li>
         </ul>
-        <p>A key discovery: after approximately <strong>30 stocks</strong> with equal weights and zero correlation, diversification benefits plateau significantly.</p>
 
-        <h2>The Efficient Frontier</h2>
-        <p>The efficient frontier is the set of portfolios offering maximum return for each risk level, or equivalently, minimum risk for each return level. It extends from the maximum-return portfolio to the minimum-variance portfolio, forming the boundary of feasible asset combinations.</p>
-        <p>Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Yale University Press, 1959).</p>
+        <h2>VI. The Efficient Frontier with the Riskless Asset</h2>
 
-        <h2>The Capital Market Line</h2>
-        <p>When combining risky assets with risk-free Treasury Bills, the new efficient frontier becomes a ray extending from the risk-free rate, tangentially touching the risky-asset frontier at point <strong>M</strong>. Portfolios between R<sub>f</sub> and M combine T-Bills with risky portfolio M; portfolios beyond M involve borrowing at the risk-free rate to leverage investment in M.</p>
+        <p>Treasury Bills typically represent the riskless asset, with return designated $R_f$, the risk-free rate. Since riskless assets carry zero correlation with other securities, they provide no diversification per se but enable low-risk portfolio construction.</p>
 
-        <h2>Limitations</h2>
-        <p>The model's critical weakness is its reliance on accurate statistical inputs. Historical mean returns may poorly predict future performance, and correlation estimation errors multiply with more securities. The model works best for <strong>asset allocation across broad classes</strong> rather than individual stock selection.</p>
+        <p>When combining all risky economy assets with the riskless asset, the efficient frontier transforms into a straight line &mdash; the <strong>Capital Market Line (CML)</strong> &mdash; extending from $R_f$ to tangency point $M$ on the risky-asset frontier, and beyond.</p>
 
+        <div class="equation">
+            <p class="equation-label">Capital Market Line</p>
+            $$\bar{R}_p = R_f + \left(\frac{\bar{R}_M - R_f}{\sigma_M}\right) \sigma_p$$
+        </div>
+
+        <p>Portfolios between $R_f$ and $M$ combine Treasury bills with portfolio $M$. Portfolios extending beyond $M$ are achieved by <strong>borrowing</strong> at $R_f$ and investing proceeds into $M$ &mdash; a leveraged position.</p>
+
+        <div class="figure">
+            <img src="figures/capital_market_line.svg" alt="Capital Market Line through the tangency portfolio" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 2.3.</strong> The Capital Market Line (CML), computed from SBBI data. The tangency portfolio $M$ is the optimal risky portfolio. All investors choose points along the CML by mixing $M$ with the risk-free asset (lending) or borrowing to invest more in $M$ (leveraging).</p>
+        </div>
+
+        <div class="key-concept">
+            <h4>Key Concept: Capital Market Line</h4>
+            <p>When a riskless asset exists, the efficient frontier becomes a straight line (the CML) from $R_f$ through the tangency portfolio $M$. Every investor &mdash; regardless of risk preferences &mdash; holds the <em>same</em> portfolio of risky assets ($M$), differing only in how much they allocate to the riskless asset. This is the foundation of the <strong>Two Fund Separation Theorem</strong>.</p>
+        </div>
+
+        <h2>VII. Summary</h2>
+
+        <blockquote>All the information needed to choose the best portfolio for any given level of risk is contained in three simple statistics: mean, standard deviation and correlation.</blockquote>
+
+        <p>Markowitz fundamentally revolutionized portfolio selection through elegant simplicity. His approach requires no fundamental firm analysis &mdash; dividend policy, earnings, market share, management quality &mdash; eliminating information typically central to Wall Street analysis.</p>
+
+        <p>Today, virtually all major portfolio managers employ optimization programs, though not always following exact recommendations. These tools evaluate fundamental risk-return trade-offs.</p>
+
+        <h3>Practical Limitations</h3>
+        <ul>
+            <li>Historical mean returns may poorly predict future returns</li>
+            <li>As security count increases, correlation estimation becomes increasingly challenging and error-prone</li>
+            <li>With over 1,500 NYSE stocks, some correlations will be substantially inaccurate</li>
+            <li>The model proves sensitive to input errors</li>
+        </ul>
+
+        <p><strong>Optimal application:</strong> Markowitz optimization performs best with asset class allocation decisions, where correlation counts remain low and summary statistics are reliably estimated.</p>
+
+        <div class="note">
+            <strong>Interactive Tool:</strong> Explore these concepts interactively using the
+            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        </div>
+
+    </div>
+
+    
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
     </div>
 
     <footer class="chapter-footer">

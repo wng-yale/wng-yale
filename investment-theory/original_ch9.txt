@@ -1,0 +1,35 @@
+# Class IX: Module 2 Notes - Long-Term Corporate Financing
+
+An Introduction to Investment Theory
+© William N. Goetzmann
+YALE School of Management
+
+---
+
+## Overview
+
+This chapter covers long-term corporate financing mechanisms, specifically addressing how companies raise capital through equity and debt instruments.
+
+## Long-Term Corporate Financing Options
+
+The materials outline two primary financing approaches: "Selling Ownership: Stocks & Warrants" and "Borrowing: Bonds & Preferred Shares."
+
+## Life Cycle of Stock
+
+The document traces equity's journey from private ownership through public markets. Shares transition through design phases (voting rights, par value), initial public offerings via investment banking, and exchange trading (NYSE, AMEX, NASDAQ). The text notes that "a specialist makes a market in the shares, matching bidders and skers, i.e. buyers and sellers" on NYSE, while NASDAQ employs electronic matching systems.
+
+## Bond Lifecycle
+
+Bond issuance involves designing specific features including borrowing amounts, repayment schedules, financing constraints, callability, and sinking-fund provisions. Bonds are categorized as debentures (unsecured) or secured instruments, issued through syndicates and subsequently traded.
+
+## Preferred Shares
+
+These are characterized as non-voting shares with senior claims over equity holders regarding cash distribution, commonly held by corporations for tax advantages.
+
+## Warrants
+
+Defined simply as "Right to purchase shares for a fixed price, over a fixed period of time."
+
+---
+
+Source: Yale School of Management, Financial Management I course materials by William N. Goetzmann

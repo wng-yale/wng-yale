@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The First Financial Bubble &mdash; London, Paris &amp; Amsterdam, 1720</title>
+<style>
+  :root{ --bg:#f3ecd9; --surface:#fbf7ec; --ink:#26221a; --ink2:#5c5344; --muted:#8a7f6c;
+    --line:#d8ccb0; --accent:#1a5276; --maroon:#7a1414; --grid:#e7ddc6; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#1a1712; --surface:#221e17; --ink:#ece5d4; --ink2:#c2b79e; --muted:#8f836b;
+           --line:#3a3327; --accent:#7fb2d6; --maroon:#d98c8c; --grid:#2c2619; } }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.55}
+  a{color:var(--accent)}
+  .wrap{max-width:1140px;margin:0 auto;padding:26px 22px 70px}
+  .backlink{font-size:.85rem}
+  header .kicker{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--maroon);margin-top:10px}
+  h1{font-size:2.05rem;margin:.12em 0;font-weight:700;line-height:1.12}
+  .sub{color:var(--ink2);font-size:1.06rem;max-width:800px}
+  section{margin-top:34px}
+  h2{font-size:1.4rem;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:16px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  .lede{display:grid;grid-template-columns:1fr 320px;gap:26px;align-items:start;margin-top:18px}
+  @media(max-width:780px){.lede{grid-template-columns:1fr}}
+  .lede p{margin:0 0 13px}
+  .lede figure{margin:0}
+  .lede img{width:100%;border:1px solid var(--line);border-radius:5px;cursor:zoom-in}
+  .lede figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
+  .controls{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;padding:12px 18px;margin-bottom:14px}
+  .ctl label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .seg button{border:0;background:transparent;color:var(--ink2);font-family:inherit;font-size:.9rem;padding:6px 12px;cursor:pointer}
+  .seg button.on{background:var(--accent);color:#fff}
+  select{font-family:inherit;font-size:.9rem;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+  .layout{display:grid;grid-template-columns:250px 1fr;gap:20px}
+  @media(max-width:820px){.layout{grid-template-columns:1fr}}
+  .picker{padding:14px;max-height:520px;overflow:auto}
+  .mgroup h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:12px 0 7px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .mgroup:first-child h3{margin-top:0}
+  .chip{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:transparent;color:var(--ink);font-family:inherit;font-size:.9rem;padding:4px 6px;border-radius:6px;cursor:pointer}
+  .chip:hover{background:var(--grid)} .chip.on{font-weight:700} .chip.off .nm{color:var(--ink2)}
+  .chip .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto;border:1px solid rgba(0,0,0,.15)}
+  .chartbox{padding:14px 12px 8px} svg{display:block;width:100%;height:auto;font-family:Georgia,serif}
+  .crosshair{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+  .tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.82rem;box-shadow:0 6px 24px rgba(0,0,0,.16);min-width:160px;z-index:5}
+  .tip .d{font-weight:700;margin-bottom:4px} .tip .r{display:flex;gap:10px;justify-content:space-between}
+  .tip .sw{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px}
+  .toolbar{display:flex;gap:10px;margin-bottom:8px} .toolbar button{font-family:inherit;font-size:.8rem;background:transparent;border:1px solid var(--line);border-radius:6px;color:var(--ink2);padding:4px 10px;cursor:pointer}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px} @media(max-width:720px){.two{grid-template-columns:1fr}}
+  .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px} @media(max-width:760px){.three{grid-template-columns:1fr}}
+  .three figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .three img{width:100%;display:block;cursor:zoom-in;background:#fff}
+  .three figcaption{padding:10px 13px;font-size:.82rem;color:var(--ink2)} .three figcaption b{color:var(--maroon);display:block;margin-bottom:2px;letter-spacing:.03em}
+  .two figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .two img{width:100%;display:block;cursor:zoom-in;background:#fff}
+  .two figcaption{padding:10px 13px;font-size:.84rem;color:var(--ink2)} .two figcaption b{color:var(--ink);display:block;margin-bottom:2px}
+  .dl{padding:16px 18px} .dl a{display:inline-block;margin:0 10px 8px 0;font-size:.9rem;padding:7px 13px;border:1px solid var(--line);border-radius:6px;text-decoration:none;background:var(--surface)}
+  .dl a:hover{border-color:var(--accent)} .note{font-size:.85rem;color:var(--ink2)}
+  .lightbox{position:fixed;inset:0;background:rgba(20,16,10,.92);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:26px}
+  .lightbox img{max-width:96%;max-height:92%;border-radius:3px;box-shadow:0 10px 60px rgba(0,0,0,.6)}
+  .lightbox .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#eee;font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="../">&larr; William N. Goetzmann &mdash; Home</a>
+  <header>
+    <div class="kicker">International Center for Finance &middot; Financial History</div>
+    <h1>The First Financial Bubble</h1>
+    <p class="sub">London, Paris and the Netherlands, 1720 &mdash; the world&rsquo;s first international stock-market
+      bubble, when the shares of the South Sea Company, John Law&rsquo;s Mississippi Company, and a swarm of new
+      Dutch insurance ventures rose and collapsed together within a single year.</p>
+  </header>
+
+  <div class="lede">
+    <div>
+      <p>In 1720 three financial manias unfolded almost simultaneously. In Paris, John Law&rsquo;s Mississippi
+        Company (the Compagnie des Indes) drove a speculative frenzy in the rue Quincampoix. In London, the South
+        Sea Company&rsquo;s scheme to convert the national debt sent its shares &mdash; and those of a crowd of
+        imitators &mdash; soaring and then crashing, prompting the Bubble Act. In the Dutch Republic, dozens of new
+        <i>windhandel</i> ("wind trade") insurance and shipping companies were floated in a matter of weeks.</p>
+      <p>With <b>Rik Frehen</b> and <b>Geert Rouwenhorst</b>, I assembled a new database of share prices from all
+        three markets, day by day, through the boom and bust. It lets us watch the bubbles rise and fall in step
+        &mdash; evidence that the events of 1720 were a single, connected episode, driven as much by new business
+        fundamentals (Atlantic trade and insurance) as by folly.</p>
+      <p>The chart below plots the three markets together; the satirical prints and the <i>Groote Tafereel der
+        Dwaasheid</i> record how contemporaries made sense of it; and the price data are free to download.</p>
+    </div>
+    <figure>
+      <img src="images/pellegrini.jpg" alt="Pellegrini, sketch for the Banque Royale ceiling" data-cap="Giovanni Antonio Pellegrini, Unloading Goods from Louisiana on the Banks of the Seine — sketch for the ceiling of John Law's Banque Royale, 1720. Oil on canvas, Petit Palais, Paris.">
+      <figcaption>Giovanni Antonio Pellegrini&rsquo;s sketch for the ceiling of John Law&rsquo;s <i>Banque
+        Royale</i>, Paris, 1720 &mdash; commerce arriving from Louisiana. See Goetzmann &amp; Spieth,
+        <a href="https://www.journal18.org/issue10/the-banque-royale-ceiling-and-the-imagery-of-finance-in-the-age-of-absolutism/" target="_blank">&ldquo;The Banque Royale Ceiling and the Imagery of Finance&rdquo;</a> (<i>Journal18</i>).</figcaption>
+    </figure>
+  </div>
+
+  <section>
+    <h2>Share Prices Across Three Markets, 1719&ndash;1720</h2>
+    <div class="controls panel">
+      <div class="ctl"><label>Base</label><div class="seg" id="segBase"><button data-v="rebase" class="on">Index = 100</button><button data-v="raw">Raw prices</button></div></div>
+      <div class="ctl"><label>Scale</label><div class="seg" id="segScale"><button data-v="lin">Linear</button><button data-v="log" class="on">Log</button></div></div>
+      <div class="ctl"><label>From</label><select id="fromY"></select></div>
+      <div class="ctl"><label>To</label><select id="toY"></select></div>
+    </div>
+    <div class="layout">
+      <div class="picker panel" id="picker"></div>
+      <div>
+        <div class="toolbar"><button id="btnNone">Clear</button><button id="btnTable">Show data table</button></div>
+        <div class="chartbox panel"><div id="chart" style="position:relative"></div></div>
+        <div class="panel" id="tablewrap" style="max-height:340px;overflow:auto;margin-top:10px;display:none"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Great Mirror of Folly</h2>
+    <p style="margin:-4px 0 16px;color:var(--ink2)">Each of the three markets left its own satirical record of 1720.</p>
+    <div class="three">
+      <figure><img src="images/hogarth.jpg" data-cap="William Hogarth, The South Sea Scheme (1721)."><figcaption><b>England</b>William Hogarth, <i>The South Sea Scheme</i> (1721) &mdash; a crowded allegory of greed and ruin around the South Sea Company.</figcaption></figure>
+      <figure><img src="images/tafereel.jpg" data-cap="De Windverkopers of Windvangers (Muller 5), from Het Groote Tafereel der Dwaasheid, 1720."><figcaption><b>The Netherlands</b><i>De Windverkopers of Windvangers</i> (Muller 5), from Het Groote Tafereel der Dwaasheid &mdash; despairing traders in the Amsterdam exchange.</figcaption></figure>
+      <figure><img src="images/quincampoix.jpg" data-cap="The Rue Quincampoix in the Year 1720 (Muller 16), hand-colored engraving from The Great Mirror of Folly."><figcaption><b>France</b><i>The Rue Quincampoix in 1720</i> (Muller 16), a hand-colored engraving of the frenzy in the Paris street where Mississippi shares changed hands.</figcaption></figure>
+    </div>
+    <p style="margin-top:16px">Yale&rsquo;s Beinecke Rare Book &amp; Manuscript Library holds a remarkable
+      <b>proto-<i>Tafereel</i></b> &mdash; a contemporary collection of the actual pamphlets, prospectuses, and
+      satires as they were issued in 1720, bound together before the famous printed <i>Groote Tafereel</i> was
+      compiled. It is a key source for our work:
+      <a href="https://collections.library.yale.edu/catalog/2031591" target="_blank">view it in the Beinecke digital collections &rarr;</a>.</p>
+
+    <div style="display:flex;gap:20px;align-items:flex-start;margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <a href="https://yalebooks.yale.edu/book/9780300162462/the-great-mirror-of-folly/" target="_blank" style="flex:0 0 auto">
+        <img src="images/great-mirror-book.jpg" alt="The Great Mirror of Folly" style="width:104px;border:1px solid var(--line);border-radius:3px;display:block"></a>
+      <div style="font-size:.92rem">
+        <b>The culmination of this project</b> &mdash; the edited volume <i>The Great Mirror of Folly: Finance,
+        Culture, and the Crash of 1720</i> (Yale University Press, 2013), with Catherine Labio, K. Geert
+        Rouwenhorst and Timothy Young, and a foreword by Robert Shiller. A book about the book: an
+        interdisciplinary study of the <i>Groote Tafereel der Dwaasheid</i> and the meaning of 1720.
+        <div style="margin-top:8px"><a href="https://yalebooks.yale.edu/book/9780300162462/the-great-mirror-of-folly/" target="_blank">Yale University Press &rarr;</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="dl panel">
+      <h2 style="border:0;margin:0 0 10px;font-size:1.05rem">Download the data &amp; read the paper</h2>
+      <a href="data/1720-price-database.xlsx" download>Full 1720 price database (Excel) &darr;</a>
+      <a href="data/bubble-prices.csv" download>Prices (CSV)</a>
+      <a href="data/bubble.json" download>Series (JSON)</a>
+      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1371007" target="_blank">Paper on SSRN &rarr;</a>
+      <p class="note" id="metanote" style="margin-top:10px"></p>
+      <p class="note">Rik G. P. Frehen, William N. Goetzmann &amp; K. Geert Rouwenhorst, &ldquo;New Evidence on the
+        First Financial Bubble,&rdquo; <i>Review of Financial Studies</i> / <i>Journal of Financial Economics</i> 108 (2013).</p>
+    </div>
+  </section>
+</div>
+<div class="lightbox" id="lightbox"><img id="lbimg" src=""><div class="cap" id="lbcap"></div></div>
+
+<script>
+const PALETTE=['#7a1414','#1f6f8b','#d55e00','#117733','#e69f00','#5a3e9b','#88408f','#00695c','#b8860b','#356859','#c2185b','#4f7fc9'];
+const MARKETS=['London','Paris','Amsterdam'];
+let D=null; const color={};
+const state={base:'rebase',scale:'log',from:null,to:null,sel:new Set(['South Sea Company','Mississippi Company','Dutch East India Co. (VOC)'])};
+fetch('data/bubble.json').then(r=>r.json()).then(d=>{
+  D=d; d.companies.forEach((c,i)=>color[c.name]=PALETTE[i%PALETTE.length]);
+  document.getElementById('metanote').textContent=d.meta.note;
+  const yrs=[...new Set(d.dates.map(s=>+s.slice(0,4)))];
+  const f=document.getElementById('fromY'),t=document.getElementById('toY');
+  yrs.forEach(y=>{f.add(new Option(y,y));t.add(new Option(y,y));});
+  state.from=yrs[0]; state.to=yrs[yrs.length-1]; f.value=state.from; t.value=state.to;
+  f.onchange=()=>{state.from=+f.value;if(state.from>state.to){state.to=state.from;t.value=state.to;}render();};
+  t.onchange=()=>{state.to=+t.value;if(state.to<state.from){state.from=state.to;f.value=state.from;}render();};
+  buildPicker(); wire(); render();
+});
+function buildPicker(){
+  const host=document.getElementById('picker'); host.innerHTML='';
+  MARKETS.forEach(mk=>{
+    const g=document.createElement('div'); g.className='mgroup'; g.innerHTML='<h3>'+mk+'</h3>';
+    D.companies.filter(c=>c.market===mk).forEach(c=>{
+      const b=document.createElement('button'); b.className='chip '+(state.sel.has(c.name)?'on':'off');
+      b.innerHTML='<span class="sw" style="background:'+(state.sel.has(c.name)?color[c.name]:'transparent')+';border-color:'+color[c.name]+'"></span><span class="nm">'+c.name+'</span>';
+      b.onclick=()=>{state.sel.has(c.name)?state.sel.delete(c.name):state.sel.add(c.name);buildPicker();render();};
+      g.appendChild(b);
+    });
+    host.appendChild(g);
+  });
+}
+function wire(){
+  seg('segBase','base'); seg('segScale','scale');
+  document.getElementById('btnNone').onclick=()=>{state.sel.clear();buildPicker();render();};
+  const tw=document.getElementById('tablewrap'),bt=document.getElementById('btnTable');
+  bt.onclick=()=>{const s=tw.style.display!=='block';tw.style.display=s?'block':'none';bt.textContent=s?'Hide data table':'Show data table';if(s)table();};
+}
+function seg(id,k){const el=document.getElementById(id);el.querySelectorAll('button').forEach(b=>b.onclick=()=>{el.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');state[k]=b.dataset.v;render();if(document.getElementById('tablewrap').style.display==='block')table();});}
+function idxRange(){let i0=D.dates.findIndex(s=>+s.slice(0,4)>=state.from);let i1=D.dates.length-1;for(let i=D.dates.length-1;i>=0;i--){if(+D.dates[i].slice(0,4)<=state.to){i1=i;break;}}return[i0<0?0:i0,i1];}
+// Index each series to 100 at its own first quote in range. On the log scale this lets each
+// bubble be read by its growth (both South Sea and Mississippi rise from 100 to comparable peaks).
+function buildSeries(selCos,i0,i1){
+  return selCos.map(c=>{
+    let base=null;
+    if(state.base==='rebase'){for(let i=i0;i<=i1;i++){if(c.values[i]!=null){base=c.values[i];break;}}}
+    const pts=[];
+    for(let i=i0;i<=i1;i++){let v=c.values[i]; if(v==null){pts.push(null);continue;} if(state.base==='rebase'&&base) v=v/base*100; pts.push(v);}
+    return {name:c.name,color:color[c.name],pts};
+  }).filter(s=>s.pts.some(v=>v!=null));
+}
+function niceStep(x){const p=Math.pow(10,Math.floor(Math.log10(x))),e=x/p;return(e>=7.5?10:e>=3?5:e>=1.5?2:1)*p;}
+function render(){
+  const host=document.getElementById('chart'); if(!D)return;
+  const cs=getComputedStyle(document.documentElement),cGrid=cs.getPropertyValue('--grid').trim(),cMut=cs.getPropertyValue('--muted').trim(),cLine=cs.getPropertyValue('--line').trim();
+  const [i0,i1]=idxRange(),N=i1-i0+1;
+  const sel=buildSeries(D.companies.filter(c=>state.sel.has(c.name)),i0,i1);
+  const W=Math.max(560,host.clientWidth||860),H=470,mL=62,mR=sel.length<=5?150:18,mT=14,mB=32,pw=W-mL-mR,ph=H-mT-mB;
+  if(!sel.length){host.innerHTML='<div style="padding:80px;text-align:center;color:var(--muted);font-style:italic">Select one or more companies.</div>';return;}
+  const log=state.scale==='log';let lo=Infinity,hi=-Infinity;
+  sel.forEach(s=>s.pts.forEach(v=>{if(v!=null&&(!log||v>0)){if(v<lo)lo=v;if(v>hi)hi=v;}}));
+  if(log){lo=Math.pow(10,Math.floor(Math.log10(lo)));hi=Math.pow(10,Math.ceil(Math.log10(hi)));}else{lo=0;hi*=1.05;}
+  const X=i=>mL+(N<=1?0:i/(N-1)*pw);
+  const Y=v=>log?(mT+ph-(Math.log10(v)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*ph):(mT+ph-(v-lo)/(hi-lo)*ph);
+  const yt=[];if(log){for(let e=Math.floor(Math.log10(lo||1));e<=Math.log10(hi)+1e-9;e++)yt.push(Math.pow(10,e));}else{const st=niceStep(hi/6);for(let v=0;v<=hi;v+=st)yt.push(v);}
+  const fmt=v=>v>=1000?Math.round(v).toLocaleString():(v>=10?Math.round(v):v.toFixed(1));
+  const xt=[];for(let i=i0;i<=i1;i++){const m=D.dates[i].slice(0,7);if(i===i0||m!==D.dates[i-1].slice(0,7)){if((+m.slice(5,7))%3===1)xt.push([i-i0,D.dates[i]]);}}
+  let svg=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMinYMin meet">`;
+  yt.forEach(v=>{const y=Y(v);svg+=`<line x1="${mL}" y1="${y.toFixed(1)}" x2="${mL+pw}" y2="${y.toFixed(1)}" stroke="${cGrid}"/><text x="${mL-8}" y="${(y+3).toFixed(1)}" text-anchor="end" fill="${cMut}" font-size="11">${fmt(v)}</text>`;});
+  xt.forEach(([ix,ds])=>{const x=X(ix);svg+=`<line x1="${x.toFixed(1)}" y1="${mT}" x2="${x.toFixed(1)}" y2="${mT+ph}" stroke="${cGrid}" opacity="0.6"/><text x="${x.toFixed(1)}" y="${mT+ph+19}" text-anchor="middle" fill="${cMut}" font-size="10">${ds.slice(0,7)}</text>`;});
+  svg+=`<line x1="${mL}" y1="${mT+ph}" x2="${mL+pw}" y2="${mT+ph}" stroke="${cLine}"/>`;
+  sel.forEach(s=>{let d='',pen=false;s.pts.forEach((v,i)=>{if(v==null||(log&&v<=0)){pen=false;return;}const x=X(i),y=Y(v);d+=(pen?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';pen=true;});
+    svg+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="2" stroke-linejoin="round"/>`;
+    if(sel.length<=5){let li=-1;for(let i=s.pts.length-1;i>=0;i--){if(s.pts[i]!=null){li=i;break;}}if(li>=0)svg+=`<text x="${X(li)+6}" y="${(Y(s.pts[li])+4).toFixed(1)}" fill="${s.color}" font-size="10.5" font-weight="700">${s.name.replace(/ \(.*/,'')}</text>`;}});
+  svg+=`<rect id="hit" x="${mL}" y="${mT}" width="${pw}" height="${ph}" fill="transparent"/><line id="cross" class="crosshair" x1="0" y1="${mT}" x2="0" y2="${mT+ph}" style="display:none"/></svg>`;
+  host.innerHTML=svg+'<div class="tip" id="tip" style="display:none"></div>';
+  const svgEl=host.querySelector('svg'),tip=host.querySelector('#tip'),cross=host.querySelector('#cross'),hit=host.querySelector('#hit');
+  hit.addEventListener('mousemove',ev=>{const rect=svgEl.getBoundingClientRect(),sc=W/rect.width;let i=Math.round(((ev.clientX-rect.left)*sc-mL)/(pw||1)*(N-1));i=Math.max(0,Math.min(N-1,i));const xx=X(i);cross.style.display='';cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);
+    let rows=`<div class="d">${D.dates[i0+i]}</div>`;sel.forEach(s=>{const v=s.pts[i];if(v!=null)rows+=`<div class="r"><span><span class="sw" style="background:${s.color}"></span>${s.name.replace(/ \(.*/,'')}</span><b>${fmt(v)}</b></div>`;});
+    tip.innerHTML=rows;tip.style.display='';const tx=xx/sc+14,over=tx+tip.offsetWidth>rect.width;tip.style.left=(over?xx/sc-tip.offsetWidth-14:tx)+'px';tip.style.top=Math.max(0,(ev.clientY-rect.top)-tip.offsetHeight/2)+'px';});
+  hit.addEventListener('mouseleave',()=>{tip.style.display='none';cross.style.display='none';});
+}
+function table(){const host=document.getElementById('tablewrap');const[i0,i1]=idxRange();const sel=D.companies.filter(c=>state.sel.has(c.name));
+  if(!sel.length){host.innerHTML='<div style="padding:20px;color:var(--muted)">No companies selected.</div>';return;}
+  let h='<table style="border-collapse:collapse;font-size:.8rem;width:100%"><thead><tr><th style="text-align:left;border:1px solid var(--line);padding:3px 7px">Date</th>'+sel.map(c=>'<th style="border:1px solid var(--line);padding:3px 7px">'+c.name.replace(/ \(.*/,'')+'</th>').join('')+'</tr></thead><tbody>';
+  for(let i=i0;i<=i1;i++){if(!sel.some(c=>c.values[i]!=null))continue;h+='<tr><td style="border:1px solid var(--line);padding:2px 7px">'+D.dates[i]+'</td>'+sel.map(c=>'<td style="text-align:right;border:1px solid var(--line);padding:2px 7px">'+(c.values[i]==null?'':c.values[i])+'</td>').join('')+'</tr>';}
+  host.innerHTML=h+'</tbody></table>';}
+window.addEventListener('resize',()=>{clearTimeout(window._r);window._r=setTimeout(render,150);});
+const lb=document.getElementById('lightbox'),lbi=document.getElementById('lbimg'),lbc=document.getElementById('lbcap');
+document.addEventListener('click',e=>{const im=e.target.closest('img[data-cap]');if(im){lbi.src=im.src;lbc.textContent=im.dataset.cap;lb.style.display='flex';}else if(e.target.closest('#lightbox'))lb.style.display='none';});
+</script>
+</body>
+</html>
