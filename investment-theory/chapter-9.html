@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter IX: Long-Term Corporate Financing — W. N. Goetzmann</title>
+    <title>Chapter IX: The Option Payoff — W. N. Goetzmann</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
         <ul class="nav-links">
             <li><a href="chapter-8.html">&larr; Ch. VIII</a></li>
-            <li><a href="review.html">Review &rarr;</a></li>
+            <li><a href="chapter-10.html">Ch. X &rarr;</a></li>
         </ul>
     </div>
 </nav>
@@ -28,148 +28,353 @@
 <article class="chapter">
     <header class="chapter-header">
         <p class="chapter-label">Chapter IX</p>
-        <h1>Long-Term Corporate Financing</h1>
-        <p class="chapter-deck">How companies raise capital: stocks, bonds, warrants, and preferred shares -- from issuance through trading.</p>
+        <h1>The Option Payoff</h1>
+        <p class="chapter-deck">The hockey stick &mdash; contingent claims, the kink at the strike, and why optionality is everywhere once you learn to see it.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>Overview</h2>
+        <h2>Introduction</h2>
 
-        <p>This chapter covers long-term corporate financing mechanisms, specifically addressing how companies raise capital through equity and debt instruments. The two primary financing approaches are:</p>
+        <p>The first three pictures in this book were about <em>holding</em> assets &mdash; a dollar compounding, a cloud of securities condensing into a frontier, the market pricing the risk that cannot be diversified away. This fourth picture is about something different: a claim whose value depends on <em>what another asset does</em>. An option is a bet with a memory of one number &mdash; the <strong>strike</strong> &mdash; and a shape so distinctive that once you have seen it you will start to recognize it everywhere: in a homeowner's insurance policy, in the equity of a leveraged firm, in a film studio's sequel rights, in the choice to walk away from a mortgage.</p>
 
-        <ul>
-            <li><strong>Selling Ownership:</strong> Stocks and Warrants</li>
-            <li><strong>Borrowing:</strong> Bonds and Preferred Shares</li>
-        </ul>
+        <p>The figure that carries all of this is the <strong>payoff diagram</strong>, and its silhouette is the reason traders call it the <em>hockey stick</em>. Along the bottom we put the price of the underlying asset at expiration; up the side we put what the option pays. For a call option &mdash; the right, but not the obligation, to <em>buy</em> at the strike &mdash; the picture is flat along the floor and then bends sharply upward at the strike, rising at forty-five degrees thereafter. That single kink is the whole idea. Below the strike the right to buy is worthless; above it, every dollar the asset gains is a dollar in your pocket. We will read this figure, as we read all of them, through four lenses: the logic, how it moves, how you use it, and &mdash; for those who want it &mdash; the mathematics underneath.</p>
+
+        <h2>I. The Logic: A Contingent Claim</h2>
+
+        <p>Begin with the contract. A <strong>European call option</strong> gives its owner the right to buy one share of an underlying asset at a fixed price &mdash; the <strong>strike</strong>, written $K$ &mdash; on a fixed future date, the <strong>expiration</strong>. The owner pays for this right up front; that payment is the <strong>premium</strong>. Crucially, the owner holds a <em>right</em> and not an <em>obligation</em>. If exercising is unprofitable, the owner simply walks away, and the most that has been lost is the premium.</p>
+
+        <p>Let $S$ denote the price of the underlying at expiration. What is the call worth at that moment? If $S$ is above the strike, the owner exercises: buy at $K$, sell at $S$, and pocket $S - K$. If $S$ is at or below the strike, exercising would mean paying $K$ for something worth less, so the owner declines and the option expires worthless. The payoff is therefore</p>
+
+        <div class="equation">
+            <p class="equation-label">Call Option Payoff at Expiration</p>
+            $$\text{Payoff} = \max(S - K,\ 0)$$
+        </div>
+
+        <p>That little $\max$ operator &mdash; take the larger of the two &mdash; is the mathematical fingerprint of optionality. It is what produces the kink. A stock's payoff is a straight diagonal line: gain a dollar of value, gain a dollar. A bond's payoff (absent default) is a flat line: you get the promised amount whatever happens. The option is the first payoff in this book that <em>bends</em>. Everything interesting about options flows from that bend.</p>
+
+        <div class="key-concept">
+            <h4>Key Idea: Intrinsic Value and the Kink</h4>
+            <p>The quantity $\max(S-K,0)$ is the option's <strong>intrinsic value</strong> &mdash; what it would be worth if expiration were right now. The bend sits exactly at $S = K$. To the left, the call is <em>out of the money</em> and intrinsically worthless; to the right, it is <em>in the money</em> and worth $S-K$; right at the strike it is <em>at the money</em>. The kink is not a mathematical accident. It is the visible signature of a right you exercise only when it pays.</p>
+        </div>
+
+        <h3>The Premium and the Break-Even</h3>
+
+        <p>The payoff diagram and the <em>profit</em> diagram are two different pictures, and confusing them is the most common beginner's error. The payoff is what the option delivers at expiration; the profit is that payoff net of the premium you paid to acquire it. Because the premium is a sunk cost, subtracting it simply slides the whole hockey stick <em>downward</em> by the premium. The option now begins to pay before you profit: you break even only once the asset has climbed far enough above the strike to recover the premium. If you paid a premium $P$ for a call struck at $K$, your break-even price is $K + P$, and below it &mdash; even when the option finishes in the money &mdash; you have still lost money on the round trip.</p>
+
+        <p>Notice what the shape guarantees. Your loss is <strong>capped</strong> at the premium, no matter how far the asset falls; your gain is, in principle, <strong>unbounded</strong>, rising dollar for dollar as the asset climbs. This asymmetry &mdash; small, known, limited downside; large, unknown, open-ended upside &mdash; is the reason options are the natural language of both speculation and insurance.</p>
+
+        <h3>Puts, and the Mirror Image</h3>
+
+        <p>A <strong>put option</strong> is the call's mirror twin: the right to <em>sell</em> at the strike. Its owner profits when the asset <em>falls</em>, since the right to sell at $K$ becomes valuable precisely when the market price $S$ has dropped below $K$. Its payoff is</p>
+
+        <div class="equation">
+            <p class="equation-label">Put Option Payoff at Expiration</p>
+            $$\text{Payoff} = \max(K - S,\ 0)$$
+        </div>
+
+        <p>The put's hockey stick is the call's reflected in a vertical mirror: high on the left, sloping down to the strike, then flat along the floor to the right. And here the insurance analogy stops being an analogy and becomes an identity. A put on a stock you own is <em>literally</em> an insurance policy on that stock: pay a premium today, and if the price collapses, the put pays you the difference, restoring your losses below $K$. The strike is the deductible level; the premium is the insurance premium; the expiration is the term of the policy. Homeowners understand options perfectly well &mdash; they simply call them by another name.</p>
 
         <div class="figure">
-            <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
-                <!-- Title -->
-                <text x="260" y="30" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#00356b">Corporate Financing Instruments</text>
-                <!-- Main split -->
-                <rect x="190" y="50" width="140" height="40" rx="6" fill="#00356b" stroke="none"/>
-                <text x="260" y="75" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="white">Long-Term Capital</text>
-                <!-- Lines down -->
-                <line x1="190" y1="90" x2="130" y2="120" stroke="#00356b" stroke-width="1.5"/>
-                <line x1="330" y1="90" x2="390" y2="120" stroke="#00356b" stroke-width="1.5"/>
-                <!-- Ownership box -->
-                <rect x="50" y="120" width="160" height="36" rx="6" fill="#2d8f4e" fill-opacity="0.15" stroke="#2d8f4e" stroke-width="1.5"/>
-                <text x="130" y="143" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#2d8f4e">Selling Ownership</text>
-                <!-- Borrowing box -->
-                <rect x="310" y="120" width="160" height="36" rx="6" fill="#bd5319" fill-opacity="0.15" stroke="#bd5319" stroke-width="1.5"/>
-                <text x="390" y="143" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#bd5319">Borrowing</text>
-                <!-- Ownership children -->
-                <line x1="100" y1="156" x2="85" y2="180" stroke="#2d8f4e" stroke-width="1"/>
-                <line x1="160" y1="156" x2="175" y2="180" stroke="#2d8f4e" stroke-width="1"/>
-                <rect x="30" y="180" width="110" height="32" rx="5" fill="#f0f8f4" stroke="#2d8f4e" stroke-width="1"/>
-                <text x="85" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">Common Stock</text>
-                <rect x="155" y="180" width="90" height="32" rx="5" fill="#f0f8f4" stroke="#2d8f4e" stroke-width="1"/>
-                <text x="200" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#2d8f4e">Warrants</text>
-                <!-- Borrowing children -->
-                <line x1="360" y1="156" x2="340" y2="180" stroke="#bd5319" stroke-width="1"/>
-                <line x1="420" y1="156" x2="440" y2="180" stroke="#bd5319" stroke-width="1"/>
-                <rect x="280" y="180" width="110" height="32" rx="5" fill="#fef6f0" stroke="#bd5319" stroke-width="1"/>
-                <text x="335" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">Bonds</text>
-                <rect x="405" y="180" width="110" height="32" rx="5" fill="#fef6f0" stroke="#bd5319" stroke-width="1"/>
-                <text x="460" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#bd5319">Preferred Shares</text>
-                <!-- Priority arrow -->
-                <text x="260" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#666">Claim priority on cash flows:</text>
-                <text x="260" y="268" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#00356b">Bonds > Preferred > Common Equity</text>
-            </svg>
-            <p class="figure-caption"><strong>Figure 9.1.</strong> The major categories of long-term corporate financing instruments and their claim priority.</p>
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div id="po-presets" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px"></div>
+            <div id="po-legs" style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:6px;font-size:.9rem;color:#26221a"></div>
+            <div id="po-chart"></div>
+            <div id="po-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55;min-height:2.6em"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 9.1.</strong> The payoff-diagram builder. The horizontal axis is the underlying asset&rsquo;s value at maturity; the vertical axis is the <em>payoff</em> of your position. Four primitives &mdash; a <span style="color:#1a5276;font-weight:700">stock</span>, a riskless <span style="color:#b9770e;font-weight:700">bond</span> (face value $K$), a <span style="color:#1e8b3a;font-weight:700">call</span> and a <span style="color:#c0392b;font-weight:700">put</span> (both struck at $K$) &mdash; combine into any position. Toggle each block long or short, or pick a preset: a <em>straddle</em> that pays off when the stock moves a lot either way, a <em>protective put</em> that floors a crash, a <em>defaultable corporate bond</em>, or <em>put&ndash;call parity</em>. No prices yet &mdash; only payoffs at maturity.</p>
         </div>
+        <script>
+        (function(){
+          var K=100,SMAX=200,W=700,H=420,mL=54,mR=20,mT=18,mB=46,pw=W-mL-mR,ph=H-mT-mB;
+          var INST=[{k:'stock',n:'Stock',c:'#1a5276'},{k:'bond',n:'Bond (face K)',c:'#b9770e'},{k:'call',n:'Call',c:'#1e8b3a'},{k:'put',n:'Put',c:'#c0392b'}];
+          var pos={stock:0,bond:0,call:0,put:0},parity=false,showLegs=true;
+          function pay(k,S){return k==='stock'?S:k==='bond'?K:k==='call'?Math.max(S-K,0):Math.max(K-S,0);}
+          function comb(S){var v=0;for(var i=0;i<4;i++)v+=pos[INST[i].k]*pay(INST[i].k,S);return v;}
+          var PRE={longcall:{call:1},longput:{put:1},straddle:{call:1,put:1},protput:{stock:1,put:1},riskybond:{bond:1,put:-1},coveredcall:{stock:1,call:-1}};
+          var PRESETS=[['longcall','Long call'],['longput','Long put'],['straddle','Straddle (volatility)'],['protput','Protective put (crash hedge)'],['riskybond','Risky corporate bond'],['coveredcall','Covered call'],['parity','Put–call parity'],['clear','Clear']];
+          var chart=document.getElementById('po-chart');
+          function set(p){pos={stock:0,bond:0,call:0,put:0};parity=false;if(p==='parity'){parity=true;}else if(p!=='clear'){var o=PRE[p];for(var k in o)pos[k]=o[k];}render();}
+          // build preset buttons
+          var pc=document.getElementById('po-presets');
+          PRESETS.forEach(function(pr){var b=document.createElement('button');b.type='button';b.textContent=pr[1];b.style.cssText='font-family:inherit;font-size:.82rem;padding:5px 11px;border:1px solid #1a5276;border-radius:6px;background:'+(pr[0]==='clear'?'#fbf7ec':'#eef3f8')+';color:#1a5276;cursor:pointer';b.onclick=function(){set(pr[0]);};pc.appendChild(b);});
+          // build leg controls
+          var lc=document.getElementById('po-legs');
+          INST.forEach(function(it){var wrap=document.createElement('span');wrap.style.cssText='display:inline-flex;align-items:center;gap:5px';
+            var lab=document.createElement('span');lab.textContent=it.n;lab.style.cssText='font-weight:600;color:'+it.c;wrap.appendChild(lab);
+            [['-1','Short'],['0','·'],['1','Long']].forEach(function(o){var b=document.createElement('button');b.type='button';b.textContent=o[1];b.dataset.k=it.k;b.dataset.q=o[0];b.style.cssText='font-family:inherit;font-size:.8rem;padding:3px 8px;border:1px solid #cbb;border-radius:5px;background:#fff;color:#5c5344;cursor:pointer';b.onclick=function(){pos[it.k]=+o[0];parity=false;render();};wrap.appendChild(b);});
+            lc.appendChild(wrap);});
+          function describe(){
+            if(parity)return '<strong>Put–call parity.</strong> Stock + put and bond + call have the <em>identical</em> payoff, max(S, K): a floor of K with full upside. Because they pay the same in every state, they must cost the same today &mdash; which rearranges to the parity relation <strong>C &minus; P = S &minus; PV(K)</strong>.';
+            var s=[pos.stock,pos.bond,pos.call,pos.put].join(',');
+            var M={'0,0,0,0':'Empty &mdash; toggle a block long or short, or pick a preset.',
+              '0,0,1,0':'<strong>Long call.</strong> The right to buy at K. Flat and worthless below K, then rises dollar-for-dollar &mdash; the &ldquo;hockey stick.&rdquo; Unlimited upside, nothing at stake below K.',
+              '0,0,0,1':'<strong>Long put.</strong> The right to sell at K. Pays off as the stock falls below K &mdash; insurance against a decline.',
+              '0,0,1,1':'<strong>Straddle.</strong> Long a call and a put at the same strike. Pays off when the stock ends far from K in <em>either</em> direction &mdash; a pure bet on <strong>volatility</strong>, indifferent to direction.',
+              '1,0,0,1':'<strong>Protective put.</strong> Stock plus a put. The put installs a <strong>floor</strong> at K: below K your losses are capped, above K you keep the full upside. This is how you hedge a portfolio against a catastrophic crash.',
+              '0,1,0,-1':'<strong>Defaultable corporate bond.</strong> A riskless bond <em>minus</em> a put: the lender receives min(S, K) &mdash; the full face K when the firm&rsquo;s assets clear the debt, less when they don&rsquo;t. The short put <em>is</em> the default risk the creditor bears.',
+              '1,0,-1,0':'<strong>Covered call.</strong> Stock minus a call. You keep gains up to K (and pocket the premium), but sell away the upside beyond K.'};
+            if(M[s])return M[s];
+            var legs=INST.filter(function(i){return pos[i.k]!==0;}).map(function(i){return (pos[i.k]>0?'long ':'short ')+i.n.toLowerCase();});
+            return legs.length?'<strong>Custom position:</strong> '+legs.join(' + ')+'. The bold line is the combined payoff at maturity.':'Empty position.';
+          }
+          function curve(fn){var d='';for(var S=0;S<=SMAX+1e-9;S+=2){d+=(d?'L':'M')+px(S).toFixed(1)+' '+py(fn(S)).toFixed(1)+' ';}return d;}
+          var ymin,ymax;
+          function px(S){return mL+S/SMAX*pw;} function py(v){return mT+ph-(v-ymin)/(ymax-ymin)*ph;}
+          function render(){
+            // highlight leg buttons
+            [].forEach.call(document.querySelectorAll('#po-legs button'),function(b){var on=(+b.dataset.q===pos[b.dataset.k])&&!parity;b.style.background=on?'#1a5276':'#fff';b.style.color=on?'#fff':'#5c5344';b.style.fontWeight=on?'700':'400';});
+            // y-range
+            var vals=[0,K],S;
+            if(parity){for(S=0;S<=SMAX;S+=4)vals.push(Math.max(S,K));}
+            else{for(S=0;S<=SMAX;S+=4){vals.push(comb(S));if(showLegs)INST.forEach(function(i){if(pos[i.k])vals.push(pos[i.k]*pay(i.k,S));});}}
+            ymin=Math.min.apply(null,vals);ymax=Math.max.apply(null,vals);var pad=(ymax-ymin)*0.12||20;ymin-=pad;ymax+=pad;
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            // y gridlines
+            var step=Math.ceil((ymax-ymin)/6/25)*25||25;
+            for(var g=Math.ceil(ymin/step)*step;g<=ymax;g+=step){var y=py(g);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#8a7f6c">'+g+'</text>';}
+            for(var xs=0;xs<=SMAX+1e-9;xs+=40){var x=px(xs);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="12" fill="#8a7f6c">'+xs+'</text>';}
+            // strike line
+            s+='<line x1="'+px(K).toFixed(1)+'" y1="'+mT+'" x2="'+px(K).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#b7a988" stroke-width="1" stroke-dasharray="4 3"/><text x="'+(px(K)+4).toFixed(1)+'" y="'+(mT+12)+'" font-size="11" fill="#8a7f6c">K = '+K+'</text>';
+            // zero line
+            if(0>=ymin&&0<=ymax)s+='<line x1="'+mL+'" y1="'+py(0).toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+py(0).toFixed(1)+'" stroke="#26221a" stroke-width="1"/>';
+            // axes labels
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Underlying asset value at maturity</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Payoff of the position</text>';
+            if(parity){
+              s+='<path d="'+curve(function(S){return Math.max(S,K);})+'" fill="none" stroke="#1a5276" stroke-width="4"/>';
+              s+='<path d="'+curve(function(S){return Math.max(S,K);})+'" fill="none" stroke="#b9770e" stroke-width="2" stroke-dasharray="8 6"/>';
+              s+='<g font-size="12"><rect x="'+(mL+10)+'" y="'+(mT+8)+'" width="176" height="40" fill="#fbf7ec" stroke="#e0d6bf" rx="4"/><line x1="'+(mL+18)+'" y1="'+(mT+21)+'" x2="'+(mL+40)+'" y2="'+(mT+21)+'" stroke="#1a5276" stroke-width="4"/><text x="'+(mL+46)+'" y="'+(mT+25)+'" fill="#5c5344">stock + put</text><line x1="'+(mL+18)+'" y1="'+(mT+37)+'" x2="'+(mL+40)+'" y2="'+(mT+37)+'" stroke="#b9770e" stroke-width="2" stroke-dasharray="8 6"/><text x="'+(mL+46)+'" y="'+(mT+41)+'" fill="#5c5344">bond + call</text></g>';
+            } else {
+              if(showLegs)INST.forEach(function(i){if(pos[i.k])s+='<path d="'+curve(function(S){return pos[i.k]*pay(i.k,S);})+'" fill="none" stroke="'+i.c+'" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.75"/>';});
+              s+='<path d="'+curve(comb)+'" fill="none" stroke="#26221a" stroke-width="3"/>';
+            }
+            s+='</svg>';chart.innerHTML=s;
+            document.getElementById('po-read').innerHTML=describe();
+          }
+          set('longcall');
+        })();
+        </script>
 
-        <h2>The Life Cycle of Stock</h2>
+        <h2>II. How It Moves</h2>
 
-        <p>Equity transitions through several stages from private ownership through public markets. The lifecycle traces from initial design through market trading:</p>
+        <p>The payoff at expiration is fixed geometry &mdash; a kink at $K$ and two straight arms. But an option is rarely held to the last instant, and its <em>value</em> before expiration is a far more interesting object. The central visual fact of option pricing is this: <strong>the value curve of a living option is a smooth, rounded version of the kinked payoff, and it always sits above it.</strong> Learning how that smooth curve shifts as the inputs change is learning how options move.</p>
 
-        <ol>
-            <li><strong>Design:</strong> The company determines the characteristics of its shares -- voting rights, par value, and other features that define the ownership claim.</li>
-            <li><strong>Initial Public Offering (IPO):</strong> Through investment banking, shares are offered to the public for the first time. The investment bank underwrites the offering, taking on the risk of distributing shares.</li>
-            <li><strong>Exchange Trading:</strong> Once public, shares trade on organized exchanges. On the NYSE, a specialist makes a market in the shares, matching bidders and askers (i.e. buyers and sellers). On NASDAQ, electronic matching systems connect dealers who compete to offer the best prices.</li>
-        </ol>
+        <h3>Rounding the Kink: Time and Volatility</h3>
 
-        <div class="key-concept">
-            <h4>Key Concept: Primary vs. Secondary Markets</h4>
-            <p>The IPO occurs in the <em>primary market</em> -- the company receives the proceeds. Subsequent trading among investors occurs in the <em>secondary market</em> -- the company receives nothing, but benefits from the liquidity that makes its shares attractive to initial investors.</p>
-        </div>
+        <p>Why should the value curve bulge above the payoff? Because before expiration the future is still open, and the asymmetry of the option turns that openness into value. Consider a call struck at $K$ with the asset sitting exactly at the money, $S = K$. Its intrinsic value is zero &mdash; the kink touches the floor here. Yet the option is plainly worth something, because between now and expiration the asset might rise, and if it does the owner keeps the upside, while if it falls the owner loses nothing more. The chance of a favorable move has positive value and the chance of an unfavorable one costs nothing extra. That surplus &mdash; the height of the smooth curve above the kink &mdash; is the option's <strong>time value</strong>.</p>
 
-        <h2>The Bond Lifecycle</h2>
-
-        <p>Bond issuance involves designing specific features that define the borrowing arrangement:</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Feature</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Borrowing amount</td>
-                    <td>Total principal (face value) of the issue</td>
-                </tr>
-                <tr>
-                    <td>Repayment schedule</td>
-                    <td>Coupon rate, payment frequency, maturity date</td>
-                </tr>
-                <tr>
-                    <td>Financing constraints</td>
-                    <td>Covenants restricting additional borrowing or asset sales</td>
-                </tr>
-                <tr>
-                    <td>Callability</td>
-                    <td>Issuer's right to repay early at a specified price</td>
-                </tr>
-                <tr>
-                    <td>Sinking fund</td>
-                    <td>Scheduled partial repayments before maturity</td>
-                </tr>
-                <tr>
-                    <td>Security</td>
-                    <td>Debentures (unsecured) vs. secured bonds (backed by specific assets)</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>Bonds are issued through syndicates -- groups of investment banks that collectively distribute the offering to investors -- and are subsequently traded in over-the-counter markets.</p>
-
-        <h2>Preferred Shares</h2>
-
-        <p>Preferred shares are a hybrid instrument combining features of both debt and equity:</p>
+        <p>Two inputs govern how high the curve rounds:</p>
 
         <ul>
-            <li><strong>Non-voting:</strong> Unlike common stock, preferred shares typically do not carry voting rights</li>
-            <li><strong>Senior claims:</strong> Preferred shareholders have priority over common equity holders for cash distributions (dividends and liquidation)</li>
-            <li><strong>Fixed dividends:</strong> Like bonds, preferred shares pay a fixed periodic distribution</li>
-            <li><strong>Tax advantages:</strong> Commonly held by corporations, because corporate holders can exclude a large portion of preferred dividends from taxable income (the dividends-received deduction)</li>
+            <li><strong>Volatility.</strong> A more volatile underlying makes large moves more likely in <em>both</em> directions &mdash; but the option only cares about one direction. More volatility therefore lifts the entire value curve; the sharp corner rounds off into a broad, generous arc. This is the single most important and least intuitive fact about options: <em>an option on a wilder asset is worth more</em>, because the owner is shielded from the extra downside but keeps the extra upside. Uncertainty, poison to most assets, is nourishment to an option.</li>
+            <li><strong>Time to expiry.</strong> Time is volatility's accomplice. More time means more room for the asset to wander, so a longer-dated option rounds higher. As expiration approaches, the curve deflates toward the kink; at the final instant, time value has bled away entirely and the value curve <em>is</em> the payoff. Options are wasting assets &mdash; they decay toward their intrinsic value as the clock runs out.</li>
         </ul>
+
+        <div class="key-concept">
+            <h4>Key Concept: Moneyness and the Three Regions</h4>
+            <p>Where the asset stands relative to the strike defines the option's character. <strong>In the money</strong> ($S &gt; K$ for a call): the option has intrinsic value and behaves increasingly like the stock itself &mdash; the value curve runs nearly parallel to the payoff's upper arm. <strong>At the money</strong> ($S \approx K$): all value is time value, and the option is at its most sensitive to volatility &mdash; the rounding is deepest right over the kink. <strong>Out of the money</strong> ($S &lt; K$ for a call): no intrinsic value, only the hope of getting there; the curve hugs the floor but stays just above it, a thin sliver of possibility.</p>
+        </div>
+
+        <h3>Shifting the Strike</h3>
+
+        <p>Slide the strike and the whole picture translates. A lower-struck call is easier to finish in the money, so it is worth more and commands a fatter premium; a higher-struck call is a longer shot, cheaper to buy but less likely to pay. This is the same trade-off a shopper faces with an insurance deductible: a policy that pays out sooner (a higher put strike, a lower call strike) costs more up front. The strike is the dial that sets how much protection, or how much leverage, you are buying.</p>
+
+        <h3>Steepness and Leverage</h3>
+
+        <p>One more motion is worth naming, because it is why speculators love options. Because a call can be bought for a small premium yet moves nearly dollar-for-dollar with the stock once it is in the money, a modest sum controls a large exposure. A 10% rise in a stock might double the value of an at-the-money call. This <strong>embedded leverage</strong> is the mirror of the capped downside: you are risking a little to control a lot, and the shape of the payoff is what makes that possible without any borrowing at all.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:8px;font-size:.94rem;color:#26221a">
+              <label>Time to maturity: <input id="bs-t" type="range" min="0" max="2" step="0.05" value="1" style="vertical-align:middle;width:140px"> <strong id="bs-tv" style="color:#7a1414">1.00 yr</strong></label>
+              <label>Volatility &sigma;: <input id="bs-s" type="range" min="5" max="60" step="1" value="25" style="vertical-align:middle;width:140px"> <strong id="bs-sv" style="color:#1a5276">25%</strong></label>
+            </div>
+            <div id="bs-chart"></div>
+            <div id="bs-read" style="font-size:.94rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 9.2.</strong> The value of a call <em>before</em> maturity. The bold line is the payoff at expiration, $\max(S-K,0)$ &mdash; the hockey stick. The smooth curve above it is what the option is <em>worth today</em>, with time still left to run: it is strictly positive even at the strike, where the intrinsic value is zero, because the stock might yet rise. The gap between the curve and the kinked payoff is <strong>time value</strong>. Slide time-to-maturity toward zero and the curve collapses onto the payoff; add time or volatility and it swells upward. The function that draws this curve is the <strong>Black&ndash;Scholes&ndash;Merton</strong> formula.</p>
+        </div>
+        <script>
+        (function(){
+          var K=100,r=0.03,SMAX=200,W=700,H=430,mL=54,mR=20,mT=18,mB=46,pw=W-mL-mR,ph=H-mT-mB,YMAX=112;
+          function erf(x){var s=x<0?-1:1;x=Math.abs(x);var t=1/(1+0.3275911*x);var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y;}
+          function N(x){return 0.5*(1+erf(x/Math.SQRT2));}
+          function bs(S,sig,T){if(T<=1e-6||sig<=1e-6||S<=0)return Math.max(S-K,0);var v=sig*Math.sqrt(T),d1=(Math.log(S/K)+(r+sig*sig/2)*T)/v,d2=d1-v;return S*N(d1)-K*Math.exp(-r*T)*N(d2);}
+          function px(S){return mL+S/SMAX*pw;} function py(v){return mT+ph-v/YMAX*ph;}
+          var el=document.getElementById('bs-chart'),st=document.getElementById('bs-t'),ss=document.getElementById('bs-s');
+          function render(){
+            var T=+st.value,sig=+ss.value/100;
+            document.getElementById('bs-tv').textContent=T.toFixed(2)+' yr';document.getElementById('bs-sv').textContent=(sig*100).toFixed(0)+'%';
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var v=0;v<=YMAX;v+=25){var y=py(v);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#8a7f6c">'+v+'</text>';}
+            for(var S=0;S<=SMAX;S+=40){var x=px(S);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="12" fill="#8a7f6c">'+S+'</text>';}
+            s+='<line x1="'+px(K).toFixed(1)+'" y1="'+mT+'" x2="'+px(K).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#b7a988" stroke-width="1" stroke-dasharray="4 3"/><text x="'+(px(K)+4).toFixed(1)+'" y="'+(mT+12)+'" font-size="11" fill="#8a7f6c">K = '+K+'</text>';
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Stock price S</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Value of the call</text>';
+            // payoff (bold)
+            var d='';for(S=0;S<=SMAX+1e-9;S+=2){d+=(d?'L':'M')+px(S).toFixed(1)+' '+py(Math.max(S-K,0)).toFixed(1)+' ';}
+            s+='<path d="'+d+'" fill="none" stroke="#26221a" stroke-width="2.6"/>';
+            // BS value curve
+            var d2='';for(S=0;S<=SMAX+1e-9;S+=1){d2+=(d2?'L':'M')+px(S).toFixed(1)+' '+py(bs(S,sig,T)).toFixed(1)+' ';}
+            s+='<path d="'+d2+'" fill="none" stroke="#7a1414" stroke-width="2.6"/>';
+            // at-the-money marker (S=K): time value
+            var atm=bs(K,sig,T);
+            s+='<circle cx="'+px(K).toFixed(1)+'" cy="'+py(atm).toFixed(1)+'" r="5.5" fill="#7a1414" stroke="#fff" stroke-width="1.6"/><text x="'+(px(K)+9).toFixed(1)+'" y="'+(py(atm)-4).toFixed(1)+'" font-size="11.5" fill="#7a1414" font-weight="700">worth '+atm.toFixed(1)+' at S=K</text>';
+            // legend
+            s+='<g font-size="12"><line x1="'+(mL+pw-150)+'" y1="'+(mT+14)+'" x2="'+(mL+pw-126)+'" y2="'+(mT+14)+'" stroke="#7a1414" stroke-width="2.6"/><text x="'+(mL+pw-120)+'" y="'+(mT+18)+'" fill="#5c5344">value today</text><line x1="'+(mL+pw-150)+'" y1="'+(mT+30)+'" x2="'+(mL+pw-126)+'" y2="'+(mT+30)+'" stroke="#26221a" stroke-width="2.6"/><text x="'+(mL+pw-120)+'" y="'+(mT+34)+'" fill="#5c5344">payoff at maturity</text></g>';
+            s+='</svg>';el.innerHTML=s;
+            document.getElementById('bs-read').innerHTML='At the strike the intrinsic value is <strong>0</strong>, yet the call is worth <strong>'+atm.toFixed(1)+'</strong> &mdash; all of it <em>time value</em>, the price of the chance the stock rises before maturity. '+(T<0.06?'With almost no time left, the value has collapsed onto the payoff.':'More time to maturity or higher volatility lifts the whole curve; as expiration nears it falls back onto the kink.');
+          }
+          st.addEventListener('input',render);ss.addEventListener('input',render);render();
+        })();
+        </script>
+
+        <h2>III. How You Use It</h2>
+
+        <p>The payoff diagram earns its place in this book not as a curiosity but as a tool of decision. Practitioners reach for options to do three things: to <em>insure</em>, to <em>generate income</em>, and &mdash; most profoundly &mdash; to <em>see hidden options</em> in claims that are not called options at all.</p>
+
+        <h3>Insurance: The Protective Put</h3>
+
+        <p>Return to the homeowner. An investor who owns a stock but fears a crash can buy a put struck below the current price. The combined position &mdash; stock plus put &mdash; has a payoff that is flat on the downside (the put makes up any loss below the strike) and rising on the upside (the stock keeps climbing, the put expiring worthless). This is <strong>portfolio insurance</strong> in its purest form: a floor under your losses, bought for a premium, with the upside left intact. The diagram of a protective put is one of the most reassuring shapes in finance &mdash; a hockey stick that has been lifted off the floor and given a guaranteed minimum.</p>
+
+        <h3>Income: The Covered Call</h3>
+
+        <p>The inverse trade is the <strong>covered call</strong>: own the stock and <em>write</em> (sell) a call against it, collecting the premium. You have sold away the upside above the strike in exchange for cash today. The payoff rises with the stock up to the strike and then flattens &mdash; you have capped your gains but padded your returns with premium income. Endowments and pension funds run covered-call programs for exactly this reason: in a flat or gently rising market, the harvested premiums are pure yield. The covered writer is, in effect, the insurance <em>company</em> rather than the policyholder &mdash; collecting premiums, bearing the tail.</p>
+
+        <div class="note">Each of these positions is a preset in the payoff builder of <strong>Figure 9.1</strong> &mdash; select <em>Protective put</em> or <em>Covered call</em> and watch the floor drop in or the ceiling clamp down, with the strategy named below the chart.</div>
+
+        <h3>The Hidden Option: Equity as a Call on the Firm</h3>
+
+        <p>Here is the insight that won a Nobel Prize and reorganized the way we think about corporate finance. Consider a firm financed with both debt and equity. The debtholders are promised a fixed face amount $F$ when the debt matures. What happens at maturity depends on the value $V$ of the firm's assets:</p>
+
+        <ul>
+            <li>If the firm is worth <em>more</em> than the debt ($V &gt; F$), the shareholders pay off the debt and keep the remainder, $V - F$.</li>
+            <li>If the firm is worth <em>less</em> than the debt ($V &lt; F$), the shareholders, protected by limited liability, hand the firm over to the creditors and walk away with nothing.</li>
+        </ul>
+
+        <p>Read that again with the payoff formula in mind. The shareholders receive $\max(V - F,\ 0)$. <strong>The equity of a levered firm is a call option on the firm's assets, struck at the face value of the debt.</strong> The shareholders own the upside; the creditors have, in effect, sold them that call &mdash; or equivalently, the creditors own the firm outright but have written a put to the shareholders (the option to "put" the firm to the lenders in default). This is the <strong>Merton model</strong> of credit risk, and it is not a metaphor: it lets us price corporate debt, measure default probability, and understand why shareholders of a distressed firm sometimes prefer <em>risky</em> gambles &mdash; more volatility lifts the value of their call, even as it harms the bondholders. Once you can see the hockey stick, you find it hiding inside the balance sheet.</p>
+
+        <blockquote>Optionality is everywhere: in insurance, in employment contracts, in the choice to expand a factory, in a patent, in the ability to abandon a failing project. The payoff diagram is the lens that reveals it.</blockquote>
+
+        <h2>IV. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
+
+        <p>The three lenses above stand entirely on their own. What follows is for readers who want to see why the pieces fit together with the tight logic they do. Two results deserve pride of place: <strong>put&ndash;call parity</strong>, which is almost pure arithmetic, and the <strong>Black&ndash;Scholes formula</strong>, which is one of the genuine monuments of twentieth-century economics.</p>
+
+        <div class="derivation" style="border:1px solid #cdd9e3;border-left:4px solid #1a5276;background:#f5f8fb;border-radius:8px;padding:16px 22px;margin:24px 0;">
+            <h4 style="margin-top:0;color:#1a5276;">Derivation: Put&ndash;Call Parity</h4>
+            <p>Put&ndash;call parity is a relationship the prices of a call and a put <em>must</em> satisfy &mdash; not because of any pricing model, but because otherwise a riskless arbitrage would exist. It ties together four instruments: a call and a put on the same asset, both struck at $K$ with the same expiration $T$; the underlying asset itself, priced $S$; and a riskless bond.</p>
+            <p>Consider two portfolios held to expiration.</p>
+            <ul>
+                <li><strong>Portfolio A:</strong> one call (price $C$) plus cash equal to the present value of the strike, $K e^{-rT}$, invested at the riskless rate $r$. At expiration the cash grows to exactly $K$.</li>
+                <li><strong>Portfolio B:</strong> one put (price $P$) plus one share of the underlying (price $S$).</li>
+            </ul>
+            <p>Now compare their values at expiration, in the two possible states:</p>
+            <ul>
+                <li>If $S_T \ge K$: Portfolio A's call is worth $S_T - K$, plus the $K$ in cash, for $S_T$ in all. Portfolio B's put expires worthless, leaving just the share, worth $S_T$. <em>Equal.</em></li>
+                <li>If $S_T &lt; K$: Portfolio A's call expires worthless, leaving the $K$ in cash. Portfolio B's put is worth $K - S_T$, plus the share worth $S_T$, for $K$ in all. <em>Equal.</em></li>
+            </ul>
+            <p>The two portfolios deliver identical payoffs in every state of the world, so they must cost the same today &mdash; otherwise one could buy the cheaper and sell the dearer for a certain profit. Setting today's prices equal gives the parity relation:</p>
+            $$C + K e^{-rT} = P + S \qquad\Longleftrightarrow\qquad C - P = S - K e^{-rT}.$$
+            <p style="margin-bottom:0;">This is remarkably powerful for something derived without any assumption about how the asset moves. It says a call and a put are two sides of one coin: know the price of either, along with the stock and the interest rate, and you know the price of the other. It also makes precise the earlier claim that a protective put (own the share, buy the put &mdash; the left side rearranged) has the same payoff as holding a call plus cash: insurance and optionality are algebraically the same thing.</p>
+        </div>
+
+        <div class="derivation" style="border:1px solid #cdd9e3;border-left:4px solid #1a5276;background:#f5f8fb;border-radius:8px;padding:16px 22px;margin:24px 0;">
+            <h4 style="margin-top:0;color:#1a5276;">The Intuition of Black&ndash;Scholes</h4>
+            <p>Parity relates a call to a put but does not, by itself, tell you what either is worth. For that we need a model of how the underlying moves. Black, Scholes, and Merton supplied one in 1973, assuming the asset price follows a continuous random walk (geometric Brownian motion) with constant volatility $\sigma$. We will skip the differential equation and go straight to the formula, because the formula can be <em>read</em>. For a European call with no dividends,</p>
+            $$C = \underbrace{S\,N(d_1)}_{\text{value of the shares you might get}} \;-\; \underbrace{K e^{-rT} N(d_2)}_{\text{present value of what you'd pay}},$$
+            $$d_1 = \frac{\ln(S/K) + \left(r + \tfrac12\sigma^2\right)T}{\sigma\sqrt{T}}, \qquad d_2 = d_1 - \sigma\sqrt{T},$$
+            <p>where $N(\cdot)$ is the cumulative standard-normal distribution &mdash; the same bell-curve area that produced Value at Risk in Chapter III. The structure mirrors put&ndash;call parity's two portfolios exactly. The formula says: the call is worth the shares you stand to receive, weighted by $N(d_1)$, minus the strike you would have to pay, discounted and weighted by $N(d_2)$.</p>
+            <p>The two weights have clean readings:</p>
+            <ul>
+                <li>$N(d_2)$ is (in the risk-neutral world) the <strong>probability the option finishes in the money</strong> &mdash; the chance you exercise at all. It scales the strike you expect to pay.</li>
+                <li>$N(d_1)$ is the option's <strong>delta</strong> &mdash; the sensitivity of the option's value to a one-dollar move in the stock, and the number of shares you would hold to hedge the option. It scales the shares you expect to receive. Deep in the money $N(d_1)\to 1$ and the call tracks the stock one-for-one; deep out, $N(d_1)\to 0$ and the call barely stirs.</li>
+            </ul>
+            <p style="margin-bottom:0;">Every motion described in Lens II is encoded here. Raise $\sigma$ or $T$ and $d_1, d_2$ spread apart, lifting $C$ &mdash; the rounding of the kink. Let $T\to 0$ and the formula collapses to $\max(S-K,0)$ &mdash; the smooth curve settles onto the payoff. The genius of Black&ndash;Scholes was not the formula's shape but its <em>derivation</em>: by continuously trading $N(d_1)$ shares against the option, one can build a riskless hedge, and a riskless position can only earn the riskless rate. The option's price is whatever makes that no-arbitrage argument hold &mdash; which is why, astonishingly, the expected return of the stock never appears in the formula at all.</p>
+        </div>
+
+        <aside class="sidebar" style="border:1px solid #d8ccb0;border-left:4px solid #7a1414;background:#fbf7ec;border-radius:8px;padding:18px 22px;margin:28px 0;">
+            <h4 style="margin-top:0;color:#7a1414;font-variant:small-caps;letter-spacing:0.02em;">Sidebar: A Short History of the Hockey Stick</h4>
+            <p>Options are far older than the mathematics that finally tamed them. Aristotle tells the story of the philosopher Thales, who, foreseeing a good olive harvest, paid deposits for the right to use every olive press in Miletus &mdash; a call option on pressing capacity &mdash; and cleaned up when the harvest came in. Options on tulip bulbs traded in seventeenth-century Amsterdam; puts and calls on shares changed hands in London coffee-houses and on the curb outside the Paris Bourse.</p>
+            <p>For all this trading, no one could yet say what an option was <em>worth</em>. The closest thing to a method came from <strong>Henri Lefèvre</strong>, private financial secretary to the House of Rothschild, who in the 1870s devised graphical ways of charting option positions &mdash; direct ancestors of the very payoff diagrams in this chapter. But Lefèvre <em>drew</em> options; he did not price them.</p>
+            <div class="figure" style="margin:16px 0 4px">
+              <img src="figures/lefevre-1873.jpg" alt="Henri Lefevre's 1873 Cartesian diagram of a compound option position on French bonds" style="width:100%; max-width:440px; border:1px solid #d8ccb0; background:#fff; padding:5px;">
+              <p class="figure-caption" style="text-align:left"><strong>Lefèvre&rsquo;s option diagram, 1873.</strong> A compound option position on French bonds &mdash; settlement price along the horizontal axis, gain or loss along the vertical, the bold line tracing the payoff. Drawn a century before options had a pricing theory, it is the direct ancestor of the diagrams in this chapter &mdash; an echo, in options, of Markowitz&rsquo;s first hand-drawn frontier. <span style="color:#8a7f6c">(Lefèvre, <em>Traité des valeurs mobilières et des opérations de Bourse</em>, 1873; public domain.)</span></p>
+            </div>
+            <p>The first serious attempt to <em>price</em> them came from an unlikely quarter. In 1900 a doctoral student named <strong>Louis Bachelier</strong> submitted a thesis, <em>Théorie de la spéculation</em>, that modeled the Paris Bourse's price movements as Brownian motion &mdash; five years before Einstein used the same mathematics for pollen grains &mdash; and derived option values from it. His work was mostly forgotten for half a century, dismissed as neither pure mathematics nor respectable economics.</p>
+            <p style="margin-bottom:0;">The problem was finally closed in <strong>1973</strong>, when <strong>Fischer Black</strong> and <strong>Myron Scholes</strong> published their formula, with <strong>Robert Merton</strong> supplying the continuous-hedging argument that put it on rigorous footing &mdash; in the very year the Chicago Board Options Exchange opened its doors. Scholes and Merton received the Nobel Prize in 1997; Black had died two years earlier and could not share it. Within a decade the formula was programmed into every trader's calculator, and a three-century-old contract had at last acquired a theory.</p>
+        </aside>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:8px;font-size:.94rem;color:#26221a">
+              <label>Face value of debt F: <input id="ed-f" type="range" min="40" max="160" step="5" value="100" style="vertical-align:middle;width:130px"> <strong id="ed-fv" style="color:#b9770e">100</strong></label>
+              <label>Asset volatility &sigma;: <input id="ed-s" type="range" min="0" max="60" step="1" value="25" style="vertical-align:middle;width:130px"> <strong id="ed-sv" style="color:#1e8b3a">25%</strong></label>
+            </div>
+            <div id="ed-chart"></div>
+            <div id="ed-read" style="font-size:.94rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 9.3.</strong> A firm&rsquo;s securities as options on its assets. Read the horizontal axis as the total value $V$ of the firm at the moment its debt comes due. The <span style="color:#1e8b3a;font-weight:700">shareholders</span> hold a <em>call</em> on the assets struck at the face value of the debt $F$: worthless in default, rising dollar-for-dollar once the firm clears its obligations. The <span style="color:#b9770e;font-weight:700">creditors</span> hold the mirror piece, $\min(V,F)$ &mdash; a riskless bond minus a put &mdash; and the two always sum to the whole firm. Raise the asset volatility and watch the conflict of interest appear in the geometry: more risk <em>lifts</em> the shareholders&rsquo; call and <em>erodes</em> the value of the debt, even though the firm itself is worth no more.</p>
+        </div>
+        <script>
+        (function(){
+          var VMAX=200,r=0.03,T=1,W=700,H=440,mL=54,mR=20,mT=18,mB=46,pw=W-mL-mR,ph=H-mT-mB,YMAX=210;
+          function erf(x){var s=x<0?-1:1;x=Math.abs(x);var t=1/(1+0.3275911*x);var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y;}
+          function N(x){return 0.5*(1+erf(x/Math.SQRT2));}
+          function call(V,F,sig){if(sig<=1e-6||V<=0)return Math.max(V-F,0);var v=sig*Math.sqrt(T),d1=(Math.log(V/F)+(r+sig*sig/2)*T)/v,d2=d1-v;return V*N(d1)-F*Math.exp(-r*T)*N(d2);}
+          function px(V){return mL+V/VMAX*pw;} function py(v){return mT+ph-v/YMAX*ph;}
+          var el=document.getElementById('ed-chart'),sf=document.getElementById('ed-f'),ss=document.getElementById('ed-s');
+          function line(fn,col,w,dash){var d='';for(var V=0;V<=VMAX+1e-9;V+=2){d+=(d?'L':'M')+px(V).toFixed(1)+' '+py(fn(V)).toFixed(1)+' ';}return '<path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="'+w+'"'+(dash?' stroke-dasharray="'+dash+'"':'')+'/>';}
+          function render(){
+            var F=+sf.value,sig=+ss.value/100;
+            document.getElementById('ed-fv').textContent=F;document.getElementById('ed-sv').textContent=(sig*100).toFixed(0)+'%';
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var v=0;v<=YMAX;v+=50){var y=py(v);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#8a7f6c">'+v+'</text>';}
+            for(var V=0;V<=VMAX;V+=40){var x=px(V);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="12" fill="#8a7f6c">'+V+'</text>';}
+            s+='<line x1="'+px(F).toFixed(1)+'" y1="'+mT+'" x2="'+px(F).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#b7a988" stroke-width="1" stroke-dasharray="4 3"/><text x="'+(px(F)+4).toFixed(1)+'" y="'+(mT+12)+'" font-size="11" fill="#8a7f6c">F = '+F+'</text>';
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Firm asset value V</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Value of the claim</text>';
+            // total firm value (45 deg)
+            s+=line(function(V){return V;},'#8a7f6c',1.4,'6 4');
+            s+='<text x="'+(px(VMAX)-4)+'" y="'+(py(VMAX)+14).toFixed(1)+'" text-anchor="end" font-size="11.5" fill="#8a7f6c">firm = V</text>';
+            // payoff lines (faint dashed)
+            s+=line(function(V){return Math.max(V-F,0);},'#1e8b3a',1.3,'4 3');
+            s+=line(function(V){return Math.min(V,F);},'#b9770e',1.3,'4 3');
+            // market value curves (bold)
+            s+=line(function(V){return call(V,F,sig);},'#1e8b3a',2.8,null);
+            s+=line(function(V){return V-call(V,F,sig);},'#b9770e',2.8,null);
+            // legend
+            s+='<g font-size="12"><rect x="'+(mL+10)+'" y="'+(mT+8)+'" width="150" height="40" fill="#fbf7ec" stroke="#e0d6bf" rx="4"/><line x1="'+(mL+18)+'" y1="'+(mT+21)+'" x2="'+(mL+40)+'" y2="'+(mT+21)+'" stroke="#1e8b3a" stroke-width="2.8"/><text x="'+(mL+46)+'" y="'+(mT+25)+'" fill="#5c5344">equity (a call)</text><line x1="'+(mL+18)+'" y1="'+(mT+37)+'" x2="'+(mL+40)+'" y2="'+(mT+37)+'" stroke="#b9770e" stroke-width="2.8"/><text x="'+(mL+46)+'" y="'+(mT+41)+'" fill="#5c5344">debt = V &minus; equity</text></g>';
+            s+='</svg>';el.innerHTML=s;
+            var eq=call(F,F,sig),db=F-eq;
+            document.getElementById('ed-read').innerHTML='With the firm&rsquo;s assets worth exactly the face of its debt (V = F = '+F+'), the shareholders&rsquo; call is still worth <strong style="color:#1e8b3a">'+eq.toFixed(1)+'</strong> and the debt only <strong style="color:#b9770e">'+db.toFixed(1)+'</strong> &mdash; they sum to '+F+', the whole firm. '+(sig>0.001?'Raising volatility shifts value from creditors to shareholders: equity is an option, and options love risk.':'At zero volatility the claims collapse to their payoffs: debt is safe up to F, equity gets the rest.');
+          }
+          sf.addEventListener('input',render);ss.addEventListener('input',render);render();
+        })();
+        </script>
+
+        <h2>V. Summary</h2>
+
+        <p>The option payoff is the fourth of our five pictures, and the first that bends. Its single kink at the strike &mdash; the fingerprint of the operator $\max(S-K,0)$ &mdash; encodes an asymmetry that runs through all of finance: limited, known downside and open-ended upside, bought for a premium paid today. From that shape everything follows. The premium slides payoff into profit and fixes the break-even. A put is the same shape mirrored, and a put is insurance in all but name.</p>
+
+        <p>Before expiration the kinked payoff softens into a smooth value curve that always rides above it, and the height of the rounding &mdash; the option's time value &mdash; swells with volatility and with time, then deflates to nothing as the clock runs out. That rounding is what Black, Scholes, and Merton captured in 1973, closing a problem that had been open since the Paris Bourse of the 1860s. And once the shape is in the eye, it appears where no one drew it: in the equity of a levered firm, which is nothing but a call on the firm's assets. The homeowner buying flood insurance, the venture capitalist staging an investment, the shareholder of a distressed company &mdash; all of them are holding options, whether or not they know the word.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: What the Payoff Picture Teaches</h4>
+            <p>An option converts an uncertain future into an asymmetric claim: you keep the favorable outcomes and are shielded from the unfavorable ones, in exchange for a premium. The kink at the strike is where the two regimes meet. Its value before expiration rounds above the payoff by an amount that grows with volatility and time &mdash; which is why, uniquely among the assets in this book, an option is worth <em>more</em> when its underlying is more uncertain.</p>
+        </div>
 
         <div class="note">
-            <strong>Note:</strong> Preferred shares sit between bonds and common equity in the capital structure. They are junior to debt but senior to equity, making them a useful instrument for balancing risk and return in corporate financing.
-        </div>
-
-        <h2>Warrants</h2>
-
-        <p>A warrant is a <strong>right to purchase shares for a fixed price, over a fixed period of time</strong>. Key characteristics:</p>
-
-        <ul>
-            <li>Warrants are issued by the company itself (unlike exchange-traded options)</li>
-            <li>When exercised, new shares are created, diluting existing shareholders</li>
-            <li>Often attached to bond issues as a "sweetener" to make the debt more attractive</li>
-            <li>Similar to call options but typically with longer maturities (years rather than months)</li>
-        </ul>
-
-        <div class="key-concept">
-            <h4>Key Concept: The Capital Structure Spectrum</h4>
-            <p>Corporate financing instruments form a spectrum from safest (senior secured bonds) to riskiest (common equity). Each step up in risk priority demands a higher expected return. The firm chooses its capital structure -- the mix of debt and equity -- to minimize its overall cost of capital while maintaining financial flexibility.</p>
+            <strong>Interactive Tool:</strong> Explore option pricing and payoff diagrams interactively using the
+            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
         </div>
 
     </div>
 
-    
     <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
         <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
         <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
@@ -179,7 +384,7 @@
 
     <footer class="chapter-footer">
         <a href="chapter-8.html" class="chapter-nav-link">&larr; Chapter VIII: Information and Market Efficiency</a>
-        <a href="review.html" class="chapter-nav-link">Summary Review Notes &rarr;</a>
+        <a href="chapter-10.html" class="chapter-nav-link">Chapter X: Long-Term Corporate Financing &rarr;</a>
     </footer>
 </article>
 

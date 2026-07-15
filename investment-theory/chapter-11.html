@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter XI: Bond Duration — W. N. Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+</head>
+<body class="chapter-page">
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="../index.html#textbook" class="nav-name">&larr; Investment Theory</a>
+        <ul class="nav-links">
+            <li><a href="chapter-10.html">&larr; Ch. X</a></li>
+            <li><a href="review.html">Review &rarr;</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="chapter">
+    <header class="chapter-header">
+        <p class="chapter-label">Chapter XI</p>
+        <h1>Bond Duration</h1>
+        <p class="chapter-deck">Price against the interest rate &mdash; the downward-sloping, convex curve, and how to measure and manage the risk in a fixed promise.</p>
+    </header>
+
+    <div class="chapter-content">
+
+        <h2>Introduction</h2>
+
+        <p>The last of our five pictures is, at first glance, the least dramatic. It is a curve that slopes downward and bows gently &mdash; the price of a bond plotted against the interest rate. No hockey-stick kink, no efficient frontier bowing to the northwest; just a smooth line falling from upper left to lower right. And yet this modest curve governs the largest asset class on earth. The world's bond markets dwarf its stock markets, and every pension fund, insurance company, central bank, and government treasury lives or dies by how well it understands the shape of this line.</p>
+
+        <p>The picture answers a single, urgent question: <strong>when interest rates move, how much does the value of my bonds move?</strong> The slope of the curve is the answer, and it has a name that will organize this entire chapter &mdash; <strong>duration</strong>. The gentle bowing of the curve, its <strong>convexity</strong>, is a second-order refinement that turns out to matter enormously when rates move a lot. We will read this figure through the same four lenses as the others: the logic of why the curve slopes and bends, how it moves as we change the bond, how a practitioner uses its slope to hedge and to immunize, and &mdash; for the willing &mdash; the mathematics of duration and convexity.</p>
+
+        <h2>I. The Logic: A Fixed Promise, Discounted</h2>
+
+        <p>A bond is the simplest instrument in finance: a set of promised cash flows on fixed future dates. A typical coupon bond promises a stream of interest payments &mdash; the coupons &mdash; and then a final repayment of the face value, or principal, at maturity. Those promises are fixed at issue and do not change. What changes, minute by minute in the market, is what investors are willing to <em>pay</em> for them &mdash; and that price is nothing more than the <strong>present value</strong> of the promised stream, discounted at the prevailing interest rate.</p>
+
+        <p>This is the compound-growth picture of Chapter I, run in reverse. There, a dollar today grew into more dollars tomorrow. Here, a dollar promised for tomorrow is worth less than a dollar today, and we discount it back:</p>
+
+        <div class="equation">
+            <p class="equation-label">Bond Price as Present Value</p>
+            $$P = \sum_{t=1}^{n} \frac{C_t}{(1+y)^t}$$
+        </div>
+
+        <p>where $C_t$ is the cash flow at time $t$ (a coupon, and at maturity the coupon plus the face value), and $y$ is the <strong>yield</strong> &mdash; the single interest rate that discounts the promised stream back to its market price. The whole chapter lives inside this one formula. The bond's promises, the $C_t$, are frozen. The yield $y$ is the variable. Ask what happens to $P$ as $y$ moves, and you have drawn the picture.</p>
+
+        <h3>Why the Curve Slopes Down</h3>
+
+        <p>The direction is immediate and, once seen, unforgettable. Every term in the sum has $y$ in its denominator. Raise the yield and every denominator grows, so every discounted cash flow shrinks, so the price falls. Lower the yield and the reverse happens. <strong>Bond prices and interest rates move in opposite directions</strong> &mdash; always, mechanically, by the very structure of discounting. This inverse relationship is the single most important fact in fixed income, and it trips up newcomers precisely because it feels backwards. The bond's promised payments have not changed one cent; only the rate at which we value them has. When your neighbor complains that rising rates &ldquo;cost&rdquo; the bond fund money, this falling curve is exactly what they have run into.</p>
+
+        <p>There is a plain-language way to feel it. Suppose you hold a bond paying a 3% coupon and new bonds start paying 5%. Nobody will pay full price for your stale 3% bond when they can buy a fresh 5% one, so the market price of yours must fall until its lower coupons, bought at a discount, deliver the same 5% yield a buyer could get elsewhere. The price drops to restore fairness. Rising rates make old promises less valuable.</p>
+
+        <div class="key-concept">
+            <h4>Key Idea: Price and Yield Move Inversely</h4>
+            <p>A bond's cash flows are fixed; its price is their present value at the current yield. Because yield sits in every denominator, a higher yield discounts every payment more heavily and the price falls. The bond price&ndash;yield curve therefore slopes <strong>downward</strong>. This is not a market opinion or a behavioral quirk &mdash; it is arithmetic.</p>
+        </div>
+
+        <h3>Why the Curve Bows</h3>
+
+        <p>The curve does not fall in a straight line. It is <strong>convex</strong> &mdash; it bows toward the origin, steep on the left where yields are low and flattening as yields climb. This shape has real consequences, so it is worth understanding why it is there. Each cash flow is discounted by $1/(1+y)^t$, and this function is itself convex in $y$: as the yield rises, each additional increment of yield subtracts a <em>smaller</em> amount from the present value than the increment before it. The price falls at a decelerating rate. Geometrically, the curve is always &ldquo;smiling&rdquo; upward.</p>
+
+        <p>The consequence is a small but genuine gift to the bondholder. Because the curve bows, a drop in yields raises the price by <em>more</em> than an equal rise in yields lowers it. Your gains from falling rates slightly exceed your losses from rising rates of the same size. Convexity, we will see, is a friend &mdash; and one worth paying for.</p>
+
+        <div class="figure">
+          <!-- INTERACTIVE SPEC: "The price-yield curve and its tangent" (Figure 11.1)
+               PURPOSE: The central picture of the chapter. Show the downward-sloping convex price-yield curve, draw the TANGENT LINE at a chosen yield to reveal that duration IS the slope, and let maturity and coupon reshape the curve's steepness and curvature.
+               AXES: x = yield y, range 0% to ~15%, default cursor at 5%, labeled "Yield to maturity y". y = bond price, range ~0 to a bit above par (e.g. 0-160 if face=100), labeled "Bond price P". A horizontal reference line at par (100) and a vertical line at the coupon rate show where price = face (price above par when y<coupon, below par when y>coupon).
+               CONTROLS:
+                 - Slider: Time to maturity n, 1-30 years, default 10. Longer maturity => steeper AND more curved (bowed) line.
+                 - Slider: Coupon rate c, 0%-10%, default 5%, step 0.5. A zero-coupon bond (c=0) is the most convex/steep for its maturity; higher coupon flattens the curve (shorter effective duration).
+                 - Slider (or draggable point on the curve): current yield y0, 1%-14%, default 5% - this sets WHERE the tangent is drawn.
+                 - Checkbox: "Show tangent line (duration)" - draws the straight tangent to the curve at y0. Its (negative) slope, scaled, is the dollar duration; annotate "slope = -dP/dy".
+                 - Checkbox: "Show duration estimate vs. true price" - extends the tangent line and shades the GAP between the straight tangent and the true convex curve as yield moves away from y0, visually defining convexity as the error of the linear (duration-only) approximation. The gap should always show the tangent lying BELOW the curve on both sides (curve is convex), i.e. duration underestimates the price - a visual proof that "convexity is a friend."
+               READOUT: current price P at y0; Macaulay duration (years) and modified duration; the linear price-change prediction for a chosen delta-y (e.g. +1%) vs. the true repriced value, with the convexity correction closing the gap. E.g. "For a +1% yield move: duration alone predicts -$8.2; convexity adds back +$0.4; true new price differs by ...".
+               PEDAGOGICAL POINT: (1) the curve slopes down and bows (convex); (2) DURATION IS THE SLOPE of the tangent - the local linear sensitivity of price to yield; (3) longer maturity and lower coupon => steeper slope (more rate risk) and more curvature; (4) the tangent underestimates the true price on both sides - convexity - so duration-only hedging leaves a residual that convexity corrects.
+          -->
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:20px;color:#8a7f6c;font-style:italic;text-align:center">Interactive figure &mdash; coming soon.</div>
+          <p class="figure-caption"><strong>Figure 11.1.</strong> The price&ndash;yield curve and its tangent. The bold curve is the bond's price as a function of its yield &mdash; falling and convex. Slide the <em>maturity</em> and <em>coupon</em> to watch the curve steepen and bow: longer maturities and smaller coupons make it plunge more sharply. Tick <em>show tangent</em> to draw the straight line just touching the curve at the current yield &mdash; its slope <em>is</em> the bond's duration, the local sensitivity of price to rate. Tick <em>duration estimate vs. true price</em> to shade the gap between that straight tangent and the true curve: because the curve bows above its tangent on both sides, the duration estimate always understates the price, and the shaded sliver is exactly the bond's <strong>convexity</strong>.</p>
+        </div>
+
+        <h2>II. How It Moves</h2>
+
+        <p>One bond gives one curve. But the steepness and the bow of that curve are not fixed features of &ldquo;bonds&rdquo; in general &mdash; they depend on the particular bond, and understanding what makes the curve steep or shallow is the heart of managing interest-rate risk. Two features of the bond do most of the work: its <strong>maturity</strong> and its <strong>coupon</strong>. A third input, the <strong>level of yields</strong> itself, tunes the curvature.</p>
+
+        <h3>Duration as the Slope</h3>
+
+        <p>Before we push the sliders, let us name what we are watching. The slope of the price&ndash;yield curve &mdash; how many dollars of price you lose per unit of yield &mdash; is the bond's <strong>duration</strong>. Draw the straight line tangent to the curve at today's yield, and duration is (up to a scaling) that line's slope. It is the single number that summarizes a bond's exposure to rates: a bond with a duration of 7 will lose roughly 7% of its value if yields rise by one percentage point. Everything in this lens is really a statement about how the slope of the tangent changes as we alter the bond.</p>
+
+        <p>There is a second, equally valid reading of duration that gives the concept its name. Duration is a <strong>weighted-average time to receipt</strong> of the bond's cash flows &mdash; each payment date weighted by how much of the bond's present value arrives on that date. A five-year zero-coupon bond pays everything at year five, so its duration is exactly five years. A five-year coupon bond returns some value earlier, along the way, so its &ldquo;average&rdquo; payment arrives sooner and its duration is less than five. The two readings &mdash; duration as slope, duration as average waiting time &mdash; are the same quantity seen from two sides, and each illuminates a different part of the picture.</p>
+
+        <h3>Maturity Steepens the Curve</h3>
+
+        <p>Longer maturity means steeper slope. A distant cash flow is discounted through more compounding periods, so a change in the yield acts on it with far more leverage &mdash; the exponent $t$ in $(1+y)^t$ amplifies the effect. Stretch a bond's maturity from two years to thirty and its price&ndash;yield curve tilts from nearly flat to precipitously steep. This is why long-term bonds are the volatile end of the fixed-income market: a thirty-year Treasury can lose a quarter of its value on a two-point rise in yields, while a two-year note barely flinches. <strong>Longer maturity, longer duration, more rate risk.</strong></p>
+
+        <h3>Coupons Shorten Duration</h3>
+
+        <p>The coupon works the other way. A bond that pays large coupons returns much of its value early, pulling the average time-to-receipt &mdash; and thus the duration &mdash; forward, flattening the curve. A bond that pays nothing until maturity, the <strong>zero-coupon bond</strong>, concentrates all its value at the final date and so has the longest duration of any bond of its maturity: its duration equals its maturity exactly. For two bonds maturing on the same day, the one with the smaller coupon has the longer duration and the steeper, more rate-sensitive curve. Duration, then, is not the same as maturity; it is maturity adjusted for how front-loaded the cash flows are.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: What Drives Duration</h4>
+            <p>A bond's duration &mdash; the slope of its price&ndash;yield curve and its interest-rate risk &mdash; <strong>rises with maturity</strong> and <strong>falls with the coupon</strong>. Longer-dated, lower-coupon bonds have the longest durations and swing the most when rates move. A zero-coupon bond has a duration equal to its maturity; every coupon-paying bond has a duration shorter than its maturity.</p>
+        </div>
+
+        <h3>The Level of Yields Tunes the Curvature</h3>
+
+        <p>Finally, where you sit on the curve matters. At low yields the curve is steepest and most sharply bowed; at high yields it flattens out. Discounting is a compounding process, and its effects are most violent when rates are near zero &mdash; which is exactly why the era of ultra-low interest rates after 2010 left bond portfolios with historically enormous durations, and why the sharp rate increases of 2022 inflicted some of the worst bond losses on record. The same one-point move in yields does more damage when it starts from a low base. Convexity, the bowing itself, is largest for long, low-coupon bonds at low yields &mdash; the same bonds that carry the most duration.</p>
+
+        <h2>III. How You Use It</h2>
+
+        <p>Duration is not a classroom abstraction; it is the working number of the fixed-income world. Traders quote it, risk managers limit it, and the largest institutions on earth build their entire asset&ndash;liability strategy around it. Three uses matter most: <em>measuring</em> the risk, <em>hedging</em> it, and <em>immunizing</em> against it.</p>
+
+        <h3>Measuring: DV01 and Dollar Duration</h3>
+
+        <p>The trading desk rarely speaks of percentages; it speaks of dollars. The practical measure is <strong>DV01</strong> &mdash; the &ldquo;dollar value of an 01,&rdquo; the change in a position's value for a one-basis-point (0.01%) move in yield. It is simply duration translated into the currency of profit and loss. A portfolio with a DV01 of <strong>$50,000</strong> gains or loses that much for each basis point rates move; multiply by a hundred and a full percentage-point move is a <strong>$5,000,000</strong> swing. DV01 (also called dollar duration) lets a manager compare the rate risk of wildly different positions &mdash; a handful of long bonds against thousands of short ones &mdash; on a single common scale. It is the fixed-income analogue of the Value-at-Risk number from Chapter III: a way to express an abstract sensitivity as a concrete sum of money at stake.</p>
+
+        <h3>Hedging: Neutralizing the Slope</h3>
+
+        <p>Once risk is a single number, hedging becomes arithmetic. To protect a bond portfolio against rising rates, a manager takes an offsetting position &mdash; shorting Treasury futures, receiving in a swap, selling long bonds &mdash; sized so that its DV01 is equal and opposite to the portfolio's. If the portfolio loses <strong>$50,000</strong> per basis point and the hedge gains <strong>$50,000</strong> per basis point, the combined position is, to first order, indifferent to small rate moves: the slopes cancel. This is <strong>duration hedging</strong>, and it is performed continuously, in enormous size, across the world's bond desks. The tangent line of Figure 11.1 is the whole game &mdash; matching slopes so the net position sits flat.</p>
+
+        <p>But note the phrase &ldquo;to first order.&rdquo; A duration hedge cancels the <em>slope</em>, not the <em>bow</em>. For small moves the straight tangent tracks the curve closely and the hedge holds. For large moves, convexity reasserts itself &mdash; the true curve pulls away from the tangent &mdash; and the hedge springs a leak. Sophisticated managers therefore hedge convexity as well as duration, matching the curvature of assets and liabilities so the position stays flat even through violent moves. This is precisely where the second-order term in the mathematics below earns its keep.</p>
+
+        <h3>Immunization: Matching Assets to Liabilities</h3>
+
+        <p>The most consequential use of duration belongs to institutions with long-dated promises to keep: pension funds that owe benefits for decades, and life insurers that owe claims far into the future. These liabilities are themselves a stream of fixed future cash flows &mdash; which means they have a present value and a duration exactly as a bond does, and their value swings with interest rates just as a bond's does. The danger is a <em>mismatch</em>: if the fund's assets and its liabilities respond differently to rates, a move in yields can open a gap between what it owns and what it owes, even if both were perfectly balanced yesterday.</p>
+
+        <p>The remedy is <strong>immunization</strong>: build the asset portfolio so that its duration equals the duration of the liabilities. Then a rise in rates that shrinks the assets shrinks the liabilities by the same proportion, and the funded status &mdash; the surplus of assets over obligations &mdash; is protected from the swing. The institution has neutralized its interest-rate risk not by predicting rates but by matching slopes. This single idea, that a pension or insurer should match the duration of what it owns to the duration of what it owes, is the organizing principle of <strong>liability-driven investment</strong>, the framework by which trillions of dollars of retirement and insurance money are managed today.</p>
+
+        <div class="figure">
+          <!-- INTERACTIVE SPEC: "Immunization: matching asset and liability duration" (Figure 11.2)
+               PURPOSE: Show why matching durations protects an institution's funded status. Plot present value against yield for BOTH an asset portfolio and a liability stream, and let the reader see the surplus stay stable when durations match and drift apart when they don't.
+               AXES: x = yield y, range ~1%-10%, default 5%, labeled "Yield". y = present value in dollars (e.g. 0-150 with both curves starting matched at par-ish at the base yield), labeled "Present value ($)". Two downward-sloping convex curves: ASSETS (blue) and LIABILITIES (dark red). A thin third curve or shaded band = SURPLUS = assets - liabilities.
+               CONTROLS:
+                 - Slider: Asset portfolio duration D_A, 1-25 years, default set to match liabilities. (Implement e.g. as choosing a bond/barbell whose duration the reader dials.)
+                 - Fixed or slider: Liability duration D_L, default ~12 years (a pension's long horizon). Reader can change it to represent a younger vs. older plan.
+                 - Slider (or drag): current yield y - moves a vertical cursor along both curves and reads off assets, liabilities, and surplus at that yield.
+                 - Checkbox: "Match durations" convenience button that snaps D_A = D_L.
+               DISPLAY: At the base yield, assets = liabilities (fully funded, surplus = 0). As the reader drags the yield cursor away from base: if D_A = D_L, the two curves move down together and the surplus band stays ~flat at zero (immunized). If D_A < D_L (assets too short), a rate FALL hurts - liabilities rise faster than assets, surplus goes negative; if D_A > D_L, a rate RISE hurts. Show the surplus band swelling positive/negative to dramatize the mismatch. Optionally overlay convexity so an exact match still leaves a tiny second-order gap.
+               READOUT: "Duration gap = D_A - D_L = X years." At the current yield: assets $, liabilities $, surplus/deficit $, and a verdict ("Immunized: surplus barely moves" vs. "Under-hedged: a 1% rate fall opens a $__ deficit").
+               PEDAGOGICAL POINT: A pension/insurer cares about the GAP between assets and liabilities, not either alone. Matching the duration of assets to the duration of liabilities makes the two curves move in lockstep, holding funded status steady across rate moves - the core of immunization and liability-driven investment. A duration gap is a bet on the direction of rates, whether intended or not.
+          -->
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:20px;color:#8a7f6c;font-style:italic;text-align:center">Interactive figure &mdash; coming soon.</div>
+          <p class="figure-caption"><strong>Figure 11.2.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>. Drag the yield cursor and watch the <em>surplus</em> &mdash; the gap between them. When the asset duration is dialed to <em>match</em> the liability duration, the two curves descend in lockstep and the surplus barely stirs, whatever rates do: the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> &mdash; assets shorter or longer than liabilities &mdash; and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
+        </div>
+
+        <h2>IV. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
+
+        <p>The three lenses above require no calculus. But duration and convexity have exact definitions, and for readers who want to compute rather than merely picture them, the formulas are clean and worth seeing. They also make precise the two readings of duration &mdash; average waiting time and price sensitivity &mdash; and show why they are the same number.</p>
+
+        <div class="derivation" style="border:1px solid #cdd9e3;border-left:4px solid #1a5276;background:#f5f8fb;border-radius:8px;padding:16px 22px;margin:24px 0;">
+            <h4 style="margin-top:0;color:#1a5276;">Derivation: Macaulay and Modified Duration</h4>
+            <p>Start with the bond price and take its derivative with respect to the yield &mdash; the slope of the price&ndash;yield curve. From $P = \sum_t C_t (1+y)^{-t}$,</p>
+            $$\frac{dP}{dy} = \sum_{t=1}^{n} -t\,C_t\,(1+y)^{-t-1} = -\frac{1}{1+y}\sum_{t=1}^{n} \frac{t\,C_t}{(1+y)^t}.$$
+            <p>The sum on the right is a present-value&ndash;weighted count of the cash-flow times. Frederick Macaulay's insight in 1938 was to normalize it by the price, producing a weighted-average maturity &mdash; the time at which the bond&rsquo;s value &ldquo;arrives&rdquo; on average:</p>
+            <div class="equation" style="margin:14px 0;">
+                <p class="equation-label">Macaulay Duration</p>
+                $$D = \frac{1}{P}\sum_{t=1}^{n} \frac{t\,C_t}{(1+y)^t}.$$
+            </div>
+            <p>Each cash-flow time $t$ is weighted by the fraction of the bond's present value that arrives at $t$; the weights sum to one, so $D$ is a genuine average, measured in years. This is the &ldquo;average waiting time&rdquo; reading. Now substitute it back into the derivative:</p>
+            $$\frac{dP}{dy} = -\frac{D}{1+y}\,P.$$
+            <p>Define <strong>modified duration</strong> as $D^{*} = D/(1+y)$, and this becomes the sensitivity reading &mdash; the fractional change in price per unit change in yield:</p>
+            <div class="equation" style="margin:14px 0;">
+                <p class="equation-label">Modified Duration and the Price&ndash;Yield Slope</p>
+                $$D^{*} = \frac{D}{1+y}, \qquad \frac{1}{P}\frac{dP}{dy} = -D^{*}.$$
+            </div>
+            <p style="margin-bottom:0;">There is the unity of the two pictures: the same $D$ that measures the average time to receipt of the cash flows also measures, after dividing by $1+y$, the slope of the price&ndash;yield curve. Average waiting time and price sensitivity are one quantity. The dollar version, $\text{DV01} = D^{*}\cdot P \cdot 0.0001$, is what the trading desk actually monitors.</p>
+        </div>
+
+        <div class="derivation" style="border:1px solid #cdd9e3;border-left:4px solid #1a5276;background:#f5f8fb;border-radius:8px;padding:16px 22px;margin:24px 0;">
+            <h4 style="margin-top:0;color:#1a5276;">Derivation: The Duration&ndash;Convexity Approximation</h4>
+            <p>Modified duration captures the slope, but the price&ndash;yield curve bows away from any straight line. To capture the bow we carry the Taylor expansion of the price one term further, to second order in the yield change $\Delta y$:</p>
+            $$\Delta P \approx \frac{dP}{dy}\Delta y + \frac{1}{2}\frac{d^2P}{dy^2}(\Delta y)^2.$$
+            <p>The first term is the duration effect we already have. The second involves the second derivative, which defines <strong>convexity</strong>:</p>
+            <div class="equation" style="margin:14px 0;">
+                <p class="equation-label">Convexity</p>
+                $$\text{Convexity} = \frac{1}{P}\frac{d^2P}{dy^2} = \frac{1}{P}\sum_{t=1}^{n} \frac{t(t+1)\,C_t}{(1+y)^{t+2}}.$$
+            </div>
+            <p>Dividing the whole expansion by $P$ gives the workhorse formula that fixed-income managers use to reprice a bond after a rate move without recomputing the entire present value:</p>
+            <div class="equation" style="margin:14px 0;">
+                <p class="equation-label">Duration&ndash;Convexity Price Change</p>
+                $$\frac{\Delta P}{P} \approx -D^{*}\,\Delta y + \tfrac{1}{2}\,\text{Convexity}\,(\Delta y)^2.$$
+            </div>
+            <p style="margin-bottom:0;">Read the two terms as the two features of the picture. The first, $-D^{*}\Delta y$, is the straight tangent line &mdash; it slopes downward and, alone, would predict symmetric gains and losses. The second, $+\tfrac12\,\text{Convexity}\,(\Delta y)^2$, is always <em>positive</em> (convexity is positive for ordinary bonds) and grows with the <em>square</em> of the move, so it adds value whether rates rise or fall. That is the mathematical statement of &ldquo;convexity is a friend&rdquo;: the curve lies above its tangent on both sides, so duration alone always understates the bond's price, and the convexity term supplies the missing gain. It is negligible for a small wiggle in rates and decisive for a large lurch &mdash; which is exactly when a duration-only hedge fails and a convexity-matched one holds.</p>
+        </div>
+
+        <aside class="sidebar" style="border:1px solid #d8ccb0;border-left:4px solid #7a1414;background:#fbf7ec;border-radius:8px;padding:18px 22px;margin:28px 0;">
+            <h4 style="margin-top:0;color:#7a1414;font-variant:small-caps;letter-spacing:0.02em;">Sidebar: Where Duration Came From</h4>
+            <p>The concept was born of a practical worry: how does one summarize, in a single number, the &ldquo;length&rdquo; of a bond whose value dribbles in over many dates? Maturity alone plainly would not do, since a bond returning most of its cash early is effectively shorter than its final date suggests.</p>
+            <p>The answer was supplied in 1938 by <strong>Frederick Macaulay</strong>, an economist at the National Bureau of Economic Research, in a massive statistical study of American interest rates, bond yields, and stock prices since the Civil War. Almost in passing, Macaulay proposed weighting each payment date by the share of present value arriving then &mdash; the measure that now bears his name. Like Bachelier's thesis on option prices, it was then largely ignored.</p>
+            <p>Duration was independently rediscovered more than once &mdash; by the British actuary <strong>Frank Redington</strong>, who in 1952 coined the term <em>immunization</em> for the practice of matching the duration of an insurer's assets and liabilities; by <strong>John Hicks</strong>, who arrived at the same sensitivity measure in economic theory; and by others. For decades it stayed a specialist's tool.</p>
+            <p style="margin-bottom:0;">Its moment came in the 1970s and early 1980s, when interest rates in the United States turned wildly volatile &mdash; long-bond yields swinging from 6% to over 15% and back &mdash; and the old buy-and-hold complacency of bond management became untenable. Suddenly every insurer and pension fund needed to know its exposure to rates, and duration was the number that answered. What Macaulay had offered as a statistical nicety became, forty years on, the central instrument of an entire industry.</p>
+        </aside>
+
+        <h2>V. Summary</h2>
+
+        <p>The bond price&ndash;yield curve is the quietest of our five pictures and, by dollar volume, the one that governs the most wealth. Its logic is the logic of discounting run in reverse: a bond is a fixed stream of promises, its price is their present value, and because the yield sits in every denominator, the price falls as the yield rises. That is why the curve slopes down. Because discounting decelerates, the curve also bows &mdash; it is convex &mdash; and the bow is a small standing gift to the bondholder, since gains from falling rates outrun losses from rising ones.</p>
+
+        <p>The slope of that curve is <strong>duration</strong>, at once the average time to receipt of the cash flows and the sensitivity of price to yield. It lengthens with maturity and shortens with the coupon, and it is largest, along with the convexity, for long, low-coupon bonds at low yields. Practitioners turn the slope into a dollar figure &mdash; DV01 &mdash; to measure risk, offset it to hedge, and match it across assets and liabilities to immunize the promises of pensions and insurers. The bow, convexity, is the second-order refinement that decides whether a hedge survives a large move. From Macaulay's 1938 statistic to today's trillion-dollar liability-driven mandates, this single downward, bowing curve &mdash; and the two numbers that describe its slope and its bend &mdash; is how the world measures and manages the risk in a fixed promise.</p>
+
+        <div class="key-concept">
+            <h4>Key Concept: What the Duration Picture Teaches</h4>
+            <p>A bond's price is the present value of fixed cash flows, so it falls as yields rise along a convex curve. <strong>Duration</strong> is the slope of that curve &mdash; the percentage price change per unit of yield &mdash; and equals the present-value-weighted average time to the cash flows. <strong>Convexity</strong> is the curve's bow, a second-order term that always works in the bondholder's favor. Measuring duration (as DV01), offsetting it (hedging), and matching it between assets and liabilities (immunization) are how institutions control the largest risk in the largest market on earth.</p>
+        </div>
+
+        <div class="note">
+            <strong>Interactive Tool:</strong> Explore bond pricing, duration, and immunization interactively using the
+            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        </div>
+
+    </div>
+
+    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
+        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
+        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
+        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
+        We gratefully acknowledge their contribution to investment education.
+    </div>
+
+    <footer class="chapter-footer">
+        <a href="chapter-10.html" class="chapter-nav-link">&larr; Chapter X: Long-Term Corporate Financing</a>
+        <a href="review.html" class="chapter-nav-link">Summary Review Notes &rarr;</a>
+    </footer>
+</article>
+
+<footer>
+    <div class="container">
+        <p>&copy; William N. Goetzmann, Yale School of Management</p>
+    </div>
+</footer>
+
+</body>
+</html>

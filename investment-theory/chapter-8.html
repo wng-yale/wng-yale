@@ -182,6 +182,60 @@
 
         <h2>VII. Evidence For Market Efficiency</h2>
 
+        <h3>The First Test: Jules Regnault (1863)</h3>
+
+        <p>The idea that prices already reflect what is knowable &mdash; and that yesterday&rsquo;s chart cannot forecast tomorrow&rsquo;s &mdash; is usually dated to the 1950s and 1960s. In fact it was <em>stated and tested</em> nearly a century earlier, by an obscure broker&rsquo;s assistant in Second-Empire Paris. <strong>Jules Regnault</strong> (1834&ndash;1894) taught himself mathematics in a garret near the Bourse and, in 1863, published <em>Calcul des chances et philosophie de la bourse</em> &mdash; arguably the first statistical theory of the stock market. He would later use that theory to grow rich, retiring as a <em>rentier</em> with a fortune held, tellingly, mostly in bonds.</p>
+
+        <p>Regnault&rsquo;s core argument is the one this chapter has been making. At any instant, he reasoned, a price is as likely to rise as to fall &mdash; a coin toss &mdash; because if the odds were tilted, traders would <em>arbitrage</em> (his word) until they were level again. So successive price changes are <em>independent</em>: the past carries no usable signal about the future. &ldquo;Value,&rdquo; he wrote, &ldquo;is and can only be determined by the price itself.&rdquo; That is weak-form efficiency, stated in 1863 &mdash; and his famous opening line reads it as something grander: &ldquo;<em>The Stock Exchange is the temple of modern society.</em>&rdquo;</p>
+
+        <p>From independence he drew a sharp, testable prediction. If each interval adds its own independent jostle to the price, the <em>spread</em> of prices around their starting point must widen &mdash; not in proportion to time, but to its <em>square root</em>, because it is variances, not deviations, that add up. In his own capitals: <strong>the deviation of prices is in direct relation to the square root of time.</strong> It is the signature of what we now call a random walk &mdash; the same &radic;time law Louis Bachelier would rediscover in 1900 and physicists would attach to Brownian motion.</p>
+
+        <p>Then Regnault did what almost no one in his century thought to do with a market: he checked the prediction against data. Using monthly prices of the French 3% <em>rente</em> from 1825 to 1862, he measured the typical price deviation over a month and over a year &mdash; and found them in almost exactly the &radic;time ratio the theory demanded.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="margin-bottom:8px;font-size:.94rem;color:#26221a">Horizon: <input id="reg-h" type="range" min="1" max="24" step="1" value="12" style="vertical-align:middle;width:180px"> <strong id="reg-hv" style="color:#7a1414">12 months</strong></div>
+            <div id="reg-chart"></div>
+            <div id="reg-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 8.1.</strong> Regnault&rsquo;s square-root-of-time law. If price changes are independent, the typical deviation of the price from its starting point grows as $\sqrt{\text{time}}$. Regnault&rsquo;s two measured deviations of the 3% <em>rente</em> &mdash; about <strong>2.73</strong> over a month and <strong>9.50</strong> over a year &mdash; fall almost exactly on the curve $2.73\sqrt{\text{months}}$: the law predicts $2.73\times\sqrt{12} = 9.46$, against his observed 9.50. Slide the horizon to read the predicted deviation. After W. N. Goetzmann, &ldquo;Pre-history of Efficient Market Theory,&rdquo; from Regnault (1863).</p>
+        </div>
+        <script>
+        (function(){
+          var W=680,H=380,mL=52,mR=22,mT=18,mB=44,pw=W-mL-mR,ph=H-mT-mB,MX=24,MY=15,c=2.73;
+          function th(t){return c*Math.sqrt(t);}
+          function px(t){return mL+t/MX*pw;} function py(v){return mT+ph-v/MY*ph;}
+          var el=document.getElementById('reg-chart'),sh=document.getElementById('reg-h');
+          var pts=[[1,2.73],[12,9.50]];
+          function render(){
+            var hm=+sh.value;document.getElementById('reg-hv').textContent=hm+(hm===1?' month':' months');
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var v=0;v<=MY;v+=5){var y=py(v);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#8a7f6c">'+v+'</text>';}
+            for(var t=0;t<=MX;t+=4){var x=px(t);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="12" fill="#8a7f6c">'+t+'</text>';}
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="13" font-style="italic" fill="#5c5344">Time horizon (months)</text>';
+            s+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13" font-style="italic" fill="#5c5344">Typical price deviation</text>';
+            // theory curve
+            var d='';for(t=0;t<=MX+1e-9;t+=0.25){d+=(d?'L':'M')+px(t).toFixed(1)+' '+py(th(t)).toFixed(1)+' ';}
+            s+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="2.6"/>';
+            s+='<text x="'+(px(MX)-4)+'" y="'+(py(th(MX))-8).toFixed(1)+'" text-anchor="end" font-size="12" fill="#1a5276" font-style="italic">2.73&#8730;t</text>';
+            // Regnault data points
+            pts.forEach(function(p){s+='<circle cx="'+px(p[0]).toFixed(1)+'" cy="'+py(p[1]).toFixed(1)+'" r="6" fill="#1e8b3a" stroke="#fff" stroke-width="1.6"/><text x="'+(px(p[0])+9).toFixed(1)+'" y="'+(py(p[1])+4).toFixed(1)+'" font-size="11.5" fill="#1e8b3a" font-weight="700">'+p[1].toFixed(2)+(p[0]===1?' (1 mo)':' (1 yr)')+'</text>';});
+            // horizon marker
+            var mv=th(hm);
+            s+='<line x1="'+px(hm).toFixed(1)+'" y1="'+(mT+ph).toFixed(1)+'" x2="'+px(hm).toFixed(1)+'" y2="'+py(mv).toFixed(1)+'" stroke="#7a1414" stroke-width="1" stroke-dasharray="3 2"/><circle cx="'+px(hm).toFixed(1)+'" cy="'+py(mv).toFixed(1)+'" r="5.5" fill="#7a1414"/>';
+            s+='</svg>';el.innerHTML=s;
+            document.getElementById('reg-read').innerHTML='At <strong>'+hm+(hm===1?' month':' months')+'</strong> the &radic;time law predicts a typical deviation of <strong>'+mv.toFixed(2)+'</strong> ( = 2.73&#8730;'+hm+' ). Regnault measured <strong>2.73</strong> per month and <strong>9.50</strong> per year; the law predicts 2.73&#8730;12 = <strong>9.46</strong> &mdash; almost exactly his observed 9.50. Deviations grow with the <em>square root</em> of time, not with time itself.';
+          }
+          sh.addEventListener('input',render);render();
+        })();
+        </script>
+
+        <p>&ldquo;Is there,&rdquo; Regnault asked, &ldquo;a better example of the harmony of theory and experience?&rdquo; The fit is the first empirical confirmation of the random walk &mdash; the founding test of the efficient-market hypothesis, run ninety years before the phrase existed.</p>
+
+        <p>He also saw the model&rsquo;s dark corollary, and it is one every day-trader relearns. The fair game is fair only <em>before costs</em>. Each trade pays a small brokerage fee, so the expected profit of a round trip, zero before costs, becomes <em>negative</em> after them. Because the speculator&rsquo;s edge grows only as &radic;time while the fees pile up trade by trade, frequent short-term trading is a slow, near-certain ruin &mdash; Regnault reckoned a heavy speculator would be wiped out, on average, within about <strong>forty trades</strong>. Patient long-term <em>investment</em>, he concluded, is a fundamentally different activity from restless short-term <em>speculation</em> &mdash; a distinction the mathematics still supports.</p>
+
+        <p>Like Bachelier after him, Regnault was forgotten for the better part of a century. He deserves to be remembered as the first to state the efficient-market idea clearly, test it against data, and follow it to its unsettling conclusions.</p>
         <h3>Testing Strong-Form Efficiency</h3>
 
         <p>Merger announcements provide natural experiments. Corporate insiders (lawyers, investment bankers, managers) typically know before public disclosure. Their illegal insider trading can generate profits, earning SEC violations. Stock prices often rise before official announcements, indicating that the market has a tendency towards strong-form efficiency, i.e. even private information is incorporated into prices.</p>
@@ -244,7 +298,7 @@
 
     <footer class="chapter-footer">
         <a href="chapter-7.html" class="chapter-nav-link">&larr; Chapter VII: Where Do Betas Come From?</a>
-        <a href="chapter-9.html" class="chapter-nav-link">Chapter IX: Long-Term Corporate Financing &rarr;</a>
+        <a href="chapter-9.html" class="chapter-nav-link">Chapter IX: The Option Payoff &rarr;</a>
     </footer>
 </article>
 
