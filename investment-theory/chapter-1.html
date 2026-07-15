@@ -43,7 +43,7 @@
 
         <h2>Capital Market History</h2>
 
-        <p>The first bond market began in Venice in the twelfth century, after the Republic borrowed money from its citizens in return for future repayment with interest. These first bonds, the <em>prestiti</em>, traded in the Rialto marketplace and paid 6% annual interest.</p>
+        <p>The first bond market began in Venice, where from the twelfth century the Republic raised money from its citizens through forced loans in return for future repayment with interest. In 1262 these loans were consolidated into a single funded debt, the <em>Monte Vecchio</em>, whose shares &mdash; the <em>prestiti</em> &mdash; paid 5% annual interest and changed hands in the Rialto marketplace. It was the first true secondary market in a government security.</p>
 
         <div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;margin:16px 0">
           <div style="flex:1 1 320px">
@@ -77,7 +77,15 @@
 
         <p>Most securities traded before the nineteenth century were bonds, typically issued by governments. But the first widespread stock-market bubble swept Europe in 1719 and 1720. Variously called the South Sea Bubble, the Mississippi Bubble, or the Dutch <em>Windhandel</em>, it was sparked by speculation in Atlantic trade and by promising new technologies and financial innovations at the dawn of the Industrial Revolution.</p>
 
-        <p>The modern era of capital markets dates to the late nineteenth century, spurred by the global expansion of railroads, which demanded massive capital investment. Nations and corporations turned to the stock and bond markets to finance large-scale infrastructure &mdash; and expensive wars. London was the dominant marketplace of the nineteenth century, alongside a constellation of European exchanges in Paris, Brussels, Berlin, and Saint Petersburg. American markets overtook those of Europe in the twentieth century, and much of what we know about the risk and return of stocks, bonds, and options comes from records of American marketplaces &mdash; the New York Stock Exchange and the Chicago Board Options Exchange.</p>
+        <div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;margin:16px 0">
+          <figure style="flex:0 0 320px;margin:0">
+            <img src="figures/hist-railroad-bond.jpg" alt="An ornate 1867 Central Pacific Railroad $1,000 gold bond certificate" style="width:100%;border:1px solid #d8ccb0;border-radius:4px">
+            <figcaption style="font-size:.8rem;color:#8a7f6c;margin-top:5px;font-style:italic;line-height:1.4">A Central Pacific Railroad $1,000 first-mortgage gold bond of 1867, signed by Leland Stanford as president. Bonds like this financed the American transcontinental railroad. (Wikimedia Commons, CC0.)</figcaption>
+          </figure>
+          <div style="flex:1 1 320px">
+            <p style="margin-top:0">The modern era of capital markets dates to the late nineteenth century, spurred by the global expansion of railroads, which demanded massive capital investment. Nations and corporations turned to the stock and bond markets to finance large-scale infrastructure &mdash; and expensive wars. London was the dominant marketplace of the nineteenth century, alongside a constellation of European exchanges in Paris, Brussels, Berlin, and Saint Petersburg. American markets overtook those of Europe in the twentieth century, and much of what we know about the risk and return of stocks, bonds, and options comes from records of American marketplaces &mdash; the New York Stock Exchange and the Chicago Board Options Exchange.</p>
+          </div>
+        </div>
 
         <p>The global expansion of finance in the twenty-first century, particularly in India and China, has vastly enlarged the supply of capital, increased the number of investors enormously, and afforded all investors the opportunity to diversify globally. The tools we explore in this text are the foundation of the decisions those investors face.</p>
 
@@ -85,38 +93,103 @@
         <p>This module shifts focus from corporate decision-making to the investor's perspective. We examine how shareholders and bondholders who hold portfolios &mdash; collections of different securities &mdash; make financial decisions. The central question addressed is:</p>
         <blockquote>What rate of return will investors demand to hold a risky security?</blockquote>
 
+        <p>That single question &mdash; how much extra return investors demand as <strong>compensation for risk</strong> &mdash; runs through the whole book, and this chapter does not yet fully answer it. It takes the first steps: defining return, measuring the historical record, and naming the reward for bearing risk (the <em>risk premium</em>, Section VI). The complete answer &mdash; how the market itself sets the price of risk &mdash; is built over the chapters that follow, through diversification and the efficient frontier and the asset-pricing models beyond. Keep the question in view: nearly every tool in this text is, in the end, an attempt to answer it.</p>
+
         <h2>II. Why Investors Invest</h2>
         <p>Primary motivations for purchasing securities include savings for future needs and wealth accumulation. Some investors accept high-risk ventures, such as lottery tickets, for potential significant payoffs. Additional motivations include charitable objectives, though these generate non-economic dividends and prove difficult to evaluate systematically.</p>
 
+        <style>
+          .ceq-wrap{margin:18px 0}
+          .ceq{font-family:'EB Garamond',Georgia,serif;font-size:1.7rem;text-align:center;margin:10px 0 6px;line-height:2.1;color:#26221a}
+          .ceq .ct{cursor:pointer;padding:1px 3px;border-radius:5px;border-bottom:2px dotted #b9a06a;transition:background .12s,color .12s;white-space:nowrap}
+          .ceq .ct:hover{background:#efe7d4}
+          .ceq .ct.active{background:#1a5276;color:#fff;border-bottom-color:transparent}
+          .ceq .op{color:#8a7f6c;padding:0 2px}
+          .ceq .frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 3px}
+          .ceq .frac>.fnum{padding:1px 7px}
+          .ceq .frac>.fden{padding:1px 7px;border-top:2px solid #26221a}
+          .ceq .big{font-size:1.5em;line-height:.8;vertical-align:middle}
+          .ceq .big sub,.ceq .big sup{font-size:.3em;font-weight:400}
+          .ceq-hint{font-size:.82rem;color:#8a7f6c;text-align:center;margin:2px 0 4px}
+          .ceq-panel{background:#f5f2e8;border:1px solid #e0d6bf;border-left:4px solid #1a5276;border-radius:6px;padding:11px 16px;margin:4px 0 2px;min-height:2.2em;font-size:.95rem;line-height:1.5;color:#4a4438}
+        </style>
+
         <h2>III. Definition of Rates of Return</h2>
-        <p>Return represents the growth in wealth resulting from an investment, expressed as a percentage for comparability. The basic formula is:</p>
+        <p>Return is the growth in wealth an investment produces, expressed as a percentage so that investments of any size can be compared. The basic formula measures the change in price relative to what you paid &mdash; click any part of the equation to see what it does:</p>
 
-        <div class="equation">
-            <p class="equation-label">Simple Return</p>
-            $$R_t = \frac{P_{t+1} - P_t}{P_t} = \frac{P_{t+1}}{P_t} - 1$$
+        <div class="ceq-wrap">
+          <div class="ceq">
+            <span class="ct" data-n="Return over the period" data-d="R with a time subscript: the return earned between time t and time t+1 &mdash; the growth in your wealth, written as a fraction of what you started with.">R<sub>t</sub></span>
+            <span class="op">=</span>
+            <span class="frac">
+              <span class="fnum"><span class="ct" data-n="The price change" data-d="The ending price minus the starting price &mdash; your gain (or loss) over the period, measured in dollars.">P<sub>t+1</sub> <span class="op">&minus;</span> P<sub>t</sub></span></span>
+              <span class="fden"><span class="ct" data-n="The original price" data-d="The price you paid at the start. Dividing the gain by it converts dollars into a proportion &mdash; a percentage that applies to ANY amount of capital. A 10% return means the same thing on one hundred dollars or one hundred million; that is exactly what makes return a general, comparable measure.">P<sub>t</sub></span></span>
+            </span>
+            <span class="op">=</span>
+            <span class="frac"><span class="fnum">P<sub>t+1</sub></span><span class="fden">P<sub>t</sub></span></span>
+            <span class="op">&minus;</span> 1
+          </div>
+          <p class="ceq-hint">&#128072; click a term &mdash; the choice of denominator is the subtle, powerful one</p>
+          <div class="ceq-panel"><em>Click a term in the equation above to see what it means.</em></div>
         </div>
 
-        <p>When dividends are included, the total return becomes:</p>
+        <p>That denominator is worth pausing on. Dividing by the original price is what turns a dollar gain into a <em>rate</em> &mdash; a number that means the same thing whatever the sum invested, and so can be compared across investments of any size. It is a small move with a large payoff: it makes return <strong>generalizable</strong>.</p>
 
-        <div class="equation">
-            <p class="equation-label">Total Return with Dividends</p>
-            $$R_t = \frac{P_{t+1} - P_t + D_t}{P_t}$$
+        <p>Most securities also pay cash along the way. Adding those dividends to the price change gives the <em>total</em> return:</p>
+
+        <div class="ceq-wrap">
+          <div class="ceq">
+            <span class="ct" data-n="Total return" data-d="The full return to a holder: the price change plus the cash received, over the original price.">R<sub>t</sub></span>
+            <span class="op">=</span>
+            <span class="frac">
+              <span class="fnum">P<sub>t+1</sub> <span class="op">&minus;</span> P<sub>t</sub> <span class="op">+</span> <span class="ct" data-n="Dividends" data-d="Cash the security pays out during the period. Total return counts both the price change and this cash, because both add to your wealth &mdash; ignoring dividends badly understates the return on dividend-paying stocks over long horizons.">D<sub>t</sub></span></span>
+              <span class="fden">P<sub>t</sub></span>
+            </span>
+          </div>
+          <div class="ceq-panel"><em>Click the added term to see what changed.</em></div>
         </div>
-
-        <p>where $P_t$ is the price at time $t$, $P_{t+1}$ is the price at time $t+1$, and $D_t$ represents dividends paid during the period.</p>
 
         <h2>IV. Arithmetic vs. Geometric Rates of Return</h2>
-        <p>Two different averaging methods exist for summarizing returns over multiple periods:</p>
+        <p>Over many periods there are two ways to average returns, and they answer different questions. Click through each formula to see what it is really doing:</p>
 
-        <div class="equation">
-            <p class="equation-label">Arithmetic Mean Return</p>
-            $$\bar{R}_A = \frac{1}{T}\sum_{t=1}^{T} R_t$$
+        <div class="ceq-wrap">
+          <div class="ceq">
+            <span class="ct" data-n="Arithmetic mean return" data-d="The plain average: add the single-period returns and divide by how many there are. It is the right input for single-period, forward-looking statistical models."><span style="text-decoration:overline">R</span><sub>A</sub></span>
+            <span class="op">=</span>
+            <span class="ct" data-n="One over T" data-d="Divide by T, the number of periods &mdash; making it a simple average."><span class="frac"><span class="fnum">1</span><span class="fden">T</span></span></span>
+            <span class="ct big" data-n="Sum" data-d="Add up the single-period returns, from period t = 1 through T.">&#8721;<sub>t=1</sub><sup>T</sup></span>
+            <span class="ct" data-n="Each period's return" data-d="The return earned in each individual period.">R<sub>t</sub></span>
+          </div>
+          <p class="ceq-hint">&#128072; click a term to name it</p>
+          <div class="ceq-panel"><em>Click a term above.</em></div>
         </div>
 
-        <div class="equation">
-            <p class="equation-label">Geometric Mean Return</p>
-            $$\bar{R}_G = \left[\prod_{t=1}^{T}(1 + R_t)\right]^{1/T} - 1$$
+        <div class="ceq-wrap">
+          <div class="ceq">
+            <span class="ct" data-n="Geometric mean return" data-d="The constant per-period return that reproduces the ACTUAL compound growth of your money over the whole span. It is the return you truly earned."><span style="text-decoration:overline">R</span><sub>G</sub></span>
+            <span class="op">=</span>
+            <span class="op">[</span>
+            <span class="ct big" data-n="Product — multiply them all" data-d="Multiply the growth factors of every period together. This is compounding: it follows exactly what happens to a dollar as it grows and shrinks, period after period.">&#8719;<sub>t=1</sub><sup>T</sup></span>
+            <span class="ct" data-n="Growth factor" data-d="One plus each period's return &mdash; the factor your money is multiplied by that period. A +50% return is a factor of 1.5; a −50% return is a factor of 0.5. These factors, multiplied together, are what actually happens to invested money.">(1 <span class="op">+</span> R<sub>t</sub>)</span>
+            <span class="op">]</span><span class="ct" data-n="The T-th root" data-d="Raise the whole product to the power 1/T &mdash; take the T-th root. This finds the single growth factor that, applied every period, would produce the same final wealth: the average growth factor per period."><sup>1/T</sup></span>
+            <span class="op">&minus;</span>
+            <span class="ct" data-n="Subtract one" data-d="Turn the average growth factor back into a return: a factor of 1.08 is an 8% return.">1</span>
+          </div>
+          <p class="ceq-hint">&#128072; complicated on the surface &mdash; tap each piece and it comes apart into four simple ideas</p>
+          <div class="ceq-panel"><em>Click any piece of this one &mdash; growth factor, product, root, minus one.</em></div>
         </div>
+
+        <script>
+        (function(){
+          document.querySelectorAll('.ceq-wrap').forEach(function(wrap){
+            var panel=wrap.querySelector('.ceq-panel'),terms=wrap.querySelectorAll('.ct');
+            terms.forEach(function(t){t.addEventListener('click',function(){
+              terms.forEach(function(x){x.classList.remove('active');});t.classList.add('active');
+              panel.innerHTML='<strong style="color:#1a5276">'+t.getAttribute('data-n')+'.</strong> '+t.getAttribute('data-d');
+            });});
+          });
+        })();
+        </script>
 
         <p>Consider an illustrative example: $P_0 = \$100$, $R_1 = -50\%$, $R_2 = +100\%$. After the first period, wealth falls to <strong>$50</strong>; after the second, it returns to <strong>$100</strong>. The arithmetic average return is $\frac{-50\% + 100\%}{2} = 25\%$, but the geometric average is $\sqrt{(0.50)(2.00)} - 1 = 0\%$.</p>
 
