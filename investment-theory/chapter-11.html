@@ -71,21 +71,61 @@
         <p>The consequence is a small but genuine gift to the bondholder. Because the curve bows, a drop in yields raises the price by <em>more</em> than an equal rise in yields lowers it. Your gains from falling rates slightly exceed your losses from rising rates of the same size. Convexity, we will see, is a friend &mdash; and one worth paying for.</p>
 
         <div class="figure">
-          <!-- INTERACTIVE SPEC: "The price-yield curve and its tangent" (Figure 11.1)
-               PURPOSE: The central picture of the chapter. Show the downward-sloping convex price-yield curve, draw the TANGENT LINE at a chosen yield to reveal that duration IS the slope, and let maturity and coupon reshape the curve's steepness and curvature.
-               AXES: x = yield y, range 0% to ~15%, default cursor at 5%, labeled "Yield to maturity y". y = bond price, range ~0 to a bit above par (e.g. 0-160 if face=100), labeled "Bond price P". A horizontal reference line at par (100) and a vertical line at the coupon rate show where price = face (price above par when y<coupon, below par when y>coupon).
-               CONTROLS:
-                 - Slider: Time to maturity n, 1-30 years, default 10. Longer maturity => steeper AND more curved (bowed) line.
-                 - Slider: Coupon rate c, 0%-10%, default 5%, step 0.5. A zero-coupon bond (c=0) is the most convex/steep for its maturity; higher coupon flattens the curve (shorter effective duration).
-                 - Slider (or draggable point on the curve): current yield y0, 1%-14%, default 5% - this sets WHERE the tangent is drawn.
-                 - Checkbox: "Show tangent line (duration)" - draws the straight tangent to the curve at y0. Its (negative) slope, scaled, is the dollar duration; annotate "slope = -dP/dy".
-                 - Checkbox: "Show duration estimate vs. true price" - extends the tangent line and shades the GAP between the straight tangent and the true convex curve as yield moves away from y0, visually defining convexity as the error of the linear (duration-only) approximation. The gap should always show the tangent lying BELOW the curve on both sides (curve is convex), i.e. duration underestimates the price - a visual proof that "convexity is a friend."
-               READOUT: current price P at y0; Macaulay duration (years) and modified duration; the linear price-change prediction for a chosen delta-y (e.g. +1%) vs. the true repriced value, with the convexity correction closing the gap. E.g. "For a +1% yield move: duration alone predicts -$8.2; convexity adds back +$0.4; true new price differs by ...".
-               PEDAGOGICAL POINT: (1) the curve slopes down and bows (convex); (2) DURATION IS THE SLOPE of the tangent - the local linear sensitivity of price to yield; (3) longer maturity and lower coupon => steeper slope (more rate risk) and more curvature; (4) the tangent underestimates the true price on both sides - convexity - so duration-only hedging leaves a residual that convexity corrects.
-          -->
-          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:20px;color:#8a7f6c;font-style:italic;text-align:center">Interactive figure &mdash; coming soon.</div>
-          <p class="figure-caption"><strong>Figure 11.1.</strong> The price&ndash;yield curve and its tangent. The bold curve is the bond's price as a function of its yield &mdash; falling and convex. Slide the <em>maturity</em> and <em>coupon</em> to watch the curve steepen and bow: longer maturities and smaller coupons make it plunge more sharply. Tick <em>show tangent</em> to draw the straight line just touching the curve at the current yield &mdash; its slope <em>is</em> the bond's duration, the local sensitivity of price to rate. Tick <em>duration estimate vs. true price</em> to shade the gap between that straight tangent and the true curve: because the curve bows above its tangent on both sides, the duration estimate always understates the price, and the shaded sliver is exactly the bond's <strong>convexity</strong>.</p>
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:8px;font-size:.92rem;color:#26221a">
+              <label>Maturity: <input id="d1-n" type="range" min="1" max="30" step="1" value="10" style="vertical-align:middle;width:110px"> <strong id="d1-nv" style="color:#1a5276">10 yr</strong></label>
+              <label>Coupon: <input id="d1-c" type="range" min="0" max="10" step="0.5" value="5" style="vertical-align:middle;width:110px"> <strong id="d1-cv" style="color:#b9770e">5%</strong></label>
+              <label>Yield y: <input id="d1-y" type="range" min="1" max="14" step="0.5" value="5" style="vertical-align:middle;width:110px"> <strong id="d1-yv" style="color:#7a1414">5%</strong></label>
+            </div>
+            <div style="margin-bottom:8px;font-size:.88rem;color:#5c5344">
+              <label style="margin-right:16px"><input id="d1-tan" type="checkbox" checked> show tangent (duration)</label>
+              <label><input id="d1-cvx" type="checkbox"> shade convexity gap</label>
+            </div>
+            <div id="d1-chart"></div>
+            <div id="d1-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 11.1.</strong> The price&ndash;yield curve and its tangent. The bold curve is the bond's price as a function of its yield &mdash; falling and convex. Slide the <em>maturity</em> and <em>coupon</em> to watch the curve steepen and bow: longer maturities and smaller coupons make it plunge more sharply. Tick <em>show tangent</em> to draw the straight line just touching the curve at the current yield &mdash; its slope <em>is</em> the bond's duration, the local sensitivity of price to rate. Tick <em>shade convexity gap</em> to fill the sliver between that straight tangent and the true curve: because the curve bows above its tangent on both sides, the duration estimate always understates the price, and that sliver is the bond's <strong>convexity</strong>.</p>
         </div>
+        <script>
+        (function(){
+          var FACE=100,W=700,H=440,mL=58,mR=20,mT=16,mB=46,pw=W-mL-mR,ph=H-mT-mB,YMIN=0.005,YMAX=0.15;
+          function price(y,c,n){var p=0;for(var t=1;t<=n;t++)p+=(FACE*c+(t===n?FACE:0))/Math.pow(1+y,t);return p;}
+          function mac(y,c,n){var p=price(y,c,n),s=0;for(var t=1;t<=n;t++)s+=t*(FACE*c+(t===n?FACE:0))/Math.pow(1+y,t);return s/p;}
+          function conv(y,c,n){var p=price(y,c,n),s=0;for(var t=1;t<=n;t++)s+=t*(t+1)*(FACE*c+(t===n?FACE:0))/Math.pow(1+y,t+2);return s/p;}
+          var el=document.getElementById('d1-chart'),sn=document.getElementById('d1-n'),sc=document.getElementById('d1-c'),sy=document.getElementById('d1-y'),ct=document.getElementById('d1-tan'),cv=document.getElementById('d1-cvx');
+          var YT;
+          function px(y){return mL+(y-YMIN)/(YMAX-YMIN)*pw;} function py(P){return mT+ph-P/YT*ph;}
+          function render(){
+            var n=+sn.value,c=+sc.value/100,y0=+sy.value/100;
+            document.getElementById('d1-nv').textContent=n+' yr';document.getElementById('d1-cv').textContent=(c*100).toFixed(1)+'%';document.getElementById('d1-yv').textContent=(y0*100).toFixed(1)+'%';
+            YT=Math.max(160,price(YMIN,c,n)*1.05);
+            var P0=price(y0,c,n),D=mac(y0,c,n),Dm=D/(1+y0),slope=-Dm*P0,C=conv(y0,c,n);
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            var pstep=YT>300?100:50;
+            for(var P=0;P<=YT;P+=pstep){var yy=py(P);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(yy+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#8a7f6c">'+P+'</text>';}
+            for(var yv=0.02;yv<=YMAX+1e-9;yv+=0.02){var xx=px(yv);s+='<text x="'+xx.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="12" fill="#8a7f6c">'+(yv*100).toFixed(0)+'%</text>';}
+            // par line
+            s+='<line x1="'+mL+'" y1="'+py(FACE).toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+py(FACE).toFixed(1)+'" stroke="#b7a988" stroke-width="1" stroke-dasharray="4 3"/><text x="'+(mL+pw-4)+'" y="'+(py(FACE)-5).toFixed(1)+'" text-anchor="end" font-size="11" fill="#8a7f6c">par = 100</text>';
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Yield to maturity y</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Bond price P</text>';
+            function curve(){var d='';for(var yv=YMIN;yv<=YMAX+1e-9;yv+=0.0025){d+=(d?'L':'M')+px(yv).toFixed(1)+' '+py(price(yv,c,n)).toFixed(1)+' ';}return d;}
+            function tan(yv){return P0+slope*(yv-y0);}
+            // convexity gap shading
+            if(cv.checked&&ct.checked){var poly='';for(yv=YMIN;yv<=YMAX+1e-9;yv+=0.0025)poly+=px(yv).toFixed(1)+','+py(price(yv,c,n)).toFixed(1)+' ';for(yv=YMAX;yv>=YMIN-1e-9;yv-=0.0025)poly+=px(yv).toFixed(1)+','+py(Math.max(0,tan(yv))).toFixed(1)+' ';s+='<polygon points="'+poly+'" fill="#1e8b3a" opacity="0.14"/>';}
+            // tangent line (clipped to box vertically via values)
+            if(ct.checked){var x1=YMIN,x2=YMAX,t1=tan(x1),t2=tan(x2);s+='<line x1="'+px(x1).toFixed(1)+'" y1="'+py(Math.max(0,Math.min(YT,t1))).toFixed(1)+'" x2="'+px(x2).toFixed(1)+'" y2="'+py(Math.max(0,Math.min(YT,t2))).toFixed(1)+'" stroke="#1e8b3a" stroke-width="1.8" stroke-dasharray="6 3"/><text x="'+(px(YMIN)+6)+'" y="'+(py(tan(YMIN))-6).toFixed(1)+'" font-size="11.5" fill="#1e8b3a" font-style="italic">slope = &minus;D*&#183;P (duration)</text>';}
+            // curve
+            s+='<path d="'+curve()+'" fill="none" stroke="#0d2b45" stroke-width="2.8"/>';
+            // marker at y0
+            s+='<circle cx="'+px(y0).toFixed(1)+'" cy="'+py(P0).toFixed(1)+'" r="6" fill="#7a1414" stroke="#fff" stroke-width="1.6"/>';
+            s+='</svg>';el.innerHTML=s;
+            var dy=0.01,lin=slope*dy,cvx=0.5*C*P0*dy*dy,trueP=price(y0+dy,c,n);
+            document.getElementById('d1-read').innerHTML='Price = <strong>'+P0.toFixed(1)+'</strong> &nbsp;&middot;&nbsp; Macaulay duration = <strong>'+D.toFixed(1)+' yr</strong>, modified = <strong>'+Dm.toFixed(1)+'</strong>. &nbsp;For a <strong>+1%</strong> yield move: duration alone predicts '+lin.toFixed(1)+' (to <strong>'+(P0+lin).toFixed(1)+'</strong>); convexity adds back +'+cvx.toFixed(1)+'; the true new price is <strong>'+trueP.toFixed(1)+'</strong>. The bow always leaves the true price <em>above</em> the straight-line estimate &mdash; convexity is a friend.';
+          }
+          [sn,sc,sy].forEach(function(x){x.addEventListener('input',render);});[ct,cv].forEach(function(x){x.addEventListener('change',render);});render();
+        })();
+        </script>
 
         <h2>II. How It Moves</h2>
 
@@ -135,21 +175,63 @@
         <p>The remedy is <strong>immunization</strong>: build the asset portfolio so that its duration equals the duration of the liabilities. Then a rise in rates that shrinks the assets shrinks the liabilities by the same proportion, and the funded status &mdash; the surplus of assets over obligations &mdash; is protected from the swing. The institution has neutralized its interest-rate risk not by predicting rates but by matching slopes. This single idea, that a pension or insurer should match the duration of what it owns to the duration of what it owes, is the organizing principle of <strong>liability-driven investment</strong>, the framework by which trillions of dollars of retirement and insurance money are managed today.</p>
 
         <div class="figure">
-          <!-- INTERACTIVE SPEC: "Immunization: matching asset and liability duration" (Figure 11.2)
-               PURPOSE: Show why matching durations protects an institution's funded status. Plot present value against yield for BOTH an asset portfolio and a liability stream, and let the reader see the surplus stay stable when durations match and drift apart when they don't.
-               AXES: x = yield y, range ~1%-10%, default 5%, labeled "Yield". y = present value in dollars (e.g. 0-150 with both curves starting matched at par-ish at the base yield), labeled "Present value ($)". Two downward-sloping convex curves: ASSETS (blue) and LIABILITIES (dark red). A thin third curve or shaded band = SURPLUS = assets - liabilities.
-               CONTROLS:
-                 - Slider: Asset portfolio duration D_A, 1-25 years, default set to match liabilities. (Implement e.g. as choosing a bond/barbell whose duration the reader dials.)
-                 - Fixed or slider: Liability duration D_L, default ~12 years (a pension's long horizon). Reader can change it to represent a younger vs. older plan.
-                 - Slider (or drag): current yield y - moves a vertical cursor along both curves and reads off assets, liabilities, and surplus at that yield.
-                 - Checkbox: "Match durations" convenience button that snaps D_A = D_L.
-               DISPLAY: At the base yield, assets = liabilities (fully funded, surplus = 0). As the reader drags the yield cursor away from base: if D_A = D_L, the two curves move down together and the surplus band stays ~flat at zero (immunized). If D_A < D_L (assets too short), a rate FALL hurts - liabilities rise faster than assets, surplus goes negative; if D_A > D_L, a rate RISE hurts. Show the surplus band swelling positive/negative to dramatize the mismatch. Optionally overlay convexity so an exact match still leaves a tiny second-order gap.
-               READOUT: "Duration gap = D_A - D_L = X years." At the current yield: assets $, liabilities $, surplus/deficit $, and a verdict ("Immunized: surplus barely moves" vs. "Under-hedged: a 1% rate fall opens a $__ deficit").
-               PEDAGOGICAL POINT: A pension/insurer cares about the GAP between assets and liabilities, not either alone. Matching the duration of assets to the duration of liabilities makes the two curves move in lockstep, holding funded status steady across rate moves - the core of immunization and liability-driven investment. A duration gap is a bet on the direction of rates, whether intended or not.
-          -->
-          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:20px;color:#8a7f6c;font-style:italic;text-align:center">Interactive figure &mdash; coming soon.</div>
-          <p class="figure-caption"><strong>Figure 11.2.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>. Drag the yield cursor and watch the <em>surplus</em> &mdash; the gap between them. When the asset duration is dialed to <em>match</em> the liability duration, the two curves descend in lockstep and the surplus barely stirs, whatever rates do: the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> &mdash; assets shorter or longer than liabilities &mdash; and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:.92rem;color:#26221a">
+              <label>Asset duration: <input id="d2-a" type="range" min="1" max="20" step="0.5" value="8" style="vertical-align:middle;width:120px"> <strong id="d2-av" style="color:#1a5276">8.0 yr</strong></label>
+              <label>Liability duration: <input id="d2-l" type="range" min="1" max="20" step="0.5" value="12" style="vertical-align:middle;width:120px"> <strong id="d2-lv" style="color:#c0392b">12.0 yr</strong></label>
+              <button id="d2-match" type="button" style="font-family:inherit;font-size:.82rem;padding:4px 12px;border:1px solid #1a5276;border-radius:6px;background:#eef3f8;color:#1a5276;cursor:pointer">Match durations</button>
+            </div>
+            <div style="margin-bottom:8px;font-size:.9rem;color:#26221a">Yield: <input id="d2-y" type="range" min="2" max="9" step="0.25" value="5" style="vertical-align:middle;width:200px"> <strong id="d2-yv" style="color:#7a1414">5.0%</strong></div>
+            <div id="d2-chart"></div>
+            <div id="d2-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 11.2.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>, matched in value at today's 5% yield. Drag the yield cursor and watch the <em>surplus</em> &mdash; the shaded gap between them. Dial the asset duration to <em>match</em> the liability duration and the two curves descend in lockstep: the surplus barely stirs, whatever rates do &mdash; the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
         </div>
+        <script>
+        (function(){
+          var V=100,y0=0.05,W=700,H=430,mL=58,mR=20,mT=16,mB=46,pw=W-mL-mR,ph=H-mT-mB,YMIN=0.02,YMAX=0.09,PT=200;
+          function pv(y,D){return V*Math.pow((1+y0)/(1+y),D);}
+          function px(y){return mL+(y-YMIN)/(YMAX-YMIN)*pw;} function py(P){return mT+ph-P/PT*ph;}
+          var el=document.getElementById('d2-chart'),sa=document.getElementById('d2-a'),sl=document.getElementById('d2-l'),sy=document.getElementById('d2-y');
+          function pathFor(D){var d='';for(var y=YMIN;y<=YMAX+1e-9;y+=0.0025)d+=(d?'L':'M')+px(y).toFixed(1)+' '+py(pv(y,D)).toFixed(1)+' ';return d;}
+          function render(){
+            var DA=+sa.value,DL=+sl.value,yc=+sy.value/100;
+            document.getElementById('d2-av').textContent=DA.toFixed(1)+' yr';document.getElementById('d2-lv').textContent=DL.toFixed(1)+' yr';document.getElementById('d2-yv').textContent=(yc*100).toFixed(2)+'%';
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var P=0;P<=PT;P+=50){var yy=py(P);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(yy+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#8a7f6c">'+P+'</text>';}
+            for(var yv=0.02;yv<=YMAX+1e-9;yv+=0.01){var xx=px(yv);s+='<text x="'+xx.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="12" fill="#8a7f6c">'+(yv*100).toFixed(0)+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Yield</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Present value ($)</text>';
+            // surplus band between the two curves
+            var poly='';for(yv=YMIN;yv<=YMAX+1e-9;yv+=0.0025)poly+=px(yv).toFixed(1)+','+py(pv(yv,DA)).toFixed(1)+' ';for(yv=YMAX;yv>=YMIN-1e-9;yv-=0.0025)poly+=px(yv).toFixed(1)+','+py(pv(yv,DL)).toFixed(1)+' ';
+            s+='<polygon points="'+poly+'" fill="#7a1414" opacity="0.12"/>';
+            // base-yield marker line
+            s+='<line x1="'+px(y0).toFixed(1)+'" y1="'+mT+'" x2="'+px(y0).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#b7a988" stroke-width="1" stroke-dasharray="4 3"/><text x="'+(px(y0)+4).toFixed(1)+'" y="'+(mT+12)+'" font-size="10.5" fill="#8a7f6c">matched at 5%</text>';
+            // curves
+            s+='<path d="'+pathFor(DA)+'" fill="none" stroke="#1a5276" stroke-width="2.8"/>';
+            s+='<path d="'+pathFor(DL)+'" fill="none" stroke="#c0392b" stroke-width="2.8"/>';
+            // yield cursor
+            var A=pv(yc,DA),L=pv(yc,DL);
+            s+='<line x1="'+px(yc).toFixed(1)+'" y1="'+mT+'" x2="'+px(yc).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#7a1414" stroke-width="1.4"/>';
+            s+='<circle cx="'+px(yc).toFixed(1)+'" cy="'+py(A).toFixed(1)+'" r="5" fill="#1a5276" stroke="#fff" stroke-width="1.4"/><circle cx="'+px(yc).toFixed(1)+'" cy="'+py(L).toFixed(1)+'" r="5" fill="#c0392b" stroke="#fff" stroke-width="1.4"/>';
+            // legend
+            s+='<g font-size="12"><rect x="'+(mL+pw-128)+'" y="'+(mT+8)+'" width="120" height="40" fill="#fbf7ec" stroke="#e0d6bf" rx="4"/><line x1="'+(mL+pw-120)+'" y1="'+(mT+21)+'" x2="'+(mL+pw-98)+'" y2="'+(mT+21)+'" stroke="#1a5276" stroke-width="2.8"/><text x="'+(mL+pw-92)+'" y="'+(mT+25)+'" fill="#5c5344">assets</text><line x1="'+(mL+pw-120)+'" y1="'+(mT+37)+'" x2="'+(mL+pw-98)+'" y2="'+(mT+37)+'" stroke="#c0392b" stroke-width="2.8"/><text x="'+(mL+pw-92)+'" y="'+(mT+41)+'" fill="#5c5344">liabilities</text></g>';
+            s+='</svg>';el.innerHTML=s;
+            var gap=DA-DL,surp=A-L;
+            // stress: surplus after a 1% fall in rates
+            var sDown=pv(yc-0.01,DA)-pv(yc-0.01,DL),sUp=pv(yc+0.01,DA)-pv(yc+0.01,DL);
+            var verdict;
+            if(Math.abs(gap)<0.25)verdict='<strong style="color:#1e8b3a">Immunized</strong> &mdash; the surplus barely moves as rates change.';
+            else if(gap>0)verdict='<strong style="color:#c0392b">Assets longer than liabilities</strong> &mdash; a rate <em>rise</em> opens a deficit (a 1% rise &rarr; surplus '+sUp.toFixed(1)+').';
+            else verdict='<strong style="color:#c0392b">Assets shorter than liabilities</strong> &mdash; a rate <em>fall</em> opens a deficit (a 1% fall &rarr; surplus '+sDown.toFixed(1)+').';
+            document.getElementById('d2-read').innerHTML='Duration gap = '+DA.toFixed(1)+' &minus; '+DL.toFixed(1)+' = <strong>'+gap.toFixed(1)+' yr</strong>. At '+(yc*100).toFixed(2)+'%: assets <strong>'+A.toFixed(1)+'</strong>, liabilities <strong>'+L.toFixed(1)+'</strong>, surplus <strong>'+(surp>=0?'+':'')+surp.toFixed(1)+'</strong>. '+verdict;
+          }
+          [sa,sl,sy].forEach(function(x){x.addEventListener('input',render);});
+          document.getElementById('d2-match').addEventListener('click',function(){sa.value=sl.value;render();});
+          render();
+        })();
+        </script>
 
         <h2>IV. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
 
