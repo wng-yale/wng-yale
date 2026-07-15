@@ -100,10 +100,10 @@
         <p>Suppose you observed the following conditions:</p>
 
         <ol>
-            <li>Risk-free bonds may be purchased at a cost of $100 (or in fractions if required). They are known to pay off in one year $110 with certainty.</li>
+            <li>Risk-free bonds may be purchased at a cost of <span class="cur">$</span>100 (or in fractions if required). They are known to pay off in one year <span class="cur">$</span>110 with certainty.</li>
             <li>All investors can borrow and lend at the riskless rate.</li>
-            <li>Shares of the market portfolio may be purchased for $100 each. They are expected to pay off $120 at the end of the year, but there is uncertainty involved. Shares of the market may be purchased and shorted without transactions costs.</li>
-            <li>Shares of asset $A$ may be purchased for $100 and they are expected by everyone to be worth $150 at the end of the year. Asset $A$ has a beta of 1.3. As with the market, shares of $A$ may be shorted and purchased without transactions costs.</li>
+            <li>Shares of the market portfolio may be purchased for <span class="cur">$</span>100 each. They are expected to pay off <span class="cur">$</span>120 at the end of the year, but there is uncertainty involved. Shares of the market may be purchased and shorted without transactions costs.</li>
+            <li>Shares of asset $A$ may be purchased for <span class="cur">$</span>100 and they are expected by everyone to be worth <span class="cur">$</span>150 at the end of the year. Asset $A$ has a beta of 1.3. As with the market, shares of $A$ may be shorted and purchased without transactions costs.</li>
         </ol>
 
         <p>How would an investor proceed in an expectations arbitrage?</p>
@@ -121,7 +121,7 @@
             $$\$100 \times \left[1 + 0.10 + 1.3 \times 0.10\right] = \$123$$
         </div>
 
-        <p>The expected return in this case yields an expected future value which is lower than $150. This is a logical inconsistency if the index model were true. In practical terms it is underpriced.</p>
+        <p>The expected return in this case yields an expected future value which is lower than <span class="cur">$</span>150. This is a logical inconsistency if the index model were true. In practical terms it is underpriced.</p>
 
         <p>To exploit this underpricing we take the following actions:</p>
 
@@ -136,22 +136,22 @@
             <tbody>
                 <tr>
                     <td>1) Buy one share of asset A</td>
-                    <td>&minus;$100</td>
+                    <td>&minus;<span class="cur">$</span>100</td>
                     <td>1.3</td>
                 </tr>
                 <tr>
                     <td>2) Short 1.3 shares of market portfolio</td>
-                    <td>+$130</td>
+                    <td>+<span class="cur">$</span>130</td>
                     <td>&minus;1.3</td>
                 </tr>
                 <tr>
                     <td>3) Buy 0.3 bonds</td>
-                    <td>&minus;$30</td>
+                    <td>&minus;<span class="cur">$</span>30</td>
                     <td>0</td>
                 </tr>
                 <tr>
                     <td><strong>Net Position</strong></td>
-                    <td><strong>$0</strong></td>
+                    <td><strong><span class="cur">$</span>0</strong></td>
                     <td><strong>0.0</strong></td>
                 </tr>
             </tbody>
@@ -164,7 +164,7 @@
             $$R_A = E[R_A] + e_A$$
         </div>
 
-        <p>When things turn out exactly as expected, $e_m$ and $e_A$ both equal zero. Thus, action (1) yields $150, action (2) yields &minus;$156 and action (3) yields $33. This is a net gain of $183 &minus; $156 = $27.</p>
+        <p>When things turn out exactly as expected, $e_m$ and $e_A$ both equal zero. Thus, action (1) yields <span class="cur">$</span>150, action (2) yields &minus;<span class="cur">$</span>156 and action (3) yields <span class="cur">$</span>33. This is a net gain of <span class="cur">$</span>183 &minus; <span class="cur">$</span>156 = <span class="cur">$</span>27.</p>
 
         <p>Now suppose the returns did not occur as expected, i.e. the errors were not zero, nor were they equal. You would receive:</p>
 
@@ -266,6 +266,114 @@
         <div class="note">
             <strong>Note:</strong> The Chen, Roll, and Ross factors are macro-economic surprises -- the unanticipated components of economic variables. Only surprises move prices, since anticipated changes are already priced in.
         </div>
+
+        <p>Chen, Roll and Ross went looking for factors in the <em>macroeconomy</em>. That is one of three broad strategies the profession has since pursued, and each answers the APT&rsquo;s awkward silence &mdash; <em>which</em> factors? &mdash; in a different way.</p>
+
+        <ul>
+          <li><strong>Macroeconomic factors (Chen, Roll &amp; Ross, 1986).</strong> The approach above: surprises in industrial production, inflation, the default premium (corporate over government bonds), and the term structure. Their appeal is economic interpretability &mdash; each factor is a recognizable force in the economy.</li>
+          <li><strong>Characteristic-based factors (Fama &amp; French).</strong> Rather than start from the economy, Eugene Fama and Kenneth French started from the data. Sorting stocks on observable characteristics, they built factors as the return spread between extreme portfolios: <strong>SMB</strong> (small minus big &mdash; the size effect) and <strong>HML</strong> (high minus low book-to-market &mdash; the value effect), added to the market to form the celebrated <em>three-factor model</em> (1993). Their <em>five-factor model</em> (2015) adds <strong>RMW</strong> (robust-minus-weak profitability) and <strong>CMA</strong> (conservative-minus-aggressive investment); a momentum factor (Carhart) is often added as a sixth. These are the factors most used in practice, and Ken French distributes the monthly series free for research.</li>
+          <li><strong>Investment-based factors (Hou, Xue &amp; Zhang).</strong> Lu Zhang and co-authors ground their factors in the <em>q-theory of investment</em> &mdash; firms invest until the marginal cost of capital equals the market&rsquo;s valuation. Their <em>q-factor model</em> (2015) uses the market, size, an <strong>investment</strong> factor (I/A), and a <strong>profitability</strong> factor (ROE); the later <em>q</em><sup>5</sup> model adds an expected-growth factor. Where Fama&ndash;French <em>describe</em> the return patterns, the q-factors try to explain <em>why</em> they arise from firms&rsquo; investment decisions.</li>
+        </ul>
+
+        <table>
+          <thead><tr><th>Model</th><th>Type</th><th>Factors</th></tr></thead>
+          <tbody>
+            <tr><td>Chen&ndash;Roll&ndash;Ross (1986)</td><td>Macroeconomic</td><td>Industrial production, inflation surprises, default premium, term spread</td></tr>
+            <tr><td>Fama&ndash;French (1993 / 2015)</td><td>Characteristic-based</td><td>Market, Size (SMB), Value (HML) &mdash; plus Profitability (RMW), Investment (CMA)</td></tr>
+            <tr><td>Hou&ndash;Xue&ndash;Zhang <em>q</em>-factor (2015)</td><td>Investment-based</td><td>Market, Size, Investment (I/A), Profitability (ROE) &mdash; plus Expected growth in <em>q</em><sup>5</sup></td></tr>
+          </tbody>
+        </table>
+
+        <p>All three are practical answers to the same question, and all are estimated the same way: regress a portfolio&rsquo;s returns on the factor returns, and the slopes are its <em>factor exposures</em>. That is exactly the CAPM beta regression of the previous chapter, generalized to several factors at once &mdash; a portfolio might load positively on value and negatively on momentum, and the pattern of loadings is its risk fingerprint.</p>
+
+        <div class="note">
+            <strong>The same idea beyond stocks.</strong> Any return series has factor exposures. Goetzmann&rsquo;s <a href="https://m2xuso-william-goetzmann.shinyapps.io/housing-factors/" target="_blank" rel="noopener">Housing Price Factor Exposure app</a> runs exactly this regression on U.S. metropolitan <em>housing</em> markets &mdash; estimating how a city&rsquo;s home prices load on macroeconomic factors (the stock market, mortgage rates, inflation, GDP growth, unemployment), with a lagged-beta correction for the stale pricing of housing indices. Real estate turns out to carry very different exposures from equities. The interactive below is the equity counterpart.</p>
+        </div>
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:10px;font-size:.94rem;color:#26221a">
+              <label>Ticker: <input id="fx-tk" type="text" value="AAPL" spellcheck="false" style="width:90px;font-size:.98rem;text-transform:uppercase;padding:3px 6px"></label>
+              <button id="fx-go" type="button" style="font-family:inherit;font-size:.9rem;padding:6px 15px;border:1px solid #00356b;border-radius:6px;background:#00356b;color:#fff;cursor:pointer">Estimate factor exposures</button>
+              <span id="fx-status" style="color:#8a7f6c;font-style:italic"></span>
+            </div>
+            <div id="fx-chart"></div>
+            <div id="fx-read" style="font-size:.94rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 6.1.</strong> Estimating a stock&rsquo;s factor exposures from <em>investable</em> ETFs. We approximate the academic factors with tradable funds: <strong>Market</strong> = SPY (S&amp;P 500), <strong>Size</strong> = IWM &minus; SPY (small minus large), <strong>Value</strong> = IWD &minus; SPY (value minus large), <strong>Momentum</strong> = MTUM &minus; SPY. Ten years of monthly returns for the ticker are regressed on the four factors; the bars are the estimated loadings (with 95% error bars), and the readout gives alpha and R². Because each factor is a real fund, the exposures are <em>investable</em> &mdash; you could hedge or replicate them. Data: Yahoo Finance via a public CORS proxy. Adapted from W. Goetzmann&rsquo;s housing factor-exposure app.</p>
+        </div>
+        <script>
+        (function(){
+          var el=document.getElementById('fx-chart'),tk=document.getElementById('fx-tk'),btn=document.getElementById('fx-go'),st=document.getElementById('fx-status');
+          function proxy(u){return 'https://corsproxy.io/?url='+encodeURIComponent(u);}
+          async function chart(sym){
+            var u='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(sym)+'?range=10y&interval=1mo';
+            var r=await fetch(proxy(u));if(!r.ok)throw new Error(sym+' HTTP '+r.status);
+            var j=await r.json(),res=j.chart&&j.chart.result&&j.chart.result[0];if(!res)throw new Error('no data for '+sym);
+            var adj=(res.indicators.adjclose&&res.indicators.adjclose[0].adjclose)||(res.indicators.quote&&res.indicators.quote[0].close);
+            return {ts:res.timestamp,px:adj};
+          }
+          function mkey(ts){var d=new Date(ts*1000);return d.getUTCFullYear()*12+d.getUTCMonth();}
+          function rets(dat){var m={},i;for(i=0;i<dat.ts.length;i++){if(dat.px[i]!=null)m[mkey(dat.ts[i])]=dat.px[i];}
+            var keys=Object.keys(m).map(Number).sort(function(a,b){return a-b;}),out={};
+            for(i=1;i<keys.length;i++){if(keys[i]-keys[i-1]===1)out[keys[i]]=m[keys[i]]/m[keys[i-1]]-1;}return out;}
+          function inv(M){var n=M.length,A=M.map(function(row,i){return row.concat(row.map(function(_,j){return i===j?1:0;}));}),c,r,j;
+            for(c=0;c<n;c++){var p=A[c][c];if(Math.abs(p)<1e-12){for(r=c+1;r<n;r++)if(Math.abs(A[r][c])>1e-12){var t=A[r];A[r]=A[c];A[c]=t;p=A[c][c];break;}}
+              for(j=0;j<2*n;j++)A[c][j]/=p;for(r=0;r<n;r++)if(r!==c){var f=A[r][c];for(j=0;j<2*n;j++)A[r][j]-=f*A[c][j];}}
+            return A.map(function(row){return row.slice(n);});}
+          function ols(X,y){var n=X.length,p=X[0].length,i,j,r,XtX=[],Xty=[];
+            for(i=0;i<p;i++){XtX[i]=[];Xty[i]=0;for(j=0;j<p;j++)XtX[i][j]=0;}
+            for(r=0;r<n;r++)for(i=0;i<p;i++){Xty[i]+=X[r][i]*y[r];for(j=0;j<p;j++)XtX[i][j]+=X[r][i]*X[r][j];}
+            var Xi=inv(XtX),beta=[];for(i=0;i<p;i++){beta[i]=0;for(j=0;j<p;j++)beta[i]+=Xi[i][j]*Xty[j];}
+            var yb=0;for(r=0;r<n;r++)yb+=y[r];yb/=n;var rss=0,tss=0;
+            for(r=0;r<n;r++){var pr=0;for(i=0;i<p;i++)pr+=X[r][i]*beta[i];rss+=(y[r]-pr)*(y[r]-pr);tss+=(y[r]-yb)*(y[r]-yb);}
+            var s2=rss/(n-p),se=[];for(i=0;i<p;i++)se[i]=Math.sqrt(Math.max(0,s2*Xi[i][i]));
+            return {beta:beta,se:se,r2:1-rss/tss,n:n};}
+          function draw(names,load,se,sym){
+            var W=700,H=400,mL=64,mR=20,mT=22,mB=54,pw=W-mL-mR,ph=H-mT-mB,nb=names.length;
+            var vals=load.concat(load.map(function(b,i){return b+1.96*se[i];})).concat(load.map(function(b,i){return b-1.96*se[i];})).concat([0,1]);
+            var mx=Math.max.apply(null,vals),mn=Math.min.apply(null,vals);mx+=0.15;mn-=0.1;
+            function py(v){return mT+ph-(v-mn)/(mx-mn)*ph;}
+            var bw=pw/nb*0.5,cols=['#00356b','#2e86c1','#bd5319','#1e8b3a'];
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var g=Math.ceil(mn/0.5)*0.5;g<=mx;g+=0.5){var y=py(g);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="12.5" fill="#8a7f6c">'+g.toFixed(1)+'</text>';}
+            s+='<line x1="'+mL+'" y1="'+py(0).toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+py(0).toFixed(1)+'" stroke="#26221a" stroke-width="1.3"/>';
+            s+='<text transform="translate(15 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="13.5" font-style="italic" fill="#5c5344">Factor loading (exposure)</text>';
+            for(var i=0;i<nb;i++){var cx=mL+pw*(i+0.5)/nb,b=load[i],y0=py(0),yb=py(b);
+              s+='<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+Math.min(y0,yb).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.abs(yb-y0).toFixed(1)+'" fill="'+cols[i]+'" opacity="0.85"/>';
+              var e1=py(b+1.96*se[i]),e2=py(b-1.96*se[i]);
+              s+='<line x1="'+cx.toFixed(1)+'" y1="'+e1.toFixed(1)+'" x2="'+cx.toFixed(1)+'" y2="'+e2.toFixed(1)+'" stroke="#26221a" stroke-width="1.4"/><line x1="'+(cx-5).toFixed(1)+'" y1="'+e1.toFixed(1)+'" x2="'+(cx+5).toFixed(1)+'" y2="'+e1.toFixed(1)+'" stroke="#26221a" stroke-width="1.4"/><line x1="'+(cx-5).toFixed(1)+'" y1="'+e2.toFixed(1)+'" x2="'+(cx+5).toFixed(1)+'" y2="'+e2.toFixed(1)+'" stroke="#26221a" stroke-width="1.4"/>';
+              s+='<text x="'+cx.toFixed(1)+'" y="'+(b>=0?yb-8:yb+16).toFixed(1)+'" text-anchor="middle" font-size="12.5" font-weight="700" fill="'+cols[i]+'">'+b.toFixed(2)+'</text>';
+              s+='<text x="'+cx.toFixed(1)+'" y="'+(mT+ph+20)+'" text-anchor="middle" font-size="13" fill="#5c5344">'+names[i]+'</text>';}
+            s+='</svg>';el.innerHTML=s;
+          }
+          async function run(){
+            var sym=(tk.value||'').trim().toUpperCase();if(!sym){st.textContent='enter a ticker';return;}
+            btn.disabled=true;st.textContent='fetching '+sym+' + factor ETFs…';document.getElementById('fx-read').innerHTML='';
+            try{
+              var syms=[sym,'SPY','IWM','IWD','MTUM'],data={};
+              for(var q=0;q<syms.length;q++){data[syms[q]]=rets(await chart(syms[q]));}
+              var R=data[sym],SPY=data['SPY'],IWM=data['IWM'],IWD=data['IWD'],MTUM=data['MTUM'];
+              var keys=Object.keys(R).map(Number).filter(function(k){return SPY[k]!=null&&IWM[k]!=null&&IWD[k]!=null&&MTUM[k]!=null;}).sort(function(a,b){return a-b;});
+              if(keys.length<24)throw new Error('only '+keys.length+' overlapping months');
+              var X=[],y=[];
+              for(var i=0;i<keys.length;i++){var k=keys[i];X.push([1,SPY[k],IWM[k]-SPY[k],IWD[k]-SPY[k],MTUM[k]-SPY[k]]);y.push(R[k]);}
+              var m=ols(X,y),bt=m.beta,se=m.se;
+              draw(['Market','Size','Value','Momentum'],[bt[1],bt[2],bt[3],bt[4]],[se[1],se[2],se[3],se[4]],sym);
+              var aAnn=(Math.pow(1+bt[0],12)-1)*100;
+              function tilt(name,b,s){var t=b/s;return Math.abs(t)>2?(b>0?'a '+name+' tilt':'an anti-'+name+' tilt'):null;}
+              var tilts=[tilt('size',bt[2],se[2]),tilt('value',bt[3],se[3]),tilt('momentum',bt[4],se[4])].filter(Boolean);
+              st.textContent=sym+': '+keys.length+' months';
+              var fn=['Market','Size','Value','Momentum'],tbl='<table style="border-collapse:collapse;font-size:.9rem;margin:2px 0 6px"><tr style="color:#8a7f6c"><td style="padding:2px 16px 2px 0">Factor</td><td style="padding:2px 16px;text-align:right">Loading</td><td style="padding:2px 16px;text-align:right">Std. err.</td><td style="padding:2px 16px;text-align:right">t-stat</td></tr>';
+              for(var fi=0;fi<4;fi++){var bb=bt[fi+1],ss=se[fi+1],tt=bb/ss,sig=Math.abs(tt)>2;tbl+='<tr><td style="padding:2px 16px 2px 0">'+fn[fi]+'</td><td style="padding:2px 16px;text-align:right">'+bb.toFixed(2)+'</td><td style="padding:2px 16px;text-align:right;color:#8a7f6c">'+ss.toFixed(2)+'</td><td style="padding:2px 16px;text-align:right;font-weight:'+(sig?'700':'400')+';color:'+(sig?'#1a5276':'#8a7f6c')+'">'+tt.toFixed(1)+(sig?'&thinsp;*':'')+'</td></tr>';}
+              tbl+='</table>';
+              var at=bt[0]/se[0];
+              document.getElementById('fx-read').innerHTML=tbl+'Alpha = <strong>'+(bt[0]*100).toFixed(2)+'%/mo</strong> ('+(aAnn>=0?'+':'')+aAnn.toFixed(1)+'%/yr, t = '+at.toFixed(1)+') &nbsp;&middot;&nbsp; R&sup2; = <strong>'+m.r2.toFixed(2)+'</strong> &nbsp;&middot;&nbsp; '+keys.length+' months.'+(tilts.length?' '+sym+' shows '+tilts.join(', ')+'.':'')+' <span style="color:#8a7f6c">&nbsp;* |t|&gt;2 (significant at ~5%).</span>';
+            }catch(err){st.textContent='';document.getElementById('fx-read').innerHTML='<span style="color:#c0392b">Could not load data: '+String(err.message||err)+'. The free data proxy may be busy — try again, or check the ticker.</span>';}
+            btn.disabled=false;
+          }
+          btn.addEventListener('click',run);tk.addEventListener('keydown',function(e){if(e.key==='Enter')run();});
+        })();
+        </script>
 
         <h3>Building Portfolios</h3>
 

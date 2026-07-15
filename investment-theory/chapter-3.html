@@ -40,6 +40,36 @@
 
         <p>Investors make decisions based on numerous factors that cannot be reduced to two dimensions. Furthermore, real-world investing allows strategy adjustments as circumstances change &mdash; a flexibility the single-period Markowitz model doesn't accommodate. This chapter explores methods for approximating investor preferences in mean-variance space, acknowledging their limitations when applied to multi-period decision-making.</p>
 
+        <h2>A Bridge from Chapter 2: The Odds of Beating the Riskless Rate</h2>
+
+        <p>Chapter 2 ended at the tangency portfolio $M$ and the Capital Market Line &mdash; the line from the riskless rate $R_f$ drawn tangent to the risky frontier. We singled out $M$ as the portfolio with the highest <em>Sharpe ratio</em>, $(\bar{R}_M - R_f)/\sigma_M$. That sounds like a statement purely about risk-adjusted return. It is also, more surprisingly, a statement about <em>probability</em>: when returns are normally distributed, $M$ is the single portfolio most likely to <strong>beat the riskless rate</strong> over the period. This equivalence is the hinge between the geometry of Chapter 2 and the preference-driven choice of this chapter.</p>
+
+        <div class="derivation" style="border:1px solid #cdd9e3;border-left:4px solid #1a5276;background:#f5f8fb;border-radius:8px;padding:16px 22px;margin:24px 0;">
+            <h4 style="margin-top:0;color:#1a5276;">Demonstration: the highest Sharpe ratio gives the best odds of beating $R_f$</h4>
+            <p>Let a portfolio&rsquo;s return $R_p$ be normally distributed with mean $\bar{R}_p$ and standard deviation $\sigma_p$. The probability that it clears the riskless rate is</p>
+            $$P(R_p > R_f) = P\!\left(Z > \frac{R_f - \bar{R}_p}{\sigma_p}\right) = \Phi\!\left(\frac{\bar{R}_p - R_f}{\sigma_p}\right) = \Phi\big(\text{Sharpe}_p\big),$$
+            <p style="margin-bottom:0;">where $Z$ is a standard-normal variable and $\Phi$ its cumulative distribution function. Because $\Phi$ is strictly increasing, whatever portfolio maximizes the Sharpe ratio $(\bar{R}_p - R_f)/\sigma_p$ must also maximize the probability of finishing above $R_f$. That portfolio is the tangency portfolio $M$. Maximizing risk-adjusted return and maximizing the odds of clearing the riskless rate are the very same problem.</p>
+        </div>
+
+        <p><strong>Every point on the Capital Market Line shares this property.</strong> A portfolio on the CML holds a fraction $a$ in $M$ and $1-a$ in the riskless asset, where $a>1$ denotes a levered (borrowed) position. Its mean and standard deviation are $\bar{R} = R_f + a(\bar{R}_M - R_f)$ and $\sigma = a\,\sigma_M$, so its Sharpe ratio is</p>
+        $$\frac{\bar{R} - R_f}{\sigma} = \frac{a(\bar{R}_M - R_f)}{a\,\sigma_M} = \frac{\bar{R}_M - R_f}{\sigma_M},$$
+        <p>independent of $a$. The conservative investor with 30% in $M$ and the aggressive one levered to 150% hold positions with the <em>same</em> Sharpe ratio, and therefore the <em>same</em> probability $\Phi(\text{Sharpe}_M)$ of beating the riskless rate &mdash; even though the magnitudes of the gains and losses differ enormously. Leverage changes the stakes, not the odds of finishing ahead of $R_f$.</p>
+
+        <p><strong>Adapting the idea to a hurdle return.</strong> Nothing requires the threshold to be $R_f$. Suppose you must instead clear a <em>hurdle</em> $H$ &mdash; a pension&rsquo;s actuarial rate, a spending target, a benchmark to beat. The same algebra gives $P(R_p > H) = \Phi\big((\bar{R}_p - H)/\sigma_p\big)$, so the best portfolio is the one that maximizes $(\bar{R}_p - H)/\sigma_p$: draw the line from $H$ on the vertical axis tangent to the frontier, and the point of tangency is the portfolio most likely to exceed $H$. Raising the hurdle pivots that line upward and slides the chosen portfolio toward higher risk and return; lowering it slides the choice back toward the minimum-variance end. This is <strong>Roy&rsquo;s safety-first criterion</strong>, which we take up in earnest in Section&nbsp;II.</p>
+
+        <aside class="sidebar" style="border:1px solid #d8ccb0;border-left:4px solid #7a1414;background:#fbf7ec;border-radius:8px;padding:18px 22px;margin:28px 0;">
+            <h4 style="margin-top:0;color:#7a1414;font-variant:small-caps;letter-spacing:0.02em;">Sidebar: How do you actually reach a point on the line &mdash; and what does leverage really mean?</h4>
+            <p>Students readily accept the Capital Market Line as geometry but often stumble on the mechanics: what does it <em>mean</em>, in dollars, to hold a point between $R_f$ and $M$, or a point out to the right of $M$? A concrete example settles it. Let the tangency portfolio $M$ have an expected return of 10% and a standard deviation of 15%, and let the riskless rate be 4%. You begin with <strong>$100</strong> of your own money.</p>
+            <p><strong>Lending &mdash; a point between $R_f$ and $M$ (the 50/50 mix).</strong> Put <strong>$50</strong> into $M$ and lend the other <strong>$50</strong> at the riskless rate. If $M$ earns 10%, the risky half grows to <strong>$55</strong> and the riskless half to <strong>$52</strong>, for <strong>$107</strong> in all &mdash; a 7% return. In symbols, $\bar{R} = 4\% + 0.5(10\% - 4\%) = 7\%$ and $\sigma = 0.5 \times 15\% = 7.5\%$. You sit halfway from $R_f$ to $M$.</p>
+            <p><strong>Borrowing &mdash; a point beyond $M$ (150% in $M$).</strong> Now you want more exposure than your own cash allows, so you lever up to $a = 1.5$. Keep your <strong>$100</strong>, <em>borrow</em> <strong>$50</strong> at the 4% riskless rate, and invest the whole <strong>$150</strong> in $M$. Follow the cash to year-end:</p>
+            <ul>
+                <li>You <em>sell</em> the holdings. If $M$ returned 10%, they fetch <strong>$150</strong> &times; 1.10 = <strong>$165</strong>.</li>
+                <li>You <em>repay</em> the loan: <strong>$50</strong> principal plus <strong>$2</strong> interest = <strong>$52</strong>.</li>
+                <li>What remains is yours: <strong>$165</strong> &minus; <strong>$52</strong> = <strong>$113</strong> &mdash; a <strong>13% return</strong> on the <strong>$100</strong> you started with.</li>
+            </ul>
+            <p style="margin-bottom:0;">That 13% is exactly $R_f + a(\bar{R}_M - R_f) = 4\% + 1.5(10\% - 4\%)$. But leverage cuts both ways. Had $M$ instead <em>lost</em> 10%, the holdings would sell for <strong>$135</strong>, you would still owe <strong>$52</strong>, and your equity would shrink to <strong>$83</strong> &mdash; a <strong>&minus;17% return</strong>. The standard deviation scales up to $1.5 \times 15\% = 22.5\%$. Borrowing multiplies both the expected excess return and the risk by the same factor $a$ &mdash; which is exactly why, as the demonstration above shows, the Sharpe ratio and the odds of beating $R_f$ do not change.</p>
+        </aside>
+
         <h2>I. Choosing a Single Portfolio</h2>
 
         <h3>Iso-Utility Curves and Investor Preferences</h3>
@@ -67,38 +97,83 @@
         </ol>
 
         <div class="figure">
-            <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Iso-utility curves and optimal portfolio selection">
-                <!-- axes -->
-                <line x1="80" y1="20" x2="80" y2="390" stroke="#999" stroke-width="1"/>
-                <line x1="80" y1="390" x2="660" y2="390" stroke="#999" stroke-width="1"/>
-                <text x="370" y="430" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Standard Deviation (&sigma;)</text>
-                <text x="25" y="200" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 200)">Expected Return</text>
-                <!-- Efficient frontier -->
-                <path d="M170,270 Q135,210 170,150 Q220,75 360,55 Q500,45 600,100" fill="none" stroke="#00356b" stroke-width="2.5"/>
-                <!-- Iso-utility curves for more risk-averse investor (steep) -->
-                <path d="M120,180 Q200,170 280,230 Q340,270 400,340" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="6,3"/>
-                <path d="M120,130 Q200,120 280,175 Q340,215 400,280" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="6,3"/>
-                <path d="M120,85 Q200,75 260,120 Q320,165 380,230" fill="none" stroke="#bd5319" stroke-width="1.5" stroke-dasharray="6,3"/>
-                <!-- Tangency point for risk-averse investor -->
-                <circle cx="200" cy="175" r="7" fill="#bd5319" stroke="white" stroke-width="2"/>
-                <text x="210" y="170" font-size="11" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">P*</text>
-                <text x="210" y="184" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">(more risk-averse)</text>
-                <!-- Iso-utility curves for less risk-averse investor (flatter) -->
-                <path d="M200,200 Q300,185 400,190 Q500,200 600,230" fill="none" stroke="#2a9d2a" stroke-width="1.5" stroke-dasharray="6,3"/>
-                <path d="M200,140 Q300,125 400,125 Q500,130 600,155" fill="none" stroke="#2a9d2a" stroke-width="1.5" stroke-dasharray="6,3"/>
-                <path d="M200,80 Q300,68 400,65 Q500,70 600,90" fill="none" stroke="#2a9d2a" stroke-width="1.5" stroke-dasharray="6,3"/>
-                <!-- Tangency for less risk-averse -->
-                <circle cx="380" cy="60" r="7" fill="#2a9d2a" stroke="white" stroke-width="2"/>
-                <text x="390" y="55" font-size="11" fill="#2a9d2a" font-weight="600" font-family="Inter, sans-serif">P*</text>
-                <text x="390" y="70" font-size="10" fill="#2a9d2a" font-family="Inter, sans-serif">(less risk-averse)</text>
-                <!-- Labels -->
-                <text x="410" y="340" font-size="11" fill="#bd5319" font-family="Inter, sans-serif">Steep iso-utility curves</text>
-                <text x="610" y="230" font-size="11" fill="#2a9d2a" font-family="Inter, sans-serif">Flat curves</text>
-                <!-- Arrow annotation -->
-                <text x="120" y="50" font-size="11" fill="#666" font-family="Inter, sans-serif">Higher utility &uarr;</text>
-            </svg>
-            <p class="figure-caption"><strong>Figure 3.1.</strong> Iso-utility curves and optimal portfolio selection. More risk-averse investors (steep curves, red) select portfolios nearer the minimum-variance end. Less risk-averse investors (flatter curves, green) select portfolios further along the frontier, accepting more risk for higher expected return.</p>
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px">
+              <label style="font-size:.86rem;color:#26221a">Risk aversion &lambda;:
+                <input id="util-lam" type="range" min="-4" max="8" step="0.5" value="4" style="vertical-align:middle;width:170px">
+                <strong id="util-lamv" style="color:#1a5276">4.0</strong>
+                <span id="util-regime" style="margin-left:6px;padding:1px 8px;border-radius:10px;font-size:.78rem;font-weight:600"></span>
+              </label>
+              <label style="font-size:.84rem;color:#26221a;cursor:pointer"><input id="util-front" type="checkbox" style="vertical-align:middle"> drop in the efficient frontier</label>
+            </div>
+            <div id="util-chart"></div>
+            <div id="util-read" style="font-size:.82rem;color:#5c5344;margin-top:4px;min-height:1.2em"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 3.1.</strong> The utility &ldquo;mountaintop.&rdquo; Each shaded step is a band of equal utility, $U = \bar{R}_p - \tfrac{1}{2}\lambda\sigma_p^2$; the colors climb from the low-utility valley (blue) toward the investor&rsquo;s <em>bliss</em> (gold). A <strong>risk-averse</strong> investor ($\lambda>0$) values return and dislikes risk, so bliss lies to the upper <em>left</em> and the steps bow upward. Slide $\lambda$ to <strong>0</strong> and the investor becomes <strong>risk-neutral</strong> &mdash; the steps flatten into level bands and only return matters. Push $\lambda$ <em>negative</em> and the investor is <strong>risk-loving</strong> &mdash; bliss swings to the upper right. Tick <em>drop in the efficient frontier</em> to watch the optimal portfolio appear where the highest attainable step is exactly <strong>tangent</strong> to the frontier &mdash; and slide $\lambda$ to see that tangency travel along it.</p>
         </div>
+        <script>
+        (function(){
+          var W=700,H=440,mL=54,mR=16,mT=14,mB=42,pw=W-mL-mR,ph=H-mT-mB;
+          var SX=0.30,RY=0.16, Rmv=0.05,s0=0.05,kf=7.41, Rmax=0.15;
+          function px(s){return mL+s/SX*pw;} function py(R){return mT+ph-R/RY*ph;}
+          function lerp(a,b,t){return [a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];}
+          var C0=[27,55,86],C1=[106,168,143],C2=[244,211,94];
+          function ramp(t){var c=t<0.5?lerp(C0,C1,t*2):lerp(C1,C2,(t-0.5)*2);return 'rgb('+Math.round(c[0])+','+Math.round(c[1])+','+Math.round(c[2])+')';}
+          function tang(lam){var Rs;if(lam>1e-6){Rs=Rmv+1/(lam*kf);if(Rs>Rmax)Rs=Rmax;if(Rs<Rmv)Rs=Rmv;}else Rs=Rmax;return [Math.sqrt(s0*s0+kf*(Rs-Rmv)*(Rs-Rmv)),Rs];}
+          var el=document.getElementById('util-chart'),slider=document.getElementById('util-lam'),cbF=document.getElementById('util-front');
+          var NB=14,NS=46;
+          function render(){
+            var lam=+slider.value;
+            document.getElementById('util-lamv').textContent=lam.toFixed(1);
+            var reg=document.getElementById('util-regime');
+            if(Math.abs(lam)<1e-6){reg.textContent='risk-neutral';reg.style.background='#eae0c8';reg.style.color='#6b5d38';}
+            else if(lam>0){reg.textContent='risk-averse';reg.style.background='#dce8f2';reg.style.color='#1a5276';}
+            else{reg.textContent='risk-loving';reg.style.background='#f4dcd6';reg.style.color='#a33';}
+            // U at the four corners -> range
+            var cs=[[0,0],[0,RY],[SX,0],[SX,RY]].map(function(p){return p[1]-0.5*lam*p[0]*p[0];});
+            var Umin=Math.min.apply(null,cs),Umax=Math.max.apply(null,cs);
+            var lev=[];for(var i=0;i<=NB;i++)lev.push(Umin+(Umax-Umin)*i/NB);
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            s+='<defs><clipPath id="uclip"><rect x="'+mL+'" y="'+mT+'" width="'+pw+'" height="'+ph+'"/></clipPath></defs>';
+            s+='<g clip-path="url(#uclip)">';
+            // shaded utility steps
+            for(var b=0;b<NB;b++){
+              var Ul=lev[b],Uu=lev[b+1],pts='';
+              for(i=0;i<=NS;i++){var sg=i/NS*SX;pts+=px(sg).toFixed(1)+','+py(Uu+0.5*lam*sg*sg).toFixed(1)+' ';}
+              for(i=NS;i>=0;i--){var sg2=i/NS*SX;pts+=px(sg2).toFixed(1)+','+py(Ul+0.5*lam*sg2*sg2).toFixed(1)+' ';}
+              s+='<polygon points="'+pts+'" fill="'+ramp(b/(NB-1))+'"/>';
+            }
+            // contour lines
+            for(b=1;b<NB;b++){var d='';for(i=0;i<=NS;i++){var sg3=i/NS*SX;d+=(i?'L':'M')+px(sg3).toFixed(1)+' '+py(lev[b]+0.5*lam*sg3*sg3).toFixed(1)+' ';}s+='<path d="'+d+'" fill="none" stroke="#26221a" stroke-width="0.6" opacity="0.22"/>';}
+            // frontier + tangency
+            if(cbF.checked){
+              var fd='';for(var R=Rmv;R<=Rmax+1e-9;R+=0.004){var sg4=Math.sqrt(s0*s0+kf*(R-Rmv)*(R-Rmv));fd+=(fd?'L':'M')+px(sg4).toFixed(1)+' '+py(R).toFixed(1)+' ';}
+              s+='<path d="'+fd+'" fill="none" stroke="#0d2b45" stroke-width="2.8"/>';
+              var T=tang(lam),Us=T[1]-0.5*lam*T[0]*T[0],td='';
+              for(i=0;i<=NS;i++){var sg5=i/NS*SX;td+=(i?'L':'M')+px(sg5).toFixed(1)+' '+py(Us+0.5*lam*sg5*sg5).toFixed(1)+' ';}
+              s+='<path d="'+td+'" fill="none" stroke="#7a1414" stroke-width="2.2" stroke-dasharray="5 3"/>';
+              s+='<circle cx="'+px(T[0]).toFixed(1)+'" cy="'+py(T[1]).toFixed(1)+'" r="6.5" fill="#7a1414" stroke="#fff" stroke-width="1.8"/>';
+            }
+            s+='</g>';
+            // bliss marker at max-U corner
+            var corners=[[0,RY],[SX,RY],[0,0],[SX,0]],bc=corners[0],bu=-1e9;
+            corners.forEach(function(p){var u=p[1]-0.5*lam*p[0]*p[0];if(u>bu){bu=u;bc=p;}});
+            var bx=px(bc[0]),by=py(bc[1]),dx=bc[0]===0?12:-12,ah=bc[0]===0?'start':'end';
+            s+='<text x="'+(bx+dx)+'" y="'+(by+16)+'" text-anchor="'+ah+'" font-size="12" font-weight="700" fill="#8a6d0a">&#9650; bliss</text>';
+            // axes
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            for(var sd=0;sd<=SX+1e-9;sd+=0.05)s+='<text x="'+px(sd)+'" y="'+(mT+ph+16)+'" text-anchor="middle" font-size="10.5" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';
+            for(R=0;R<=RY+1e-9;R+=0.04)s+='<text x="'+(mL-7)+'" y="'+(py(R)+4)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+Math.round(R*100)+'%</text>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Standard deviation ($\\sigma$)</text>'.replace('$\\sigma$','σ');
+            s+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Expected return</text>';
+            s+='</svg>';
+            el.innerHTML=s;
+            if(cbF.checked){var T2=tang(lam);document.getElementById('util-read').innerHTML='Optimal portfolio: &sigma; = <strong>'+(T2[0]*100).toFixed(1)+'%</strong>, return = <strong>'+(T2[1]*100).toFixed(1)+'%</strong> &mdash; where the highest attainable utility step is tangent to the frontier.'+(lam<=1e-6?' A risk-neutral or risk-loving investor is driven to the maximum-return end.':'');}
+            else document.getElementById('util-read').textContent='';
+          }
+          slider.addEventListener('input',render);cbF.addEventListener('change',render);render();
+        })();
+        </script>
 
         <h3>Finding Optimal Portfolios</h3>
 
@@ -151,6 +226,69 @@
         </div>
 
         <h3>Flexibility of Safety-First</h3>
+
+        <p>Because the floor can be set anywhere, the safety-first criterion is really a family of choices. When the floor is the riskless rate $R_f$, the tangent line is steepest and its point of tangency is the max-Sharpe portfolio $M$. Raise the floor to a higher <em>target return</em> $H$ &mdash; a goal you hope to clear &mdash; and the tangent line starts from a higher point on the vertical axis, touches the frontier further out, and is flatter. The reader who wants an aggressive goal is thus steered, by the same geometry, toward a <em>riskier</em> portfolio &mdash; and toward a lower probability of actually clearing that higher bar.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;gap:10px;align-items:stretch">
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.72rem;color:#7a1414;font-weight:600">
+                <span>floor&nbsp;H &#9650;</span>
+                <input id="sf-h" type="range" min="-30" max="90" step="5" value="30" style="writing-mode:vertical-lr;direction:rtl;height:280px;accent-color:#7a1414;margin:6px 0">
+                <span>&#9660;</span>
+                <span id="sf-hv" style="margin-top:4px;color:#1a5276">3.0%</span>
+              </div>
+              <div id="sf-chart" style="flex:1"></div>
+            </div>
+            <div id="sf-read" style="font-size:.82rem;color:#5c5344;margin-top:6px;line-height:1.5"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 3.2.</strong> The safety-first choice, made interactive. Drag the <span style="color:#7a1414;font-weight:700">floor $H$</span> up and down the vertical axis. For each floor, the line of steepest slope to the stock&ndash;bond frontier picks out the portfolio most likely to clear it &mdash; and its <strong>stock/bond mix</strong> slides along the frontier as you move the floor. Set $H$ at the <span style="color:#8a6d0a;font-weight:700">riskless rate</span> and you recover the max-Sharpe portfolio $M$; raise the goal above it and the chosen portfolio grows riskier (more stocks), on a flatter line &mdash; a smaller safety-first ratio, and a lower probability of actually reaching the higher goal.</p>
+        </div>
+        <script>
+        (function(){
+          var muS=0.11,sgS=0.18,muB=0.05,sgB=0.07,rho=0.15,Rf=0.02;
+          function port(w){var mu=w*muS+(1-w)*muB;var v=w*w*sgS*sgS+(1-w)*(1-w)*sgB*sgB+2*rho*w*(1-w)*sgS*sgB;return [Math.sqrt(v),mu];}
+          function tang(floor){var best=-1e9,bw=0;for(var i=0;i<=240;i++){var w=i/240;var q=port(w);var r=(q[1]-floor)/q[0];if(r>best){best=r;bw=w;}}return bw;}
+          function erf(x){var s=x<0?-1:1;x=Math.abs(x);var t=1/(1+0.3275911*x);var y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return s*y;}
+          function Phi(x){return 0.5*(1+erf(x/Math.SQRT2));}
+          var W=700,H=400,mL=58,mR=18,mT=16,mB=42,pw=W-mL-mR,ph=H-mT-mB,SX=0.22,RY0=-0.03,RY1=0.13;
+          function px(s){return mL+s/SX*pw;} function py(R){return mT+ph-(R-RY0)/(RY1-RY0)*ph;}
+          var el=document.getElementById('sf-chart'),sh=document.getElementById('sf-h');
+          function tanLine(floor,col,wid,dash){
+            var w=tang(floor),q=port(w),slope=(q[1]-floor)/q[0];
+            var xEnd=SX,yEnd=floor+slope*xEnd;if(yEnd>RY1){yEnd=RY1;xEnd=(RY1-floor)/slope;}
+            var s='<line x1="'+px(0)+'" y1="'+py(floor).toFixed(1)+'" x2="'+px(xEnd).toFixed(1)+'" y2="'+py(yEnd).toFixed(1)+'" stroke="'+col+'" stroke-width="'+wid+'" stroke-dasharray="'+dash+'"/>';
+            s+='<circle cx="'+px(q[0]).toFixed(1)+'" cy="'+py(q[1]).toFixed(1)+'" r="'+(wid>1.5?6.5:4.5)+'" fill="'+col+'" stroke="#fff" stroke-width="1.6"/>';
+            return {svg:s,w:w,q:q,slope:slope};
+          }
+          function render(){
+            var Hf=+sh.value/1000;document.getElementById('sf-hv').textContent=(Hf*100).toFixed(1)+'%';
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var R=RY0;R<=RY1+1e-9;R+=0.02){var y=py(R);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+(R*100).toFixed(0)+'%</text>';}
+            for(var sd=0;sd<=SX+1e-9;sd+=0.04){var x=px(sd);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+16)+'" text-anchor="middle" font-size="10.5" fill="#8a7f6c">'+(sd*100).toFixed(0)+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Standard deviation (σ)</text>';
+            s+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Expected return</text>';
+            // frontier
+            var d='';for(var t=0;t<=1.0001;t+=0.02){var q=port(t);d+=(d?'L':'M')+px(q[0]).toFixed(1)+' '+py(q[1]).toFixed(1)+' ';}
+            s+='<path d="'+d+'" fill="none" stroke="#0d2b45" stroke-width="2.6"/>';
+            var S=port(1),B=port(0);
+            s+='<circle cx="'+px(S[0])+'" cy="'+py(S[1])+'" r="4" fill="#1a5276"/><text x="'+(px(S[0])+7)+'" y="'+(py(S[1])+3)+'" font-size="10" fill="#1a5276">100% stocks</text>';
+            s+='<circle cx="'+px(B[0])+'" cy="'+py(B[1])+'" r="4" fill="#b9770e"/><text x="'+(px(B[0])-7)+'" y="'+(py(B[1])+13)+'" font-size="10" fill="#b9770e" text-anchor="end">100% bonds</text>';
+            // Rf reference (faint gold)
+            var ref=tanLine(Rf,'#d4ac0d',1.3,'3 3');s+=ref.svg;
+            s+='<rect x="'+(px(0)-3.5)+'" y="'+(py(Rf)-3.5)+'" width="7" height="7" fill="#d4ac0d" stroke="#000" stroke-width="0.5"/>';
+            s+='<text x="'+(px(ref.q[0])+9).toFixed(1)+'" y="'+(py(ref.q[1])+13).toFixed(1)+'" font-size="9.5" fill="#8a6d0a">M (floor = R_f)</text>';
+            // movable floor tangency (maroon)
+            var mv=tanLine(Hf,'#7a1414',2.0,'6 3');s+=mv.svg;
+            s+='<circle cx="'+px(0)+'" cy="'+py(Hf).toFixed(1)+'" r="5" fill="#7a1414"/><text x="'+(px(0)+8)+'" y="'+(py(Hf)-6).toFixed(1)+'" font-size="10.5" fill="#7a1414" font-weight="700">floor H = '+(Hf*100).toFixed(1)+'%</text>';
+            s+='</svg>';el.innerHTML=s;
+            var ws=Math.round(mv.w*100),prob=Phi(mv.slope);
+            document.getElementById('sf-read').innerHTML='Chosen portfolio: <strong>'+ws+'% stocks / '+(100-ws)+'% bonds</strong> (&sigma; = '+(mv.q[0]*100).toFixed(1)+'%, return = '+(mv.q[1]*100).toFixed(1)+'%). &nbsp;Safety-first ratio (line slope) = <strong>'+mv.slope.toFixed(2)+'</strong> &rarr; about <strong>'+(prob*100).toFixed(0)+'%</strong> probability of clearing the floor. '+(Hf>Rf+1e-9?'A goal above R_f pushes the mix toward stocks &mdash; riskier, and less likely to be reached.':(Hf<Rf-1e-9?'A goal below R_f pulls the mix toward bonds &mdash; safer, and more likely to be reached.':'At the riskless rate this is the max-Sharpe portfolio M.'));
+          }
+          sh.addEventListener('input',render);render();
+        })();
+        </script>
 
         <p>The "safety-first" framework accommodates multiple approaches:</p>
         <ol>
@@ -207,64 +345,108 @@
         </div>
 
         <div class="figure">
-            <svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Value at Risk diagram">
-                <!-- axes -->
-                <line x1="80" y1="280" x2="620" y2="280" stroke="#999" stroke-width="1"/>
-                <line x1="80" y1="20" x2="80" y2="280" stroke="#999" stroke-width="1"/>
-                <text x="350" y="320" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Portfolio Return</text>
-                <text x="25" y="150" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 150)">Probability</text>
-                <!-- Normal distribution curve -->
-                <path d="M100,278 Q140,275 180,268 Q220,250 250,220 Q290,160 320,100 Q340,55 350,40 Q360,55 380,100 Q410,160 450,220 Q480,250 520,268 Q560,275 600,278" fill="#00356b" fill-opacity="0.08" stroke="#00356b" stroke-width="2"/>
-                <!-- VaR shaded region (left tail) -->
-                <path d="M100,278 Q140,275 180,268 Q200,260 215,250 L215,280 L100,280 Z" fill="#bd5319" fill-opacity="0.35" stroke="none"/>
-                <!-- VaR line -->
-                <line x1="215" y1="250" x2="215" y2="295" stroke="#bd5319" stroke-width="2"/>
-                <text x="215" y="308" text-anchor="middle" font-size="11" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">R<tspan font-size="8" dy="3">VaR</tspan></text>
-                <!-- Mean line -->
-                <line x1="350" y1="40" x2="350" y2="295" stroke="#00356b" stroke-width="1" stroke-dasharray="4,3"/>
-                <text x="350" y="308" text-anchor="middle" font-size="11" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">Mean</text>
-                <!-- Arrow showing T*sigma -->
-                <line x1="220" y1="270" x2="345" y2="270" stroke="#666" stroke-width="1"/>
-                <text x="283" y="265" text-anchor="middle" font-size="11" fill="#666" font-family="Inter, sans-serif">T x &sigma;<tspan font-size="8" dy="2">p</tspan></text>
-                <!-- 5% label -->
-                <text x="150" y="268" font-size="12" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">5%</text>
-                <!-- 95% label -->
-                <text x="430" y="200" font-size="12" fill="#00356b" font-family="Inter, sans-serif">95% of outcomes</text>
-            </svg>
-            <p class="figure-caption"><strong>Figure 3.2.</strong> Value at Risk (VaR) at the 95% confidence level. The shaded left tail represents the 5% probability of losses exceeding the VaR threshold. $R_{\text{VaR}} = \bar{R}_p - T \cdot \sigma_p$.</p>
+            <img src="figures/var_diagram.svg" alt="Value at Risk: normal density with 5% left tail shaded" style="width:100%; max-width:720px;">
+            <p class="figure-caption"><strong>Figure 3.3.</strong> Value at Risk (VaR) at the 95% confidence level. The shaded left tail represents the 5% probability of losses exceeding the VaR threshold. $R_{\text{VaR}} = \bar{R}_p - T \cdot \sigma_p$.</p>
         </div>
 
         <h3>Practical Example</h3>
 
-        <p>Consider a $100 million pension portfolio with 60% stocks and 40% bonds, analyzed at the 95% confidence interval over one month.</p>
+        <p>Consider a $100 million pension portfolio with 60% stocks and 40% bonds, analyzed at the 95% confidence interval over one year.</p>
 
         <p><strong>Assumptions:</strong></p>
         <ul>
-            <li>Monthly expected stock return: 1%</li>
-            <li>Monthly expected bond return: 0.7%</li>
-            <li>Stock standard deviation: 5%</li>
-            <li>Bond standard deviation: 3%</li>
+            <li>Annual expected stock return: 10%</li>
+            <li>Annual expected bond return: 5%</li>
+            <li>Stock standard deviation: 17%</li>
+            <li>Bond standard deviation: 7%</li>
             <li>Stock-bond correlation: 0.5</li>
-            <li>95% confidence $t$-statistic: 1.64</li>
+            <li>95% confidence $t$-statistic: 1.645</li>
         </ul>
 
         <p><strong>Portfolio Expected Return:</strong></p>
         <div class="equation">
-            $$\bar{R}_p = (0.6)(0.01) + (0.4)(0.007) = 0.0088 \;(0.88\%)$$
+            $$\bar{R}_p = (0.6)(0.10) + (0.4)(0.05) = 0.08 \;(8\%)$$
         </div>
 
         <p><strong>Portfolio Standard Deviation:</strong></p>
         <div class="equation">
-            $$\sigma_p = \sqrt{(0.6)^2(0.05)^2 + (0.4)^2(0.03)^2 + 2(0.5)(0.6)(0.4)(0.05)(0.03)} = 0.038 \;(3.8\%)$$
+            $$\sigma_p = \sqrt{(0.6)^2(0.17)^2 + (0.4)^2(0.07)^2 + 2(0.5)(0.6)(0.4)(0.17)(0.07)} = 0.119 \;(11.9\%)$$
         </div>
 
         <p><strong>Value-at-Risk:</strong></p>
         <div class="equation">
-            $$R_{\text{VaR}} = 0.0088 - 1.64 \times 0.038 = -0.054 \;(-5.4\%)$$
-            $$\text{Monthly VaR} = \$100{,}000{,}000 \times 0.054 = \$5{,}400{,}000$$
+            $$R_{\text{VaR}} = 0.08 - 1.645 \times 0.119 = -0.115 \;(-11.5\%)$$
+            $$\text{One-year VaR} = \$100{,}000{,}000 \times 0.115 = \$11{,}500{,}000$$
         </div>
 
-        <p>The portfolio is expected to experience losses of at least $5.4 million approximately one month out of every twenty, though this calculation does not suggest the remaining $94.6 million escapes risk entirely.</p>
+        <p>The portfolio is expected to experience losses of at least <strong>$11.5 million</strong> approximately one year out of every twenty, though this calculation does not suggest the remaining <strong>$88.5 million</strong> escapes risk entirely.</p>
+
+        <p>Every line of that arithmetic is a move in the same mean&ndash;standard-deviation space we have used all chapter &mdash; VaR is the safety-first line run in reverse. Instead of choosing a floor and hunting for the portfolio that best clears it, we hold the portfolio fixed, let the confidence level fix the <em>slope</em>, and read the floor off the axis. The figure below lets you walk the five steps.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:10px;font-size:.94rem;color:#26221a">
+              <label style="line-height:2">Stock weight: <input id="var-w" type="range" min="0" max="100" step="5" value="60" style="vertical-align:middle;width:130px"> <strong id="var-wv" style="color:#1a5276">60/40</strong></label>
+              <span style="line-height:2">Confidence:
+                <label style="margin-left:4px"><input type="radio" name="var-c" value="90">90%</label>
+                <label><input type="radio" name="var-c" value="95" checked>95%</label>
+                <label><input type="radio" name="var-c" value="99">99%</label>
+              </span>
+              <div style="display:flex;flex-direction:column;gap:5px;align-items:flex-end">
+                <label>Portfolio value: $<input id="var-val" type="number" min="1" step="10" value="100" style="width:64px;font-size:.94rem">M</label>
+                <div id="var-box" style="background:#f4dcd6;border:1px solid #d8a99f;border-radius:6px;padding:5px 12px;font-weight:700;color:#7a1414;font-size:1rem">&nbsp;</div>
+              </div>
+            </div>
+            <div id="var-chart"></div>
+            <div id="var-read" style="font-size:.92rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 3.4.</strong> Value at Risk as a construction in mean&ndash;standard-deviation space &mdash; the safety-first line run in reverse. <strong>(1)</strong> The confidence level fixes the <em>slope</em> of the line (the $t$-value $T$: 1.28, 1.64, or 2.33). <strong>(2)</strong> The portfolio&rsquo;s risk, return, and the stock&ndash;bond correlation place it as a point in the space (slide the mix to move it along the combination curve). <strong>(3)</strong> Slide a line of that slope until it touches the portfolio. <strong>(4)</strong> Read the return where the line meets the vertical axis &mdash; that is $R_{\text{VaR}}$, the loss threshold. <strong>(5)</strong> Multiply by the dollar value of the portfolio to get the Value at Risk. Figures are annual, for a one-year horizon.</p>
+        </div>
+        <script>
+        (function(){
+          var muS=0.10,sgS=0.17,muB=0.05,sgB=0.07,rho=0.5,Tmap={90:1.282,95:1.645,99:2.326};
+          function port(w){var mu=w*muS+(1-w)*muB;var v=w*w*sgS*sgS+(1-w)*(1-w)*sgB*sgB+2*rho*w*(1-w)*sgS*sgB;return [Math.sqrt(v),mu];}
+          var W=700,H=450,mL=70,mR=20,mT=20,mB=48,pw=W-mL-mR,ph=H-mT-mB,SX=0.20,RY0=-0.22,RY1=0.13;
+          function px(s){return mL+s/SX*pw;} function py(R){return mT+ph-(R-RY0)/(RY1-RY0)*ph;}
+          var el=document.getElementById('var-chart'),sw=document.getElementById('var-w'),sv=document.getElementById('var-val');
+          function conf(){return +document.querySelector('input[name=var-c]:checked').value;}
+          function fmt(n){return n.toLocaleString('en-US',{maximumFractionDigits:1});}
+          function render(){
+            var w=+sw.value/100,C=conf(),T=Tmap[C],P=port(w),sp=P[0],mp=P[1],Rv=mp-T*sp,val=+sv.value||0;
+            document.getElementById('var-wv').textContent=Math.round(w*100)+'/'+Math.round((1-w)*100);
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var R=-0.20;R<=RY1+1e-9;R+=0.04){var y=py(R);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-9)+'" y="'+(y+5).toFixed(1)+'" text-anchor="end" font-size="13" fill="#8a7f6c">'+(R*100).toFixed(0)+'%</text>';}
+            for(var sd=0;sd<=SX+1e-9;sd+=0.04){var x=px(sd);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+20)+'" text-anchor="middle" font-size="13" fill="#8a7f6c">'+(sd*100).toFixed(0)+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+py(0).toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+py(0).toFixed(1)+'" stroke="#b7a988" stroke-width="1.2"/>';
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="14" font-style="italic" fill="#5c5344">Portfolio standard deviation (annual)</text>';
+            s+='<text transform="translate(16 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="14" font-style="italic" fill="#5c5344">Portfolio return (annual)</text>';
+            var d='';for(var t=0;t<=1.0001;t+=0.02){var q=port(t);d+=(d?'L':'M')+px(q[0]).toFixed(1)+' '+py(q[1]).toFixed(1)+' ';}
+            s+='<path d="'+d+'" fill="none" stroke="#0d2b45" stroke-width="2.8"/>';
+            var St=port(1),Bo=port(0);
+            s+='<circle cx="'+px(St[0])+'" cy="'+py(St[1])+'" r="4.5" fill="#1a5276"/><text x="'+(px(St[0])+8)+'" y="'+(py(St[1])+4)+'" font-size="12.5" fill="#1a5276">stocks</text>';
+            s+='<circle cx="'+px(Bo[0])+'" cy="'+py(Bo[1])+'" r="4.5" fill="#b9770e"/><text x="'+(px(Bo[0])-8)+'" y="'+(py(Bo[1])+16)+'" font-size="12.5" fill="#b9770e" text-anchor="end">bonds</text>';
+            var xR=SX,yR=Rv+T*xR;
+            s+='<line x1="'+px(0)+'" y1="'+py(Rv).toFixed(1)+'" x2="'+px(xR)+'" y2="'+py(yR).toFixed(1)+'" stroke="#7a1414" stroke-width="2" stroke-dasharray="7 4"/>';
+            s+='<circle cx="'+px(sp).toFixed(1)+'" cy="'+py(mp).toFixed(1)+'" r="7" fill="#c0392b" stroke="#fff" stroke-width="2"/>';
+            s+='<text x="'+px(sp).toFixed(1)+'" y="'+(py(mp)-13).toFixed(1)+'" text-anchor="middle" font-size="12.5" fill="#c0392b" font-weight="700">portfolio ('+(sp*100).toFixed(1)+'%, '+(mp*100).toFixed(1)+'%)</text>';
+            s+='<circle cx="'+px(0)+'" cy="'+py(Rv).toFixed(1)+'" r="6" fill="#7a1414"/>';
+            s+='<text x="'+(px(0)+10)+'" y="'+(py(Rv)+5).toFixed(1)+'" font-size="13.5" fill="#7a1414" font-weight="700">R_VaR = '+(Rv*100).toFixed(1)+'%</text>';
+            s+='<text x="'+px(0.145).toFixed(1)+'" y="'+(py(Rv+T*0.145)-8).toFixed(1)+'" font-size="12" fill="#7a1414" font-style="italic">slope = T = '+T.toFixed(2)+'</text>';
+            s+='</svg>';el.innerHTML=s;
+            var dv=Math.abs(Rv)*val;
+            document.getElementById('var-box').textContent=C+'% 1-yr VaR: $'+fmt(dv)+'M';
+            document.getElementById('var-read').innerHTML=
+              '<strong>(1)</strong> '+C+'% confidence &rarr; slope T = '+T.toFixed(2)+'. &nbsp;'+
+              '<strong>(2)</strong> '+Math.round(w*100)+'% stocks / '+Math.round((1-w)*100)+'% bonds (&rho; = 0.5) &rarr; portfolio at &sigma; = '+(sp*100).toFixed(1)+'%, return = '+(mp*100).toFixed(1)+'%. &nbsp;'+
+              '<strong>(3&ndash;4)</strong> the slope-'+T.toFixed(2)+' line meets the axis at R<sub>VaR</sub> = <strong>'+(Rv*100).toFixed(1)+'%</strong>. &nbsp;'+
+              '<strong>(5)</strong> &times; <span>$'+fmt(val)+'</span>M portfolio &rarr; a '+C+'% one-year VaR of <strong><span>$'+fmt(dv)+'</span>M</strong> &mdash; the loss not exceeded '+C+'% of the time.';
+          }
+          sw.addEventListener('input',render);sv.addEventListener('input',render);
+          Array.prototype.forEach.call(document.getElementsByName('var-c'),function(r){r.addEventListener('change',render);});
+          render();
+        })();
+        </script>
 
         <div class="key-concept">
             <h4>Key Concept: Value at Risk</h4>

@@ -48,6 +48,49 @@
 
         <p>No single asset class dominates all others. T-Bills appeal to risk-averse investors, while small stocks attract those unconcerned with volatility. No universal "best" security exists for all investors.</p>
 
+        <p>We can picture any security as a single point in <em>risk&ndash;return space</em>. By convention we put the <strong>risk</strong> &mdash; the standard deviation of returns &mdash; on the horizontal axis and the <strong>expected return</strong> on the vertical axis, both <em>annualized</em>. Scatter a handful of securities this way and the investor's dilemma becomes visual.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+              <strong style="font-size:.95rem;color:#26221a">Six securities in risk&ndash;return space</strong>
+              <button id="rr-btn" type="button" style="font-family:inherit;font-size:.85rem;padding:5px 13px;border:1px solid #1a5276;border-radius:6px;background:#1a5276;color:#fff;cursor:pointer">Regenerate &#8635;</button>
+            </div>
+            <div id="rr-chart" style="position:relative"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 2.1.</strong> Six hypothetical securities, each a point set by its standard deviation (horizontal) and expected return (vertical), annualized. <strong>Which one would you choose? Is any of them <em>dominant</em></strong> &mdash; offering both a higher return <em>and</em> a lower risk than all the others? The lowest-risk security is highlighted in <span style="color:#2a80c9;font-weight:700">light blue</span> and the highest-return one in <span style="color:#1e8b3a;font-weight:700">bright green</span>. Usually they are different securities, so no single one dominates &mdash; which is exactly why we combine them. Press <em>Regenerate</em> for a new draw.</p>
+        </div>
+        <script>
+        (function(){
+          var W=680,H=420,mL=58,mR=26,mT=16,mB=46,pw=W-mL-mR,ph=H-mT-mB;
+          var RMAX=0.18,SMAX=0.30;
+          function px(s){return mL+s/SMAX*pw;} function py(r){return mT+ph-r/RMAX*ph;}
+          var names=['A','B','C','D','E','F'];
+          function render(){
+            var A,i,lo,hi;
+            do{
+              A=[];
+              for(i=0;i<6;i++)A.push({n:names[i],r:0.03+Math.random()*0.13,s:0.05+Math.random()*0.22});
+              lo=0;hi=0;for(i=1;i<6;i++){if(A[i].s<A[lo].s)lo=i;if(A[i].r>A[hi].r)hi=i;}
+            }while(lo===hi); // reject draws where one asset is both lowest-risk and highest-return
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var sd=0;sd<=0.30001;sd+=0.05){var x=px(sd);s+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6"/><text x="'+x+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';}
+            for(var r=0;r<=0.18001;r+=0.03){var y=py(r);s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(mL+pw)+'" y2="'+y+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+Math.round(r*100)+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Standard deviation (risk)</text>';
+            s+='<text transform="translate(15 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Expected return (annualized)</text>';
+            for(i=0;i<6;i++){var a=A[i],fill='#6b6252';if(i===lo)fill='#7fb8e0';if(i===hi)fill='#33b558';
+              s+='<circle cx="'+px(a.s).toFixed(1)+'" cy="'+py(a.r).toFixed(1)+'" r="11" fill="'+fill+'" stroke="#fff" stroke-width="2"/>';
+              s+='<text x="'+px(a.s).toFixed(1)+'" y="'+(py(a.r)+4).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">'+a.n+'</text>';}
+            s+='<text x="'+px(A[lo].s).toFixed(1)+'" y="'+(py(A[lo].r)+28).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#2a80c9">lowest risk</text>';
+            s+='<text x="'+px(A[hi].s).toFixed(1)+'" y="'+(py(A[hi].r)-19).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1e8b3a">highest return</text>';
+            s+='</svg>';
+            document.getElementById('rr-chart').innerHTML=s;
+          }
+          document.getElementById('rr-btn').addEventListener('click',render); render();
+        })();
+        </script>
+
         <div class="key-concept">
             <h4>Key Concept</h4>
             <p>No single asset class is universally "best." The optimal choice depends on the investor's willingness to bear risk &mdash; which leads naturally to the idea of <strong>combining</strong> assets into portfolios.</p>
@@ -130,7 +173,7 @@
                 <circle cx="95" cy="160" r="5" fill="#bd5319" stroke="white" stroke-width="2"/>
                 <text x="100" y="175" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Zero risk!</text>
             </svg>
-            <p class="figure-caption"><strong>Figure 2.1.</strong> Effect of correlation on portfolio risk for two assets. Lower correlation bends the opportunity set leftward, creating diversification benefits. At $\rho = -1$, risk can be eliminated entirely.</p>
+            <p class="figure-caption"><strong>Figure 2.2.</strong> Effect of correlation on portfolio risk for two assets. Lower correlation bends the opportunity set leftward, creating diversification benefits. At $\rho = -1$, risk can be eliminated entirely.</p>
         </div>
 
         <div class="key-concept">
@@ -162,28 +205,127 @@
 
         <div class="figure">
             <img src="figures/efficient_frontier.svg" alt="Markowitz efficient frontier computed from SBBI data" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 2.2.</strong> The Markowitz efficient frontier, computed from SBBI asset class data. The bold curve represents the efficient frontier &mdash; no portfolio exists to the northwest. Interior points are dominated: for any given risk level, a higher-returning portfolio exists on the frontier.</p>
+            <p class="figure-caption"><strong>Figure 2.3.</strong> The Markowitz efficient frontier, computed from SBBI asset class data. The bold curve represents the efficient frontier &mdash; no portfolio exists to the northwest. Interior points are dominated: for any given risk level, a higher-returning portfolio exists on the frontier.</p>
         </div>
 
         <h2>IV. Markowitz and the First Efficient Frontier</h2>
 
-        <p>Harry Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis &mdash; a convention later reversed.</p>
+        <p>Harry Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis &mdash; a convention later reversed. The frontier itself drew its statistical inputs from just <strong>ten stocks</strong> on the New York Stock Exchange; adding more assets to the optimization pushed the limits of the computing power available at the time.</p>
+
+        <div class="figure">
+            <img src="figures/markowitz-1959.gif" alt="Markowitz's original efficient frontier, 1959" style="width:100%; max-width:340px;">
+            <p class="figure-caption"><strong>Figure 2.4.</strong> Markowitz&rsquo;s original efficient frontier, reproduced from <em>Portfolio Selection</em> (1959). Note the older convention &mdash; standard deviation on the <em>vertical</em> axis and average return on the horizontal &mdash; and the straight line running down to the origin, which mixes the risky portfolio with the riskless asset.</p>
+        </div>
 
         <div class="note">
             <strong>Historical note:</strong> Markowitz's 1952 paper and 1959 monograph laid the groundwork for all of modern portfolio theory. He shared the 1990 Nobel Prize in Economics with William Sharpe and Merton Miller for this contribution.
         </div>
 
-        <h2>V. An Actual Efficient Frontier Today</h2>
+        <h2>V. A Simulated Portfolio with Short-Sales Constraints</h2>
 
-        <p>Modern efficient frontiers, constructed using historical data for U.S. and international assets via optimization programs, maintain Markowitz's foundational approach.</p>
+        <p>It helps to build a frontier by brute force rather than by formula. The simulation below draws thousands of random portfolios of four hypothetical assets and lets the efficient frontier emerge as the outer edge of the resulting cloud.</p>
 
-        <p>Essential frontier characteristics:</p>
+        <p>A <strong>short position</strong> in a security creates a <em>negative weight</em> on it in the portfolio &mdash; the investor sells borrowed shares and puts the proceeds into something else. This can greatly expand the investment opportunity set: with short sales allowed, weights are no longer confined between zero and one, and the feasible set opens up in every direction. The <em>smooth hyperbolic shape</em> of the classic efficient frontier is a result of allowing portfolios with short sales.</p>
+
+        <p>The simulation, by contrast, imposes a <strong>no-short-sales (positivity) constraint</strong>: every weight is non-negative and the weights sum to one. Several things follow, all visible in the figure below:</p>
         <ul>
-            <li>A <strong>minimum variance portfolio</strong> exists at the frontier's lower-risk boundary</li>
-            <li>The <strong>maximum return portfolio</strong> consists of a single asset</li>
-            <li>Critical transition points exist where the asset composition changes &mdash; where securities enter or exit the optimal combination</li>
-            <li>No assets appear northwest of the frontier; this boundary defines the feasible region's edge</li>
+            <li>The feasible set is <strong>bounded</strong>. Every attainable portfolio lies inside the envelope traced by the pairwise mixes (the grey arcs); nothing outside it can be reached without shorting.</li>
+            <li>The long-only frontier is <strong>piecewise</strong> &mdash; stitched together from segments, and at each junction (a <em>corner portfolio</em>) an asset enters or leaves the optimal mix.</li>
+            <li>The <strong>highest-return portfolio is a single asset</strong>, the highest-returning one (D). Without shorting, nothing can push return above it.</li>
+            <li>The <strong>minimum-variance portfolio</strong> can still sit far to the left of every individual asset. Even when the assets are on average uncorrelated, combining them drives risk well below any one of them &mdash; the essence of diversification.</li>
+            <li>The gap between the solid (long-only) frontier and the dashed (unconstrained) hyperbola is the <strong>value of being able to short</strong>. It is widest at the extremes &mdash; very high or very low target returns &mdash; and often nearly zero in the middle, where the optimum needs no short position.</li>
         </ul>
+
+        <p>Use the slider to set the <strong>average correlation</strong> among the assets, then press <em>Regenerate</em> to draw a new random correlation matrix centered on that average. As the average rises toward one, the feasible set collapses toward a line and diversification vanishes; as it falls toward zero, the frontier bows sharply to the left.</p>
+                <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
+              <strong style="font-size:.95rem;color:#26221a">A random efficient frontier from four hypothetical assets</strong>
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <label style="font-size:.82rem;color:#5c5344;display:flex;align-items:center;gap:7px">Avg. correlation <strong id="mcf-rho" style="color:#1a5276;min-width:2.4em;display:inline-block">0.00</strong><input id="mcf-slider" type="range" min="0" max="0.9" step="0.05" value="0" style="width:120px;vertical-align:middle"></label>
+                <button id="mcf-btn" type="button" style="font-family:inherit;font-size:.85rem;padding:5px 13px;border:1px solid #1a5276;border-radius:6px;background:#1a5276;color:#fff;cursor:pointer">Regenerate &#8635;</button>
+              </div>
+            </div>
+            <div id="mcf-chart" style="position:relative"></div>
+            <div id="mcf-corr" style="margin-top:6px;font-size:.8rem;color:#5c5344"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 2.5.</strong> Four hypothetical assets, A&ndash;D, with fixed expected returns (6, 9, 11, 14%) and standard deviations (8, 13, 17, 20%). Each draw uses a fresh <em>random correlation matrix</em> centered on the average correlation you choose with the slider (the realized matrix and its average &#961; appear below the chart). The blue cloud is 1,400 random <em>long-only</em> portfolios; grey arcs oversample the six pairwise mixes; the solid red curve is the long-only efficient frontier. The dashed curve is the <em>unconstrained</em> frontier (short sales allowed) &mdash; a smooth hyperbola. Notice how the no-short (positivity) constraint cuts the hyperbola off: the long-only frontier hugs it in the middle but cannot follow it past the extreme assets. Press <em>Regenerate</em> for a new correlation structure.</p>
+        </div>
+        <script>
+        (function(){
+          var assets=[
+            {n:'A',r:0.06,s:0.08,c:'#117733'},
+            {n:'B',r:0.09,s:0.13,c:'#e69f00'},
+            {n:'C',r:0.11,s:0.17,c:'#1a5276'},
+            {n:'D',r:0.14,s:0.20,c:'#7a1414'}
+          ];
+          var N=assets.length;
+          function gauss(){var u=Math.random()||1e-9,v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+          function randCorr(rho){var m=4,e=[1,0,0,0],U=[],i,j,d,a=Math.sqrt(Math.max(0,rho)),bb=Math.sqrt(Math.max(0,1-rho));
+            for(i=0;i<N;i++){var u=[],nn=0;for(d=0;d<m;d++){var g=gauss();u.push(g);nn+=g*g;}nn=Math.sqrt(nn);u=u.map(function(x){return x/nn;});
+              var v=[];for(d=0;d<m;d++)v.push(a*e[d]+bb*u[d]);var vn=Math.sqrt(v.reduce(function(s,x){return s+x*x;},0));U.push(v.map(function(x){return x/vn;}));}
+            var C=[];for(i=0;i<N;i++){C[i]=[];for(j=0;j<N;j++){var dp=0;for(d=0;d<m;d++)dp+=U[i][d]*U[j][d];C[i][j]=(i===j)?1:dp;}}return C;}
+          function inv(M){var n=N,i,j,c,r,A=M.map(function(row,ii){return row.concat(Array.from({length:n},function(_,jj){return ii===jj?1:0;}));});
+            for(c=0;c<n;c++){var p=A[c][c];for(j=0;j<2*n;j++)A[c][j]/=p;for(r=0;r<n;r++){if(r!==c){var f=A[r][c];for(j=0;j<2*n;j++)A[r][j]-=f*A[c][j];}}}
+            return A.map(function(row){return row.slice(n);});}
+          function mvp(M,v){return M.map(function(row){return row.reduce(function(s,x,k){return s+x*v[k];},0);});}
+          function dot(a,b){return a.reduce(function(s,x,k){return s+x*b[k];},0);}
+          function stat(w,cov){var r=0,v=0,i,j;for(i=0;i<N;i++){r+=w[i]*assets[i].r;for(j=0;j<N;j++)v+=w[i]*w[j]*cov[i][j];}return[Math.sqrt(Math.max(v,0)),r];}
+          function simplex(){var e=[],s=0,i;for(i=0;i<N;i++){e[i]=-Math.log(Math.random()||1e-9);s+=e[i];}return e.map(function(x){return x/s;});}
+          var W=680,H=430,mL=54,mR=120,mT=14,mB=42,pw=W-mL-mR,ph=H-mT-mB;
+          var SX1=0.24,RY0=0.03,RY1=0.16;
+          function px(s){return mL+s/SX1*pw;} function py(r){return mT+ph-(r-RY0)/(RY1-RY0)*ph;}
+          function render(){
+            var rho=parseFloat(document.getElementById('mcf-slider').value);document.getElementById('mcf-rho').textContent=rho.toFixed(2);var C=randCorr(rho),cov=[],i,j;
+            for(i=0;i<N;i++){cov[i]=[];for(j=0;j<N;j++)cov[i][j]=C[i][j]*assets[i].s*assets[j].s;}
+            var cloud=[],pair=[],k,t;
+            for(k=0;k<1400;k++)cloud.push(stat(simplex(),cov));
+            for(i=0;i<N;i++)for(j=i+1;j<N;j++)for(t=0;t<=120;t++){var a=t/120,w=[0,0,0,0];w[i]=a;w[j]=1-a;pair.push(stat(w,cov));}
+            // efficient frontier = lower convex hull in (return, variance) space (min variance is convex in return)
+            var allp=cloud.concat(pair).map(function(p){return [p[1],p[0]*p[0]];}); // [R, var]
+            allp.sort(function(a,b){return a[0]-b[0]||a[1]-b[1];});
+            function cross(o,a,b){return (a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);}
+            var hull=[];
+            for(var q=0;q<allp.length;q++){var pt=allp[q];while(hull.length>=2&&cross(hull[hull.length-2],hull[hull.length-1],pt)<=0)hull.pop();hull.push(pt);}
+            var mvi=0;for(var q2=1;q2<hull.length;q2++)if(hull[q2][1]<hull[mvi][1])mvi=q2;
+            var eff=hull.slice(mvi).map(function(p){return [Math.sqrt(p[1]),p[0]];}); // [sigma, R], increasing R
+            var mv=[Math.sqrt(hull[mvi][1]),hull[mvi][0]];
+            // unconstrained hyperbola (short sales allowed): sigma(R)=sqrt((A R^2 - 2B R + Cc)/Dd)
+            var Si=inv(cov),one=[1,1,1,1],mu=assets.map(function(a){return a.r;});
+            var Si1=mvp(Si,one),Simu=mvp(Si,mu);
+            var Aq=dot(one,Si1),Bq=dot(one,Simu),Cq=dot(mu,Simu),Dq=Aq*Cq-Bq*Bq;
+            var hyp=[];for(var R=0.035;R<=0.165;R+=0.002){var vv=(Aq*R*R-2*Bq*R+Cq)/Dq;if(vv>0){var sg=Math.sqrt(vv);if(sg<=SX1+0.005)hyp.push([sg,R]);}}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var r=0.04;r<=0.161;r+=0.02){var y=py(r);s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(mL+pw)+'" y2="'+y+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+Math.round(r*100)+'%</text>';}
+            for(var sd=0;sd<=0.241;sd+=0.04){var x=px(sd);s+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6" opacity="0.6"/><text x="'+x+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';}
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Standard deviation (risk)</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Expected return</text>';
+            cloud.forEach(function(p){s+='<circle cx="'+px(p[0]).toFixed(1)+'" cy="'+py(p[1]).toFixed(1)+'" r="1.5" fill="#1a5276" opacity="0.15"/>';});
+            pair.forEach(function(p){s+='<circle cx="'+px(p[0]).toFixed(1)+'" cy="'+py(p[1]).toFixed(1)+'" r="1.4" fill="#8a7f6c" opacity="0.38"/>';});
+            // unconstrained hyperbola (dashed)
+            if(hyp.length>1){var dh=hyp.map(function(p,ix){return (ix?'L':'M')+px(p[0]).toFixed(1)+' '+py(p[1]).toFixed(1);}).join(' ');
+              s+='<path d="'+dh+'" fill="none" stroke="#1a5276" stroke-width="1.8" stroke-dasharray="6 4" opacity="0.85"/>';}
+            // long-only efficient frontier (solid red)
+            var d=eff.map(function(p,ix){return (ix?'L':'M')+px(p[0]).toFixed(1)+' '+py(p[1]).toFixed(1);}).join(' ');
+            s+='<path d="'+d+'" fill="none" stroke="#7a1414" stroke-width="2.6"/>';
+            s+='<circle cx="'+px(mv[0])+'" cy="'+py(mv[1])+'" r="4.5" fill="#7a1414" stroke="#fff" stroke-width="1.5"/>';
+            assets.forEach(function(a){s+='<circle cx="'+px(a.s)+'" cy="'+py(a.r)+'" r="6" fill="'+a.c+'" stroke="#fff" stroke-width="1.5"/><text x="'+(px(a.s)+9)+'" y="'+(py(a.r)+4)+'" font-size="13" font-weight="700" fill="'+a.c+'">'+a.n+'</text>';});
+            // legend
+            s+='<g font-size="11.5"><line x1="'+(mL+8)+'" y1="'+(mT+10)+'" x2="'+(mL+34)+'" y2="'+(mT+10)+'" stroke="#7a1414" stroke-width="2.6"/><text x="'+(mL+40)+'" y="'+(mT+14)+'" fill="#5c5344">long-only frontier</text>';
+            s+='<line x1="'+(mL+8)+'" y1="'+(mT+28)+'" x2="'+(mL+34)+'" y2="'+(mT+28)+'" stroke="#1a5276" stroke-width="1.8" stroke-dasharray="6 4"/><text x="'+(mL+40)+'" y="'+(mT+32)+'" fill="#5c5344">unconstrained (shorts allowed)</text></g>';
+            s+='</svg>';
+            document.getElementById('mcf-chart').innerHTML=s;
+            var sum=0,cnt=0,html='<table style="border-collapse:collapse;font-family:ui-monospace,Menlo,monospace;font-size:.78rem"><tr><td style="padding:2px 7px"></td>';
+            for(i=0;i<N;i++)html+='<td style="padding:2px 7px;font-weight:700;text-align:center;color:'+assets[i].c+'">'+assets[i].n+'</td>';
+            html+='</tr>';
+            for(i=0;i<N;i++){html+='<tr><td style="padding:2px 7px;font-weight:700;color:'+assets[i].c+'">'+assets[i].n+'</td>';
+              for(j=0;j<N;j++){var val=C[i][j];if(j>i){sum+=val;cnt++;}var col=(i===j)?'#8a7f6c':(val<0?'#7a1414':'#26221a');html+='<td style="padding:2px 7px;text-align:right;color:'+col+'">'+val.toFixed(2)+'</td>';}html+='</tr>';}
+            html+='</table>';
+            document.getElementById('mcf-corr').innerHTML='<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">'+html+'<div>random correlation matrix &middot; average pairwise &#961; = <strong>'+(sum/cnt).toFixed(2)+'</strong></div></div>';
+          }
+          document.getElementById('mcf-btn').addEventListener('click',render);document.getElementById('mcf-slider').addEventListener('input',render); render();
+        })();
+        </script>
 
         <h2>VI. The Efficient Frontier with the Riskless Asset</h2>
 
@@ -199,8 +341,8 @@
         <p>Portfolios between $R_f$ and $M$ combine Treasury bills with portfolio $M$. Portfolios extending beyond $M$ are achieved by <strong>borrowing</strong> at $R_f$ and investing proceeds into $M$ &mdash; a leveraged position.</p>
 
         <div class="figure">
-            <img src="figures/capital_market_line.svg" alt="Capital Market Line through the tangency portfolio" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 2.3.</strong> The Capital Market Line (CML), computed from SBBI data. The tangency portfolio $M$ is the optimal risky portfolio. All investors choose points along the CML by mixing $M$ with the risk-free asset (lending) or borrowing to invest more in $M$ (leveraging).</p>
+            <img src="figures/frontier-anatomy.svg" alt="Labeled schematic of the efficient frontier, feasible set, and Capital Market Line" style="width:100%; max-width:760px;">
+            <p class="figure-caption"><strong>Figure 2.6.</strong> The anatomy of the efficient frontier. The shaded region is the <em>feasible set</em> of attainable portfolios; its upper-left edge is the <em>efficient frontier</em> (bold), and its lower edge holds the <em>dominated</em> portfolios. The <em>minimum-variance portfolio</em> sits at the leftmost point and the <em>highest-return asset</em> at the top. Adding the <em>riskless asset</em> $R_f$ and drawing the tangent line yields the <em>Capital Market Line</em>, which touches the frontier at the <em>tangency portfolio</em> $M$. Investors hold combinations of $R_f$ and $M$ along this line &mdash; lending below $M$, borrowing above it.</p>
         </div>
 
         <div class="key-concept">
@@ -208,6 +350,140 @@
             <p>When a riskless asset exists, the efficient frontier becomes a straight line (the CML) from $R_f$ through the tangency portfolio $M$. Every investor &mdash; regardless of risk preferences &mdash; holds the <em>same</em> portfolio of risky assets ($M$), differing only in how much they allocate to the riskless asset. This is the foundation of the <strong>Two Fund Separation Theorem</strong>.</p>
         </div>
 
+
+        <h3>The Tangency Portfolio, Out of Sample</h3>
+
+        <p>There is a catch hiding inside the elegant geometry. To locate the tangency portfolio $M$ we needed three sets of inputs &mdash; expected returns, standard deviations, and correlations. In the classroom we treat these as <em>known</em>. In practice we must <strong>estimate</strong> them from historical data, and the estimates contain error. The tangency portfolio is the single point on the frontier that leans hardest on those estimates, so it is precisely where estimation error does the most damage.</p>
+
+        <p>The demonstration below makes the point with real data. We split the 1926&ndash;2025 SBBI history into an <strong>estimation window</strong> (everything up to the split year) and a <strong>holdout</strong> (everything after). From the estimation window we compute the max-Sharpe (tangency) portfolio &mdash; the portfolio that looked optimal <em>looking backward</em>. Then we plot where that portfolio actually landed in the holdout period, against the holdout&rsquo;s own <em>ex-post</em> efficient frontier &mdash; the best that could have been done <em>looking forward</em>.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px">
+              <label style="font-size:.86rem;color:#26221a">Split year:
+                <input id="oos-split" type="range" min="1955" max="2005" step="5" value="1975" style="vertical-align:middle;width:150px">
+                <strong id="oos-splitv" style="color:#1a5276">1975</strong>
+                <span style="color:#8a7f6c">&nbsp;(estimate 1926&ndash;<span id="oos-e2">1975</span>, test <span id="oos-t1">1976</span>&ndash;2025)</span>
+              </label>
+              <button id="oos-btn" type="button" style="font-family:inherit;font-size:.84rem;padding:5px 13px;border:1px solid #1a5276;border-radius:6px;background:#1a5276;color:#fff;cursor:pointer">Resample &#8635;</button>
+            </div>
+            <div id="oos-chart"></div>
+            <div id="oos-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 2.7.</strong> In-sample versus out-of-sample. The bold curve is the holdout period&rsquo;s <em>ex-post</em> efficient frontier &mdash; the frontier hindsight would have drawn. The large <span style="color:#7a1414;font-weight:700">&#9733; star</span> is the tangency portfolio estimated from the earlier window, plotted at the risk and return it actually delivered in the holdout. Because it is a <em>feasible</em> holdout portfolio, it lies <em>on or inside</em> this frontier &mdash; it cannot beat what hindsight made achievable, and only occasionally sits right on it. The faint stars repeat the calculation on 30 bootstrap resamples of the estimation window &mdash; each a portfolio that looked optimal on slightly different data; they scatter along and inside the frontier. The <span style="color:#1e8b3a;font-weight:700">&#9670; diamond</span> is the ex-post tangency (hindsight&rsquo;s best). Note that the holdout may deliver <em>higher</em> returns than the estimation window predicted &mdash; the market does its own thing out of sample &mdash; yet the in-sample weights still leave Sharpe on the table, because the estimation error lives in the portfolio <em>mix</em>, not in the market&rsquo;s overall level. Drag the split year, or resample, to watch the gap persist.</p>
+        </div>
+
+        <script>
+        (function(){
+          var SBBI={y0:1926,
+           LC:[0.12509,0.32717,0.38774,-0.10030,-0.27021,-0.43331,-0.08786,0.49927,0.01431,0.44388,0.30772,-0.32594,0.26577,0.03212,-0.07469,-0.10747,0.15194,0.25044,0.18231,0.33021,-0.05352,0.04584,0.02821,0.19706,0.29385,0.21816,0.14096,0.01285,0.48594,0.26895,0.08639,-0.09141,0.42147,0.12004,0.01336,0.26461,-0.08926,0.22297,0.15703,0.10677,-0.09466,0.21748,0.09181,-0.07258,0.02229,0.14543,0.20379,-0.14456,-0.27471,0.33976,0.22058,-0.07959,0.05650,0.17812,0.32847,-0.06575,0.19261,0.20327,0.07794,0.33026,0.18067,0.03717,0.16146,0.32395,-0.02803,0.31232,0.06734,0.08062,0.01381,0.39110,0.23364,0.34520,0.33426,0.22900,-0.12687,-0.14732,-0.21597,0.27377,0.09697,0.04762,0.15739,0.06846,-0.35785,0.24476,0.14085,0.01722,0.15714,0.33181,0.13085,0.00930,0.12385,0.22902,-0.03622,0.31185,0.23992,0.26448,-0.19838,0.29043,0.27772,0.19072],
+           SC:[-0.00924,0.27801,0.33224,-0.38089,-0.39658,-0.50124,-0.02511,1.15748,0.19802,0.60941,0.53180,-0.49000,0.43179,0.04569,-0.05225,-0.10236,0.26444,0.58148,0.41660,0.64739,-0.11226,-0.02900,-0.04351,0.21228,0.36697,0.15305,0.09636,-0.02938,0.57477,0.20814,0.06506,-0.17773,0.61872,0.17397,-0.03296,0.29530,-0.16757,0.18555,0.16526,0.35155,-0.07149,0.63876,0.31816,-0.22162,-0.09868,0.20320,0.05582,-0.34348,-0.25866,0.60921,0.46839,0.17155,0.18214,0.40551,0.36813,0.03597,0.25175,0.30053,-0.03409,0.35092,0.06871,-0.06791,0.24883,0.18832,-0.18238,0.46393,0.17954,0.18237,-0.01726,0.28648,0.15365,0.24329,0.00443,0.35141,-0.12268,0.07734,-0.22363,0.51043,0.21033,0.06626,0.16923,-0.00720,-0.37430,0.43888,0.29272,-0.03599,0.17205,0.42392,0.03885,-0.06711,0.21511,0.16032,-0.11519,0.23636,0.22607,0.12783,-0.22073,0.19868,0.09863,0.09839],
+           LG:[0.06822,0.09055,-0.00630,0.03597,0.04848,-0.07316,0.14317,0.02103,0.10665,0.10488,0.04038,-0.01181,0.07022,0.02386,0.07067,0.00930,0.02927,0.02122,0.02802,0.10087,0.00472,-0.03154,0.03847,0.07064,-0.00979,-0.04777,0.00517,0.02596,0.07043,-0.02618,-0.06245,0.08875,-0.04489,-0.06352,0.14123,-0.00471,0.06709,-0.00076,0.05134,0.01641,0.02248,-0.08094,0.00365,-0.05799,0.12940,0.13122,0.06027,-0.04686,0.02058,0.07651,0.17301,-0.00276,-0.01249,-0.00933,-0.04304,0.00216,0.41849,0.01220,0.14100,0.32017,0.23639,-0.01484,0.08890,0.19137,0.05657,0.19219,0.08220,0.17949,-0.07692,0.32107,-0.01081,0.16009,0.12792,-0.09538,0.22121,0.03408,0.17610,0.02030,0.08713,0.08412,0.00960,0.10065,0.27959,-0.17147,0.10042,0.30284,0.03463,-0.12655,0.23991,-0.00804,0.01266,0.08377,-0.01162,0.13029,0.17502,-0.06168,-0.27224,0.03525,-0.04210,0.05875],
+           IG:[0.06041,0.04149,0.00655,0.05057,0.07215,-0.01711,0.08062,-0.00126,0.09421,0.05016,0.03263,0.01309,0.04841,0.03227,0.02020,0.00930,0.00341,0.02900,0.01855,0.03021,0.00731,-0.00443,0.02477,0.02990,0.00293,0.00166,0.02047,0.03470,0.03672,-0.00370,-0.00752,0.07559,-0.01125,-0.00648,0.10436,0.02133,0.05746,0.01557,0.04635,0.00431,0.04568,-0.00215,0.03187,-0.01161,0.17548,0.09611,0.02889,0.04401,0.05863,0.07705,0.13712,0.01756,0.01391,0.05258,0.02838,0.07996,0.29700,0.07009,0.14781,0.22681,0.16308,0.02402,0.05993,0.14258,0.09803,0.16216,0.07540,0.10582,-0.03877,0.17995,0.02984,0.08650,0.10315,-0.01764,0.12633,0.08479,0.13653,0.02772,0.02683,0.00948,0.03247,0.10625,0.14365,-0.02094,0.07090,0.09261,0.02423,-0.02395,0.03423,0.01871,0.01173,0.01380,0.01473,0.06115,0.07585,-0.02653,-0.09545,0.04695,0.01811,0.07311],
+           TB:[0.03517,0.03432,0.04179,0.04753,0.03242,0.02529,0.00871,0.00283,0.00236,0.00191,-0.00266,0.00369,-0.00567,-0.00358,-0.00079,-0.01665,0.00252,0.00326,0.00296,0.00261,0.00222,0.00421,0.00909,0.01083,0.01187,0.01454,0.01613,0.01767,0.00890,0.01554,0.02398,0.03024,0.01373,0.02827,0.02508,0.02043,0.02657,0.03084,0.03527,0.03922,0.04712,0.04119,0.05278,0.06587,0.06395,0.04280,0.03838,0.07067,0.08134,0.05716,0.05053,0.05146,0.07248,0.10484,0.11508,0.15137,0.10714,0.08842,0.09776,0.07571,0.05976,0.05173,0.06158,0.08206,0.07610,0.05422,0.03413,0.02875,0.03807,0.05458,0.05124,0.05070,0.04725,0.04571,0.05813,0.03745,0.01644,0.01013,0.01200,0.02936,0.04636,0.04625,0.01433,0.00096,0.00119,0.00047,0.00052,0.00027,0.00018,0.00013,0.00183,0.00767,0.01793,0.02121,0.00425,0.00035,0.01394,0.05077,0.05364,0.04032]
+          };
+          var A=[SBBI.LC,SBBI.SC,SBBI.LG,SBBI.IG,SBBI.TB], NA=5, NY=SBBI.LC.length;
+          var AL=['Large','Small','LT Gov','IT Gov','T-Bill'], AC=['#1a5276','#2e86c1','#b9770e','#d4ac0d','#7f8c8d'];
+          function meanCov(rows){
+            var mu=[0,0,0,0,0],a,b,k,n=rows.length;
+            for(k=0;k<n;k++)for(a=0;a<NA;a++)mu[a]+=A[a][rows[k]];
+            for(a=0;a<NA;a++)mu[a]/=n;
+            var cov=[];for(a=0;a<NA;a++){cov[a]=[0,0,0,0,0];}
+            for(k=0;k<n;k++)for(a=0;a<NA;a++){var da=A[a][rows[k]]-mu[a];for(b=0;b<NA;b++)cov[a][b]+=da*(A[b][rows[k]]-mu[b]);}
+            for(a=0;a<NA;a++)for(b=0;b<NA;b++)cov[a][b]/=(n-1);
+            return {mu:mu,cov:cov};
+          }
+          function pRet(w,mu){var s=0,a;for(a=0;a<NA;a++)s+=w[a]*mu[a];return s;}
+          function pVar(w,cov){var s=0,a,b;for(a=0;a<NA;a++){var wa=w[a];for(b=0;b<NA;b++)s+=wa*cov[a][b]*w[b];}return s;}
+          function simplex(){var w=[],s=0,a;for(a=0;a<NA;a++){w[a]=-Math.log(Math.random()||1e-9);s+=w[a];}for(a=0;a<NA;a++)w[a]/=s;return w;}
+          // fixed candidate set: 5 vertices + pairwise mixes + random simplex
+          var W=[],a2,b2,t;
+          for(a2=0;a2<NA;a2++){var v=[0,0,0,0,0];v[a2]=1;W.push(v);}
+          for(a2=0;a2<NA;a2++)for(b2=a2+1;b2<NA;b2++)for(t=1;t<=9;t++){var f=t/10,v2=[0,0,0,0,0];v2[a2]=f;v2[b2]=1-f;W.push(v2);}
+          for(var p=0;p<2600;p++)W.push(simplex());
+          var NW=W.length;
+          function tangency(mc){var rf=mc.mu[4],best=-1,bs=-1e9;for(var p=0;p<NW;p++){var v=pVar(W[p],mc.cov);if(v<=0)continue;var sh=(pRet(W[p],mc.mu)-rf)/Math.sqrt(v);if(sh>bs){bs=sh;best=p;}}return best;}
+          function cross(o,a,b){return (a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);}
+          function upperFrontier(pts){ // pts=[[std,ret]], return efficient (upper-left) envelope
+            pts=pts.slice().sort(function(p,q){return p[0]-q[0]||q[1]-p[1];});
+            // start at min-std, keep only points that raise the running max return, then upper-hull
+            var mv=0;for(var i=1;i<pts.length;i++)if(pts[i][0]<pts[mv][0])mv=i;
+            var up=[];for(i=0;i<pts.length;i++){if(pts[i][0]<pts[mv][0]-1e-9)continue;up.push(pts[i]);}
+            var h=[];for(i=0;i<up.length;i++){while(h.length>=2&&cross(h[h.length-2],h[h.length-1],up[i])>=0)h.pop();h.push(up[i]);}
+            return h;
+          }
+          var el=document.getElementById('oos-chart'),slider=document.getElementById('oos-split');
+          var W_=700,H_=430,mL=56,mR=18,mT=14,mB=44,pw=W_-mL-mR,ph=H_-mT-mB;
+          var SX=0.28,RY=0.14;
+          function px(s){return mL+Math.min(s,SX)/SX*pw;} function py(r){return mT+ph-Math.max(Math.min(r,RY),-0.02)/RY*ph;}
+          function render(){
+            var split=+slider.value;
+            document.getElementById('oos-splitv').textContent=split;
+            document.getElementById('oos-e2').textContent=split;
+            document.getElementById('oos-t1').textContent=split+1;
+            var estRows=[],testRows=[],k;
+            for(k=0;k<NY;k++){(SBBI.y0+k<=split?estRows:testRows).push(k);}
+            var est=meanCov(estRows),test=meanCov(testRows),rfT=test.mu[4],p;
+            // per-portfolio test coords
+            var tpts=[];for(p=0;p<NW;p++)tpts.push([Math.sqrt(pVar(W[p],test.cov)),pRet(W[p],test.mu)]);
+            var front=upperFrontier(tpts);
+            var itIdx=tangency(est), it=tpts[itIdx];
+            // ex-post tangency
+            var xp=-1,xs=-1e9;for(p=0;p<NW;p++){if(tpts[p][0]<=0)continue;var sh=(tpts[p][1]-rfT)/tpts[p][0];if(sh>xs){xs=sh;xp=p;}}
+            var xpt=tpts[xp];
+            // bootstrap cloud
+            var cloud=[],B=30,bi,i;
+            for(bi=0;bi<B;bi++){
+              var res=[];for(i=0;i<estRows.length;i++)res.push(estRows[Math.floor(Math.random()*estRows.length)]);
+              var idx=tangency(meanCov(res));cloud.push(tpts[idx]);
+            }
+            // ---- draw ----
+            var s='<svg viewBox="0 0 '+W_+' '+H_+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var r=0;r<=RY+1e-9;r+=0.02){var y=py(r);s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(mL+pw)+'" y2="'+y+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+Math.round(r*100)+'%</text>';}
+            for(var sd=0;sd<=SX+1e-9;sd+=0.04){var x=px(sd);s+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6" opacity="0.7"/><text x="'+x+'" y="'+(mT+ph+17)+'" text-anchor="middle" font-size="10.5" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';}
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H_-5)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Standard deviation (holdout period)</text>';
+            s+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Return (holdout period)</text>';
+            // feasible cloud (faint)
+            s+='<g fill="#c9bfa6" opacity="0.5">';for(p=NA+90;p<NW;p+=4)s+='<circle cx="'+px(tpts[p][0]).toFixed(1)+'" cy="'+py(tpts[p][1]).toFixed(1)+'" r="1.4"/>';s+='</g>';
+            // CML from rf through ex-post tangency, clipped to the plot box (exit at top edge or right edge)
+            var slope=(xpt[1]-rfT)/xpt[0];var xTop=(RY-rfT)/slope,xEnd=Math.min(SX,xTop),yEnd=rfT+slope*xEnd;
+            s+='<line x1="'+px(0)+'" y1="'+py(rfT)+'" x2="'+px(xEnd)+'" y2="'+py(yEnd)+'" stroke="#1e8b3a" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.85"/>';
+            // ex-post frontier
+            var d='';for(i=0;i<front.length;i++)d+=(i?'L':'M')+px(front[i][0]).toFixed(1)+' '+py(front[i][1]).toFixed(1)+' ';
+            s+='<path d="'+d+'" fill="none" stroke="#26221a" stroke-width="2.6"/>';
+            // asset dots (holdout)
+            for(a2=0;a2<NA;a2++){var av=Math.sqrt(test.cov[a2][a2]),ar=test.mu[a2];s+='<circle cx="'+px(av).toFixed(1)+'" cy="'+py(ar).toFixed(1)+'" r="4" fill="'+AC[a2]+'" stroke="#fff" stroke-width="1"/><text x="'+(px(av)+6).toFixed(1)+'" y="'+(py(ar)+3).toFixed(1)+'" font-size="9.5" fill="'+AC[a2]+'">'+AL[a2]+'</text>';}
+            // bootstrap cloud stars
+            s+='<g fill="#7a1414" opacity="0.32">';for(i=0;i<cloud.length;i++)s+='<path d="'+starPath(px(cloud[i][0]),py(cloud[i][1]),4.5)+'"/>';s+='</g>';
+            // rf marker
+            s+='<rect x="'+(px(0)-3.5)+'" y="'+(py(rfT)-3.5)+'" width="7" height="7" fill="#d4ac0d" stroke="#000" stroke-width="0.5"/><text x="'+(px(0)+7)+'" y="'+(py(rfT)+3)+'" font-size="9.5" fill="#7a6a1a">R_f</text>';
+            // ex-post tangency diamond
+            s+='<path d="'+diamond(px(xpt[0]),py(xpt[1]),6.5)+'" fill="#1e8b3a" stroke="#0d5a24" stroke-width="1"/>';
+            // shortfall drop line from in-sample tangency star up to frontier at its std
+            var fr=frontierAt(front,it[0]);
+            if(fr!==null&&fr>it[1]+0.002)s+='<line x1="'+px(it[0]).toFixed(1)+'" y1="'+py(it[1]).toFixed(1)+'" x2="'+px(it[0]).toFixed(1)+'" y2="'+py(fr).toFixed(1)+'" stroke="#7a1414" stroke-width="1" stroke-dasharray="3 2"/>';
+            // in-sample tangency star (bold)
+            s+='<path d="'+starPath(px(it[0]),py(it[1]),9)+'" fill="#7a1414" stroke="#4a0c0c" stroke-width="1"/>';
+            // legend
+            s+='<g font-size="10.5" fill="#5c5344"><rect x="'+(mL+8)+'" y="'+(mT+6)+'" width="200" height="74" fill="#fbf7ec" stroke="#e0d6bf" rx="4"/>';
+            s+='<path d="'+starPath(mL+20,mT+18,5.5)+'" fill="#7a1414"/><text x="'+(mL+30)+'" y="'+(mT+21)+'">in-sample tangency (realized)</text>';
+            s+='<path d="'+diamond(mL+20,mT+34,5)+'" fill="#1e8b3a"/><text x="'+(mL+30)+'" y="'+(mT+37)+'">ex-post tangency (hindsight)</text>';
+            s+='<line x1="'+(mL+14)+'" y1="'+(mT+50)+'" x2="'+(mL+26)+'" y2="'+(mT+50)+'" stroke="#26221a" stroke-width="2.6"/><text x="'+(mL+30)+'" y="'+(mT+53)+'">ex-post efficient frontier</text>';
+            s+='<line x1="'+(mL+14)+'" y1="'+(mT+66)+'" x2="'+(mL+26)+'" y2="'+(mT+66)+'" stroke="#1e8b3a" stroke-width="1.4" stroke-dasharray="4 3"/><text x="'+(mL+30)+'" y="'+(mT+69)+'">ex-post capital market line</text></g>';
+            s+='</svg>';
+            el.innerHTML=s;
+            // readout
+            var itSharpe=(it[1]-rfT)/it[0], xpSharpe=(xpt[1]-rfT)/xpt[0];
+            var expR=pRet(W[itIdx],est.mu);
+            var wt=W[itIdx].map(function(x,i){return x>0.005?AL[i]+' '+Math.round(x*100)+'%':null;}).filter(Boolean).join(', ');
+            document.getElementById('oos-read').innerHTML='In-sample tangency weights: <strong>'+wt+'</strong>. &nbsp;It expected <strong>'+(expR*100).toFixed(1)+'%</strong> in-sample; the holdout delivered <strong>'+(it[1]*100).toFixed(1)+'%</strong> ('+(it[1]>=expR?'the market did <em>better</em> out of sample':'the market did <em>worse</em> out of sample')+'). &nbsp;Realized holdout Sharpe <strong>'+itSharpe.toFixed(2)+'</strong> vs. ex-post best <strong>'+xpSharpe.toFixed(2)+'</strong>'+(fr!==null&&fr>it[1]?' &middot; Sharpe left on the table because the <em>mix</em> was off, shortfall at equal risk &asymp; <strong>'+((fr-it[1])*100).toFixed(1)+'%</strong>':'')+'.';
+          }
+          function starPath(cx,cy,rad){var s='',i;for(i=0;i<10;i++){var ang=Math.PI/5*i-Math.PI/2,rr=(i%2?rad*0.42:rad);s+=(i?'L':'M')+(cx+rr*Math.cos(ang)).toFixed(1)+' '+(cy+rr*Math.sin(ang)).toFixed(1);}return s+'Z';}
+          function diamond(cx,cy,r){return 'M'+cx+' '+(cy-r)+'L'+(cx+r)+' '+cy+'L'+cx+' '+(cy+r)+'L'+(cx-r)+' '+cy+'Z';}
+          function frontierAt(front,std){var i;for(i=0;i<front.length-1;i++){if(std>=front[i][0]&&std<=front[i+1][0]){var t=(std-front[i][0])/(front[i+1][0]-front[i][0]||1);return front[i][1]+t*(front[i+1][1]-front[i][1]);}}return null;}
+          slider.addEventListener('input',render);document.getElementById('oos-btn').addEventListener('click',render);render();
+        })();
+        </script>
         <h2>VII. Summary</h2>
 
         <blockquote>All the information needed to choose the best portfolio for any given level of risk is contained in three simple statistics: mean, standard deviation and correlation.</blockquote>

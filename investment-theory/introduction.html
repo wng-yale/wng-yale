@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Introduction to Investment Theory — Finance in Five Pictures — W. N. Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="textbook.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    <style>
+      .five-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin:30px 0;}
+      .fig-card{border:1px solid #d8ccb0;border-radius:10px;background:#fbf7ec;padding:14px 14px 16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .15s ease,box-shadow .15s ease;}
+      a.fig-card:hover{transform:translateY(-3px);box-shadow:0 6px 18px rgba(38,34,26,.12);}
+      .fig-card svg{width:100%;height:auto;display:block;}
+      .fig-num{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#b9770e;font-weight:600;}
+      .fig-name{font-family:'EB Garamond',serif;font-size:1.12rem;font-weight:600;color:#26221a;margin:2px 0 4px;}
+      .fig-desc{font-size:.84rem;color:#5c5344;line-height:1.45;flex:1;}
+      .fig-home{font-size:.76rem;color:#1a5276;margin-top:8px;font-weight:500;}
+      .fig-home.soon{color:#9a8d76;}
+      .lens-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:22px 0;}
+      .lens{border-left:3px solid #1a5276;background:#f6f2e7;border-radius:0 8px 8px 0;padding:12px 16px;}
+      .lens h4{margin:0 0 4px;color:#1a5276;font-size:1rem;}
+      .lens.optional{border-left-color:#b9770e;}
+      .lens.optional h4{color:#b9770e;}
+      .lens p{margin:0;font-size:.88rem;color:#4a4438;line-height:1.5;}
+      .start-cta{display:inline-block;margin:12px 0 4px;padding:11px 26px;background:#1a5276;color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-family:Inter,sans-serif;}
+      .start-cta:hover{background:#14405e;}
+    </style>
+</head>
+<body class="chapter-page">
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="../index.html#textbook" class="nav-name">&larr; W. N. Goetzmann</a>
+        <ul class="nav-links">
+            <li><a href="chapter-1.html">Begin: Ch. I &rarr;</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="chapter">
+    <header class="chapter-header">
+        <p class="chapter-label">Introduction</p>
+        <h1>An Introduction to Investment Theory</h1>
+        <p class="chapter-deck">Finance in five pictures &mdash; the figures that carry the logic of financial reasoning.</p>
+    </header>
+
+    <div class="chapter-content">
+
+        <p>This book is written for <strong>visual thinkers</strong>. Three decades of teaching finance have persuaded me that most of financial theory rests on intuitions a handful of simple pictures can carry. Learn to read five of them &mdash; <em>really</em> read them &mdash; and you will hold the working core of modern financial reasoning.</p>
+
+        <p>The claim of this book is deliberately strong: if you understand these five figures, together with the logic and the assumptions beneath them, you will have a working knowledge of investment theory. They are more than illustrations. They are <strong>models you can use yourself</strong> &mdash; to plan, to price, to hedge, to decide &mdash; and they are empowering even for the reader who never touches the mathematics.</p>
+
+        <h2>The Five Pictures</h2>
+
+        <div class="five-grid">
+            <a class="fig-card" href="chapter-1.html">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Compound growth curve">
+                    <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <path d="M28 123 C 90 120, 130 104, 158 72 S 194 30, 202 20" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+                </svg>
+                <span class="fig-num">Picture 1</span>
+                <span class="fig-name">Compound Growth</span>
+                <span class="fig-desc">The growth of a dollar over time &mdash; the engine of long-horizon investing, and an idea older than money itself.</span>
+                <span class="fig-home">Chapter I &rarr;</span>
+            </a>
+
+            <a class="fig-card" href="chapter-2.html">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Efficient frontier">
+                    <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <path d="M60 100 C 92 82, 150 46, 202 26" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+                    <path d="M60 100 C 84 112, 150 120, 202 124" fill="none" stroke="#1a5276" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.6"/>
+                    <circle cx="60" cy="100" r="3.5" fill="#7a1414"/>
+                </svg>
+                <span class="fig-num">Picture 2</span>
+                <span class="fig-name">Risk &amp; Return</span>
+                <span class="fig-desc">The efficient frontier &mdash; how combining risky assets creates possibilities no single asset offers. The only free lunch in finance.</span>
+                <span class="fig-home">Chapter II &rarr;</span>
+            </a>
+
+            <a class="fig-card" href="chapter-4.html">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Security market line">
+                    <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="30" y1="116" x2="200" y2="34" stroke="#1a5276" stroke-width="2.6"/>
+                    <circle cx="62" cy="101" r="3.2" fill="#7a1414"/><circle cx="104" cy="81" r="3.2" fill="#7a1414"/><circle cx="150" cy="59" r="3.2" fill="#7a1414"/>
+                </svg>
+                <span class="fig-num">Picture 3</span>
+                <span class="fig-name">The Price of Risk</span>
+                <span class="fig-desc">The Security Market Line &mdash; how the market rewards only the risk you cannot diversify away, setting the return every asset must earn.</span>
+                <span class="fig-home">Chapters IV&ndash;V &rarr;</span>
+            </a>
+
+            <div class="fig-card" aria-label="Call option payoff (forthcoming)">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Call option payoff">
+                    <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <path d="M30 104 L 112 104 L 196 30" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+                    <line x1="112" y1="104" x2="112" y2="126" stroke="#b9770e" stroke-width="1" stroke-dasharray="3 2"/>
+                </svg>
+                <span class="fig-num">Picture 4</span>
+                <span class="fig-name">The Payoff</span>
+                <span class="fig-desc">The option diagram &mdash; the hockey stick. How contingent claims reshape outcomes, and why optionality is everywhere once you see it.</span>
+                <span class="fig-home soon">Forthcoming</span>
+            </div>
+
+            <div class="fig-card" aria-label="Bond duration (forthcoming)">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Bond price versus interest rate">
+                    <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <path d="M30 28 C 74 40, 104 78, 132 100 C 158 118, 182 123, 202 124" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+                </svg>
+                <span class="fig-num">Picture 5</span>
+                <span class="fig-name">Bond Duration</span>
+                <span class="fig-desc">Price against the interest rate &mdash; how the value of a fixed promise moves when rates move, and how to measure and manage that sensitivity.</span>
+                <span class="fig-home soon">Forthcoming</span>
+            </div>
+        </div>
+
+        <h2>How to Read Each Picture</h2>
+
+        <p>Every figure in this book is examined through the same four lenses. The first three stand on their own; the fourth is there for those who want it.</p>
+
+        <div class="lens-grid">
+            <div class="lens">
+                <h4>1. The logic</h4>
+                <p>What the picture says, in plain terms, before any algebra &mdash; the idea it captures and why it matters.</p>
+            </div>
+            <div class="lens">
+                <h4>2. How it moves</h4>
+                <p>How its shape and key points shift as you change the assumptions and inputs. The interactive figures let you push on them yourself.</p>
+            </div>
+            <div class="lens">
+                <h4>3. How you use it</h4>
+                <p>The part too often skipped &mdash; how a practitioner actually deploys the figure to make a decision: to size a position, price a security, hedge an exposure, set a discount rate.</p>
+            </div>
+            <div class="lens optional">
+                <h4>4. The math <span style="font-weight:400;font-size:.82rem;">(optional)</span></h4>
+                <p>The theory and derivation underneath, boxed off for the mathematically inclined. Skip it freely; the picture still works without it.</p>
+            </div>
+        </div>
+
+        <div class="key-concept">
+            <h4>Key Idea</h4>
+            <p>These are not five isolated topics. They recur &mdash; as motifs, as tools, and as ways of seeing &mdash; throughout the chapters that follow. Master the five pictures and you will not have <em>memorized</em> finance; you will be able to <strong>reason</strong> with it.</p>
+        </div>
+
+        <p style="margin-top:6px;"><em>A closing invitation, carried through the whole book: play with each picture. The most useful insights come from posing your own questions &mdash; when, how, and why does this figure change?</em></p>
+
+        <p style="text-align:center;"><a class="start-cta" href="chapter-1.html">Begin with Picture 1: Compound Growth &rarr;</a></p>
+
+    </div>
+
+    <footer class="chapter-footer">
+        <a href="../index.html#textbook" class="chapter-nav-link">&larr; Home</a>
+        <a href="chapter-1.html" class="chapter-nav-link">Chapter I: Capital Markets &rarr;</a>
+    </footer>
+</article>
+
+<footer>
+    <div class="container">
+        <p>&copy; William N. Goetzmann, Yale School of Management</p>
+    </div>
+</footer>
+
+</body>
+</html>
