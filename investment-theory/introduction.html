@@ -61,9 +61,14 @@
         <div class="five-grid">
             <a class="fig-card" href="chapter-1.html">
                 <svg viewBox="0 0 220 150" role="img" aria-label="Compound growth curve">
+                    <line x1="26" y1="94" x2="205" y2="94" stroke="#ece3cf" stroke-width="1"/>
+                    <line x1="26" y1="58" x2="205" y2="58" stroke="#ece3cf" stroke-width="1"/>
                     <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <path d="M28 123 C 90 120, 130 104, 158 72 S 194 30, 202 20" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+                    <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <path d="M30 124 C 92 121, 128 108, 158 80 C 182 58 196 38 204 20 L 204 126 L 30 126 Z" fill="#b9770e" opacity="0.14"/>
+                    <path d="M30 124 C 92 121, 128 108, 158 80 C 182 58 196 38 204 20" fill="none" stroke="#1a5276" stroke-width="2.8"/>
+                    <circle cx="30" cy="124" r="3.4" fill="#b9770e"/>
+                    <circle cx="204" cy="20" r="4" fill="#1a5276"/>
                 </svg>
                 <span class="fig-num">Picture 1</span>
                 <span class="fig-name">Compound Growth</span>
@@ -72,12 +77,18 @@
             </a>
 
             <a class="fig-card" href="chapter-2.html">
-                <svg viewBox="0 0 220 150" role="img" aria-label="Efficient frontier">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Efficient frontier and asset cloud">
                     <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <path d="M60 100 C 92 82, 150 46, 202 26" fill="none" stroke="#1a5276" stroke-width="2.6"/>
-                    <path d="M60 100 C 84 112, 150 120, 202 124" fill="none" stroke="#1a5276" stroke-width="1.4" stroke-dasharray="4 3" opacity="0.6"/>
-                    <circle cx="60" cy="100" r="3.5" fill="#7a1414"/>
+                    <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <g fill="#b7a988">
+                        <circle cx="98" cy="96" r="2.4"/><circle cx="122" cy="70" r="2.4"/><circle cx="150" cy="86" r="2.4"/>
+                        <circle cx="132" cy="108" r="2.4"/><circle cx="172" cy="62" r="2.4"/><circle cx="110" cy="112" r="2.4"/>
+                        <circle cx="158" cy="104" r="2.4"/><circle cx="186" cy="80" r="2.4"/><circle cx="142" cy="54" r="2.4"/>
+                        <circle cx="118" cy="88" r="2.4"/><circle cx="168" cy="94" r="2.4"/>
+                    </g>
+                    <path d="M70 96 C 98 116, 150 122, 200 126" fill="none" stroke="#1a5276" stroke-width="1.6" stroke-dasharray="4 3" opacity="0.55"/>
+                    <path d="M70 96 C 100 74, 150 42, 200 24" fill="none" stroke="#1a5276" stroke-width="2.8"/>
+                    <circle cx="70" cy="96" r="3.6" fill="#7a1414"/>
                 </svg>
                 <span class="fig-num">Picture 2</span>
                 <span class="fig-name">Risk &amp; Return</span>
@@ -86,11 +97,14 @@
             </a>
 
             <a class="fig-card" href="chapter-4.html">
-                <svg viewBox="0 0 220 150" role="img" aria-label="Security market line">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Security market line with an asset above the line">
                     <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <line x1="30" y1="116" x2="200" y2="34" stroke="#1a5276" stroke-width="2.6"/>
-                    <circle cx="62" cy="101" r="3.2" fill="#7a1414"/><circle cx="104" cy="81" r="3.2" fill="#7a1414"/><circle cx="150" cy="59" r="3.2" fill="#7a1414"/>
+                    <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="104" x2="204" y2="34" stroke="#1a5276" stroke-width="2.8"/>
+                    <circle cx="26" cy="104" r="3.2" fill="#b9770e"/>
+                    <circle cx="70" cy="87" r="3.2" fill="#7a1414"/><circle cx="112" cy="70" r="3.2" fill="#7a1414"/><circle cx="176" cy="45" r="3.2" fill="#7a1414"/>
+                    <line x1="140" y1="60" x2="140" y2="42" stroke="#1e8b3a" stroke-width="1.5" stroke-dasharray="3 2"/>
+                    <circle cx="140" cy="42" r="3.4" fill="#1e8b3a"/>
                 </svg>
                 <span class="fig-num">Picture 3</span>
                 <span class="fig-name">The Price of Risk</span>
@@ -99,11 +113,12 @@
             </a>
 
             <a class="fig-card" href="chapter-9.html">
-                <svg viewBox="0 0 220 150" role="img" aria-label="Call option payoff">
-                    <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <path d="M30 104 L 112 104 L 196 30" fill="none" stroke="#1a5276" stroke-width="2.6"/>
-                    <line x1="112" y1="104" x2="112" y2="126" stroke="#b9770e" stroke-width="1" stroke-dasharray="3 2"/>
+                <svg viewBox="0 0 220 150" role="img" aria-label="Call option payoff and its value curve">
+                    <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="26" y1="110" x2="205" y2="110" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="118" y1="110" x2="118" y2="126" stroke="#b9770e" stroke-width="1.2" stroke-dasharray="3 2"/>
+                    <path d="M30 110 L 118 110 L 200 38" fill="none" stroke="#1a5276" stroke-width="2.8"/>
+                    <path d="M30 108 C 78 105, 106 99, 118 92 C 140 78, 178 50, 200 36" fill="none" stroke="#b9770e" stroke-width="2" opacity="0.92"/>
                 </svg>
                 <span class="fig-num">Picture 4</span>
                 <span class="fig-name">The Payoff</span>
@@ -112,10 +127,12 @@
             </a>
 
             <a class="fig-card" href="chapter-11.html">
-                <svg viewBox="0 0 220 150" role="img" aria-label="Bond price versus interest rate">
+                <svg viewBox="0 0 220 150" role="img" aria-label="Bond price versus yield with duration tangent">
                     <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <line x1="26" y1="20" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
-                    <path d="M30 28 C 74 40, 104 78, 132 100 C 158 118, 182 123, 202 124" fill="none" stroke="#1a5276" stroke-width="2.6"/>
+                    <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                    <line x1="86" y1="68" x2="156" y2="124" stroke="#b9770e" stroke-width="2"/>
+                    <path d="M30 34 C 78 54, 116 92, 146 108 C 172 120, 188 123, 202 124" fill="none" stroke="#1a5276" stroke-width="2.8"/>
+                    <circle cx="116" cy="92" r="3.6" fill="#7a1414"/>
                 </svg>
                 <span class="fig-num">Picture 5</span>
                 <span class="fig-name">Bond Duration</span>
