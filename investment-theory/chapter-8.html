@@ -344,6 +344,39 @@
 
         <p>Yet speculation persists: perhaps technological innovators will discover exploitable patterns through fractal geometry and artificial intelligence -- and keep quiet about profits.</p>
 
+                <h3>The Scorecard: Active versus Passive</h3>
+
+        <p>There is a blunter test of efficiency than any regression: the track record of the professionals paid to beat the market. If prices were riddled with exploitable patterns, skilled managers would harvest them, and active funds would routinely outrun a simple index. They do not. The standard scorecard &mdash; S&amp;P&rsquo;s SPIVA study, which measures active funds against their benchmarks &mdash; is stark and stubborn.</p>
+
+        <div class="figure">
+          <div id="spiva-chart"></div>
+          <p class="figure-caption"><strong>Figure 8.5.</strong> The active-versus-passive scorecard. The share of actively managed U.S. large-cap funds that <em>failed</em> to beat the S&amp;P 500, by horizon. Over a single year most already trail the index; over twenty years more than nine in ten do. The longer the horizon, the more decisively simple indexing wins &mdash; the practical face of market efficiency. Figures approximate, from S&amp;P&rsquo;s SPIVA U.S. scorecard (year-end); the study is refreshed twice a year.</p>
+        </div>
+        <script>
+        (function(){
+          var data=[['1 yr',60],['3 yr',79],['5 yr',78],['10 yr',85],['15 yr',89],['20 yr',93]];
+          var W=700,H=360,mL=48,mR=16,mT=24,mB=50,pw=W-mL-mR,ph=H-mT-mB,n=data.length;
+          function Y(v){return mT+ph-v/100*ph;}
+          var bw=pw/n*0.56;
+          var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+          for(var v=0;v<=100;v+=20){var yy=Y(v);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-7)+'" y="'+(yy+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+v+'%</text>';}
+          s+='<line x1="'+mL+'" y1="'+Y(50).toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+Y(50).toFixed(1)+'" stroke="#b7a988" stroke-dasharray="4 3"/><text x="'+(mL+pw-2)+'" y="'+(Y(50)-4).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c" font-style="italic">half</text>';
+          data.forEach(function(d,i){
+            var cx=mL+(i+0.5)/n*pw, top=Y(d[1]);
+            s+='<rect x="'+(cx-bw/2).toFixed(1)+'" y="'+top.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(Y(0)-top).toFixed(1)+'" rx="3" fill="#1a5276"/>';
+            s+='<text x="'+cx.toFixed(1)+'" y="'+(top-6).toFixed(1)+'" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1a5276">'+d[1]+'%</text>';
+            s+='<text x="'+cx.toFixed(1)+'" y="'+(mT+ph+17)+'" text-anchor="middle" font-size="11.5" fill="#5c5344">'+d[0]+'</text>';
+          });
+          s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/>';
+          s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Horizon &mdash; % of active large-cap funds the S&amp;P 500 beat</text>';
+          s+='</svg>';document.getElementById('spiva-chart').innerHTML=s;
+        })();
+        </script>
+
+        <p>Over a single year, roughly six in ten active large-cap funds trail the S&amp;P 500; stretch the horizon to twenty years and the figure climbs above <strong>ninety percent</strong>. The longer you look, the harder it is to beat the market &mdash; because genuine skill is rare, luck washes out, and fees compound against you. This is efficiency made practical: not that no one <em>ever</em> wins, but that winning <em>consistently</em> is so hard that, for most investors, the rational move is to stop trying and simply buy the market.</p>
+
+        <p>And the competition is only intensifying. The collective wisdom a price aggregates once came from human analysts alone; today it includes algorithms and machine-learning models trading in microseconds &mdash; artificial intelligence as well as human. To beat the market now is to out-think not just the crowd on the steps of the Bourse but the machines behind them. The efficient-market hypothesis is, in the end, a statement of humility: the price already knows more than you do.</p>
+
         <h2>VIII. Conclusion</h2>
 
         <p>Efficient market theory provides a strong approximation for liquid, free markets. How quickly does information get incorporated into prices? In a word, "Quickly!" Information impounds rapidly because arbitrageurs continuously collect, process, and trade on firm-specific information.</p>
