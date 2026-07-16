@@ -47,21 +47,31 @@
 
     <div class="chapter-content">
 
-        <h2>I. A World of Arbitrageurs</h2>
+        <h2>I. Arbitrage and the Price of Risk</h2>
 
-        <p>The foundation rests on arbitrage principles: when opportunities to exploit differing expectations emerge, active investors will pursue them. This prevents securities from deviating substantially from the security market line. Opportunities for exploiting this "Arbitrage in Expectations" are likely to be fairly rare. However, when they arise, or are discovered through research, investors will seek to exploit them.</p>
+        <p>Chapters IV and V drew the <strong>Security Market Line</strong>: in a market at rest, every security sits on that line, its expected return fixed by its beta &mdash; the price of risk. But markets are never quite at rest. News arrives, expectations diverge, and a price is knocked off the line: for a moment the security is <em>mispriced</em>. What pulls it back is <strong>arbitrage</strong>. Let a stock drift below the line (too dear for its risk) or above it (too cheap), and investors who notice will sell the overpriced and buy the bargain, and their trading nudges the price back. This chapter takes a deeper dive into that machinery &mdash; how mispricings arise as information arrives, and how fast, and how completely, arbitrage makes them disappear.</p>
 
-        <p>Research into expected returns and betas drives the market's information-gathering machinery. Arbitrageurs investigate cash flows, discount rates, and idiosyncratic factors -- CEO health, product quality, and similar signals. Speed matters crucially: once buying begins, prices adjust and opportunities vanish.</p>
+        <p>The hunt is what does the work. Arbitrageurs dig into cash flows, discount rates, and the idiosyncratic signals that move a single firm &mdash; a CEO&rsquo;s health, a product&rsquo;s reception, a looming lawsuit. Opportunities for this &ldquo;arbitrage in expectations&rdquo; are rare, and rarer still once discovered, because <strong>speed</strong> is everything: the moment the buying starts, the price adjusts and the edge is gone. The chapter&rsquo;s central question is simply how good this mechanism is &mdash; <strong>how rapidly, and how thoroughly, do mispricings vanish?</strong></p>
 
-        <p>The central question: <strong>How effective is this arbitrage mechanism, and how rapidly do mispricings disappear?</strong></p>
+        <h3>The Invisible Hand of the Arbitrageur</h3>
 
-        <h2>II. Mispricings Created by the Arrival of Information</h2>
+        <p>Market efficiency is a statement about <em>speed</em>: how quickly relevant information becomes embedded in prices. The mechanism is a kind of invisible hand &mdash; an overpriced asset attracts short-sellers who push it down, an underpriced one attracts buyers who push it up. This is <em>informational</em> efficiency, about how fast news enters prices, not the Pareto efficiency of how resources are allocated. Two forces govern it: <strong>liquidity</strong>, since an illiquid market cannot react quickly, and <strong>psychology</strong>, since a crowd can over- or under-react when the meaning of the news is hard to judge.</p>
 
-        <p>Major corporate events immediately alter expected cash flows. The Bhopal chemical disaster exemplified this -- Union Carbide's stock price collapsed within minutes. The evidence shows that there is little evidence that you can make money by investing on yesterday's news.</p>
+        <p>Information once travelled only as fast as people did. In the eighteenth century a price change in Amsterdam reached London on the Thursday after the Monday it occurred &mdash; the time a fast messenger needed to cross the Channel. Today the same news circles the globe in milliseconds, and the invisible hand moves at the speed of light.</p>
 
-        <p>Federal Reserve discount rate announcements trigger same-day stock responses, not delayed reactions. This empirical evidence strongly indicates that, at least in the highly liquid, open-information economy of the U.S. capital markets, stock prices are <strong>efficient</strong>.</p>
+        <h2>II. Regnault and the Value of a Secret</h2>
 
-        <div class="figure">
+        <p>The idea that prices already reflect what is knowable is usually dated to the 1950s and 1960s. In fact it was <em>stated and tested</em> nearly a century earlier &mdash; and by someone who actually worked the market. <strong>Jules Regnault</strong> (1834&ndash;1894), a broker&rsquo;s assistant in Second-Empire Paris, taught himself mathematics in a garret near the Bourse and in 1863 published <em>Calcul des chances et philosophie de la bourse</em>, arguably the first statistical theory of the stock market. He built the theory, tested it against data, and then used it to grow rich, retiring as a <em>rentier</em> with a fortune held, tellingly, mostly in bonds.</p>
+
+        <p>Regnault began with a hard question: who actually makes money in the market? His answer was bracing. For the ordinary investor, trading is a fair game at best; the only <em>reliable</em> profit belongs to those who know something the public does not.</p>
+
+        <blockquote>&ldquo;There is only one certain way of making a sure profit at the Stock Market, which is to only trade in guaranteed information unknown to the public &hellip; accessible only to a happy few, who is admitted to &hellip; those private meetings where the great political and financial decisions are plotted. This is the primary cause of the detrimental inequality which it is impossible to escape.&rdquo;<br><span style="font-size:.9rem;color:#6b6252;">&mdash; Jules Regnault, <em>Calcul des chances</em> (1863), &sect;15</span></blockquote>
+
+        <p>His example was close at hand: the French <em>rente</em>, the government bond whose price swung on decisions taken in ministries, where a civil servant &ldquo;who takes advantage of his position and State secrets&rdquo; held every advantage. Nathan Rothschild is the legend of the type &mdash; his courier network is said to have brought him word of Waterloo before London had it, letting him trade ahead of the news. Regnault&rsquo;s insight, in modern terms, is that markets are efficient with respect to <em>public</em> information but not necessarily <em>private</em>: the edge lives in the secret. And that reframes the whole subject &mdash; for if only private information pays, the interesting question becomes exactly how quickly private information stops being private and turns into price.</p>
+
+        <p>Watch what happens when a secret goes public. A major corporate event &mdash; a merger, a disaster, a rate decision &mdash; instantly rewrites expected cash flows, and the price moves. The Bhopal chemical disaster collapsed Union Carbide&rsquo;s stock within minutes; a Federal Reserve rate decision moves stocks the same day, not the day after. The tool for seeing this is the <strong>event study</strong>, which lines up many such events at day zero and averages the cumulative abnormal return around them.</p>
+
+<div class="figure">
             <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <marker id="arrowEV" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
@@ -101,46 +111,13 @@
             <p class="figure-caption"><strong>Figure 8.1.</strong> Event study: Cumulative Abnormal Returns (CAR) around a corporate event. In efficient markets, prices adjust immediately on the event day with no post-announcement drift. Slight pre-event drift may indicate information leakage.</p>
         </div>
 
-        <h2>III. Watch My (Invisible) Hand</h2>
+        <p>The picture is the signature of an efficient market. The price jumps almost entirely <em>on</em> the event day and then goes flat &mdash; no drift afterward, because no stale news is left to trade on. Any small run-up <em>before</em> the day is the fingerprint of leakage: private information seeping into the price, exactly as Regnault said it would, until the announcement makes it public and the advantage evaporates. It also disciplines corporate managers: in an efficient market, genuine news moves prices but accounting cosmetics do not &mdash; you cannot fool the crowd by burying a number in a footnote.</p>
 
-        <p>Market efficiency describes how rapidly relevant information becomes embedded in asset prices. The mechanism: overpriced assets attract short-sellers, driving prices down; underpriced securities attract buyers, driving them up.</p>
+        <h3>Three Degrees of Efficiency</h3>
 
-        <p>Informational efficiency differs from Pareto efficiency. It concerns information transmission speed, not allocation optimality. Two factors determine efficiency levels:</p>
+        <p>How much information is already in the price? The answer is not all-or-nothing, and the standard taxonomy names three nested degrees.</p>
 
-        <ol>
-            <li><strong>Liquidity:</strong> Illiquid markets cannot react quickly to information</li>
-            <li><strong>Psychological factors:</strong> Markets may overreact if participants cannot rationally evaluate information's impact</li>
-        </ol>
-
-        <p>Nathan Rothschild exemplified sophisticated information exploitation. His European network provided early Waterloo battle intelligence. He sold Bank of England securities quietly, sparking panic selling, then purchased during the frenzy -- a profitable contrarian play.</p>
-
-        <p>Historical price transmission studies reveal information lag: Amsterdam to London equity price movements took approximately Thursday following Monday changes -- the travel time for fast messengers crossing the English Channel.</p>
-
-        <div class="note">
-            <strong>Note:</strong> Information speed determines market efficiency. In the 18th century, cross-channel messenger travel time created multi-day lags. Today, electronic markets transmit information in milliseconds.
-        </div>
-
-        <h2>IV. Benefits of an Efficient Market</h2>
-
-        <p>Three primary advantages emerge:</p>
-
-        <ol>
-            <li><strong>Price stability:</strong> Arbitrage prevents massive deviations from true economic value, avoiding future crashes</li>
-            <li><strong>Reduced comparison costs:</strong> Confidence that prices reflect public information reduces shopping burdens</li>
-            <li><strong>Liquidity provision:</strong> Arbitrageurs enable securities trading for non-speculative purposes</li>
-        </ol>
-
-        <p>China's information restrictions at Shanghai's exchange raise questions about desirability and feasibility of limiting financial data access.</p>
-
-        <h2>V. Market Efficiency and Corporate Managers</h2>
-
-        <p>Efficient markets eliminate managerial gamesmanship potential. Genuine news moves prices; fabricated claims produce temporary reactions followed by reversions. Accounting tricks don't fool anybody. Don't worry about timing accounting charges and don't worry about whether information is revealed in the footnotes or in the statements.</p>
-
-        <p>The Sears Tower case illustrates efficiency: Management believed undervalued balance sheet assets meant underpriced stock. Actually, the market efficiently assessed the property's worth -- Sears overestimated its value, and stock pricing reflected this reality.</p>
-
-        <h2>VI. Three Degrees of Efficiency</h2>
-
-        <div class="figure">
+<div class="figure">
             <svg viewBox="0 0 520 340" xmlns="http://www.w3.org/2000/svg">
                 <!-- Nested circles (Venn-like) -->
                 <!-- Strong form (outermost) -->
@@ -166,42 +143,18 @@
             <p class="figure-caption"><strong>Figure 8.2.</strong> The three forms of market efficiency. Each form subsumes the one inside it: strong-form implies semi-strong, which implies weak-form efficiency.</p>
         </div>
 
-        <h3>Strong-Form Efficiency</h3>
-
-        <p>All private information, including CEO-CFO communications, immediately impacts prices. Few accept this benchmark.</p>
-
-        <h3>Semi-Strong Form Efficiency</h3>
-
-        <p>All publicly available information -- annual reports, news, gossip columns -- becomes embedded in prices. Most believe U.S. equity markets exhibit this characteristic. However, definitional ambiguity exists: Is internet-published information "public"? Are Freedom of Information Act documents public?</p>
-
-        <h3>Weak-Form Efficiency</h3>
-
-        <p>Past security prices cannot generate excess profits. Past prices constitute public information, making weak-form efficiency a subset of semi-strong form, which is a subset of strong-form.</p>
+        <p><strong>Strong-form</strong> efficiency holds that <em>all</em> information, even private, is already in the price &mdash; a demanding benchmark few accept. <strong>Semi-strong-form</strong> holds that all <em>public</em> information is reflected: annual reports, news, analyst opinion. Most believe the U.S. equity market is close to this, though the definition frays at the edges &mdash; is a document public the instant it is posted online? <strong>Weak-form</strong> efficiency, the mildest claim, holds only that <em>past prices</em> cannot be used to earn excess profits. Each form contains the ones below it: past prices are themselves public, so strong implies semi-strong implies weak.</p>
 
         <div class="key-concept">
-            <h4>Key Concept: Three Forms of EMH</h4>
-            <p><strong>Weak form:</strong> past prices cannot predict future returns. <strong>Semi-strong form:</strong> all public information is reflected in prices. <strong>Strong form:</strong> even private/insider information is reflected. Each form implies all weaker forms below it.</p>
+            <h4>Key Concept: Three Forms of the EMH</h4>
+            <p><strong>Weak form:</strong> past prices cannot predict future returns. <strong>Semi-strong form:</strong> all public information is reflected in prices. <strong>Strong form:</strong> even private information is reflected. Each form implies all the weaker forms below it. Regnault&rsquo;s &ldquo;value is determined by the price itself&rdquo; is weak-form efficiency; his &ldquo;only a secret pays&rdquo; is the claim that the market is <em>not</em> strong-form efficient.</p>
         </div>
 
-        <h3>Weak Form Testing and Technical Analysis</h3>
+        <h2>III. The Random Walk</h2>
 
-        <p>Technical analysts (chartists) exploit historical price patterns. A hypothetical rule: If markets rise 1%, they subsequently rise 0.5%; if they fall 1%, they subsequently fall 0.5%. Trading on such patterns could theoretically profit.</p>
+        <p>Regnault&rsquo;s second great idea followed from his first. If the crowd&rsquo;s trading has already squeezed all public information into the price, then only <em>new</em> information can move it &mdash; and new information, by definition, is unpredictable. At any instant, he reasoned, a price is as likely to rise as to fall, a coin toss, because if the odds tilted, <em>arbitrage</em> (his word) would level them. Successive changes are therefore <em>independent</em>: the past holds no usable signal about the future. The shape this implies for prices over time is a <strong>random walk</strong>. He grounded it in a homely picture of the wisdom of the crowd.</p>
 
-        <p>The fundamental problem: What if everyone followed the same strategy? Wouldn't the opportunity go away? Daily returns show weak autocorrelation (momentum), but exploitation costs -- brokerage fees, daily trading -- prevent profitable arbitrage. Prices approximate random walks.</p>
-
-        <p>Charles Henry Dow founded the Dow index in 1896 and identified alternating bull-bear markets, attempting to time these cycles. The financial press (and web) are rife with market timing newsletters, purporting to find long-term patterns in the stock market.</p>
-
-        <p>Modern hedge funds employ artificial intelligence and neural networks seeking patterns. Success remains ambiguous -- is it statistical skill or luck? If it works, why do they offer you the opportunity to buy their software?</p>
-
-        <h2>VII. Evidence For Market Efficiency</h2>
-
-        <h3>The First Test: Jules Regnault (1863)</h3>
-
-        <p>The idea that prices already reflect what is knowable &mdash; and that yesterday&rsquo;s chart cannot forecast tomorrow&rsquo;s &mdash; is usually dated to the 1950s and 1960s. In fact it was <em>stated and tested</em> nearly a century earlier, by an obscure broker&rsquo;s assistant in Second-Empire Paris. <strong>Jules Regnault</strong> (1834&ndash;1894) taught himself mathematics in a garret near the Bourse and, in 1863, published <em>Calcul des chances et philosophie de la bourse</em> &mdash; arguably the first statistical theory of the stock market. He would later use that theory to grow rich, retiring as a <em>rentier</em> with a fortune held, tellingly, mostly in bonds.</p>
-
-        <p>Regnault&rsquo;s core argument is the one this chapter has been making. At any instant, he reasoned, a price is as likely to rise as to fall &mdash; a coin toss &mdash; because if the odds were tilted, traders would <em>arbitrage</em> (his word) until they were level again. So successive price changes are <em>independent</em>: the past carries no usable signal about the future. &ldquo;Value,&rdquo; he wrote, &ldquo;is and can only be determined by the price itself.&rdquo; That is weak-form efficiency, stated in 1863 &mdash; and his famous opening line reads it as something grander: &ldquo;<em>The Stock Exchange is the temple of modern society.</em>&rdquo;</p>
-
-        <aside class="sidebar" style="border:1px solid #d8ccb0; border-left:4px solid #7a1414; background:#fbf7ec; border-radius:8px; padding:18px 22px; margin:26px 0;">
+<aside class="sidebar" style="border:1px solid #d8ccb0; border-left:4px solid #7a1414; background:#fbf7ec; border-radius:8px; padding:18px 22px; margin:26px 0;">
           <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
             <figure style="flex:0 0 330px; margin:0">
               <img src="figures/hist-palais-brongniart.jpg" alt="The Palais Brongniart, the Paris stock exchange, with a crowd on the steps and omnibuses on the square, c. 1890" style="width:100%; border:1px solid #d8ccb0; border-radius:4px">
@@ -216,11 +169,11 @@
           </div>
         </aside>
 
-        <p>From independence he drew a sharp, testable prediction. If each interval adds its own independent jostle to the price, the <em>spread</em> of prices around their starting point must widen &mdash; not in proportion to time, but to its <em>square root</em>, because it is variances, not deviations, that add up. In his own capitals: <strong>the deviation of prices is in direct relation to the square root of time.</strong> It is the signature of what we now call a random walk &mdash; the same &radic;time law Louis Bachelier would rediscover in 1900 and physicists would attach to Brownian motion.</p>
+        <p>From independence Regnault drew a sharp, testable prediction. If each interval adds its own independent jostle to the price, the <em>spread</em> of prices around their starting point must widen &mdash; not in proportion to time, but to its <em>square root</em>, because it is variances, not deviations, that add up. In his own capitals: <strong>the deviation of prices is in direct relation to the square root of time.</strong> It is the signature of the random walk &mdash; the same &radic;time law Louis Bachelier would rediscover in 1900 and physicists would attach to Brownian motion.</p>
 
         <p>Then Regnault did what almost no one in his century thought to do with a market: he checked the prediction against data. Using monthly prices of the French 3% <em>rente</em> from 1825 to 1862, he measured the typical price deviation over a month and over a year &mdash; and found them in almost exactly the &radic;time ratio the theory demanded.</p>
 
-        <div class="figure">
+<div class="figure">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
             <div style="margin-bottom:8px;font-size:.94rem;color:#26221a">Horizon: <input id="reg-h" type="range" min="1" max="24" step="1" value="12" style="vertical-align:middle;width:180px"> <strong id="reg-hv" style="color:#7a1414">12 months</strong></div>
             <div id="reg-chart"></div>
@@ -261,13 +214,17 @@
 
         <p>&ldquo;Is there,&rdquo; Regnault asked, &ldquo;a better example of the harmony of theory and experience?&rdquo; The fit is the first empirical confirmation of the random walk &mdash; the founding test of the efficient-market hypothesis, run ninety years before the phrase existed.</p>
 
-        <h3>Booms, Crashes, and the Limits of Prediction</h3>
+        <p>He also saw the model&rsquo;s dark corollary, and it is one every day-trader relearns. The fair game is fair only <em>before costs</em>. Each trade pays a small brokerage fee, so the expected profit of a round trip, zero before costs, becomes <em>negative</em> after them. Because the speculator&rsquo;s edge grows only as &radic;time while the fees pile up trade by trade, frequent short-term trading is a slow, near-certain ruin &mdash; Regnault reckoned a heavy speculator would be wiped out, on average, within about <strong>forty trades</strong>. Patient long-term <em>investment</em>, he concluded, is a fundamentally different activity from restless short-term <em>speculation</em>. Hold that thought: it is exactly what the fund scorecard at the end of this chapter will confirm.</p>
+
+        <p>Like Bachelier after him, Regnault was forgotten for the better part of a century. He deserves to be remembered as the first to state the efficient-market idea clearly, test it against data, and follow it to its unsettling conclusions.</p>
+
+        <h3>Fama&rsquo;s Regressions and the Modern Case</h3>
 
         <p>Regnault&rsquo;s &radic;time law was the first confirmation; the modern case for efficiency was built on regressions. In the 1960s <strong>Eugene Fama</strong> and others ran the test Regnault could not, correlating each day&rsquo;s return with the returns before it across thousands of stocks. The serial correlation came back indistinguishable from zero: the past, statistically, said nothing about the future. It was weak-form efficiency again &mdash; now with a mountain of data behind it.</p>
 
         <p>The most vivid evidence, though, comes from the events that seem to <em>refute</em> efficiency: bubbles. If any pattern should be exploitable, surely it is the industry that has just doubled, or just halved. Robin Greenwood, Andrei Shleifer, and Yang You asked whether a sharp run-up reliably foretells a crash; in related work, using a database of industry returns reaching back to the eighteenth century, we asked a simpler question still &mdash; after an industry has soared, or collapsed, what happens <em>next</em>?</p>
 
-                <div class="figure">
+<div class="figure">
           <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; align-items:flex-start">
             <figure style="flex:1 1 320px; min-width:270px; margin:0">
               <img src="figures/bubbles-cowles-excess.jpg" alt="Cowles industries: excess-of-market paths after 12-month run-ups and run-downs, earlier era" style="width:100%; border:1px solid #d8ccb0; border-radius:4px">
@@ -283,53 +240,21 @@
 
         <p>The answer, drawn in the figure, is humbling. Measured against the market, industries that had just soared and industries that had just crashed &mdash; as opposite as two recent histories can be &mdash; went on to earn almost exactly the market&rsquo;s return, the same flat path whichever they had been. All the drama is in the past; the future holds no excess return either way. This is the sixth of our master pictures: two lines that could not look more different before the event fold into one after it. The market had already priced whatever the boom or the crash was going to mean, and left no free lunch for the investor who arrived late.</p>
 
-        <p>He also saw the model&rsquo;s dark corollary, and it is one every day-trader relearns. The fair game is fair only <em>before costs</em>. Each trade pays a small brokerage fee, so the expected profit of a round trip, zero before costs, becomes <em>negative</em> after them. Because the speculator&rsquo;s edge grows only as &radic;time while the fees pile up trade by trade, frequent short-term trading is a slow, near-certain ruin &mdash; Regnault reckoned a heavy speculator would be wiped out, on average, within about <strong>forty trades</strong>. Patient long-term <em>investment</em>, he concluded, is a fundamentally different activity from restless short-term <em>speculation</em> &mdash; a distinction the mathematics still supports.</p>
+        <h3>Testing the Three Forms</h3>
 
-        <p>Like Bachelier after him, Regnault was forgotten for the better part of a century. He deserves to be remembered as the first to state the efficient-market idea clearly, test it against data, and follow it to its unsettling conclusions.</p>
-        <h3>Testing Strong-Form Efficiency</h3>
+        <p>Merger announcements are a natural experiment on <em>strong</em>-form efficiency. Insiders &mdash; lawyers, bankers, managers &mdash; often know before the public, and prices frequently drift up before an official announcement, a sign that private information does leak into the price (and that some of the trading behind it is illegal). But the large jump <em>on</em> the announcement day shows the leakage is incomplete: the market is not fully strong-form efficient, exactly Regnault&rsquo;s point about the value of a secret.</p>
 
-        <p>Merger announcements provide natural experiments. Corporate insiders (lawyers, investment bankers, managers) typically know before public disclosure. Their illegal insider trading can generate profits, earning SEC violations. Stock prices often rise before official announcements, indicating that the market has a tendency towards strong-form efficiency, i.e. even private information is incorporated into prices.</p>
+        <p>For <em>semi</em>-strong efficiency, the record is a good first approximation with nagging exceptions. Money managers pore over public information yet, as a group, show no consistent risk-adjusted edge. Backtests do turn up apparent anomalies &mdash; the &ldquo;Dogs of the Dow,&rdquo; post-earnings-announcement drift &mdash; but trading costs and thin liquidity tend to eat the paper profits, and few investors sustain them.</p>
 
-        <p>However, public announcements typically produce large price responses, suggesting incomplete strong-form efficiency. Information leakage occurs illegally but incompletely.</p>
+        <p>For <em>weak</em>-form efficiency, the news is subtler than the early researchers hoped. There is faint short-run momentum (days), reversals at a few weeks, and slow mean-reversion over years &mdash; Fama and French found four-year returns drifting back toward their long-run means. But the cycles are so long, and the statistics so noisy, that trading them profitably is another matter. Charles Henry Dow was chasing the same long swings a century ago; today&rsquo;s hedge funds chase them with neural networks. If it truly worked, one wonders, why would they sell you the software?</p>
 
-        <div class="note">
-            <strong>Note:</strong> By the way, until recently, insider trading was legal in Switzerland. The legality and enforcement of insider trading rules varies across markets and time periods.
-        </div>
+        <p>The verdict on patterns is the one Regnault would have predicted: for widely traded securities, prices are close to a random walk, and if they were not, arbitrageurs would quickly make them so &mdash; buying the underpriced, shorting the overpriced, until the pattern is gone.</p>
 
-        <h3>Testing Semi-Strong Form Efficiency</h3>
-
-        <p>Money managers consistently employ publicly available information for positioning, yet demonstrate no consistent risk-adjusted outperformance. The paradox: Why maintain entire analytical industries if information provides no value?</p>
-
-        <p>Recent backtesting studies reveal surprising results. The "Dogs of the Dow" strategy -- buying high-dividend-yield stocks -- appears historically profitable using publicly available information. Similarly, buying stocks after positive earnings surprises (versus expectations) generated excess returns despite information availability.</p>
-
-        <p>Does this mean that it is easy to become rich on Wall Street? Hardly! Trading costs and liquidity constraints often eliminate apparent profits. While value investors discuss low price-to-earnings strategies, few demonstrate consistent superior track records.</p>
-
-        <p>The conclusion: The assumption of semi-strong form efficiency is a good first approximation for a market with as many sharp traders and with as much publicly available information as the U.S. equity market.</p>
-
-        <h3>Testing Weak-Form Efficiency</h3>
-
-        <p>Weak-form efficiency seemed simplest to establish, gaining widespread acceptance through the 1950s. Researchers discovered daily price patterns (momentum) since then, yet exploitation remains difficult.</p>
-
-        <p>Extending analysis horizons reveals different patterns. Two-week return reversals -- shorting recent winners, buying recent losers -- appeared profitable. At longer horizons, mean reversion becomes evident. Eugene Fama and Ken French found some evidence that four-year returns revert toward long-term means.</p>
-
-        <p>Unfortunately, this is a difficult rule to trade on with any confidence, since the cycles are so long -- in fact, they are as long as the patterns conjectured by Charles Henry Dow some 100 years ago!</p>
-
-        <div class="key-concept">
-            <h4>Key Concept: Patterns at Different Horizons</h4>
-            <p>Short-run: weak momentum (days). Medium-run: reversals (weeks). Long-run: mean reversion (years). All are difficult to exploit profitably due to trading costs, statistical uncertainty, and the long horizons required.</p>
-        </div>
-
-        <h3>Conclusion on Patterns</h3>
-
-        <p>Whether chartism offers opportunities remains uncertain. But in all likelihood there is no easy money in charting, either. Prices for widely traded securities are pretty close to a random walk, and if they were not, then they would quickly become so, as arbitrageurs moved in to buy the stock when it is underpriced and short it when it is overpriced.</p>
-
-        <p>Yet speculation persists: perhaps technological innovators will discover exploitable patterns through fractal geometry and artificial intelligence -- and keep quiet about profits.</p>
-
-                <h3>The Scorecard: Active versus Passive</h3>
+        <h3>The Scorecard: Active versus Passive</h3>
 
         <p>There is a blunter test of efficiency than any regression: the track record of the professionals paid to beat the market. If prices were riddled with exploitable patterns, skilled managers would harvest them, and active funds would routinely outrun a simple index. They do not. The standard scorecard &mdash; S&amp;P&rsquo;s SPIVA study, which measures active funds against their benchmarks &mdash; is stark and stubborn.</p>
 
-        <div class="figure">
+<div class="figure">
           <div id="spiva-chart"></div>
           <p class="figure-caption"><strong>Figure 8.5.</strong> The active-versus-passive scorecard. The share of actively managed U.S. large-cap funds that <em>failed</em> to beat the S&amp;P 500, by horizon. Over a single year most already trail the index; over twenty years more than nine in ten do. The longer the horizon, the more decisively simple indexing wins &mdash; the practical face of market efficiency. Figures approximate, from S&amp;P&rsquo;s SPIVA U.S. scorecard (year-end); the study is refreshed twice a year.</p>
         </div>
@@ -354,19 +279,23 @@
         })();
         </script>
 
-        <p>Over a single year, roughly six in ten active large-cap funds trail the S&amp;P 500; stretch the horizon to twenty years and the figure climbs above <strong>ninety percent</strong>. The longer you look, the harder it is to beat the market &mdash; because genuine skill is rare, luck washes out, and fees compound against you. This is efficiency made practical: not that no one <em>ever</em> wins, but that winning <em>consistently</em> is so hard that, for most investors, the rational move is to stop trying and simply buy the market.</p>
+        <p>Over a single year, roughly six in ten active large-cap funds trail the S&amp;P 500; stretch the horizon to twenty years and the figure climbs above <strong>ninety percent</strong>. This is Regnault&rsquo;s corollary at industrial scale, and it has a name &mdash; William Sharpe&rsquo;s &ldquo;arithmetic of active management.&rdquo; Since all investors together <em>are</em> the market, the average actively managed dollar must earn the market return <em>before</em> costs, and therefore must fall short of it <em>after</em> fees. Beating the index is not merely hard; on average, and net of costs, it is arithmetically impossible. For most investors the rational move is to stop trying and simply buy the market.</p>
 
         <p>And the competition is only intensifying. The collective wisdom a price aggregates once came from human analysts alone; today it includes algorithms and machine-learning models trading in microseconds &mdash; artificial intelligence as well as human. To beat the market now is to out-think not just the crowd on the steps of the Bourse but the machines behind them. The efficient-market hypothesis is, in the end, a statement of humility: the price already knows more than you do.</p>
 
-        <h2>VIII. Conclusion</h2>
+        <h2>IV. A Hidden Ancestor: Regnault and the Arbitrage Pricing Theory</h2>
 
-        <p>Efficient market theory provides a strong approximation for liquid, free markets. How quickly does information get incorporated into prices? In a word, "Quickly!" Information impounds rapidly because arbitrageurs continuously collect, process, and trade on firm-specific information.</p>
+        <p>There is a final irony worth pausing on. The Arbitrage Pricing Theory of Chapter VI &mdash; Stephen Ross&rsquo;s elegant alternative to the CAPM &mdash; rests on nothing more than the refusal to leave a free lunch on the table: if two portfolios carried the same risk but sold at different prices, arbitrageurs would trade the gap away, so in equilibrium the gap cannot exist. From that single, simple motive Ross built a pricing theory flexible enough to admit many sources of systematic risk, and free of the CAPM&rsquo;s heavy machinery &mdash; the utility curves, the assumptions about aggregate holdings and identical beliefs. It is, at bottom, Regnault&rsquo;s idea: speculators dig up information and act on it fast, and prices are dragged into line.</p>
 
-        <p>The practical implication supports minimal trading costs and removal of speculation penalties. Speculators keep market prices close to economic values, and this is good, not bad.</p>
+        <p>Ross, of course, had never heard of Regnault, who by 1976 had been forgotten for a century. The insight that so naturally underpins the modern theory of arbitrage was not, in fact, its foundation. It is the same irony as Bachelier and Black&ndash;Scholes: a solitary nineteenth-century mind reaching a result the twentieth century would rediscover, independently, and build an edifice upon &mdash; never knowing the first architect had come and gone.</p>
+
+        <h2>V. Conclusion</h2>
+
+        <p>Efficient-market theory is a strong approximation for liquid, well-regulated markets. How quickly does information get incorporated into prices? In a word, quickly &mdash; because arbitrageurs are ceaselessly collecting, processing, and trading on it. And efficiency is a public good: it keeps prices anchored to economic value, lowers the cost of judging what a security is worth, and lets ordinary investors trade with confidence. The speculator hunting a profit is, without meaning to be, a servant of that efficiency.</p>
 
         <div class="key-concept">
             <h4>Key Concept: The Efficient Markets Hypothesis</h4>
-            <p>In liquid, well-regulated markets with many informed participants, prices rapidly reflect available information. While not perfectly efficient, U.S. equity markets are sufficiently efficient that consistently beating the market after costs is extremely difficult. The EMH is a useful working assumption, not an exact description of reality.</p>
+            <p>In liquid, well-regulated markets with many informed participants, prices rapidly reflect available information. Markets are not perfectly efficient, but U.S. equity markets are efficient enough that consistently beating them after costs is extremely difficult. The EMH is a useful working assumption, not an exact description of reality &mdash; first glimpsed by Regnault on the floor of the Paris Bourse, and confirmed, a century and a half later, by the fund scorecard.</p>
         </div>
 
     </div>
