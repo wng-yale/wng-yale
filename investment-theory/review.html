@@ -94,6 +94,17 @@
             font-family: 'Inter', sans-serif; font-size: .78rem; color: #5f7280;
             margin: .25rem 0 0; letter-spacing: .01em;
         }
+        .ai-challenge .variations {
+            margin: .6rem 0 0; padding-top: .45rem; border-top: 1px dotted #b9cad4;
+            font-size: .9rem; color: #3a4a55;
+        }
+        .ai-challenge .variations .vlabel {
+            font-family: 'Inter', sans-serif; font-size: .7rem; font-weight: 700;
+            letter-spacing: .07em; text-transform: uppercase; color: #6a8291;
+            display: block; margin-bottom: .2rem;
+        }
+        .ai-challenge .variations ul { margin: .1rem 0 0; padding-left: 1.15rem; }
+        .ai-challenge .variations li { margin: .18rem 0; }
 
         details.eq-appendix > summary {
             cursor: pointer; font-weight: 600; color: #1a5276; margin: 1rem 0;
@@ -188,6 +199,12 @@
             <div class="ai-challenge">
                 <p class="task"><span class="tag">AI Challenge</span><strong>Build your own retirement planner.</strong> With Claude Code or Julius.ai, build a small app that takes your age, current savings, monthly contribution, and target retirement income, then runs a Monte Carlo simulation drawing each year&rsquo;s return from a historical mean and volatility. Have it draw the trumpet of possible ending wealth and report the probability your plan funds the income you want. Then answer a real question with it: what monthly contribution gives you an 80 percent chance of success?</p>
                 <p class="tools">Tools: Claude Code or Julius.ai &nbsp;·&nbsp; Deliverable: a working simulator, and the contribution that reaches 80 percent.</p>
+                <div class="variations">
+                    <span class="vlabel">Variations</span>
+                    <ul>
+                        <li>Build a portfolio poised for future dividend growth: use AI to screen for firms with sustainable, rising payouts, and value them with the growing-perpetuity formula $P = \text{CF}/(R-g)$ &mdash; where the whole result turns on the assumed growth rate $g$.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -239,6 +256,12 @@
             <div class="ai-challenge">
                 <p class="task"><span class="tag">AI Challenge</span><strong>Draw a real efficient frontier.</strong> Ask an AI tool to pull ten years of monthly returns for five assets you care about &mdash; a few stocks, an index fund, gold, bonds &mdash; estimate their covariance matrix, and plot the efficient frontier. Mark where an equal-weighted portfolio of the five sits, and where your own current holdings sit. How far inside the frontier are you, and what reallocation would move you onto it?</p>
                 <p class="tools">Tools: Julius.ai or Claude Code &nbsp;·&nbsp; Deliverable: a plotted frontier with your portfolio located on it.</p>
+                <div class="variations">
+                    <span class="vlabel">Variations</span>
+                    <ul>
+                        <li>Build a portfolio of ETFs designed to hold up through serious political disruption &mdash; macroeconomically hedged for the long term. Ask the AI to identify which holdings move together in a crisis, and assemble a mix whose parts do not all fall at once.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -297,8 +320,15 @@
             </div>
 
             <div class="ai-challenge">
-                <p class="task"><span class="tag">AI Challenge</span><strong>Find what has driven a stock.</strong> Pick a company and use an AI research agent to estimate its beta to the market and to decompose its past returns into factors &mdash; market, size, value, momentum, and any macro or industry driver you can identify. How much of its return has been systematic, and how much idiosyncratic? Then specify the hedge from the puzzle above that would have isolated its stock-specific return, and check how that hedged return actually behaved.</p>
-                <p class="tools">Tools: an AI research agent such as Claude or Julius.ai &nbsp;·&nbsp; Deliverable: a factor decomposition, and the alpha the hedge would have captured.</p>
+                <p class="task"><span class="tag">AI Challenge</span><strong>Build a real-time indicator for the price of risk.</strong> Build an app that plots a universe of stocks in return-versus-beta space, fits the Security Market Line through them, and flags the names sitting above it &mdash; the candidates the model calls underpriced. Then extend the line to a plane: fit a multifactor model (market, size, value, momentum) and rank stocks by their distance above the fitted <em>security-market plane</em>, the multifactor analog of sitting above the SML. Run it on live prices and watch which names drift above the surface and below it.</p>
+                <p class="tools">Tools: Claude Code, with a market-data feed &nbsp;·&nbsp; Deliverable: a live screen ranking stocks by their distance above the SML and above the factor plane.</p>
+                <div class="variations">
+                    <span class="vlabel">Variations</span>
+                    <ul>
+                        <li>Find what has driven a single stock: decompose its past returns into factors &mdash; market, size, value, momentum, and any macro or industry driver &mdash; then specify the hedge that would have isolated its stock-specific return, and check how that hedged return actually behaved.</li>
+                        <li>Build a stock-only portfolio hedged against inflation, by tilting toward names whose returns have risen with inflation &mdash; one of the canonical macro factors of the Arbitrage Pricing Theory.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
