@@ -40,9 +40,132 @@
 
         <p>The picture answers a single, urgent question: <strong>when interest rates move, how much does the value of my bonds move?</strong> The slope of the curve is the answer, and it has a name that will organize this entire chapter &mdash; <strong>duration</strong>. The gentle bowing of the curve, its <strong>convexity</strong>, is a second-order refinement that turns out to matter enormously when rates move a lot. We will read this figure through the same four lenses as the others: the logic of why the curve slopes and bends, how it moves as we change the bond, how a practitioner uses its slope to hedge and to immunize, and &mdash; for the willing &mdash; the mathematics of duration and convexity.</p>
 
-        <h2>I. The Logic: A Fixed Promise, Discounted</h2>
+        <p>But a picture needs its subject. Before we vary the yield, we should be precise about the instrument itself &mdash; what a bond promises, how those promises become a price, and the small accounting wrinkle that arises because bonds trade every day of the year, not only on the days they pay. That is where we begin.</p>
 
-        <p>A bond is the simplest instrument in finance: a set of promised cash flows on fixed future dates. A typical coupon bond promises a stream of interest payments &mdash; the coupons &mdash; and then a final repayment of the face value, or principal, at maturity. Those promises are fixed at issue and do not change. What changes, minute by minute in the market, is what investors are willing to <em>pay</em> for them &mdash; and that price is nothing more than the <strong>present value</strong> of the promised stream, discounted at the prevailing interest rate.</p>
+        <h2>I. The Bond Contract and Its Price</h2>
+
+        <p>Before we can watch a bond&rsquo;s price move against the interest rate, we should be exact about what a bond actually is. A plain bond is defined by four numbers. Its <strong>face value</strong>, or par, is the amount repaid at the end &mdash; conventionally 1,000 for a corporate bond, though we will quote everything per 100 of face so the arithmetic stays clean. Its <strong>coupon rate</strong> fixes the interest it pays, as a percentage of face. Its <strong>maturity</strong> is the date the face value comes back. And its <strong>coupon frequency</strong> says how often the interest arrives. That last number is where a small but universal convention hides.</p>
+
+        <h3>Coupons Come Twice a Year</h3>
+
+        <p>In the United States &mdash; Treasury notes and bonds, and the great majority of corporate bonds &mdash; coupons are paid <strong>semiannually</strong>. A bond with a &ldquo;6% coupon&rdquo; on 1,000 of face does not write you one check for 60 each year; it writes you two checks for 30, six months apart. The stated coupon rate is an <em>annual</em> figure that is split in half and paid twice. It sounds like a triviality, but it changes the pricing formula in two places at once: the cash flows arrive at twice the frequency, and each one is discounted at <em>half</em> the annual yield per six-month period.</p>
+
+        <div class="equation">
+            <p class="equation-label">Price of a Semiannual Coupon Bond</p>
+            $$P=\sum_{k=1}^{2n}\frac{cF/2}{\left(1+\frac{y}{2}\right)^{k}}+\frac{F}{\left(1+\frac{y}{2}\right)^{2n}}$$
+        </div>
+
+        <p>Here $c$ is the annual coupon rate, $F$ the face value, $n$ the years to maturity, and $y$ the annual yield. The sum runs over $2n$ semiannual periods; each pays a coupon of $cF/2$, and the final period also returns the face $F$. Set the coupon equal to the yield and every discounted coupon plus the discounted face sums back to exactly $F$: the bond trades at <strong>par</strong>. Raise the coupon above the yield and the bond is worth more than face &mdash; a <strong>premium</strong>. Drop it below and the bond sells at a <strong>discount</strong>. Price and yield are two ways of quoting the same thing; give one and the market can recover the other.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:10px;font-size:.92rem;color:#26221a">
+              <label>Coupon: <input id="cp-c" type="range" min="0" max="12" step="0.25" value="6" style="vertical-align:middle;width:120px"> <strong id="cp-cv" style="color:#b9770e">6.00%</strong></label>
+              <label>Maturity: <input id="cp-n" type="range" min="1" max="30" step="1" value="10" style="vertical-align:middle;width:120px"> <strong id="cp-nv" style="color:#1a5276">10 yr</strong></label>
+              <label>Yield y: <input id="cp-y" type="range" min="1" max="12" step="0.25" value="6" style="vertical-align:middle;width:120px"> <strong id="cp-yv" style="color:#7a1414">6.00%</strong></label>
+            </div>
+            <div id="cp-chart"></div>
+            <div id="cp-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 11.1.</strong> Pricing a coupon bond. Each bar is a promised semiannual cash flow &mdash; the coupons, and at the far right the last coupon plus the returned face value. The pale bar is the promise; the solid blue portion is its <em>present value</em>, discounted at the current yield, and the blue heights sum to the price. Slide the coupon above the yield and the price rises above 100 (a premium); below, and it falls (a discount); set them equal for par. Notice how the distant bars shrink under discounting &mdash; and how the return of principal, that tall last bar, dominates the bond&rsquo;s value.</p>
+        </div>
+        <script>
+        (function(){
+          var F=100,W=700,H=330,mL=48,mR=14,mT=16,mB=44,pw=W-mL-mR,ph=H-mT-mB;
+          var sc=document.getElementById('cp-c'),sn=document.getElementById('cp-n'),sy=document.getElementById('cp-y'),el=document.getElementById('cp-chart');
+          function calc(c,n,y){var per=2*n,cpn=c*F/2,r=y/2,pvc=0;for(var k=1;k<=per;k++)pvc+=cpn/Math.pow(1+r,k);var pvp=F/Math.pow(1+r,per);return{per:per,cpn:cpn,r:r,pvc:pvc,pvp:pvp,price:pvc+pvp};}
+          function render(){
+            var c=+sc.value/100,n=+sn.value,y=+sy.value/100,R=calc(c,n,y);
+            document.getElementById('cp-cv').textContent=(+sc.value).toFixed(2)+'%';
+            document.getElementById('cp-nv').textContent=sn.value+' yr';
+            document.getElementById('cp-yv').textContent=(+sy.value).toFixed(2)+'%';
+            var per=R.per,cpn=R.cpn,r=R.r,maxCF=cpn+F;
+            function X(k){return mL+(k-0.5)/per*pw;}
+            function Yb(v){return mT+ph-v/maxCF*ph;}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            var step=maxCF>60?25:10;
+            for(var v=0;v<=maxCF+0.01;v+=step){var yy=Yb(v);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+v+'</text>';}
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/>';
+            var bw=Math.max(2,Math.min(16,pw/per*0.5));
+            for(var k=1;k<=per;k++){
+              var cf=(k===per)?cpn+F:cpn,pv=cf/Math.pow(1+r,k),x=X(k);
+              s+='<rect x="'+(x-bw/2).toFixed(1)+'" y="'+Yb(cf).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(Yb(0)-Yb(cf)).toFixed(1)+'" fill="#e2b866" opacity="0.5"/>';
+              s+='<rect x="'+(x-bw/2).toFixed(1)+'" y="'+Yb(pv).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+(Yb(0)-Yb(pv)).toFixed(1)+'" fill="#1a5276"/>';
+            }
+            var ystep=n>15?5:(n>7?2:1);
+            for(var yr=0;yr<=n+0.01;yr+=ystep){var xx=mL+(yr*2)/per*pw;s+='<text x="'+xx.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="10.5" fill="#8a7f6c">'+yr+'</text>';}
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Years to maturity</text>';
+            s+='<g font-size="11"><rect x="'+(mL+pw-152)+'" y="'+(mT+4)+'" width="148" height="34" fill="#fbf7ec" opacity="0.92" stroke="#e0d6bf" rx="4"/><rect x="'+(mL+pw-144)+'" y="'+(mT+11)+'" width="12" height="9" fill="#e2b866" opacity="0.55"/><text x="'+(mL+pw-128)+'" y="'+(mT+19)+'" fill="#5c5344">promised cash flow</text><rect x="'+(mL+pw-144)+'" y="'+(mT+25)+'" width="12" height="9" fill="#1a5276"/><text x="'+(mL+pw-128)+'" y="'+(mT+33)+'" fill="#5c5344">its present value</text></g>';
+            s+='</svg>';el.innerHTML=s;
+            var P=R.price,verdict;
+            if(Math.abs(c-y)<1e-9)verdict='trades at <strong>par</strong> &mdash; coupon equals yield, so price equals face';
+            else if(c>y)verdict='trades at a <strong style="color:#1e8b3a">premium</strong>: the '+(+sc.value).toFixed(2)+'% coupon beats the '+(+sy.value).toFixed(2)+'% yield, so buyers pay more than face';
+            else verdict='trades at a <strong style="color:#c0392b">discount</strong>: the '+(+sc.value).toFixed(2)+'% coupon trails the '+(+sy.value).toFixed(2)+'% yield, so the price sits below face';
+            document.getElementById('cp-read').innerHTML='Price = <strong style="color:#1a5276;font-size:1.08em">'+P.toFixed(2)+'</strong> per 100 face &mdash; the bond '+verdict+'. That price splits into <strong style="color:#1a5276">'+R.pvc.toFixed(2)+'</strong> for the '+per+' semiannual coupons and <strong style="color:#1a5276">'+R.pvp.toFixed(2)+'</strong> for the principal returned at maturity.';
+          }
+          [sc,sn,sy].forEach(function(x){x.addEventListener('input',render);});render();
+        })();
+        </script>
+
+        <p>Two features of the figure repay a second look. First, most of a bond&rsquo;s value is the <em>return of principal</em>, not the coupons: the tall final bar dwarfs the rest, and even after discounting it is usually the single largest piece of the price. Second, the far-off cash flows are discounted so heavily that they add little &mdash; which is the seed of the duration idea we take up next. A bond is a schedule of promises, and the present-value machine weighs the near ones far more than the distant ones.</p>
+
+        <h3>Clean and Dirty Prices: Accrued Interest</h3>
+
+        <p>A bond pays its coupon on fixed dates, but it trades every business day. Buy a bond three months into a six-month coupon period and you are buying a claim that is already halfway to its next coupon &mdash; interest has been quietly accumulating inside it that, by long convention, belongs to the <em>seller</em> who held it through those months. So the buyer reimburses the seller for it. That reimbursement is the <strong>accrued interest</strong>, and it is added to the quoted price to arrive at the amount actually paid.</p>
+
+        <div class="equation">
+            <p class="equation-label">Accrued Interest and the Two Prices</p>
+            $$\text{Accrued}=\frac{C}{2}\times\frac{\text{days since last coupon}}{\text{days in the period}},\qquad \underbrace{P_{\text{dirty}}}_{\text{invoice}}=\underbrace{P_{\text{clean}}}_{\text{quoted}}+\text{Accrued}$$
+        </div>
+
+        <p>The market quotes the <strong>clean</strong> price &mdash; the one on the screen &mdash; precisely so that the number does not lurch about for a purely mechanical reason. If bonds were quoted at the full invoice, or <strong>dirty</strong>, price, every quote would climb a little each day as interest accrued and then drop by the coupon on the payment date, tracing a sawtooth that has nothing to do with whether the bond had become more or less valuable. Stripping the accrual out leaves the clean price free to move only when the market genuinely re-prices the bond. The buyer still pays the dirty price; it is the clean price that gets published.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="margin-bottom:8px;font-size:.92rem;color:#26221a">Settlement date: <input id="ai-s" type="range" min="0" max="728" step="1" value="100" style="vertical-align:middle;width:260px"> <strong id="ai-sv" style="color:#7a1414">100 days</strong> since issue</div>
+            <div id="ai-chart"></div>
+            <div id="ai-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 11.2.</strong> Clean versus dirty price, for a 5% bond paying 2.50 every six months. The flat blue line is the quoted (clean) price; the gold sawtooth is the invoice (dirty) price the buyer actually pays. Between coupon dates the gold line climbs as interest accrues &mdash; the shaded wedge <em>is</em> the accrued interest &mdash; then drops by the coupon amount on each payment date, when the accrual resets to zero. Drag the settlement cursor and watch the accrued interest grow linearly across each period. Quoting the clean price keeps that mechanical sawtooth out of the number on the screen.</p>
+        </div>
+        <script>
+        (function(){
+          var W=700,H=300,mL=54,mR=18,mT=16,mB=40,pw=W-mL-mR,ph=H-mT-mB;
+          var F=100,cpn=0.05*F/2,pDays=182,nP=4,total=pDays*nP,clean=99.40;
+          var lo=clean-0.5,hi=clean+cpn+0.5;
+          var ss=document.getElementById('ai-s'),el=document.getElementById('ai-chart');
+          function acc(d){return cpn*((d%pDays)/pDays);}
+          function X(d){return mL+d/total*pw;}
+          function Y(v){return mT+ph-(v-lo)/(hi-lo)*ph;}
+          function render(){
+            var day=+ss.value,a=acc(day),dirty=clean+a,into=day%pDays;
+            document.getElementById('ai-sv').textContent=day+' days';
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var v=Math.ceil(lo*2)/2;v<=hi;v+=0.5){var yy=Y(v);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+v.toFixed(2)+'</text>';}
+            for(var p=1;p<nP;p++){var xx=X(p*pDays);s+='<line x1="'+xx.toFixed(1)+'" y1="'+mT+'" x2="'+xx.toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#d8ccb0" stroke-dasharray="3 3"/><text x="'+xx.toFixed(1)+'" y="'+(mT+10)+'" text-anchor="middle" font-size="9.5" fill="#b9770e">coupon paid</text>';}
+            var poly='';for(var d=0;d<=total;d+=2)poly+=X(d).toFixed(1)+','+Y(clean+acc(d)).toFixed(1)+' ';
+            poly+=X(total).toFixed(1)+','+Y(clean).toFixed(1)+' '+X(0).toFixed(1)+','+Y(clean).toFixed(1);
+            s+='<polygon points="'+poly+'" fill="#e2b866" opacity="0.28"/>';
+            var dp='';for(var d2=0;d2<=total;d2+=2)dp+=(d2===0?'M':'L')+X(d2).toFixed(1)+' '+Y(clean+acc(d2)).toFixed(1)+' ';
+            s+='<path d="'+dp+'" fill="none" stroke="#b9770e" stroke-width="2"/>';
+            s+='<line x1="'+X(0).toFixed(1)+'" y1="'+Y(clean).toFixed(1)+'" x2="'+X(total).toFixed(1)+'" y2="'+Y(clean).toFixed(1)+'" stroke="#1a5276" stroke-width="2.2"/>';
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/>';
+            for(var mo=0;mo<=24;mo+=6){var mx=mL+mo/24*pw;s+='<text x="'+mx.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="10.5" fill="#8a7f6c">'+mo+'</text>';}
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Months since issue</text>';
+            var cx=X(day);
+            s+='<line x1="'+cx.toFixed(1)+'" y1="'+mT+'" x2="'+cx.toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#7a1414" stroke-width="1.3"/>';
+            s+='<circle cx="'+cx.toFixed(1)+'" cy="'+Y(clean).toFixed(1)+'" r="4.5" fill="#1a5276" stroke="#fff" stroke-width="1.3"/><circle cx="'+cx.toFixed(1)+'" cy="'+Y(dirty).toFixed(1)+'" r="4.5" fill="#b9770e" stroke="#fff" stroke-width="1.3"/>';
+            s+='<g font-size="11"><rect x="'+(mL+8)+'" y="'+(mT+4)+'" width="152" height="34" fill="#fbf7ec" opacity="0.92" stroke="#e0d6bf" rx="4"/><line x1="'+(mL+16)+'" y1="'+(mT+15)+'" x2="'+(mL+34)+'" y2="'+(mT+15)+'" stroke="#1a5276" stroke-width="2.2"/><text x="'+(mL+40)+'" y="'+(mT+19)+'" fill="#5c5344">clean (quoted)</text><line x1="'+(mL+16)+'" y1="'+(mT+29)+'" x2="'+(mL+34)+'" y2="'+(mT+29)+'" stroke="#b9770e" stroke-width="2"/><text x="'+(mL+40)+'" y="'+(mT+33)+'" fill="#5c5344">dirty (invoice)</text></g>';
+            s+='</svg>';el.innerHTML=s;
+            document.getElementById('ai-read').innerHTML='Settlement falls <strong>'+into+' days</strong> into a '+pDays+'-day coupon period. Accrued interest = 2.50 &times; '+into+'/'+pDays+' = <strong style="color:#b9770e">'+a.toFixed(2)+'</strong>. The screen quotes the <strong style="color:#1a5276">clean</strong> price '+clean.toFixed(2)+', but the buyer wires the <strong style="color:#b9770e">dirty</strong> price '+clean.toFixed(2)+' + '+a.toFixed(2)+' = <strong style="color:#b9770e">'+dirty.toFixed(2)+'</strong>. On each coupon date the accrued resets to zero and the dirty price drops back to the clean &mdash; the sawtooth.';
+          }
+          ss.addEventListener('input',render);render();
+        })();
+        </script>
+
+        <h2>II. The Logic: A Fixed Promise, Discounted</h2>
+
+        <p>We now hold the bond&rsquo;s promises in one hand and the market&rsquo;s valuation in the other. The promises &mdash; the coupons and the final repayment of principal &mdash; are frozen at issue and do not change. What changes, minute by minute in the market, is what investors are willing to <em>pay</em> for them, and that price, as we have just seen, is nothing more than the <strong>present value</strong> of the promised stream, discounted at the prevailing interest rate. From here on we hold the promises fixed and ask a single question: as the yield moves, what does the price do?</p>
 
         <p>This is the compound-growth picture of Chapter I, run in reverse. There, a dollar today grew into more dollars tomorrow. Here, a dollar promised for tomorrow is worth less than a dollar today, and we discount it back:</p>
 
@@ -84,7 +207,7 @@
             <div id="d1-chart"></div>
             <div id="d1-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 11.1.</strong> The price&ndash;yield curve and its tangent. The bold curve is the bond's price as a function of its yield &mdash; falling and convex. Slide the <em>maturity</em> and <em>coupon</em> to watch the curve steepen and bow: longer maturities and smaller coupons make it plunge more sharply. Tick <em>show tangent</em> to draw the straight line just touching the curve at the current yield &mdash; its slope <em>is</em> the bond's duration, the local sensitivity of price to rate. Tick <em>shade convexity gap</em> to fill the sliver between that straight tangent and the true curve: because the curve bows above its tangent on both sides, the duration estimate always understates the price, and that sliver is the bond's <strong>convexity</strong>.</p>
+          <p class="figure-caption"><strong>Figure 11.3.</strong> The price&ndash;yield curve and its tangent. The bold curve is the bond's price as a function of its yield &mdash; falling and convex. Slide the <em>maturity</em> and <em>coupon</em> to watch the curve steepen and bow: longer maturities and smaller coupons make it plunge more sharply. Tick <em>show tangent</em> to draw the straight line just touching the curve at the current yield &mdash; its slope <em>is</em> the bond's duration, the local sensitivity of price to rate. Tick <em>shade convexity gap</em> to fill the sliver between that straight tangent and the true curve: because the curve bows above its tangent on both sides, the duration estimate always understates the price, and that sliver is the bond's <strong>convexity</strong>.</p>
         </div>
         <script>
         (function(){
@@ -127,7 +250,7 @@
         })();
         </script>
 
-        <h2>II. How It Moves</h2>
+        <h2>III. How It Moves</h2>
 
         <p>One bond gives one curve. But the steepness and the bow of that curve are not fixed features of &ldquo;bonds&rdquo; in general &mdash; they depend on the particular bond, and understanding what makes the curve steep or shallow is the heart of managing interest-rate risk. Two features of the bond do most of the work: its <strong>maturity</strong> and its <strong>coupon</strong>. A third input, the <strong>level of yields</strong> itself, tunes the curvature.</p>
 
@@ -154,7 +277,7 @@
 
         <p>Finally, where you sit on the curve matters. At low yields the curve is steepest and most sharply bowed; at high yields it flattens out. Discounting is a compounding process, and its effects are most violent when rates are near zero &mdash; which is exactly why the era of ultra-low interest rates after 2010 left bond portfolios with historically enormous durations, and why the sharp rate increases of 2022 inflicted some of the worst bond losses on record. The same one-point move in yields does more damage when it starts from a low base. Convexity, the bowing itself, is largest for long, low-coupon bonds at low yields &mdash; the same bonds that carry the most duration.</p>
 
-        <h2>III. How You Use It</h2>
+        <h2>IV. How You Use It</h2>
 
         <p>Duration is not a classroom abstraction; it is the working number of the fixed-income world. Traders quote it, risk managers limit it, and the largest institutions on earth build their entire asset&ndash;liability strategy around it. Three uses matter most: <em>measuring</em> the risk, <em>hedging</em> it, and <em>immunizing</em> against it.</p>
 
@@ -164,7 +287,7 @@
 
         <h3>Hedging: Neutralizing the Slope</h3>
 
-        <p>Once risk is a single number, hedging becomes arithmetic. To protect a bond portfolio against rising rates, a manager takes an offsetting position &mdash; shorting Treasury futures, receiving in a swap, selling long bonds &mdash; sized so that its DV01 is equal and opposite to the portfolio's. If the portfolio loses <strong>$50,000</strong> per basis point and the hedge gains <strong>$50,000</strong> per basis point, the combined position is, to first order, indifferent to small rate moves: the slopes cancel. This is <strong>duration hedging</strong>, and it is performed continuously, in enormous size, across the world's bond desks. The tangent line of Figure 11.1 is the whole game &mdash; matching slopes so the net position sits flat.</p>
+        <p>Once risk is a single number, hedging becomes arithmetic. To protect a bond portfolio against rising rates, a manager takes an offsetting position &mdash; shorting Treasury futures, receiving in a swap, selling long bonds &mdash; sized so that its DV01 is equal and opposite to the portfolio's. If the portfolio loses <strong>$50,000</strong> per basis point and the hedge gains <strong>$50,000</strong> per basis point, the combined position is, to first order, indifferent to small rate moves: the slopes cancel. This is <strong>duration hedging</strong>, and it is performed continuously, in enormous size, across the world's bond desks. The tangent line of Figure 11.3 is the whole game &mdash; matching slopes so the net position sits flat.</p>
 
         <p>But note the phrase &ldquo;to first order.&rdquo; A duration hedge cancels the <em>slope</em>, not the <em>bow</em>. For small moves the straight tangent tracks the curve closely and the hedge holds. For large moves, convexity reasserts itself &mdash; the true curve pulls away from the tangent &mdash; and the hedge springs a leak. Sophisticated managers therefore hedge convexity as well as duration, matching the curvature of assets and liabilities so the position stays flat even through violent moves. This is precisely where the second-order term in the mathematics below earns its keep.</p>
 
@@ -185,7 +308,7 @@
             <div id="d2-chart"></div>
             <div id="d2-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 11.2.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>, matched in value at today's 5% yield. Drag the yield cursor and watch the <em>surplus</em> &mdash; the shaded gap between them. Dial the asset duration to <em>match</em> the liability duration and the two curves descend in lockstep: the surplus barely stirs, whatever rates do &mdash; the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
+          <p class="figure-caption"><strong>Figure 11.4.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>, matched in value at today's 5% yield. Drag the yield cursor and watch the <em>surplus</em> &mdash; the shaded gap between them. Dial the asset duration to <em>match</em> the liability duration and the two curves descend in lockstep: the surplus barely stirs, whatever rates do &mdash; the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
         </div>
         <script>
         (function(){
@@ -233,7 +356,7 @@
         })();
         </script>
 
-        <h2>IV. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
+        <h2>V. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
 
         <p>The three lenses above require no calculus. But duration and convexity have exact definitions, and for readers who want to compute rather than merely picture them, the formulas are clean and worth seeing. They also make precise the two readings of duration &mdash; average waiting time and price sensitivity &mdash; and show why they are the same number.</p>
 
@@ -281,7 +404,7 @@
             <p style="margin-bottom:0;">Its moment came in the 1970s and early 1980s, when interest rates in the United States turned wildly volatile &mdash; long-bond yields swinging from 6% to over 15% and back &mdash; and the old buy-and-hold complacency of bond management became untenable. Suddenly every insurer and pension fund needed to know its exposure to rates, and duration was the number that answered. What Macaulay had offered as a statistical nicety became, forty years on, the central instrument of an entire industry.</p>
         </aside>
 
-        <h2>V. Summary</h2>
+        <h2>VI. Summary</h2>
 
         <p>The bond price&ndash;yield curve is the quietest of our five pictures and, by dollar volume, the one that governs the most wealth. Its logic is the logic of discounting run in reverse: a bond is a fixed stream of promises, its price is their present value, and because the yield sits in every denominator, the price falls as the yield rises. That is why the curve slopes down. Because discounting decelerates, the curve also bows &mdash; it is convex &mdash; and the bow is a small standing gift to the bondholder, since gains from falling rates outrun losses from rising ones.</p>
 
