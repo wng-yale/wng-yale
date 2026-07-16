@@ -89,13 +89,142 @@
 
         <p>The global expansion of finance in the twenty-first century, particularly in India and China, has vastly enlarged the supply of capital, increased the number of investors enormously, and afforded all investors the opportunity to diversify globally. The tools we explore in this text are the foundation of the decisions those investors face.</p>
 
-        <h2>I. Finance from the Investor's Perspective</h2>
+                <h2>I. Time and Money</h2>
+
+        <p>Almost everything in this book comes back to one humble observation: <strong>a dollar today is worth more than a dollar tomorrow</strong>. Offer someone a dollar now or the same dollar in a year and they take it now &mdash; and they are right to. A dollar in hand can be put to work and grow; a dollar merely promised must be waited for, and the wait is neither free nor certain. This is the <strong>time value of money</strong>, and learning to compare sums that arrive at different times is the first real skill of finance.</p>
+
+        <p>The idea takes a moment to grasp, and it helps to see that it runs in both directions at once. Suppose money can be invested to earn an interest rate $r$. Then:</p>
+        <ul>
+            <li>If I <strong>lend</strong> you a dollar today, I give up the growth it would have earned &mdash; so to make me whole, you must repay <em>more</em> than a dollar next year. At a rate $r$, you owe me $1+r$.</li>
+            <li>And if you <strong>promise to pay me</strong> a dollar a year from now, that promise is worth <em>less</em> than a dollar today &mdash; because I could instead hold a dollar now and grow it myself. To value the promise I run the growth backwards, or <strong>discount</strong> it: a dollar next year is worth $1/(1+r)$ today.</li>
+        </ul>
+        <p>The two are one fact seen from opposite ends. Growing carries money forward in time; discounting brings it back. The amount a future payment is worth today is its <strong>present value</strong>:</p>
+
+        <div class="equation">
+            <p class="equation-label">Present Value of a One-Period Cash Flow</p>
+            $$PV=\frac{C}{1+r}$$
+        </div>
+
+        <p>where $C$ is the cash to be received next period and $r$ is the interest rate. At a rate of 5%, a dollar due next year is worth about ninety-five cents today ($1/1.05 \approx 0.95$). You would rationally part with about ninety-five cents now for a sound promise of a dollar in a year &mdash; and the higher the rate, the less you would pay, because the more your own money could have grown while you waited.</p>
+
+        <h3>Many Periods: The Exponential Curve</h3>
+        <p>Stretch the wait to many years and the logic compounds. A dollar today grows to $(1+r)^t$ after $t$ years, so a dollar promised $t$ years out is worth $1/(1+r)^t$ today. Both are <strong>exponential</strong> curves &mdash; one soaring, one decaying &mdash; and they are the same curve read in opposite directions. Set the rate below and watch either one: how a dollar grows if you invest it, or how little a distant dollar is worth if you must wait for it.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:.92rem;color:#26221a">
+              <label>Interest rate r: <input id="tm-r" type="range" min="0.5" max="15" step="0.5" value="6" style="vertical-align:middle;width:130px"> <strong id="tm-rv" style="color:#7a1414">6.0%</strong></label>
+              <label>Horizon: <input id="tm-t" type="range" min="1" max="40" step="1" value="20" style="vertical-align:middle;width:130px"> <strong id="tm-tv" style="color:#1a5276">20 years</strong></label>
+              <button id="tm-mode" type="button" style="font-family:inherit;font-size:.82rem;padding:5px 12px;border:1px solid #1a5276;border-radius:6px;background:#eef3f8;color:#1a5276;cursor:pointer">Switch to: grow a dollar forward</button>
+            </div>
+            <div id="tm-chart"></div>
+            <div id="tm-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 1.1.</strong> The value of money across time. Set the interest rate and slide the horizon. In its default view the curve shows what a single future dollar is worth today: it begins at a full dollar now and decays toward nothing the farther off the payment lies &mdash; and the higher the rate, the faster it falls. Flip the switch to run the same exponential <em>forward</em>, and it becomes the compound-growth curve, what a dollar invested today becomes. Discounting and growing are one curve read in two directions.</p>
+        </div>
+        <script>
+        (function(){
+          var W=680,H=330,mL=54,mR=16,mT=16,mB=42,pw=W-mL-mR,ph=H-mT-mB,TMAX=40;
+          var sr=document.getElementById('tm-r'),st=document.getElementById('tm-t'),btn=document.getElementById('tm-mode'),el=document.getElementById('tm-chart');
+          var grow=false;
+          function fmt(v){return v>=100?v.toFixed(0):v>=10?v.toFixed(1):v.toFixed(2);}
+          function niceStep(m){var raw=m/5,p=Math.pow(10,Math.floor(Math.log(raw)/Math.LN10)),n=raw/p;var stp=n<1.5?1:n<3.5?2:n<7.5?5:10;return stp*p;}
+          function render(){
+            var r=+sr.value/100, th=+st.value;
+            document.getElementById('tm-rv').textContent=(+sr.value).toFixed(1)+'%';
+            document.getElementById('tm-tv').textContent=th+(th==1?' year':' years');
+            function f(t){return grow?Math.pow(1+r,t):1/Math.pow(1+r,t);}
+            var ymax=grow?Math.pow(1+r,TMAX):1.0;
+            function X(t){return mL+t/TMAX*pw;}
+            function Y(v){return mT+ph-v/ymax*ph;}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            var yt=grow?niceStep(ymax):0.2;
+            for(var v=0;v<=ymax+1e-9;v+=yt){var yy=Y(v);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+(grow?fmt(v):v.toFixed(1))+'</text>';}
+            s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/>';
+            var d='';for(var t=0;t<=TMAX;t+=0.5){d+=(t===0?'M':'L')+X(t).toFixed(1)+' '+Y(f(t)).toFixed(1)+' ';}
+            s+='<path d="'+d+'L'+X(TMAX).toFixed(1)+' '+(mT+ph)+' L'+mL+' '+(mT+ph)+' Z" fill="#b9770e" opacity="0.13"/>';
+            s+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="2.8"/>';
+            var vh=f(th);
+            s+='<line x1="'+X(th).toFixed(1)+'" y1="'+mT+'" x2="'+X(th).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#7a1414" stroke-width="1.1" stroke-dasharray="4 3"/>';
+            s+='<circle cx="'+X(th).toFixed(1)+'" cy="'+Y(vh).toFixed(1)+'" r="4.5" fill="#7a1414" stroke="#fff" stroke-width="1.3"/>';
+            for(var xt=0;xt<=TMAX;xt+=10)s+='<text x="'+X(xt).toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="10.5" fill="#8a7f6c">'+xt+'</text>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Years from today</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">'+(grow?'What a dollar today becomes':'What a future dollar is worth today')+'</text>';
+            s+='</svg>';el.innerHTML=s;
+            if(grow){
+              document.getElementById('tm-read').innerHTML='A dollar invested today at '+(+sr.value).toFixed(1)+'% grows to <strong style="color:#1a5276">'+fmt(vh)+' dollars</strong> in '+th+' years. Put money to work and it compounds &mdash; the same exponential as discounting, only run forward.';
+            } else {
+              document.getElementById('tm-read').innerHTML='At '+(+sr.value).toFixed(1)+'%, a dollar you will receive in '+th+' years is worth just <strong style="color:#7a1414">'+(vh*100).toFixed(0)+' cents</strong> today &mdash; all you would rationally pay now for the promise, since your own money, invested, would grow into a dollar by then. Raise the rate and distant dollars shrink faster.';
+            }
+          }
+          btn.onclick=function(){grow=!grow;btn.textContent=grow?'Switch to: value of a future dollar':'Switch to: grow a dollar forward';render();};
+          [sr,st].forEach(function(x){x.addEventListener('input',render);});render();
+        })();
+        </script>
+
+        <h3>Discounting Is Perspective</h3>
+        <p>Here is a picture I like to draw for it. Imagine driving a long, straight highway across the desert toward a distant range of mountains. Billboards line the road. The one you are passing looms enormous; the next is smaller; the ones near the horizon have shrunk to postage stamps. Now suppose each billboard is a dollar you have been promised &mdash; one now, one in five years, one in ten, and so on down the road. The far ones <em>look</em> smaller for the very reason they are <em>worth</em> less: distance. The interest rate is simply how fast the billboards shrink as they recede &mdash; a high rate is a steeply narrowing road that dwindles the far dollars almost to nothing, a low rate a gentle perspective in which even distant dollars stay nearly full size.</p>
+
+        <div class="figure">
+<svg viewBox="0 0 660 322" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<defs>
+<linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8d2e6"/><stop offset="1" stop-color="#f5e7c9"/></linearGradient>
+<linearGradient id="sand2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ecd9ac"/><stop offset="1" stop-color="#d6b271"/></linearGradient>
+<linearGradient id="road2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6d6d6d"/><stop offset="1" stop-color="#383838"/></linearGradient>
+</defs>
+<rect x="0" y="0" width="660" height="150" fill="url(#sky2)"/>
+<rect x="0" y="150" width="660" height="172" fill="url(#sand2)"/>
+<circle cx="152" cy="102" r="26" fill="#f8eed2" opacity="0.85"/>
+<polygon points="0,150 80,110 168,150" fill="#a99aa6" opacity="0.7"/>
+<polygon points="120,150 250,96 372,150" fill="#9a8c9e" opacity="0.78"/>
+<polygon points="330,150 452,114 566,150" fill="#b0a1a4" opacity="0.66"/>
+<polygon points="486,150 596,120 660,150" fill="#a4959e" opacity="0.72"/>
+<polygon points="322,150 338,150 470,322 190,322" fill="url(#road2)"/>
+<rect x="326.4" y="278.0" width="7.2" height="34.0" fill="#ecdd92" opacity="0.85"/>
+<rect x="327.2" y="247.0" width="5.6" height="25.0" fill="#ecdd92" opacity="0.85"/>
+<rect x="327.9" y="222.0" width="4.3" height="18.0" fill="#ecdd92" opacity="0.85"/>
+<rect x="328.3" y="203.0" width="3.4" height="13.0" fill="#ecdd92" opacity="0.85"/>
+<rect x="328.7" y="189.0" width="2.6" height="9.0" fill="#ecdd92" opacity="0.85"/>
+<rect x="329.0" y="178.0" width="2.0" height="6.0" fill="#ecdd92" opacity="0.85"/>
+<ellipse cx="392.0" cy="197.0" rx="7.8" ry="1.5" fill="#000" opacity="0.10"/>
+<rect x="390.6" y="188.9" width="2.6" height="7.1" fill="#6b5a44"/>
+<rect x="380.5" y="171.9" width="23.0" height="17.0" rx="1.4" fill="#fbf7ec" stroke="#7a1414" stroke-width="1.0"/>
+<text x="392.0" y="183.8" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-weight="700" font-size="8.8" fill="#1a5276">$0.38</text>
+<text x="392.0" y="208.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="7.5" fill="#7a6a4e">yr 20</text>
+<ellipse cx="232.0" cy="217.0" rx="11.2" ry="1.5" fill="#000" opacity="0.10"/>
+<rect x="230.6" y="205.5" width="2.6" height="10.5" fill="#6b5a44"/>
+<rect x="215.5" y="180.5" width="33.0" height="25.0" rx="2.0" fill="#fbf7ec" stroke="#7a1414" stroke-width="1.0"/>
+<text x="232.0" y="198.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-weight="700" font-size="13.0" fill="#1a5276">$0.48</text>
+<text x="232.0" y="228.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="7.5" fill="#7a6a4e">yr 15</text>
+<ellipse cx="470.0" cy="243.0" rx="16.3" ry="1.8" fill="#000" opacity="0.10"/>
+<rect x="468.6" y="226.9" width="2.7" height="15.1" fill="#6b5a44"/>
+<rect x="446.0" y="190.9" width="48.0" height="36.0" rx="2.9" fill="#fbf7ec" stroke="#7a1414" stroke-width="1.1"/>
+<text x="470.0" y="216.1" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-weight="700" font-size="18.7" fill="#1a5276">$0.61</text>
+<text x="470.0" y="254.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="7.5" fill="#7a6a4e">yr 10</text>
+<ellipse cx="118.0" cy="273.0" rx="23.8" ry="2.6" fill="#000" opacity="0.10"/>
+<rect x="116.0" y="250.2" width="3.9" height="21.8" fill="#6b5a44"/>
+<rect x="83.0" y="198.2" width="70.0" height="52.0" rx="4.2" fill="#fbf7ec" stroke="#7a1414" stroke-width="1.5"/>
+<text x="118.0" y="234.6" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-weight="700" font-size="27.0" fill="#1a5276">$0.78</text>
+<text x="118.0" y="284.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="9.4" fill="#7a6a4e">yr 5</text>
+<ellipse cx="574.0" cy="307.0" rx="33.3" ry="3.7" fill="#000" opacity="0.10"/>
+<rect x="571.3" y="274.9" width="5.5" height="31.1" fill="#6b5a44"/>
+<rect x="525.0" y="200.9" width="98.0" height="74.0" rx="5.9" fill="#fbf7ec" stroke="#7a1414" stroke-width="2.2"/>
+<text x="574.0" y="252.7" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-weight="700" font-size="38.5" fill="#1a5276">$1.00</text>
+<text x="574.0" y="318.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="13.3" fill="#7a6a4e">now</text>
+<text x="333" y="144" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-style="italic" font-size="10.5" fill="#6b6250">the future &#8594;</text>
+</svg>
+          <p class="figure-caption"><strong>Figure 1.2.</strong> Discounting as perspective. Picture driving a desert highway toward the horizon; each billboard is a dollar you have been promised &mdash; one now, and the rest at five-year intervals down the road. The far ones look smaller for exactly the reason they are worth less: distance. Here the rate is 5% a year, so the dollar due in twenty years has shrunk to about thirty-eight cents. The interest rate is simply how fast the billboards dwindle as they recede.</p>
+        </div>
+
+        <p>That is the whole idea, and the rest of the book is built on it. The price of a bond is the discounted value of its coupons and principal; the value of a stock is the discounted value of its future dividends; the return an investor demands is precisely the rate that makes a security&rsquo;s distant dollars worth its price today. So before we turn to risk and reward, keep the highway in mind: money has a time dimension, and to compare money across time is to bring it back down the road to what it is worth right here, right now.</p>
+
+        <h2>II. Finance from the Investor's Perspective</h2>
         <p>This module shifts focus from corporate decision-making to the investor's perspective. We examine how shareholders and bondholders who hold portfolios &mdash; collections of different securities &mdash; make financial decisions. The central question addressed is:</p>
         <blockquote>What rate of return will investors demand to hold a risky security?</blockquote>
 
-        <p>That single question &mdash; how much extra return investors demand as <strong>compensation for risk</strong> &mdash; runs through the whole book, and this chapter does not yet fully answer it. It takes the first steps: defining return, measuring the historical record, and naming the reward for bearing risk (the <em>risk premium</em>, Section VI). The complete answer &mdash; how the market itself sets the price of risk &mdash; is built over the chapters that follow, through diversification and the efficient frontier and the asset-pricing models beyond. Keep the question in view: nearly every tool in this text is, in the end, an attempt to answer it.</p>
+        <p>That single question &mdash; how much extra return investors demand as <strong>compensation for risk</strong> &mdash; runs through the whole book, and this chapter does not yet fully answer it. It takes the first steps: defining return, measuring the historical record, and naming the reward for bearing risk (the <em>risk premium</em>, Section VII). The complete answer &mdash; how the market itself sets the price of risk &mdash; is built over the chapters that follow, through diversification and the efficient frontier and the asset-pricing models beyond. Keep the question in view: nearly every tool in this text is, in the end, an attempt to answer it.</p>
 
-        <h2>II. Why Investors Invest</h2>
+        <h2>III. Why Investors Invest</h2>
         <p>Primary motivations for purchasing securities include savings for future needs and wealth accumulation. Some investors accept high-risk ventures, such as lottery tickets, for potential significant payoffs. Additional motivations include charitable objectives, though these generate non-economic dividends and prove difficult to evaluate systematically.</p>
 
         <style>
@@ -114,7 +243,7 @@
           .ceq-panel{background:#f5f2e8;border:1px solid #e0d6bf;border-left:4px solid #1a5276;border-radius:6px;padding:11px 16px;margin:4px 0 2px;min-height:2.2em;font-size:.95rem;line-height:1.5;color:#4a4438}
         </style>
 
-        <h2>III. Definition of Rates of Return</h2>
+        <h2>IV. Definition of Rates of Return</h2>
         <p>Return is the growth in wealth an investment produces, expressed as a percentage so that investments of any size can be compared. The basic formula measures the change in price relative to what you paid &mdash; click any part of the equation to see what it does:</p>
 
         <div class="ceq-wrap">
@@ -149,7 +278,7 @@
           <div class="ceq-panel"><em>Click the added term to see what changed.</em></div>
         </div>
 
-        <h2>IV. Arithmetic vs. Geometric Rates of Return</h2>
+        <h2>V. Arithmetic vs. Geometric Rates of Return</h2>
         <p>Over many periods there are two ways to average returns, and they answer different questions. Click through each formula to see what it is really doing:</p>
 
         <div class="ceq-wrap">
@@ -209,7 +338,7 @@
             <p style="margin-bottom:0; font-size:0.86rem; color:#6b6252;">Le Bris, D., W. N. Goetzmann, and S. Pouget. &ldquo;The Present-Value Relation over Six Centuries: The Case of the Bazacle Company.&rdquo; <em>Journal of Financial Economics</em> 132 (2019). Explore the full series in the <a href="../origins-of-the-corporation/" style="color:#1a5276;">Origins of the Corporation</a> interactive.</p>
         </aside>
 
-        <h2>V. A Century of U.S. Asset Returns</h2>
+        <h2>VI. A Century of U.S. Asset Returns</h2>
         <p>Over the full century from 1926 through 2025, a dollar invested in large-cap U.S. stocks (the S&amp;P 500 and its predecessors) grew to roughly <strong>$14,750</strong> &mdash; and a dollar in small-cap stocks to about <strong>$32,400</strong> &mdash; while a dollar in long-term government bonds grew to only about <strong>$117</strong>, and in 30-day Treasury bills to about <strong>$25</strong>. Over the same span consumer prices rose roughly eighteen-fold. The stock lines display far greater volatility than the bond lines, but the terminal-wealth difference is enormous &mdash; the power of compounding a higher average return over a long horizon.</p>
 
         <div class="note">
@@ -225,10 +354,10 @@
 
         <div class="figure">
             <img src="figures/wealth_growth.svg" alt="Growth of $1 invested in stocks vs bonds, 1926 to 2025" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 1.1.</strong> Growth of $1 invested in U.S. stocks, bonds, and Treasury bills (1926&ndash;2025, log scale). Computed from SBBI data. Stocks dramatically outperform bonds over long horizons, but with substantially greater year-to-year volatility.</p>
+            <p class="figure-caption"><strong>Figure 1.3.</strong> Growth of $1 invested in U.S. stocks, bonds, and Treasury bills (1926&ndash;2025, log scale). Computed from SBBI data. Stocks dramatically outperform bonds over long horizons, but with substantially greater year-to-year volatility.</p>
         </div>
 
-        <h2>VI. The Risk Premium</h2>
+        <h2>VII. The Risk Premium</h2>
         <p>The return differential between stocks and bonds is attributed to risk differences. "Volatility" describes the shakier performance of stocks compared to bonds. Investors are <strong>risk-averse</strong> &mdash; they prefer less risk when other factors remain equal. This motivates the concept of the <strong>risk premium</strong>: the additional return demanded for holding risky securities versus riskless alternatives like Treasury Bills.</p>
 
         <div class="equation">
@@ -304,7 +433,7 @@
         </table>
         <p style="font-size: 0.88rem; color: #999; margin-top: -12px;">Source: SBBI series, 1926&ndash;2025 (Ibbotson, <em>Exponential Wealth</em>, forthcoming 2026). High/Low columns are the best and worst single calendar-year total returns.</p>
 
-        <h2>VII. Standard Deviation as a Measure of Risk</h2>
+        <h2>VIII. Standard Deviation as a Measure of Risk</h2>
 
         <p>Standard deviation quantifies volatility mathematically as the square root of the variance. It calculates the average spread of observations around the mean:</p>
 
@@ -321,7 +450,7 @@
 
         <div class="figure">
             <img src="figures/return_distribution.svg" alt="Distribution of annual S&P 500 returns" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 1.2.</strong> Distribution of large-cap stock annual returns (1926&ndash;2025), computed from SBBI data. The histogram shows the &plusmn;1 standard deviation range containing roughly 68% of observations. Actual return distributions exhibit "fatter tails" than the normal distribution predicts.</p>
+            <p class="figure-caption"><strong>Figure 1.4.</strong> Distribution of large-cap stock annual returns (1926&ndash;2025), computed from SBBI data. The histogram shows the &plusmn;1 standard deviation range containing roughly 68% of observations. Actual return distributions exhibit "fatter tails" than the normal distribution predicts.</p>
         </div>
 
         <h3>Limitations of Standard Deviation</h3>
