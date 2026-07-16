@@ -40,6 +40,18 @@
     font-style: italic;
 }
 
+/* Chapter-head picture motif (Variant A) */
+.chapter-header.has-motif { display: flex; gap: 30px; align-items: flex-start; }
+.chapter-header .motif { flex: 0 0 184px; display: block; text-decoration: none; }
+.chapter-header .motif .box { border: 1px solid #d8ccb0; border-radius: 12px; background: #fbf7ec; padding: 14px; box-shadow: 0 2px 8px rgba(38,34,26,.07); transition: box-shadow .15s ease, transform .15s ease; }
+.chapter-header .motif:hover .box { box-shadow: 0 7px 18px rgba(38,34,26,.15); transform: translateY(-2px); }
+.chapter-header .motif svg { display: block; width: 100%; }
+.chapter-header .motif-body { flex: 1; min-width: 0; }
+@media (max-width: 560px) {
+  .chapter-header.has-motif { gap: 18px; }
+  .chapter-header .motif { flex-basis: 116px; }
+}
+
 .chapter-content {
     padding-bottom: 48px;
 }
