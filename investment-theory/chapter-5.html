@@ -79,7 +79,7 @@
           </div>
           <p class="capm-hint">&#128072; click any term to name it</p>
           <div class="capm-panel" id="capm-panel"><em>Click a term in the equation above to see what it is.</em></div>
-          <p style="margin:14px 0 4px">In any single period the security&rsquo;s <em>realized</em> return also carries a residual &mdash; the part the market does not explain:</p>
+          <p style="margin:14px 0 4px">In any single period the security&rsquo;s <em>realized</em> return also includes a residual &mdash; the part the market does not explain:</p>
           <div class="capm-eq" id="capm-eq2" style="font-size:1.7rem;margin:6px 0">
             <span class="vr">R<sub>i</sub></span>
             <span class="op">=</span>
@@ -92,7 +92,7 @@
           <p style="margin:6px 0 0;font-size:.92rem;color:#5c5344">On average that residual is zero, so taking expectations returns us to the CAPM above. How are beta and the residual actually measured? By regression &mdash; exactly what the live figure in <strong>Section V</strong> does: the slope of the fitted line is beta, and the scatter of points around it is the residual.</p>
         </div>
 
-        <p>The whole model rests on a single statistic, <strong>beta</strong>. Formally, beta is the security&rsquo;s covariance with the market divided by the market&rsquo;s variance:</p>
+        <p>The whole model relies on a single statistic, <strong>beta</strong>. Formally, beta is the security&rsquo;s covariance with the market divided by the market&rsquo;s variance:</p>
 
         <div class="equation">
             <p class="equation-label">Beta</p>
@@ -122,7 +122,7 @@
 
         <p>The risk that <em>melts away</em> as the portfolio grows is <strong>idiosyncratic risk</strong> &mdash; the residual $e_i$ from the equation above. In a large, well-diversified portfolio it becomes, in the pure model, irrelevant: it averages out, and the investor is paid nothing to bear it. The floor that remains &mdash; the risk that <em>cannot</em> be diversified away &mdash; is <strong>beta risk</strong>, the security&rsquo;s co-movement with the market. Ross&rsquo;s theorem, below, is the formal proof that only this second piece is priced.</p>
 
-        <p>One caveat lives in the fine print of that marginal argument. It sets aside the asset&rsquo;s own-variance term, $(dx)^2\,\text{var}(A)$, as negligible next to its covariance term &mdash; entirely safe for ordinary assets. But for a security with <em>extremely</em> high variance &mdash; a lottery-like payoff, or fat, near-undefined tails &mdash; that own-variance term need not vanish, and the marginal conclusion can fail. Idiosyncratic risk stops being negligible, and such an asset can matter to a portfolio in its own right. The CAPM&rsquo;s clean verdict that only beta is priced is a statement about the well-behaved, marginal case.</p>
+        <p>One caveat lies in the fine print of that marginal argument. It sets aside the asset&rsquo;s own-variance term, $(dx)^2\,\text{var}(A)$, as negligible next to its covariance term &mdash; entirely safe for ordinary assets. But for a security with <em>extremely</em> high variance &mdash; a lottery-like payoff, or fat, near-undefined tails &mdash; that own-variance term need not vanish, and the marginal conclusion can fail. Idiosyncratic risk stops being negligible, and such an asset can matter to a portfolio in its own right. The CAPM&rsquo;s clean verdict that only beta is priced is a statement about the well-behaved, marginal case.</p>
 
         <details class="deriv">
           <summary>Where does this come from? Ross&rsquo;s derivation (optional)</summary>
@@ -190,7 +190,7 @@
               $$\beta_i \;<\; 1 - \frac{\Delta x}{2}\left(\frac{\text{var}(i)}{\text{var}(p)} - 1\right)$$
           </div>
 
-          <p>For an infinitesimal trade ($\Delta x \to 0$) this is just the familiar $\beta_i < 1$. But the own-variance term reasserts itself for larger positions. Setting $\Delta x = \tfrac{1}{2}$ gives $\beta_i + \tfrac{1}{4}\,\dfrac{\text{var}(i)}{\text{var}(p)} < \tfrac{5}{4}$; with $\sigma_i = 40\%$ and $\sigma_p = 20\%$ (a variance ratio of 4), the threshold tightens all the way to $\beta_i < \tfrac{1}{4}$. A very high-variance asset must carry a much <em>lower</em> beta before it earns a place &mdash; the CAPM&rsquo;s &ldquo;only beta matters&rdquo; verdict is really the small-trade limit.</p>
+          <p>For an infinitesimal trade ($\Delta x \to 0$) this is just the familiar $\beta_i < 1$. But the own-variance term reasserts itself for larger positions. Setting $\Delta x = \tfrac{1}{2}$ gives $\beta_i + \tfrac{1}{4}\,\dfrac{\text{var}(i)}{\text{var}(p)} < \tfrac{5}{4}$; with $\sigma_i = 40\%$ and $\sigma_p = 20\%$ (a variance ratio of 4), the threshold tightens all the way to $\beta_i < \tfrac{1}{4}$. A very high-variance asset must have a much <em>lower</em> beta before it earns a place &mdash; the CAPM&rsquo;s &ldquo;only beta matters&rdquo; verdict is really the small-trade limit.</p>
 
           <div class="figure">
             <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
