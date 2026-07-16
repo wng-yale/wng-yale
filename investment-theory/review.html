@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary Review Notes — W. N. Goetzmann</title>
+    <title>Review: The Six Pictures — W. N. Goetzmann</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -12,6 +12,76 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    <style>
+        .review-intro { margin: 1.4rem 0 2.4rem; }
+        .review-intro .lede { font-size: 1.08rem; }
+
+        .pic-review {
+            background: #fbf7ec;
+            border: 1px solid #e3d9c2;
+            border-left: 4px solid #b9770e;
+            border-radius: 6px;
+            padding: 1.4rem 1.6rem 1.2rem;
+            margin: 1.8rem 0;
+        }
+        .pr-head { display: flex; align-items: center; gap: 1rem; margin-bottom: .4rem; }
+        .pr-icon { flex: 0 0 76px; width: 76px; height: 52px; }
+        .pr-icon svg { width: 100%; height: 100%; }
+        .pr-head h2 { margin: 0; border: none; padding: 0; font-size: 1.32rem; }
+        .pr-figs { margin: .1rem 0 0; font-family: 'Inter', sans-serif; font-size: .78rem;
+                   letter-spacing: .04em; text-transform: uppercase; color: #9a8c6d; }
+        .pr-says { margin: .3rem 0 .9rem; }
+        .pr-says .lead { color: #7a1414; font-variant: small-caps; letter-spacing: .02em; font-weight: 600; }
+
+        details.pr-algebra { margin: .2rem 0 1.1rem; border-top: 1px dotted #d8ccb0; padding-top: .4rem; }
+        details.pr-algebra > summary {
+            cursor: pointer; font-family: 'Inter', sans-serif; font-size: .82rem;
+            color: #6a7f92; letter-spacing: .03em; list-style: none; user-select: none;
+        }
+        details.pr-algebra > summary::before { content: "▸ "; color: #b9770e; }
+        details.pr-algebra[open] > summary::before { content: "▾ "; }
+        details.pr-algebra > summary::-webkit-details-marker { display: none; }
+        details.pr-algebra .algebra-body { font-size: .95rem; color: #4a4436; padding: .2rem .2rem 0; }
+
+        .puzzle {
+            background: #f3ecd9;
+            border: 1px solid #e3d9c2;
+            border-radius: 5px;
+            padding: .9rem 1.1rem .7rem;
+            margin: .8rem 0;
+        }
+        .puzzle .q { margin: 0 0 .2rem; }
+        .puzzle .q .tag {
+            font-family: 'Inter', sans-serif; font-size: .72rem; font-weight: 600;
+            letter-spacing: .06em; text-transform: uppercase; color: #b9770e;
+            display: inline-block; margin-right: .5rem;
+        }
+        .puzzle details.answer { margin-top: .3rem; }
+        .puzzle details.answer > summary {
+            cursor: pointer; font-family: 'Inter', sans-serif; font-size: .84rem; font-weight: 600;
+            color: #1a5276; list-style: none; user-select: none; display: inline-block;
+            padding: .12rem 0;
+        }
+        .puzzle details.answer > summary::before { content: "＋ Show answer"; }
+        .puzzle details.answer[open] > summary::before { content: "－ Hide answer"; }
+        .puzzle details.answer > summary { font-size: 0; }
+        .puzzle details.answer > summary::before { font-size: .84rem; }
+        .puzzle details.answer > summary::-webkit-details-marker { display: none; }
+        .puzzle .answer-body { margin: .35rem 0 .2rem; padding-left: .9rem;
+                               border-left: 2px solid #b9770e; color: #3a352a; font-size: .97rem; }
+        .fig-link {
+            display: inline-block; margin-top: .25rem; font-family: 'Inter', sans-serif;
+            font-size: .82rem; font-weight: 500; color: #b9770e; text-decoration: none;
+        }
+        .fig-link:hover { text-decoration: underline; }
+        details.eq-appendix > summary {
+            cursor: pointer; font-weight: 600; color: #1a5276; margin: 1rem 0;
+        }
+        @media (max-width: 520px) {
+            .pr-head { flex-wrap: wrap; }
+            .pr-icon { flex-basis: 60px; width: 60px; height: 42px; }
+        }
+    </style>
 </head>
 <body class="chapter-page">
 
@@ -28,153 +98,357 @@
 <article class="chapter">
     <header class="chapter-header">
         <p class="chapter-label">Review</p>
-        <h1>Summary Review Notes</h1>
-        <p class="chapter-deck">Condensed review of all chapters -- key concepts, equations, and takeaways for exam preparation.</p>
+        <h1>Reviewing the Six Pictures</h1>
+        <p class="chapter-deck">A review of the whole book organized around its six master pictures &mdash; what each one says, the algebra beneath it, and a set of puzzles that test whether you can reason with the figure.</p>
     </header>
 
     <div class="chapter-content">
 
-        <h2>Chapter I: Capital Markets and Investment Performance</h2>
+        <div class="review-intro">
+            <p class="lede">The book makes a strong claim: six pictures hold the working core of investment theory. This review is organized around those six, not the eleven chapters. For each picture there is a short statement of what it says, the algebra that defines it &mdash; set aside, for the reader who wants it &mdash; and a set of puzzles.</p>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p><strong>Geometric vs. arithmetic returns</strong> -- Geometric returns reflect actual compound growth; arithmetic returns are useful for statistical modeling. Historical capital market data (Ibbotson Associates, 1926-1995). The <strong>equity premium</strong> averaged approximately 8.5% (arithmetic). Standard deviation as the primary measure of volatility.</p>
+            <p>The puzzles matter more than the equations. Knowing the formula for a bond&rsquo;s duration is like knowing the firing order of an engine&rsquo;s cylinders: useful to a mechanic, unnecessary to a driver. What a driver needs is to know how the machine behaves &mdash; what it does when you turn the wheel, when it will and will not respond, and what it cannot do at all. The pictures are the driver&rsquo;s knowledge. Each puzzle asks you to predict how a figure behaves when its inputs change, what it makes possible, and what it rules out. Where the answer is best found by experiment, follow the link back to the live figure and push on it yourself.</p>
         </div>
 
-        <div class="equation">
-            <p class="equation-label">Basic Return Formula</p>
-            $$R_t = \frac{P_{t+1} - P_t + D_t}{P_t}$$
-        </div>
+        <!-- ============ PICTURE 1 ============ -->
+        <section class="pic-review">
+            <div class="pr-head">
+                <div class="pr-icon">
+                    <svg viewBox="0 0 220 150" role="img" aria-label="Compound growth curve">
+                        <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <path d="M30 124 C 92 121, 128 108, 158 80 C 182 58 196 38 204 20 L 204 126 L 30 126 Z" fill="#b9770e" opacity="0.14"/>
+                        <path d="M30 124 C 92 121, 128 108, 158 80 C 182 58 196 38 204 20" fill="none" stroke="#1a5276" stroke-width="4"/>
+                        <circle cx="30" cy="124" r="5" fill="#b9770e"/>
+                        <circle cx="204" cy="20" r="5.5" fill="#1a5276"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Picture 1 &middot; Compound Growth</h2>
+                    <p class="pr-figs">Chapter I &nbsp;·&nbsp; Figures 1.2, 1.6</p>
+                </div>
+            </div>
 
-        <h2>Chapter II: The Efficient Frontier</h2>
+            <p class="pr-says"><span class="lead">What it says.</span> A dollar today is worth more than a dollar tomorrow, because a dollar today can be invested and grown. Present value runs that logic backward: the worth today of a future sum is that sum discounted by the return it would otherwise earn. Compounding and discounting are one curve traced in two directions.</p>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p><strong>Risk and return</strong> -- the fundamental trade-off. Correlation between assets determines diversification benefits. The <strong>efficient frontier</strong> is the set of portfolios offering maximum return for each level of risk. Adding a riskless asset creates the <strong>Capital Allocation Line</strong>.</p>
-        </div>
+            <details class="pr-algebra">
+                <summary>The algebra</summary>
+                <div class="algebra-body">
+                    <p>$$FV = PV\,(1+r)^t \qquad\qquad PV = \frac{FV}{(1+r)^t}$$</p>
+                    <p>Present value of a level income of $C$ per year, for $T$ years and forever:</p>
+                    <p>$$PV = \frac{C}{r}\left[1-(1+r)^{-T}\right] \qquad PV_\infty = \frac{C}{r}$$</p>
+                </div>
+            </details>
 
-        <div class="equation">
-            <p class="equation-label">Portfolio Variance (Two Assets)</p>
-            $$\sigma_p^2 = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1 w_2 \rho_{12}\sigma_1\sigma_2$$
-        </div>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>At 6 percent, a dollar due in ten years is worth about 56 cents today. Is a dollar due in twenty years worth half of that &mdash; 28 cents?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">No &mdash; it is worth about 31 cents, more than half. Discounting is exponential, not linear: each additional decade multiplies value by the same factor, $1.06^{-10}\approx0.558$, so twenty years gives $0.558^2\approx0.31$, not $0.558/2$. The curve bends. Equal steps in <em>time</em> make equal <em>proportional</em> cuts, never equal absolute ones &mdash; which is why distant cash flows are worth so little, and why the discount curve falls steeply at first and then flattens.</div>
+                </details>
+                <a class="fig-link" href="chapter-1.html#tm-chart">Open the figure &rarr;</a>
+            </div>
 
-        <h2>Chapter III: Investor Preferences and the Tangency Portfolio</h2>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Applied</span>You want to stop working in twenty years and then draw 300,000 dollars a year, indefinitely, from your savings. If your investments earn 6 percent, how large a sum invested today would fund that?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">About 1.56 million dollars, in two applications of the same picture. First size the nest egg: to pay 300,000 a year forever at 6 percent you need a fund of $300{,}000 / 0.06 = 5{,}000{,}000$ dollars <em>at the moment you retire</em> (a perpetuity). Then bring that future sum to the present: discount five million back twenty years, $5{,}000{,}000 / 1.06^{20} = 5{,}000{,}000 / 3.207 \approx 1{,}559{,}000$ dollars. A perpetuity to size the fund, a discount factor to price it today. (If you mean to draw the income for a fixed retirement of, say, thirty years rather than forever, replace the perpetuity with the annuity factor and the required fund falls.)</div>
+                </details>
+                <a class="fig-link" href="chapter-1.html#tm-chart">Open the figure &rarr;</a>
+            </div>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p><strong>Iso-utility curves</strong> represent investor preferences over risk and return. The <strong>shortfall approach</strong> and <strong>Sharpe ratio</strong> provide practical criteria for portfolio selection. The <strong>tangency portfolio</strong> is the optimal risky portfolio -- the point where the Capital Allocation Line is tangent to the efficient frontier.</p>
-        </div>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>Your investments will not earn exactly 6 percent each year; returns wander. How would you put a range around the nest egg &mdash; and why does a longer horizon make the <em>average</em> return more certain but the <em>ending wealth</em> less so?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">This is the chapter&rsquo;s second figure, the trumpet and the tulip. Model each year&rsquo;s return as random with mean $\mu$ and standard deviation $\sigma$. The <em>average</em> annual return over $T$ years has a standard deviation of $\sigma/\sqrt{T}$: it narrows as the horizon grows &mdash; the tulip closing. But <em>accumulated</em> wealth compounds those deviations, and its spread widens with the horizon, roughly $\sigma\sqrt{T}$ in log terms &mdash; the trumpet flaring open. So time sharpens your estimate of the long-run average and widens the range of the actual outcome. At $\sigma=18\%$ over twenty years the log-wealth spread is near $0.18\sqrt{20}\approx0.80$, a wide band. Plan against the band, not the midpoint.</div>
+                </details>
+                <a class="fig-link" href="chapter-1.html#tt-chart">Open the figure &rarr;</a>
+            </div>
+        </section>
 
-        <div class="equation">
-            <p class="equation-label">Sharpe Ratio</p>
-            $$S = \frac{E[R_p] - R_f}{\sigma_p}$$
-        </div>
+        <!-- ============ PICTURE 2 ============ -->
+        <section class="pic-review">
+            <div class="pr-head">
+                <div class="pr-icon">
+                    <svg viewBox="0 0 220 150" role="img" aria-label="Efficient frontier">
+                        <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <g fill="#b7a988"><circle cx="120" cy="44" r="3"/><circle cx="150" cy="38" r="3"/><circle cx="96" cy="60" r="3"/><circle cx="140" cy="92" r="3"/><circle cx="172" cy="98" r="3"/><circle cx="106" cy="98" r="3"/></g>
+                        <path d="M50 72 C 60 50 120 26 199 20" fill="none" stroke="#1a5276" stroke-width="4"/>
+                        <path d="M50 72 C 70 96 140 116 199 124" fill="none" stroke="#1a5276" stroke-width="2.4" stroke-dasharray="4 3" opacity="0.5"/>
+                        <circle cx="50" cy="72" r="5" fill="#7a1414"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Picture 2 &middot; Risk &amp; Return</h2>
+                    <p class="pr-figs">Chapter II &nbsp;·&nbsp; The Efficient Frontier</p>
+                </div>
+            </div>
 
-        <h2>Chapter IV: The Capital Asset Pricing Model</h2>
+            <p class="pr-says"><span class="lead">What it says.</span> Combining assets that do not move in lockstep produces portfolios with less risk than their parts, or more return for the same risk. The set of best such combinations is the efficient frontier. Diversification is the one gain in finance available without a matching cost.</p>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p>The <strong>tangency portfolio equals the market portfolio</strong> in equilibrium (all investors hold the same risky portfolio). The <strong>CAPM equilibrium</strong>: expected return is a linear function of beta. The <strong>"Birthday Cake" proof</strong> demonstrates that the market portfolio must be the tangency portfolio when all investors hold mean-variance optimal portfolios.</p>
-        </div>
+            <details class="pr-algebra">
+                <summary>The algebra</summary>
+                <div class="algebra-body">
+                    <p>$$\sigma_p^2 = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2\,w_1 w_2\,\rho_{12}\,\sigma_1\sigma_2$$</p>
+                    <p>The cross term, through the correlation $\rho_{12}$, is where diversification acts.</p>
+                </div>
+            </details>
 
-        <div class="equation">
-            <p class="equation-label">The CAPM</p>
-            $$E[R_i] = R_f + \beta_i\left(E[R_m] - R_f\right)$$
-        </div>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>Two assets have the same expected return and the same volatility. As you blend them, when does the blend have <em>lower</em> risk than either one alone &mdash; and what does the frontier look like if they are perfectly correlated?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">Whenever their correlation is below 1. The cross term $2w_1w_2\rho\sigma_1\sigma_2$ shrinks as $\rho$ falls, so a 50/50 blend has variance below the average of the two whenever $\rho<1$; at $\rho=0$ risk drops fastest, and at $\rho=-1$ a blend can reach zero risk. At $\rho=+1$ there is no benefit at all: the frontier collapses to a straight line between the two points, and blending merely averages their risk. Diversification works on <em>correlation</em>, not on volatility.</div>
+                </details>
+                <a class="fig-link" href="chapter-2.html">Open the figure &rarr;</a>
+            </div>
 
-        <h2>Chapter V: Further Explorations of the CAPM</h2>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>You hold $n$ assets, each with the same volatility $\sigma$, in equal weights. How fast does portfolio risk fall as $n$ grows &mdash; and does it fall all the way to zero?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">If the returns are independent, portfolio variance is $\sigma^2/n$, so its standard deviation is $\sigma/\sqrt{n}$. Risk falls, but with diminishing speed: going from 1 to 4 assets halves it; halving again needs 16. And it does not reach zero if the assets share a common source of risk &mdash; a market factor. Averaging removes only the independent part of each return; the shared part survives no matter how many you add. That surviving remainder is <em>systematic</em> risk, and it is the subject of the next picture.</div>
+                </details>
+                <a class="fig-link" href="chapter-2.html">Open the figure &rarr;</a>
+            </div>
+        </section>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p><strong>Correlations drive attractiveness of a stock</strong> -- low correlation with the market portfolio means the asset shifts the frontier favorably. The <strong>Security Market Line</strong> plots expected return against beta. Beta is the sole risk measure: $\beta = \text{cov}(R_i, R_m)/\text{var}(R_m)$. Only systematic risk is priced.</p>
-        </div>
+        <!-- ============ PICTURE 3 ============ -->
+        <section class="pic-review">
+            <div class="pr-head">
+                <div class="pr-icon">
+                    <svg viewBox="0 0 220 150" role="img" aria-label="Security market line">
+                        <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="104" x2="204" y2="34" stroke="#1a5276" stroke-width="4"/>
+                        <circle cx="26" cy="104" r="5" fill="#b9770e"/>
+                        <line x1="140" y1="60" x2="140" y2="42" stroke="#1e8b3a" stroke-width="2" stroke-dasharray="3 2"/>
+                        <circle cx="140" cy="42" r="5" fill="#1e8b3a"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Picture 3 &middot; The Price of Risk</h2>
+                    <p class="pr-figs">Chapters IV&ndash;VI &nbsp;·&nbsp; The Security Market Line</p>
+                </div>
+            </div>
 
-        <div class="equation">
-            <p class="equation-label">Beta</p>
-            $$\beta_i = \frac{\text{cov}(R_i, R_m)}{\text{var}(R_m)} = \frac{\rho_{i,m}\,\sigma_i}{\sigma_m}$$
-        </div>
+            <p class="pr-says"><span class="lead">What it says.</span> In equilibrium every investor holds the same risky portfolio &mdash; the market &mdash; levered up or down with the riskless asset. An asset&rsquo;s expected return then depends on one thing: how much it adds to the risk of that market portfolio, measured by its beta. The Security Market Line plots that relation. Risk you can diversify away earns nothing; only systematic risk is priced.</p>
 
-        <h2>Chapter VI: The Arbitrage Pricing Theory</h2>
+            <details class="pr-algebra">
+                <summary>The algebra</summary>
+                <div class="algebra-body">
+                    <p>$$E[R_i] = R_f + \beta_i\,(E[R_m]-R_f), \qquad \beta_i = \frac{\mathrm{cov}(R_i,R_m)}{\mathrm{var}(R_m)}$$</p>
+                    <p>With several priced sources of risk (the Arbitrage Pricing Theory):</p>
+                    <p>$$E[R_i] = R_f + \sum_k \beta_{i,k}\,\lambda_k$$</p>
+                </div>
+            </details>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p>The <strong>APT</strong> allows multiple sources of systematic risk. <strong>Arbitrage in expectations</strong>: if a security deviates from the SML, investors exploit the mispricing by going long the underpriced asset and shorting a same-beta portfolio. Multi-factor model: $E[R_i] = R_f + \sum_k \beta_{i,k}\lambda_k$. Chen, Roll, and Ross identified macro factors: inflation, GNP, investor confidence, yield curve shifts.</p>
-        </div>
+            <div class="puzzle">
+                <p class="q"><span class="tag">When to use which</span>An adviser is building a client&rsquo;s portfolio. When is the right tool the Markowitz frontier of Picture 2, and when is it the CAPM of Picture 3?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">They answer different questions. Markowitz answers <em>how to allocate</em>: given the means, variances, and every pairwise covariance among the assets under consideration, it finds the best whole portfolio. It is demanding of inputs, and it is the tool for constructing an allocation. The CAPM answers <em>what one asset should earn</em>: given only its beta to the market, it gives the return the asset must offer to belong in a diversified portfolio &mdash; and so a benchmark for whether the asset is cheap or dear. Use Markowitz to build the portfolio; use the CAPM to price a marginal addition to it, to set a hurdle rate for a project, or to judge a manager&rsquo;s return against the risk taken. Markowitz needs the whole covariance matrix; the CAPM reduces it to a single number, because in its world everyone already holds the market.</div>
+                </details>
+                <a class="fig-link" href="chapter-5.html#capm-panel">Open the figure &rarr;</a>
+            </div>
 
-        <h2>Chapter VII: Where Do Betas Come From?</h2>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Applied</span>You believe a stock is underpriced &mdash; it sits above the Security Market Line. How do you capture that mispricing without betting on which way the market goes?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">The stock&rsquo;s return is its beta times the market, plus a stock-specific part, plus the mispricing. Buy the stock, and short a position with the same beta &mdash; the market index, or index futures, in the amount $\beta$ per dollar of stock. The two market exposures cancel, leaving a position with roughly zero beta whose return is the mispricing (the alpha) plus the stock&rsquo;s idiosyncratic noise. You now hold a bet on the stock being right, not on the market&rsquo;s direction. This is arbitrage in expectations &mdash; the trade that pushes prices back onto the line.</div>
+                </details>
+                <a class="fig-link" href="chapter-5.html#capm-panel">Open the figure &rarr;</a>
+            </div>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p><strong>Beta estimation via regression</strong> of security returns on market returns (typically 60 months). <strong>Leverage increases equity beta:</strong> $\beta_{\text{equity}} = \beta_{\text{asset}} \times (D+E)/E$. <strong>Unlevering</strong> to find asset beta from comparable firms, then <strong>relevering</strong> to your own capital structure. Application to <strong>project valuation</strong>, <strong>M&amp;A</strong>, and <strong>capital budgeting</strong> -- each project should use its own beta, not the company-wide cost of capital.</p>
-        </div>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>You run that same hedged trade on many different underpriced stocks. What happens to the risk of the whole book as you add more positions?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">Each hedged position holds only its own idiosyncratic risk, and those are largely independent across unrelated stocks. Averaging $n$ of them shrinks the book&rsquo;s risk as $\sigma/\sqrt{n}$, while the expected mispricing profit stays intact. With enough independent positions the idiosyncratic risk nearly disappears, and what remains is a small, almost riskless return above the riskless rate. That is the engine of the Arbitrage Pricing Theory: the mere possibility of building such a portfolio forces the mispricings to vanish, which is why, in a competitive market, assets sit on the line to begin with. The limits are real &mdash; positions are never perfectly independent, shorting has costs, and &ldquo;underpriced&rdquo; may simply be wrong &mdash; which is why the profits are small and hard-won.</div>
+                </details>
+                <a class="fig-link" href="chapter-6.html">Open the figure &rarr;</a>
+            </div>
+        </section>
 
-        <div class="equation">
-            <p class="equation-label">Unlevering / Relevering</p>
-            $$\beta_{\text{asset}} = \frac{E}{D+E}\,\beta_{\text{equity}} \qquad \Longleftrightarrow \qquad \beta_{\text{equity}} = \beta_{\text{asset}} \times \frac{D+E}{E}$$
-        </div>
+        <!-- ============ PICTURE 4 ============ -->
+        <section class="pic-review">
+            <div class="pr-head">
+                <div class="pr-icon">
+                    <svg viewBox="0 0 220 150" role="img" aria-label="Booms and crashes converging">
+                        <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="100" y1="20" x2="100" y2="126" stroke="#b7a988" stroke-width="1.2" stroke-dasharray="4 3"/>
+                        <path d="M30 30 C 60 40 84 60 100 74 C 128 78 166 74 205 72" fill="none" stroke="#c0392b" stroke-width="3.4"/>
+                        <path d="M30 118 C 60 110 84 92 100 74 C 128 70 166 70 205 66" fill="none" stroke="#1e8b3a" stroke-width="3.4"/>
+                        <circle cx="100" cy="74" r="5" fill="#26221a"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Picture 4 &middot; Market Efficiency</h2>
+                    <p class="pr-figs">Chapter VIII &nbsp;·&nbsp; Figures 8.1, 8.4, 8.5</p>
+                </div>
+            </div>
 
-        <h2>Chapter VIII: Information and Market Efficiency</h2>
+            <p class="pr-says"><span class="lead">What it says.</span> A price in a competitive market already reflects what is known. New information moves it at once; old information cannot predict its next move, so prices wander like a random walk. The practical consequence: beating the market reliably from public information is very hard.</p>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p><strong>Market efficiency</strong>: how rapidly information embeds in prices. Three forms: <strong>Weak</strong> (past prices), <strong>Semi-Strong</strong> (all public info), <strong>Strong</strong> (all info including private). Evidence: event studies show rapid adjustment; professional managers show no consistent outperformance; daily momentum exists but is not profitably exploitable. <strong>Random walk</strong> approximation holds for liquid markets. Efficient markets benefit investors through price stability, reduced search costs, and liquidity.</p>
-        </div>
+            <details class="pr-algebra">
+                <summary>The algebra</summary>
+                <div class="algebra-body">
+                    <p>The random walk has no formula so much as a signature. Over $t$ periods the variance of the cumulative return grows in proportion to $t$, so its standard deviation grows as $\sqrt{t}$ &mdash; the same square-root law as the trumpet of Picture 1. Independent increments, no memory, no predictable drift to trade on.</p>
+                </div>
+            </details>
 
-        <h2>Chapter IX: Long-Term Corporate Financing</h2>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>In the excess-of-market panels, industries that had boomed and industries that had crashed both settle onto the same flat path after the event. What would the picture look like if the market were <em>not</em> efficient &mdash; and what could you do about it?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">The two lines would stay apart afterward: past winners continuing to beat the market, or past losers continuing to lag, visibly and in advance. That persistent gap would be a trading rule &mdash; buy the group that keeps winning &mdash; earning a reliable excess return. The fact that the lines converge and then run flat says the earlier boom or crash was already in the price, with no leftover drift to trade on. Efficiency <em>is</em> the absence of the gap.</div>
+                </details>
+                <a class="fig-link" href="chapter-8.html#fig-bubbles">Open the figure &rarr;</a>
+            </div>
 
-        <div class="key-concept">
-            <h4>Core Topics</h4>
-            <p>Two primary approaches: <strong>Selling ownership</strong> (stocks, warrants) and <strong>Borrowing</strong> (bonds, preferred shares). The <strong>life cycle of stock</strong>: design, IPO, exchange trading. Bond features: coupon, maturity, covenants, callability, sinking funds. <strong>Preferred shares</strong>: non-voting, senior to equity, fixed dividends. <strong>Warrants</strong>: right to purchase shares at a fixed price over a fixed period.</p>
-        </div>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>In the merger event study, the cumulative return climbs steeply <em>before</em> the announcement and goes flat <em>after</em> it. Why that shape, and what does each half tell you?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">The jump on the announcement day and the flatness after it are efficiency at work: public news is absorbed at once, leaving no drift. The climb before the announcement is the revealing part &mdash; private information reaching the market ahead of the news, through the trading of those who already knew. The picture separates the two: the market is efficient with respect to <em>public</em> information while being moved, in advance, by information that is not yet public.</div>
+                </details>
+                <a class="fig-link" href="chapter-8.html#fig-event">Open the figure &rarr;</a>
+            </div>
 
-        <h2>Key Equations Reference</h2>
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>The share of active funds that the index beats rises the longer the horizon you measure. Why should time make the index harder to beat?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">Three forces compound. Skill is rare, so few managers have a genuine edge. Luck averages out over time, steadily exposing the merely lucky. And costs &mdash; fees and trading &mdash; subtract every year and accumulate. Even before costs, active management is close to a zero-sum game among professionals; after costs the average active dollar must trail the index, and the more surely the longer you wait.</div>
+                </details>
+                <a class="fig-link" href="chapter-8.html#spiva-chart">Open the figure &rarr;</a>
+            </div>
+        </section>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Concept</th>
-                    <th>Equation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Return</td>
-                    <td>$R_t = (P_{t+1} - P_t + D_t)/P_t$</td>
-                </tr>
-                <tr>
-                    <td>Portfolio variance</td>
-                    <td>$\sigma_p^2 = \sum_i \sum_j w_i w_j \sigma_{ij}$</td>
-                </tr>
-                <tr>
-                    <td>Sharpe ratio</td>
-                    <td>$S = (E[R_p] - R_f)/\sigma_p$</td>
-                </tr>
-                <tr>
-                    <td>CAPM</td>
-                    <td>$E[R_i] = R_f + \beta_i(E[R_m] - R_f)$</td>
-                </tr>
-                <tr>
-                    <td>Beta</td>
-                    <td>$\beta_i = \text{cov}(R_i, R_m)/\text{var}(R_m)$</td>
-                </tr>
-                <tr>
-                    <td>APT (K factors)</td>
-                    <td>$E[R_i] = R_f + \sum_k \beta_{i,k}\lambda_k$</td>
-                </tr>
-                <tr>
-                    <td>Unlever beta</td>
-                    <td>$\beta_{\text{asset}} = [E/(D+E)]\,\beta_{\text{equity}}$</td>
-                </tr>
-                <tr>
-                    <td>Growing perpetuity</td>
-                    <td>$P = \text{CF}/(R - g)$</td>
-                </tr>
-                <tr>
-                    <td>Discount rate from P/E</td>
-                    <td>$R = 1/(P/E) + g$</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- ============ PICTURE 5 ============ -->
+        <section class="pic-review">
+            <div class="pr-head">
+                <div class="pr-icon">
+                    <svg viewBox="0 0 220 150" role="img" aria-label="Option payoff hockey stick">
+                        <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="110" x2="205" y2="110" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="118" y1="110" x2="118" y2="126" stroke="#b9770e" stroke-width="1.4" stroke-dasharray="3 2"/>
+                        <path d="M30 110 L 118 110 L 200 38" fill="none" stroke="#1a5276" stroke-width="4"/>
+                        <path d="M30 108 C 78 105, 106 99, 118 92 C 140 78, 178 50, 200 36" fill="none" stroke="#b9770e" stroke-width="2.6" opacity="0.92"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Picture 5 &middot; The Payoff</h2>
+                    <p class="pr-figs">Chapter IX &nbsp;·&nbsp; Figures 9.1, 9.3</p>
+                </div>
+            </div>
+
+            <p class="pr-says"><span class="lead">What it says.</span> An option&rsquo;s payoff is bent &mdash; a straight line above the strike, flat below it, meeting at a kink where the right to choose becomes worth exercising. That bend gives an option its defining property: it responds to gains and losses asymmetrically, so its value rises with the volatility of whatever it is written on. The same bent payoff appears wherever a claim is contingent &mdash; including inside a firm&rsquo;s own capital structure.</p>
+
+            <details class="pr-algebra">
+                <summary>The algebra</summary>
+                <div class="algebra-body">
+                    <p>$$\text{Call payoff} = \max(S-K,\,0)$$</p>
+                    <p>Put&ndash;call parity, and the firm as an option:</p>
+                    <p>$$C - P = S - K e^{-rT}, \qquad \text{Equity} = \text{a call on the firm&rsquo;s assets struck at the face of its debt.}$$</p>
+                </div>
+            </details>
+
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>Hold a firm&rsquo;s assets fixed and raise their volatility. What happens to the value of its equity, and to its debt &mdash; and why does that set shareholders and bondholders at odds?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">Equity is a call on the firm&rsquo;s assets, struck at the debt&rsquo;s face value, so its value rises with volatility: more upside for shareholders, while limited liability caps their downside at zero. The firm&rsquo;s total value is fixed, so what the equity gains the debt loses &mdash; the debt is the assets minus that call, or a safe bond minus a put. Higher volatility therefore transfers value from creditors to shareholders. That is why the shareholders of a troubled firm may favor risky gambles their creditors would refuse, and why debt contracts contain covenants to restrain them.</div>
+                </details>
+                <a class="fig-link" href="chapter-9.html#ed-chart">Open the figure &rarr;</a>
+            </div>
+
+            <div class="puzzle">
+                <p class="q"><span class="tag">Applied</span>You own a stock and fear it will fall, but you do not want to sell. What option position protects you, and what does the combined payoff look like?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">Buy a put struck at the floor you can accept. Below the strike, every dollar the stock loses the put gains, so the combined payoff is flat &mdash; a floor. Above the strike the put expires worthless and you keep the stock&rsquo;s gains, less the premium you paid. Stock plus a put has the bent payoff of a call, shifted down by the premium: that is put&ndash;call parity, and it is why insurance and optionality are the same shape.</div>
+                </details>
+                <a class="fig-link" href="chapter-9.html#po-chart">Open the figure &rarr;</a>
+            </div>
+
+            <div class="puzzle">
+                <p class="q"><span class="tag">Applied</span>You buy a call struck at 50 for a premium of 4. Above what stock price do you make money, and how much can you lose?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">You profit above 54 &mdash; the strike plus the premium &mdash; where the payoff $\max(S-50,0)$ finally exceeds what you paid. Your loss is largest, and fixed, at any price of 50 or below: the call expires worthless and you lose the whole 4, never more. The premium slides the payoff line down by 4; the flat floor is the most an option buyer can lose, which is the asymmetry the whole picture is about.</div>
+                </details>
+                <a class="fig-link" href="chapter-9.html#po-chart">Open the figure &rarr;</a>
+            </div>
+        </section>
+
+        <!-- ============ PICTURE 6 ============ -->
+        <section class="pic-review">
+            <div class="pr-head">
+                <div class="pr-icon">
+                    <svg viewBox="0 0 220 150" role="img" aria-label="Bond price versus yield with duration tangent">
+                        <line x1="26" y1="126" x2="205" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="26" y1="18" x2="26" y2="126" stroke="#d8ccb0" stroke-width="1.5"/>
+                        <line x1="58" y1="65" x2="146" y2="115" stroke="#b9770e" stroke-width="2.6"/>
+                        <path d="M30 28 C 70 62 110 92 150 110 C 172 119 190 122 202 124" fill="none" stroke="#1a5276" stroke-width="4"/>
+                        <circle cx="102" cy="90" r="5" fill="#7a1414"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2>Picture 6 &middot; Bond Duration</h2>
+                    <p class="pr-figs">Chapter XI &nbsp;·&nbsp; Figures 11.3, 11.4, 11.5</p>
+                </div>
+            </div>
+
+            <p class="pr-says"><span class="lead">What it says.</span> A bond is a fixed set of future payments, so its price is those payments discounted at the market rate. Plotted against the rate, the price falls and bows upward &mdash; a convex curve. Its slope is duration, the bond&rsquo;s sensitivity to small rate moves; its curvature is convexity, which makes the bond fall less and rise more than duration alone predicts. Default risk adds a second dimension: the promised yield exceeds the yield you can expect to receive.</p>
+
+            <details class="pr-algebra">
+                <summary>The algebra</summary>
+                <div class="algebra-body">
+                    <p>$$P = \sum_t \frac{C_t}{(1+y)^t}, \qquad D = -\frac{1}{P}\frac{dP}{dy}$$</p>
+                    <p>Price change for a yield move $\Delta y$, to second order:</p>
+                    <p>$$\frac{\Delta P}{P} \approx -D\,\Delta y + \tfrac{1}{2}\,\text{(convexity)}\,(\Delta y)^2$$</p>
+                </div>
+            </details>
+
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>You hedge a bond so that a duration match cancels its response to a rate change. For a tiny move the hedge holds; for a large move it does not. Why &mdash; and does the leftover work for you or against you?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">Duration is the slope of the price&ndash;yield curve at today&rsquo;s rate &mdash; the tangent line. A duration hedge cancels that slope, so a small move leaves you flat. But the true curve bows <em>above</em> its tangent everywhere, so for a large move in either direction the actual price is higher than the straight-line hedge predicts. That gap is convexity, and it works <em>for</em> the holder of the bond: the position gains a little whichever way rates jump. This is why convexity is valuable, and why investors pay for it.</div>
+                </details>
+                <a class="fig-link" href="chapter-11.html#d1-chart">Open the figure &rarr;</a>
+            </div>
+
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>The yield curve inverts &mdash; the ten-year rate falls below the two-year. What is the market saying about the future, and why is this watched as a recession signal?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">A long rate is, roughly, an average of the short rates expected over its life. For the ten-year to sit below the two-year, the market must expect short rates to <em>fall</em> &mdash; which central banks do when they cut to counter a weakening economy. So an inverted curve encodes an expectation of lower rates ahead, and by extension of slower growth. It is a forecast read off prices, which is why it draws attention &mdash; though, like any forecast, it can be wrong.</div>
+                </details>
+                <a class="fig-link" href="chapter-11.html#yc-chart">Open the figure &rarr;</a>
+            </div>
+
+            <div class="puzzle">
+                <p class="q"><span class="tag">Puzzle</span>A corporate bond promises an 8 percent yield while a Treasury of the same maturity yields 4 percent. Is your expected return 8 percent? If not, where does the difference go?</p>
+                <details class="answer"><summary></summary>
+                    <div class="answer-body">No. The 8 percent is the <em>promised</em> yield, paid only if the firm does not default. Your <em>expected</em> return is lower: subtract the probability of default times the loss it would bring. Part of the 4 percent spread compensates for that expected loss, and the rest is a premium for bearing default risk you cannot fully diversify. The waterfall makes it concrete: in default, cash flows to creditors in order of seniority, and equity is paid last, often nothing. Promised yield is what you are told; expected yield is what you should plan on.</div>
+                </details>
+                <a class="fig-link" href="chapter-11.html#wf-chart">Open the figure &rarr;</a>
+            </div>
+        </section>
+
+        <!-- ============ EQUATIONS APPENDIX ============ -->
+        <details class="eq-appendix">
+            <summary>Key equations, gathered in one place</summary>
+            <table>
+                <thead>
+                    <tr><th>Concept</th><th>Equation</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Holding-period return</td><td>$R_t = (P_{t+1} - P_t + D_t)/P_t$</td></tr>
+                    <tr><td>Present value</td><td>$PV = FV/(1+r)^t$</td></tr>
+                    <tr><td>Perpetuity / annuity</td><td>$PV_\infty = C/r; \quad PV_T = (C/r)[1-(1+r)^{-T}]$</td></tr>
+                    <tr><td>Portfolio variance</td><td>$\sigma_p^2 = \sum_i \sum_j w_i w_j \sigma_{ij}$</td></tr>
+                    <tr><td>Sharpe ratio</td><td>$S = (E[R_p] - R_f)/\sigma_p$</td></tr>
+                    <tr><td>CAPM</td><td>$E[R_i] = R_f + \beta_i(E[R_m] - R_f)$</td></tr>
+                    <tr><td>Beta</td><td>$\beta_i = \mathrm{cov}(R_i, R_m)/\mathrm{var}(R_m)$</td></tr>
+                    <tr><td>APT ($K$ factors)</td><td>$E[R_i] = R_f + \sum_k \beta_{i,k}\lambda_k$</td></tr>
+                    <tr><td>Call payoff / parity</td><td>$\max(S-K,0); \quad C - P = S - Ke^{-rT}$</td></tr>
+                    <tr><td>Bond price / duration</td><td>$P = \sum_t C_t/(1+y)^t; \quad D = -\frac{1}{P}\,dP/dy$</td></tr>
+                    <tr><td>Growing perpetuity</td><td>$P = \text{CF}/(R - g)$</td></tr>
+                </tbody>
+            </table>
+        </details>
 
     </div>
 
