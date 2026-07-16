@@ -192,6 +192,70 @@
             <p>APT "arbitrage" is not riskless arbitrage. The investor locks in a positive <em>expected</em> payoff by going long the underpriced security and shorting a portfolio with the same beta, but the realized payoff is uncertain due to idiosyncratic risk.</p>
         </div>
 
+        <p>A single such trade is risky. But the same expected profit is available on many <em>different</em> underpriced securities at once, and once each is hedged to zero beta, their leftover risks are largely independent. Add enough of them and the risk of the whole book falls away while the expected profit remains. Move the slider to watch it happen.</p>
+
+        <div class="figure" id="arb-lab">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px">
+              <strong style="font-size:.95rem;color:#26221a">The arbitrage book</strong>
+              <span style="display:flex;gap:16px;flex-wrap:wrap">
+                <label style="font-size:.86rem;color:#26221a">Positions n:
+                  <input id="ab-n" type="range" min="1" max="100" step="1" value="20" style="vertical-align:middle;width:130px">
+                  <strong id="ab-nv" style="color:#1a5276">20</strong>
+                </label>
+                <label style="font-size:.86rem;color:#26221a">Residual &rho;:
+                  <input id="ab-rho" type="range" min="0" max="0.4" step="0.02" value="0" style="vertical-align:middle;width:120px">
+                  <strong id="ab-rhov" style="color:#1a5276">0.00</strong>
+                </label>
+              </span>
+            </div>
+            <div id="ab-chart"></div>
+            <div id="ab-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 6.3.</strong> The return distribution of a beta-hedged arbitrage book. Each position earns the same expected excess return ($\alpha = 3\%$) with 20% idiosyncratic volatility. Adding independent positions leaves the expected profit unchanged but narrows the distribution as $20\%/\sqrt{n}$, so the chance of a loss (the <span style="color:#c0392b;font-weight:700">shaded</span> tail below zero) shrinks and the Sharpe ratio grows as $\sqrt{n}$. Raise the residual correlation and the risk stops falling at a floor &mdash; which is why real arbitrage profits are small and hard-won.</p>
+        </div>
+        <script>
+        (function(){
+          var W=700,H=380,mL=56,mR=28,mT=18,mB=48,pw=W-mL-mR,ph=H-mT-mB;
+          var XMIN=-0.08,XMAX=0.10,ALPHA=0.03,SEPS=0.20;
+          function px(x){return mL+(x-XMIN)/(XMAX-XMIN)*pw;}
+          function phi(z){return 0.39894228*Math.exp(-0.5*z*z);}
+          function ncdf(z){var a=Math.abs(z),k=1/(1+0.2316419*a);var poly=k*(0.319381530+k*(-0.356563782+k*(1.781477937+k*(-1.821255978+k*1.330274429))));var q=phi(a)*poly;return z>=0?1-q:q;}
+          function dens(x,s){return phi((x-ALPHA)/s)/s;}
+          function render(){
+            var n=parseInt(document.getElementById('ab-n').value,10);
+            var rho=parseFloat(document.getElementById('ab-rho').value);
+            document.getElementById('ab-nv').textContent=n;
+            document.getElementById('ab-rhov').textContent=rho.toFixed(2);
+            var s=SEPS*Math.sqrt(1/n+(1-1/n)*rho);
+            var peak=dens(ALPHA,s);
+            function py(d){return mT+ph-d/peak*ph*0.90;}
+            var g='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var xt=-0.08;xt<=XMAX+1e-9;xt+=0.02){var x=px(xt);g+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6"/><text x="'+x+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+Math.round(xt*100)+'%</text>';}
+            g+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
+            g+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Return on the arbitrage book</text>';
+            var N=120,pts=[];for(var i=0;i<=N;i++){var xx=XMIN+(XMAX-XMIN)*i/N;pts.push([xx,dens(xx,s)]);}
+            var lf='M'+px(XMIN).toFixed(1)+' '+(mT+ph);for(i=0;i<=N;i++){if(pts[i][0]<=0){lf+=' L'+px(pts[i][0]).toFixed(1)+' '+py(pts[i][1]).toFixed(1);}}
+            lf+=' L'+px(0).toFixed(1)+' '+(mT+ph)+' Z';
+            g+='<path d="'+lf+'" fill="#c0392b" opacity="0.22"/>';
+            var ln='';for(i=0;i<=N;i++){ln+=(i===0?'M':'L')+px(pts[i][0]).toFixed(1)+' '+py(pts[i][1]).toFixed(1);}
+            var fill=ln+' L'+px(XMAX).toFixed(1)+' '+(mT+ph)+' L'+px(XMIN).toFixed(1)+' '+(mT+ph)+' Z';
+            g+='<path d="'+fill+'" fill="#1a5276" opacity="0.10"/>';
+            g+='<path d="'+ln+'" fill="none" stroke="#1a5276" stroke-width="3"/>';
+            g+='<line x1="'+px(0).toFixed(1)+'" y1="'+mT+'" x2="'+px(0).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.4"/>';
+            g+='<text x="'+(px(0)-5).toFixed(1)+'" y="'+(mT+12)+'" text-anchor="end" font-size="10.5" fill="#5c5344">0</text>';
+            g+='<line x1="'+px(ALPHA).toFixed(1)+'" y1="'+py(peak).toFixed(1)+'" x2="'+px(ALPHA).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#b9770e" stroke-width="1.4" stroke-dasharray="4 3"/>';
+            g+='<text x="'+(px(ALPHA)+5).toFixed(1)+'" y="'+(py(peak)+2).toFixed(1)+'" font-size="10.5" fill="#b9770e" font-weight="700">expected +3%</text>';
+            g+='</svg>';
+            document.getElementById('ab-chart').innerHTML=g;
+            var ploss=ncdf(-ALPHA/s), sharpe=ALPHA/s;
+            document.getElementById('ab-read').innerHTML='n = <strong>'+n+'</strong>, residual &rho; = <strong>'+rho.toFixed(2)+'</strong> &rarr; book risk &sigma; = <strong>'+(s*100).toFixed(1)+'%</strong>, Sharpe = <strong>'+sharpe.toFixed(2)+'</strong>, chance of a loss = <strong>'+(ploss*100).toFixed(0)+'%</strong>. The expected profit stays at +3% however many you add.';
+          }
+          var ea=document.getElementById('ab-n'),eb=document.getElementById('ab-rho');
+          ea.addEventListener('input',render);eb.addEventListener('input',render);render();
+        })();
+        </script>
+
         <h2>IV. The Arbitrage Pricing Theory Argument</h2>
 
         <p>The APT argument is best understood from the arbitrage in expectations example presented above. To achieve "arbitrage" pricing, we must assume that:</p>
