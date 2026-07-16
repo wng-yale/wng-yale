@@ -89,7 +89,50 @@
 
         <p>The global expansion of finance in the twenty-first century, particularly in India and China, has vastly enlarged the supply of capital, increased the number of investors enormously, and afforded all investors the opportunity to diversify globally. The tools we explore in this text are the foundation of the decisions those investors face.</p>
 
-                <h2>I. Time and Money</h2>
+                        <h2>Investing Today</h2>
+
+        <p>Bring the story to the present. How large is investment in the world now? A clean way to see it is as a share of what the world produces. Each year humankind does not consume everything it makes; it sets a portion aside &mdash; building factories, housing, machinery, and infrastructure, and creating the financial claims that fund them. Economists call this <strong>gross capital formation</strong>, and for the world as a whole it runs at roughly a quarter of global output, year after year. The figure below is drawn <em>live</em> from the World Bank, so it stays current as new data arrive.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div id="it-headline" style="font-size:1.02rem;color:#26221a;margin-bottom:8px;line-height:1.5">Loading the latest World Bank figure&hellip;</div>
+            <div id="it-chart"></div>
+            <div id="it-note" style="font-size:.78rem;color:#8a7f6c;margin-top:5px;font-style:italic"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 1.1.</strong> How much of the world&rsquo;s output is invested. Of everything the world produces each year, the share directed to new capital rather than consumed &mdash; factories, housing, infrastructure, and the financial assets that fund them &mdash; is its <em>gross capital formation</em>. For the world it has held near a quarter of GDP for decades. This figure is drawn live from the World Bank, so the latest reading updates itself as new data are published.</p>
+        </div>
+        <script>
+        (function(){
+          var chart=document.getElementById('it-chart'),hd=document.getElementById('it-headline'),note=document.getElementById('it-note');
+          var FB=[[2010,26.0],[2012,26.4],[2014,26.6],[2016,25.9],[2018,26.7],[2019,26.6],[2020,26.5],[2021,27.2],[2022,27.5],[2023,26.7],[2024,26.3]];
+          function draw(rows,live){
+            var W=680,H=250,mL=44,mR=14,mT=14,mB=28,pw=W-mL-mR,ph=H-mT-mB;
+            var x0=rows[0][0],x1=rows[rows.length-1][0],ymin=15,ymax=35;
+            function X(y){return mL+(y-x0)/(x1-x0)*pw;}
+            function Y(v){return mT+ph-(v-ymin)/(ymax-ymin)*ph;}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var g=15;g<=35;g+=5){var yy=Y(g);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-5)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c">'+g+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1"/>';
+            for(var yr=Math.ceil(x0/10)*10;yr<=x1;yr+=10)s+='<text x="'+X(yr).toFixed(1)+'" y="'+(mT+ph+15)+'" text-anchor="middle" font-size="10" fill="#8a7f6c">'+yr+'</text>';
+            var d='';rows.forEach(function(r,i){d+=(i===0?'M':'L')+X(r[0]).toFixed(1)+' '+Y(r[1]).toFixed(1)+' ';});
+            s+='<path d="'+d+'L'+X(x1).toFixed(1)+' '+(mT+ph)+' L'+X(x0).toFixed(1)+' '+(mT+ph)+' Z" fill="#1a5276" opacity="0.10"/>';
+            s+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="2.4"/>';
+            var ly=rows[rows.length-1];
+            s+='<circle cx="'+X(ly[0]).toFixed(1)+'" cy="'+Y(ly[1]).toFixed(1)+'" r="4.5" fill="#7a1414" stroke="#fff" stroke-width="1.3"/>';
+            s+='</svg>';chart.innerHTML=s;
+            hd.innerHTML='In <strong>'+ly[0]+'</strong>, the world invested <strong style="color:#1a5276;font-size:1.18em">'+ly[1].toFixed(1)+'%</strong> of everything it produced &mdash; about a quarter of global output, set aside to build the future.';
+            note.textContent=live?'Live from the World Bank — gross capital formation (% of GDP), World; updates as new data are published.':'World Bank gross capital formation (% of GDP), World — last saved values (live update unavailable).';
+          }
+          fetch('https://api.worldbank.org/v2/country/WLD/indicator/NE.GDI.TOTL.ZS?format=json&per_page=90')
+            .then(function(r){return r.json();})
+            .then(function(j){var rows=(j[1]||[]).filter(function(x){return x.value!=null;}).map(function(x){return [+x.date,x.value];}).sort(function(a,b){return a[0]-b[0];});if(rows.length<3)throw 0;draw(rows,true);})
+            .catch(function(){draw(FB,false);});
+        })();
+        </script>
+
+        <p>That steady river of saving collects in a handful of enormous pools. Norway&rsquo;s <strong>Government Pension Fund Global</strong>, built from the nation&rsquo;s North Sea oil, holds on the order of two trillion dollars and owns, on average, about 1.5% of every listed company on earth. Japan&rsquo;s Government Pension Investment Fund is comparable in scale. Private asset managers are larger still: <strong>BlackRock</strong> and <strong>Vanguard</strong> each invest on the order of ten trillion dollars or more on behalf of millions of ordinary savers. University endowments &mdash; Harvard&rsquo;s and Yale&rsquo;s among the largest &mdash; are managed to sustain their institutions in perpetuity. Different as their mandates are, these are all, at bottom, the same thing: present assets arranged to meet future needs. That is the investor&rsquo;s problem, and it is the subject of this book. <span style="color:#8a7f6c;font-size:.9em">(Fund figures as of 2024&ndash;2025.)</span></p>
+
+        <h2>I. Time and Money</h2>
 
         <p>Almost everything in this book comes back to one humble observation: <strong>a dollar today is worth more than a dollar tomorrow</strong>. Offer someone a dollar now or the same dollar in a year and they take it now &mdash; and they are right to. A dollar in hand can be put to work and grow; a dollar merely promised must be waited for, and the wait is neither free nor certain. This is the <strong>time value of money</strong>, and learning to compare sums that arrive at different times is the first real skill of finance.</p>
 
@@ -121,7 +164,7 @@
             <div id="tm-chart"></div>
             <div id="tm-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 1.1.</strong> The value of money across time. Set the interest rate and slide the horizon. In its default view the curve shows what a single future dollar is worth today: it begins at a full dollar now and decays toward nothing the farther off the payment lies &mdash; and the higher the rate, the faster it falls. Flip the switch to run the same exponential <em>forward</em>, and it becomes the compound-growth curve, what a dollar invested today becomes. Tick <em>log scale</em> and the exponential straightens into a line whose slope is the rate itself. Discounting and growing are one curve read in two directions.</p>
+          <p class="figure-caption"><strong>Figure 1.2.</strong> The value of money across time. Set the interest rate and slide the horizon. In its default view the curve shows what a single future dollar is worth today: it begins at a full dollar now and decays toward nothing the farther off the payment lies &mdash; and the higher the rate, the faster it falls. Flip the switch to run the same exponential <em>forward</em>, and it becomes the compound-growth curve, what a dollar invested today becomes. Tick <em>log scale</em> and the exponential straightens into a line whose slope is the rate itself. Discounting and growing are one curve read in two directions.</p>
         </div>
         <script>
         (function(){
@@ -233,7 +276,7 @@
 <text x="609.4" y="263.4" text-anchor="end" font-family="EB Garamond,Georgia,serif" font-weight="700" font-size="14.8" fill="#d8ead6">$</text>
 <text x="560.0" y="318.0" text-anchor="middle" font-family="EB Garamond,Georgia,serif" font-size="13.3" fill="#7a6a4e">now</text>
 </svg>
-          <p class="figure-caption"><strong>Figure 1.2.</strong> Discounting as perspective. Picture driving a desert highway toward the horizon; each billboard is a dollar you have been promised &mdash; one now, and the rest at five-year intervals down the road. The far ones look smaller for exactly the reason they are worth less: distance. Here the rate is 5% a year, so the dollar due in twenty years has shrunk to about thirty-eight cents. The interest rate is simply how fast the billboards dwindle as they recede.</p>
+          <p class="figure-caption"><strong>Figure 1.3.</strong> Discounting as perspective. Picture driving a desert highway toward the horizon; each billboard is a dollar you have been promised &mdash; one now, and the rest at five-year intervals down the road. The far ones look smaller for exactly the reason they are worth less: distance. Here the rate is 5% a year, so the dollar due in twenty years has shrunk to about thirty-eight cents. The interest rate is simply how fast the billboards dwindle as they recede.</p>
         </div>
 
         <p>That is the whole idea, and the rest of the book is built on it. The price of a bond is the discounted value of its coupons and principal; the value of a stock is the discounted value of its future dividends; the return an investor demands is precisely the rate that makes a security&rsquo;s distant dollars worth its price today. So before we turn to risk and reward, keep the highway in mind: money has a time dimension, and to compare money across time is to bring it back down the road to what it is worth right here, right now.</p>
@@ -380,7 +423,7 @@
 
         <div class="figure">
             <img src="figures/wealth_growth.svg" alt="Growth of $1 invested in stocks vs bonds, 1926 to 2025" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 1.3.</strong> Growth of $1 invested in U.S. stocks, bonds, and Treasury bills (1926&ndash;2025, log scale). Computed from SBBI data. Stocks dramatically outperform bonds over long horizons, but with substantially greater year-to-year volatility.</p>
+            <p class="figure-caption"><strong>Figure 1.4.</strong> Growth of $1 invested in U.S. stocks, bonds, and Treasury bills (1926&ndash;2025, log scale). Computed from SBBI data. Stocks dramatically outperform bonds over long horizons, but with substantially greater year-to-year volatility.</p>
         </div>
 
         <h2>VII. The Risk Premium</h2>
@@ -476,7 +519,7 @@
 
         <div class="figure">
             <img src="figures/return_distribution.svg" alt="Distribution of annual S&P 500 returns" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 1.4.</strong> Distribution of large-cap stock annual returns (1926&ndash;2025), computed from SBBI data. The histogram shows the &plusmn;1 standard deviation range containing roughly 68% of observations. Actual return distributions exhibit "fatter tails" than the normal distribution predicts.</p>
+            <p class="figure-caption"><strong>Figure 1.5.</strong> Distribution of large-cap stock annual returns (1926&ndash;2025), computed from SBBI data. The histogram shows the &plusmn;1 standard deviation range containing roughly 68% of observations. Actual return distributions exhibit "fatter tails" than the normal distribution predicts.</p>
         </div>
 
         <h3>Limitations of Standard Deviation</h3>
