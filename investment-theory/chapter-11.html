@@ -261,7 +261,74 @@
         })();
         </script>
 
-        <h2>III. How It Moves</h2>
+                <h2>III. The Yield Curve</h2>
+
+        <p>So far we have spoken of <em>the</em> interest rate, as if there were only one. There is not. A three-month Treasury bill, a two-year note, a ten-year bond, and a thirty-year bond each trade at their own yield, and plotting those yields against their maturities traces out the <strong>yield curve</strong> &mdash; the <em>term structure</em> of interest rates. It is the most closely watched picture in all of fixed income, and the figure below draws it live from the U.S. Treasury, as of the latest business day.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div id="yc-chart"></div>
+            <div id="yc-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55">Loading today&rsquo;s Treasury yield curve&hellip;</div>
+            <div id="yc-note" style="font-size:.78rem;color:#8a7f6c;margin-top:5px;font-style:italic"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 11.4.</strong> The U.S. Treasury yield curve, live. Each point is the yield the market demands for a given maturity, from one month to thirty years; the line through them is the term structure of interest rates. Its usual shape slopes gently upward. Watch it flatten or <em>invert</em> &mdash; long yields dropping below short ones &mdash; and you are watching the bond market lower its forecast for future rates, the signal that has preceded almost every modern recession. Drawn live from the U.S. Treasury, updated each business day.</p>
+        </div>
+        <script>
+        (function(){
+          var chart=document.getElementById('yc-chart'),read=document.getElementById('yc-read'),note=document.getElementById('yc-note');
+          var TEN=[['BC_1MONTH','1M'],['BC_2MONTH','2M'],['BC_3MONTH','3M'],['BC_4MONTH','4M'],['BC_6MONTH','6M'],['BC_1YEAR','1Y'],['BC_2YEAR','2Y'],['BC_3YEAR','3Y'],['BC_5YEAR','5Y'],['BC_7YEAR','7Y'],['BC_10YEAR','10Y'],['BC_20YEAR','20Y'],['BC_30YEAR','30Y']];
+          var FB={date:'2026-07-15',pts:[['1M',4.32],['3M',3.83],['6M',3.72],['1Y',3.75],['2Y',4.13],['3Y',4.20],['5Y',4.30],['7Y',4.44],['10Y',4.55],['20Y',4.95],['30Y',5.08]]};
+          function field(chunk,tag){var m=chunk.match(new RegExp('<d:'+tag+'[^>]*>([^<]*)</d:'+tag+'>'));return (m&&m[1]!=='')?parseFloat(m[1]):null;}
+          function parseLatest(xml){
+            var parts=xml.split('<entry>');
+            for(var i=parts.length-1;i>=1;i--){
+              if(parts[i].indexOf('NEW_DATE')<0)continue;
+              var dm=parts[i].match(/<d:NEW_DATE[^>]*>([^<]*)</);var date=dm?dm[1].slice(0,10):'';
+              var pts=[];TEN.forEach(function(t){var v=field(parts[i],t[0]);if(v!=null&&!isNaN(v))pts.push([t[1],v]);});
+              if(pts.length>=5)return {date:date,pts:pts};
+            }
+            return null;
+          }
+          function val(pts,lab){for(var i=0;i<pts.length;i++)if(pts[i][0]===lab)return pts[i][1];return null;}
+          function draw(cur,live){
+            var pts=cur.pts,W=680,H=300,mL=46,mR=16,mT=18,mB=32,pw=W-mL-mR,ph=H-mT-mB,n=pts.length;
+            var ys=pts.map(function(p){return p[1];});
+            var lo=Math.floor((Math.min.apply(null,ys)-0.3)*2)/2,hi=Math.ceil((Math.max.apply(null,ys)+0.3)*2)/2;
+            function X(i){return mL+(n===1?pw/2:i/(n-1)*pw);}
+            function Y(v){return mT+ph-(v-lo)/(hi-lo)*ph;}
+            var svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var g=lo;g<=hi+1e-9;g+=0.5){var yy=Y(g);svg+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+g.toFixed(1)+'%</text>';}
+            svg+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/>';
+            pts.forEach(function(p,i){svg+='<text x="'+X(i).toFixed(1)+'" y="'+(mT+ph+15)+'" text-anchor="middle" font-size="9.5" fill="#8a7f6c">'+p[0]+'</text>';});
+            var d='';pts.forEach(function(p,i){d+=(i===0?'M':'L')+X(i).toFixed(1)+' '+Y(p[1]).toFixed(1)+' ';});
+            svg+='<path d="'+d+'L'+X(n-1).toFixed(1)+' '+(mT+ph)+' L'+mL+' '+(mT+ph)+' Z" fill="#1a5276" opacity="0.10"/>';
+            svg+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="2.6"/>';
+            pts.forEach(function(p,i){svg+='<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(p[1]).toFixed(1)+'" r="3.2" fill="#1a5276"/>';});
+            svg+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Yield</text>';
+            svg+='<text x="'+(mL+pw/2)+'" y="'+(H-3)+'" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Maturity</text>';
+            svg+='</svg>';chart.innerHTML=svg;
+            var y3=val(pts,'3M'),y2=val(pts,'2Y'),y10=val(pts,'10Y'),y30=val(pts,'30Y');
+            var spread=(y10!=null&&y2!=null)?y10-y2:null,shape='';
+            if(spread!=null){ if(spread<=-0.05)shape='<strong style="color:#c0392b">inverted</strong> &mdash; long rates below short, historically a warning of recession'; else if(spread>=0.15)shape='<strong style="color:#1e8b3a">upward-sloping</strong>, its usual healthy shape'; else shape='unusually <strong>flat</strong>'; }
+            var seg=[];
+            if(y3!=null)seg.push('the 3-month at <strong>'+y3.toFixed(2)+'%</strong>');
+            if(y2!=null)seg.push('the 2-year at <strong>'+y2.toFixed(2)+'%</strong>');
+            if(y10!=null)seg.push('the 10-year at <strong style="color:#1a5276">'+y10.toFixed(2)+'%</strong>');
+            if(y30!=null)seg.push('the 30-year at <strong>'+y30.toFixed(2)+'%</strong>');
+            var txt='On <strong>'+cur.date+'</strong>: '+seg.join(', ')+'. ';
+            if(spread!=null)txt+='The 10-year yields '+(spread>=0?'':'&minus;')+Math.abs(spread).toFixed(2)+' points '+(spread>=0?'more':'less')+' than the 2-year &mdash; the curve is '+shape+'.';
+            read.innerHTML=txt;
+            note.textContent=live?'Live from the U.S. Treasury — daily par yield curve; updates each business day.':'U.S. Treasury daily par yield curve — last saved values (live update unavailable).';
+          }
+          function ym(dt){return dt.getFullYear()+('0'+(dt.getMonth()+1)).slice(-2);}
+          var base='https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value_month=';
+          var now=new Date(),prev=new Date(now.getFullYear(),now.getMonth()-1,1);
+          function load(url,next){return fetch(url).then(function(r){return r.text();}).then(function(x){var c=parseLatest(x);if(c)draw(c,true);else if(next)next();else draw(FB,false);}).catch(function(){if(next)next();else draw(FB,false);});}
+          load(base+ym(now),function(){load(base+ym(prev),null);});
+        })();
+        </script>
+
+        <h2>IV. How It Moves</h2>
 
         <p>One bond gives one curve. But the steepness and the bow of that curve are not fixed features of &ldquo;bonds&rdquo; in general &mdash; they depend on the particular bond, and understanding what makes the curve steep or shallow is the heart of managing interest-rate risk. Two features of the bond do most of the work: its <strong>maturity</strong> and its <strong>coupon</strong>. A third input, the <strong>level of yields</strong> itself, tunes the curvature.</p>
 
@@ -288,7 +355,7 @@
 
         <p>Finally, where you sit on the curve matters. At low yields the curve is steepest and most sharply bowed; at high yields it flattens out. Discounting is a compounding process, and its effects are most violent when rates are near zero &mdash; which is exactly why the era of ultra-low interest rates after 2010 left bond portfolios with historically enormous durations, and why the sharp rate increases of 2022 inflicted some of the worst bond losses on record. The same one-point move in yields does more damage when it starts from a low base. Convexity, the bowing itself, is largest for long, low-coupon bonds at low yields &mdash; the same bonds that carry the most duration.</p>
 
-        <h2>IV. How You Use It</h2>
+        <h2>V. How You Use It</h2>
 
         <p>Duration is not a classroom abstraction; it is the working number of the fixed-income world. Traders quote it, risk managers limit it, and the largest institutions on earth build their entire asset&ndash;liability strategy around it. Three uses matter most: <em>measuring</em> the risk, <em>hedging</em> it, and <em>immunizing</em> against it.</p>
 
@@ -319,7 +386,7 @@
             <div id="d2-chart"></div>
             <div id="d2-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 11.4.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>, matched in value at today's 5% yield. Drag the yield cursor and watch the <em>surplus</em> &mdash; the shaded gap between them. Dial the asset duration to <em>match</em> the liability duration and the two curves descend in lockstep: the surplus barely stirs, whatever rates do &mdash; the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
+          <p class="figure-caption"><strong>Figure 11.5.</strong> Immunizing a pension against interest-rate risk. Two present-value curves fall with yield: the fund's <em>assets</em> and its <em>liabilities</em>, matched in value at today's 5% yield. Drag the yield cursor and watch the <em>surplus</em> &mdash; the shaded gap between them. Dial the asset duration to <em>match</em> the liability duration and the two curves descend in lockstep: the surplus barely stirs, whatever rates do &mdash; the fund is <strong>immunized</strong>. Introduce a <em>duration gap</em> and a rate move pries the curves apart, opening a deficit or a windfall. Matching slopes, not forecasting rates, is what keeps the promise safe.</p>
         </div>
         <script>
         (function(){
@@ -367,7 +434,7 @@
         })();
         </script>
 
-                <h2>V. Default Risk</h2>
+                <h2>VI. Default Risk</h2>
 
         <p>Everything so far has assumed the promised cash flows are certain; the only question was how to value a sure stream as interest rates move. For a U.S. Treasury that is very nearly right &mdash; the payment will arrive. But a corporate bond, or the bond of a foreign government, carries a second and entirely different risk: the borrower may simply not pay. This is <strong>default risk</strong> &mdash; also called credit risk &mdash; and it is the other great hazard of fixed income. Interest-rate risk asks what a sure promise is worth as rates change; default risk asks whether the promise will be kept at all.</p>
 
@@ -409,7 +476,7 @@
             <div id="wf-chart"></div>
             <div id="wf-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 11.5.</strong> A firm&rsquo;s capital structure as options on its assets. <em>Top:</em> the payoff to each claim as a function of the firm&rsquo;s value $V$ at maturity &mdash; senior debt (blue) fills first up to its face, junior debt (gold) next, equity (green) takes the residual; stacked, they always sum to $V$. <em>Bottom:</em> the probability distribution of $V$ at maturity, tinted by outcome &mdash; red where the firm cannot cover its senior debt, gold where it covers senior but not junior, green where all debt is paid and equity has value. Raise the asset volatility and the distribution fans out: more mass slides below the debt thresholds, the bonds&rsquo; default probabilities climb and their value falls, while equity &mdash; a call option &mdash; gains from the fatter upside. The conflict of interest between bondholders and shareholders is right there in the geometry.</p>
+          <p class="figure-caption"><strong>Figure 11.6.</strong> A firm&rsquo;s capital structure as options on its assets. <em>Top:</em> the payoff to each claim as a function of the firm&rsquo;s value $V$ at maturity &mdash; senior debt (blue) fills first up to its face, junior debt (gold) next, equity (green) takes the residual; stacked, they always sum to $V$. <em>Bottom:</em> the probability distribution of $V$ at maturity, tinted by outcome &mdash; red where the firm cannot cover its senior debt, gold where it covers senior but not junior, green where all debt is paid and equity has value. Raise the asset volatility and the distribution fans out: more mass slides below the debt thresholds, the bonds&rsquo; default probabilities climb and their value falls, while equity &mdash; a call option &mdash; gains from the fatter upside. The conflict of interest between bondholders and shareholders is right there in the geometry.</p>
         </div>
         <script>
         (function(){
@@ -488,7 +555,7 @@
           </div>
         </div>
 
-        <h2>VI. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
+        <h2>VII. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
 
         <p>The three lenses above require no calculus. But duration and convexity have exact definitions, and for readers who want to compute rather than merely picture them, the formulas are clean and worth seeing. They also make precise the two readings of duration &mdash; average waiting time and price sensitivity &mdash; and show why they are the same number.</p>
 
@@ -536,7 +603,7 @@
             <p style="margin-bottom:0;">Its moment came in the 1970s and early 1980s, when interest rates in the United States turned wildly volatile &mdash; long-bond yields swinging from 6% to over 15% and back &mdash; and the old buy-and-hold complacency of bond management became untenable. Suddenly every insurer and pension fund needed to know its exposure to rates, and duration was the number that answered. What Macaulay had offered as a statistical nicety became, forty years on, the central instrument of an entire industry.</p>
         </aside>
 
-        <h2>VII. Summary</h2>
+        <h2>VIII. Summary</h2>
 
         <p>A bond begins as a contract &mdash; a face value, a coupon paid twice a year, a fixed maturity &mdash; and its price is simply the present value of that promised stream. Price and yield are two names for one thing: quote either and the market recovers the other. When the coupon beats the yield the bond trades at a premium, below it at a discount, and exactly at par when the two agree. Because bonds change hands between coupon dates, a buyer also reimburses the seller for accrued interest; the quoted <em>clean</em> price strips that mechanical sawtooth out of the <em>dirty</em> price actually paid.</p>
 
