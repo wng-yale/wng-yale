@@ -226,7 +226,7 @@
             <div id="reg-chart"></div>
             <div id="reg-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 8.1.</strong> Regnault&rsquo;s square-root-of-time law. If price changes are independent, the typical deviation of the price from its starting point grows as $\sqrt{\text{time}}$. Regnault&rsquo;s two measured deviations of the 3% <em>rente</em> &mdash; about <strong>2.73</strong> over a month and <strong>9.50</strong> over a year &mdash; fall almost exactly on the curve $2.73\sqrt{\text{months}}$: the law predicts $2.73\times\sqrt{12} = 9.46$, against his observed 9.50. Slide the horizon to read the predicted deviation. After W. N. Goetzmann, &ldquo;Pre-history of Efficient Market Theory,&rdquo; from Regnault (1863).</p>
+          <p class="figure-caption"><strong>Figure 8.3.</strong> Regnault&rsquo;s square-root-of-time law. If price changes are independent, the typical deviation of the price from its starting point grows as $\sqrt{\text{time}}$. Regnault&rsquo;s two measured deviations of the 3% <em>rente</em> &mdash; about <strong>2.73</strong> over a month and <strong>9.50</strong> over a year &mdash; fall almost exactly on the curve $2.73\sqrt{\text{months}}$: the law predicts $2.73\times\sqrt{12} = 9.46$, against his observed 9.50. Slide the horizon to read the predicted deviation. After W. N. Goetzmann, &ldquo;Pre-history of Efficient Market Theory,&rdquo; from Regnault (1863).</p>
         </div>
         <script>
         (function(){
@@ -260,6 +260,47 @@
         </script>
 
         <p>&ldquo;Is there,&rdquo; Regnault asked, &ldquo;a better example of the harmony of theory and experience?&rdquo; The fit is the first empirical confirmation of the random walk &mdash; the founding test of the efficient-market hypothesis, run ninety years before the phrase existed.</p>
+
+        <h3>Booms, Crashes, and the Limits of Prediction</h3>
+
+        <p>Regnault&rsquo;s &radic;time law was the first confirmation; the modern case for efficiency was built on regressions. In the 1960s <strong>Eugene Fama</strong> and others ran the test Regnault could not, correlating each day&rsquo;s return with the returns before it across thousands of stocks. The serial correlation came back indistinguishable from zero: the past, statistically, said nothing about the future. It was weak-form efficiency again &mdash; now with a mountain of data behind it.</p>
+
+        <p>The most vivid evidence, though, comes from the events that seem to <em>refute</em> efficiency: bubbles. If any pattern should be exploitable, surely it is the industry that has just doubled, or just halved. Robin Greenwood, Andrei Shleifer, and Yang You asked whether a sharp run-up reliably foretells a crash; in related work, using a database of industry returns reaching back to the eighteenth century, we asked a simpler question still &mdash; after an industry has soared, or collapsed, what happens <em>next</em>?</p>
+
+        <div class="figure">
+          <div id="bub-chart"></div>
+          <p class="figure-caption"><strong>Figure 8.4.</strong> Booms and crashes converge. Industries sorted by their prior twelve-month return &mdash; the biggest <span style="color:#1e8b3a;font-weight:600">run-ups</span> and the biggest <span style="color:#c0392b;font-weight:600">run-downs</span> &mdash; tracked from before the event ($t = 0$) to three years after, each normalized to 1.0 at the event. Before the event the two groups are worlds apart; after it they rise along nearly the same path, and the shaded confidence bands overlap almost entirely. A spectacular boom and a spectacular crash tell you next to nothing about what comes next. Stylized after Greenwood, Shleifer &amp; You and W. N. Goetzmann et al., &ldquo;Bubbles, Booms &amp; Crashes.&rdquo;</p>
+        </div>
+        <script>
+        (function(){
+          var W=700,H=420,mL=54,mR=18,mT=20,mB=52,pw=W-mL-mR,ph=H-mT-mB;
+          var XMIN=-12,XMAX=36,YMIN=0.3,YMAX=2.4;
+          function X(t){return mL+(t-XMIN)/(XMAX-XMIN)*pw;}
+          function Y(v){return mT+ph-(v-YMIN)/(YMAX-YMIN)*ph;}
+          function runup(t){return t<=0?1.0-0.55*Math.pow(-t/12,1.15):1.0+0.06*(t/36);}
+          function rundown(t){return t<=0?1.0+1.25*Math.pow(-t/12,1.15):1.0+0.10*(t/36);}
+          function hw(t){return 0.02+0.17*Math.sqrt(Math.max(t,0)/36)+0.015*Math.sqrt(Math.max(-t,0)/12);}
+          function band(fn){var p='';for(var t=XMIN;t<=XMAX+1e-9;t+=1)p+=X(t).toFixed(1)+','+Y(fn(t)+hw(t)).toFixed(1)+' ';for(var u=XMAX;u>=XMIN-1e-9;u-=1)p+=X(u).toFixed(1)+','+Y(fn(u)-hw(u)).toFixed(1)+' ';return p;}
+          function line(fn){var d='';for(var t=XMIN;t<=XMAX+1e-9;t+=1)d+=(t===XMIN?'M':'L')+X(t).toFixed(1)+' '+Y(fn(t)).toFixed(1)+' ';return d;}
+          var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+          for(var v=0.5;v<=2.0+1e-9;v+=0.5){var yy=Y(v);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-8)+'" y="'+(yy+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+v.toFixed(1)+'</text>';}
+          s+='<line x1="'+mL+'" y1="'+Y(1.0).toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+Y(1.0).toFixed(1)+'" stroke="#b7a988" stroke-dasharray="4 3"/>';
+          s+='<polygon points="'+band(runup)+'" fill="#1e8b3a" opacity="0.16"/>';
+          s+='<polygon points="'+band(rundown)+'" fill="#c0392b" opacity="0.16"/>';
+          s+='<line x1="'+X(0).toFixed(1)+'" y1="'+mT+'" x2="'+X(0).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#7a1414" stroke-width="1.2" stroke-dasharray="5 3"/><text x="'+(X(0)+5).toFixed(1)+'" y="'+(mT+12)+'" font-size="10.5" fill="#7a1414">the boom or crash</text>';
+          s+='<path d="'+line(rundown)+'" fill="none" stroke="#c0392b" stroke-width="2.8"/>';
+          s+='<path d="'+line(runup)+'" fill="none" stroke="#1e8b3a" stroke-width="2.8"/>';
+          s+='<line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.1"/>';
+          [-12,0,12,24,36].forEach(function(t){s+='<text x="'+X(t).toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+t+'</text>';});
+          s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Months relative to the boom or crash</text>';
+          s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Normalized level (event = 1.0)</text>';
+          var lx=mL+pw-214,ly=mT+ph-46;
+          s+='<g font-size="12"><rect x="'+lx+'" y="'+ly+'" width="208" height="40" fill="#fbf7ec" opacity="0.92" stroke="#e0d6bf" rx="4"/><line x1="'+(lx+10)+'" y1="'+(ly+14)+'" x2="'+(lx+32)+'" y2="'+(ly+14)+'" stroke="#1e8b3a" stroke-width="2.8"/><text x="'+(lx+38)+'" y="'+(ly+18)+'" fill="#5c5344">Run-up (boom) industries</text><line x1="'+(lx+10)+'" y1="'+(ly+30)+'" x2="'+(lx+32)+'" y2="'+(ly+30)+'" stroke="#c0392b" stroke-width="2.8"/><text x="'+(lx+38)+'" y="'+(ly+34)+'" fill="#5c5344">Run-down (crash) industries</text></g>';
+          s+='</svg>';document.getElementById('bub-chart').innerHTML=s;
+        })();
+        </script>
+
+        <p>The answer, drawn in the figure, is humbling. Industries that had just soared and industries that had just crashed &mdash; as opposite as two recent histories can be &mdash; went on to perform almost identically. All the drama is in the past; the future is very nearly a coin toss. This is the sixth of our master pictures: two lines that could not look more different before the event fold into the same path after it. The market had already priced whatever the boom or the crash was going to mean, and left no free lunch for the investor who arrived late.</p>
 
         <p>He also saw the model&rsquo;s dark corollary, and it is one every day-trader relearns. The fair game is fair only <em>before costs</em>. Each trade pays a small brokerage fee, so the expected profit of a round trip, zero before costs, becomes <em>negative</em> after them. Because the speculator&rsquo;s edge grows only as &radic;time while the fees pile up trade by trade, frequent short-term trading is a slow, near-certain ruin &mdash; Regnault reckoned a heavy speculator would be wiped out, on average, within about <strong>forty trades</strong>. Patient long-term <em>investment</em>, he concluded, is a fundamentally different activity from restless short-term <em>speculation</em> &mdash; a distinction the mathematics still supports.</p>
 
