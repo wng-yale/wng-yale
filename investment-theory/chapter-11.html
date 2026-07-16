@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter XI: Bond Duration — W. N. Goetzmann</title>
+    <title>Chapter XI: Fixed Income — W. N. Goetzmann</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -28,8 +28,8 @@
 <article class="chapter">
     <header class="chapter-header">
         <p class="chapter-label">Chapter XI</p>
-        <h1>Bond Duration</h1>
-        <p class="chapter-deck">Price against the interest rate &mdash; the downward-sloping, convex curve, and how to measure and manage the risk in a fixed promise.</p>
+        <h1>Fixed Income: Pricing, Yields, and Credit Risk</h1>
+        <p class="chapter-deck">How a bond is priced and quoted, how its value moves with interest rates &mdash; duration and convexity &mdash; and how the risk of default reshapes the promise.</p>
     </header>
 
     <div class="chapter-content">
@@ -527,13 +527,17 @@
 
         <h2>VII. Summary</h2>
 
+        <p>A bond begins as a contract &mdash; a face value, a coupon paid twice a year, a fixed maturity &mdash; and its price is simply the present value of that promised stream. Price and yield are two names for one thing: quote either and the market recovers the other. When the coupon beats the yield the bond trades at a premium, below it at a discount, and exactly at par when the two agree. Because bonds change hands between coupon dates, a buyer also reimburses the seller for accrued interest; the quoted <em>clean</em> price strips that mechanical sawtooth out of the <em>dirty</em> price actually paid.</p>
+
         <p>The bond price&ndash;yield curve is the quietest of our five pictures and, by dollar volume, the one that governs the most wealth. Its logic is the logic of discounting run in reverse: a bond is a fixed stream of promises, its price is their present value, and because the yield sits in every denominator, the price falls as the yield rises. That is why the curve slopes down. Because discounting decelerates, the curve also bows &mdash; it is convex &mdash; and the bow is a small standing gift to the bondholder, since gains from falling rates outrun losses from rising ones.</p>
 
         <p>The slope of that curve is <strong>duration</strong>, at once the average time to receipt of the cash flows and the sensitivity of price to yield. It lengthens with maturity and shortens with the coupon, and it is largest, along with the convexity, for long, low-coupon bonds at low yields. Practitioners turn the slope into a dollar figure &mdash; DV01 &mdash; to measure risk, offset it to hedge, and match it across assets and liabilities to immunize the promises of pensions and insurers. The bow, convexity, is the second-order refinement that decides whether a hedge survives a large move. From Macaulay's 1938 statistic to today's trillion-dollar liability-driven mandates, this single downward, bowing curve &mdash; and the two numbers that describe its slope and its bend &mdash; is how the world measures and manages the risk in a fixed promise.</p>
 
-        <div class="key-concept">
-            <h4>Key Concept: What the Duration Picture Teaches</h4>
-            <p>A bond's price is the present value of fixed cash flows, so it falls as yields rise along a convex curve. <strong>Duration</strong> is the slope of that curve &mdash; the percentage price change per unit of yield &mdash; and equals the present-value-weighted average time to the cash flows. <strong>Convexity</strong> is the curve's bow, a second-order term that always works in the bondholder's favor. Measuring duration (as DV01), offsetting it (hedging), and matching it between assets and liabilities (immunization) are how institutions control the largest risk in the largest market on earth.</p>
+        <p>Duration, though, prices only the wobble of a <em>sure</em> promise. A corporate or sovereign bond carries a second and quite different risk: that the promise is broken. For such a bond the quoted yield to maturity is merely a <em>promised</em> yield &mdash; the return if all goes well &mdash; and the expected return is lower by the expected loss, the probability of default times the loss it inflicts. The extra yield a risky bond must offer, its credit spread, is part compensation for that expected loss and part reward for bearing it. Seen through the options lens of Chapter IX, the equity of a levered firm is a call on its assets and its debt a riskless bond minus a put; stacked across senior, junior, and equity claims, an entire capital structure becomes a waterfall of options, and rising asset volatility quietly drains value out of the bonds and into the equity. The 1822 Russian loan &mdash; an impeccable payer for ninety-five years, then repudiated at a stroke in 1918 &mdash; is the standing reminder that no duration calculation can see the risk that matters most. Promised yield is not expected return.</p>
+
+                <div class="key-concept">
+            <h4>Key Concept: The Two Risks of a Fixed Promise</h4>
+            <p>A bond&rsquo;s price is the present value of its promised cash flows, discounted at the yield, so price and yield are equivalent quotations. Two risks then govern it. <strong>Interest-rate risk</strong> is measured by <strong>duration</strong> &mdash; the slope of the convex price&ndash;yield curve, equal to the present-value-weighted average time to the cash flows &mdash; and managed by hedging and immunization, with <strong>convexity</strong> the second-order refinement that always favors the holder. <strong>Default risk</strong> is the chance the promise is not kept: it makes the promised yield exceed the expected return by the expected loss, and it is priced, structurally, by treating a firm&rsquo;s securities as options on its assets. Master both, and you can value &mdash; and manage &mdash; the largest asset class on earth.</p>
         </div>
 
         <div class="note">
