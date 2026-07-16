@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Introduction to Investment Theory — W. N. Goetzmann</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="textbook.css">
+    <style>
+        .toc-list { list-style: none; margin: 0; padding: 0; }
+        .toc-item {
+            display: flex; align-items: baseline; gap: 20px;
+            padding: 20px 4px; border-bottom: 1px solid var(--border, #e4ddcb);
+            text-decoration: none;
+        }
+        .toc-item:hover { background: var(--bg-alt, #f6f1e5); }
+        .toc-item:hover .toc-title { text-decoration: underline; }
+        .toc-num {
+            flex: 0 0 3.2rem; text-align: right;
+            font-family: 'EB Garamond', serif; font-size: 1.5rem; font-weight: 600;
+            color: var(--accent, #b9770e); line-height: 1.1;
+        }
+        .toc-body { flex: 1 1 auto; }
+        .toc-title {
+            font-family: 'EB Garamond', serif; font-size: 1.3rem; font-weight: 600;
+            color: var(--yale-blue, #1a5276); line-height: 1.25; display: block; margin-bottom: 3px;
+        }
+        .toc-deck { font-size: 0.98rem; color: var(--text-secondary, #5c5344); line-height: 1.5; }
+        .toc-feature {
+            display: flex; gap: 22px; align-items: center;
+            background: var(--bg-alt, #f6f1e5); border: 1px solid var(--border, #e4ddcb);
+            border-left: 4px solid var(--yale-blue, #1a5276); border-radius: 10px;
+            padding: 20px 24px; margin: 8px 0 40px; text-decoration: none;
+        }
+        .toc-feature:hover { box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+        .toc-feature-icon { font-size: 2rem; flex: 0 0 auto; }
+        .toc-feature h3 { margin: 0 0 4px; color: var(--yale-blue, #1a5276); font-size: 1.25rem; }
+        .toc-feature p { margin: 0; color: var(--text-secondary, #5c5344); font-size: 0.98rem; line-height: 1.5; }
+    </style>
+</head>
+<body class="chapter-page">
+
+<nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-name">&larr; W. N. Goetzmann</a>
+        <ul class="nav-links">
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="chapter-1.html">Begin &rarr;</a></li>
+        </ul>
+    </div>
+</nav>
+
+<article class="chapter">
+    <header class="chapter-header">
+        <p class="chapter-label">A Hypertext Textbook</p>
+        <h1>An Introduction to Investment Theory</h1>
+        <p class="chapter-deck">The mathematics of risk, return, and value &mdash; from the efficient frontier to the pricing of options and bonds, told with interactive figures you can experiment with.</p>
+    </header>
+
+    <div class="chapter-content">
+        <a href="introduction.html" class="toc-feature">
+            <span class="toc-feature-icon">&#128208;</span>
+            <span>
+                <h3>Start here: Finance in Five Pictures</h3>
+                <p>A short front door to the book &mdash; the five master figures whose mastery is a foundation for financial reasoning.</p>
+            </span>
+        </a>
+
+        <h2 style="margin-top:0;">Contents</h2>
+        <ol class="toc-list">
+            <li><a class="toc-item" href="chapter-1.html"><span class="toc-num">I</span><span class="toc-body"><span class="toc-title">Capital Markets and Investment Performance</span><span class="toc-deck">Returns, risk measurement, the equity premium, and historical capital-markets data.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-2.html"><span class="toc-num">II</span><span class="toc-body"><span class="toc-title">The Geography of the Efficient Frontier</span><span class="toc-deck">Portfolio diversification, the Markowitz model, and the Capital Market Line.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-3.html"><span class="toc-num">III</span><span class="toc-body"><span class="toc-title">Preferences and Investor Choice</span><span class="toc-deck">Utility functions, iso-utility curves, the safety-first criterion, the Sharpe ratio, and Value at Risk.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-4.html"><span class="toc-num">IV</span><span class="toc-body"><span class="toc-title">The Portfolio Approach to Risk</span><span class="toc-deck">The Capital Asset Pricing Model, two-fund separation, and the meaning of portfolio risk.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-5.html"><span class="toc-num">V</span><span class="toc-body"><span class="toc-title">Further Explorations of the Capital Asset Pricing Model</span><span class="toc-deck">The risk-return tradeoff, the security market line, beta estimation, and assessing the CAPM.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-6.html"><span class="toc-num">VI</span><span class="toc-body"><span class="toc-title">The Arbitrage Pricing Theory</span><span class="toc-deck">From the security market line to multi-factor pricing, arbitrage in expectations, and practical factor models.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-7.html"><span class="toc-num">VII</span><span class="toc-body"><span class="toc-title">Where Do Betas Come From?</span><span class="toc-deck">Beta as a risk measure, financial leverage and beta, unlevering and relevering, and capital-budgeting applications.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-8.html"><span class="toc-num">VIII</span><span class="toc-body"><span class="toc-title">Information and the Efficiency of the Capital Markets</span><span class="toc-deck">How information becomes embedded in prices, the three forms of market efficiency, and the evidence for and against them.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-9.html"><span class="toc-num">IX</span><span class="toc-body"><span class="toc-title">The Option Payoff</span><span class="toc-deck">The hockey stick &mdash; contingent claims, the kink at the strike, and why optionality is everywhere once you learn to see it.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-10.html"><span class="toc-num">X</span><span class="toc-body"><span class="toc-title">Long-Term Corporate Financing</span><span class="toc-deck">How companies raise capital: stocks, bonds, warrants, and preferred shares &mdash; from issuance through trading.</span></span></a></li>
+            <li><a class="toc-item" href="chapter-11.html"><span class="toc-num">XI</span><span class="toc-body"><span class="toc-title">Bond Duration</span><span class="toc-deck">Price against the interest rate &mdash; the downward-sloping, convex curve, and how to measure and manage the risk in a fixed promise.</span></span></a></li>
+        </ol>
+    </div>
+
+    <footer class="chapter-footer">
+        <a href="../index.html" class="chapter-nav-link">&larr; W. N. Goetzmann home</a>
+        <a href="chapter-1.html" class="chapter-nav-link">Begin: Chapter I &rarr;</a>
+    </footer>
+</article>
+
+<footer>
+    <div class="container">
+        <p>&copy; William N. Goetzmann, Yale School of Management</p>
+    </div>
+</footer>
+
+</body>
+</html>
