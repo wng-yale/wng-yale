@@ -103,6 +103,37 @@
 
         <p>The global expansion of finance in the twenty-first century, particularly in India and China, has vastly enlarged the supply of capital, increased the number of investors enormously, and afforded all investors the opportunity to diversify globally. The tools we explore in this text are the foundation of the decisions those investors face.</p>
 
+        <p>One long pattern runs beneath all of this history. Across seven centuries, the real return on safe lending has drifted steadily downward &mdash; a decline visible only at the scale of centuries, and one of the most striking regularities in financial history.</p>
+
+        <div class="figure">
+            <div id="rate-history"></div>
+            <p class="figure-caption"><strong>Seven centuries of real interest rates.</strong> Global real interest rates have fallen steadily since the medieval period. Paul Schmelzing dates this &ldquo;suprasecular&rdquo; decline at roughly 1.6 basis points a year &mdash; from double digits toward zero today &mdash; with wide swings around the trend. <em>This is a preliminary schematic; it will be rebuilt from Schmelzing&rsquo;s published series.</em> Sources: Schmelzing, <a href="https://www.bankofengland.co.uk/working-paper/2020/eight-centuries-of-global-real-interest-rates-r-g-and-the-suprasecular-decline-1311-2018" target="_blank" rel="noopener">&ldquo;Eight Centuries of Global Real Interest Rates, R&minus;G, and the Suprasecular Decline, 1311&ndash;2018,&rdquo; Bank of England Staff Working Paper No. 845 (2020)</a>; summary at <a href="https://www.visualcapitalist.com/700-year-decline-of-interest-rates/" target="_blank" rel="noopener">Visual Capitalist</a>.</p>
+        </div>
+        <script>
+        (function(){
+          var W=760,H=420,mL=70,mR=30,mT=46,mB=52,pw=W-mL-mR,ph=H-mT-mB;
+          var Y0=1300,Y1=2020,RMAX=12;
+          function px(y){return mL+(y-Y0)/(Y1-Y0)*pw;}
+          function py(r){return mT+ph-r/RMAX*ph;}
+          var D=[[1340,10.5],[1380,8.0],[1420,11.0],[1470,8.3],[1520,9.3],[1570,6.6],[1620,8.1],[1670,5.2],[1720,6.1],[1770,4.2],[1820,4.9],[1870,3.1],[1920,3.6],[1970,2.1],[2000,3.4],[2018,0.6]];
+          var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+          s+='<text x="'+mL+'" y="26" font-size="14" font-weight="700" fill="#26221a">The suprasecular decline of interest rates</text>';
+          for(var yr=1300;yr<=2020;yr+=100){var x=px(yr);s+='<line x1="'+x.toFixed(1)+'" y1="'+mT+'" x2="'+x.toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#e7ddc6"/><text x="'+x.toFixed(1)+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+yr+'</text>';}
+          for(var r=0;r<=RMAX;r+=2){var y=py(r);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+r+'%</text>';}
+          s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
+          s+='<text transform="translate(18 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Real interest rate</text>';
+          s+='<line x1="'+px(1340).toFixed(1)+'" y1="'+py(9.4).toFixed(1)+'" x2="'+px(2018).toFixed(1)+'" y2="'+py(1.0).toFixed(1)+'" stroke="#7a1414" stroke-width="2" stroke-dasharray="7 4"/>';
+          s+='<text x="'+px(1540).toFixed(1)+'" y="'+py(1.4).toFixed(1)+'" font-size="11.5" fill="#7a1414" font-style="italic">long-run trend &asymp; &minus;1.6 basis points / year</text>';
+          var d='';for(var i=0;i<D.length;i++){d+=(i===0?'M':'L')+px(D[i][0]).toFixed(1)+' '+py(D[i][1]).toFixed(1);}
+          s+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="2.6" stroke-linejoin="round" opacity="0.92"/>';
+          s+='<circle cx="'+px(2018).toFixed(1)+'" cy="'+py(0.6).toFixed(1)+'" r="4" fill="#1a5276"/>';
+          s+='<text x="'+(mL+pw-6)+'" y="'+(mT+13)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">blue: real rate (illustrative); maroon dash: trend</text>';
+          s+='<text x="'+(mL+pw-6)+'" y="'+(mT+ph-10)+'" text-anchor="end" font-size="11.5" fill="#b06a1a" font-style="italic" opacity="0.9">Schematic &mdash; to be rebuilt from the primary series</text>';
+          s+='</svg>';
+          document.getElementById('rate-history').innerHTML=s;
+        })();
+        </script>
+
                         <h2>Investing Today</h2>
 
         <p>Bring the story to the present. How large is investment in the world now? A clean way to see it is as a share of what the world produces. Each year humankind does not consume everything it makes; it sets a portion aside &mdash; building factories, housing, machinery, and infrastructure, and creating the financial claims that fund them. Economists call this <strong>gross capital formation</strong>, and for the world as a whole it runs at roughly a quarter of global output, year after year. The figure below is drawn <em>live</em> from the World Bank, so it stays current as new data arrive.</p>
