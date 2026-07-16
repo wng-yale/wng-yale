@@ -356,7 +356,128 @@
         })();
         </script>
 
-        <h2>V. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
+                <h2>V. Default Risk</h2>
+
+        <p>Everything so far has assumed the promised cash flows are certain; the only question was how to value a sure stream as interest rates move. For a U.S. Treasury that is very nearly right &mdash; the payment will arrive. But a corporate bond, or the bond of a foreign government, carries a second and entirely different risk: the borrower may simply not pay. This is <strong>default risk</strong> &mdash; also called credit risk &mdash; and it is the other great hazard of fixed income. Interest-rate risk asks what a sure promise is worth as rates change; default risk asks whether the promise will be kept at all.</p>
+
+        <h3>Promised Yield Is Not Expected Return</h3>
+
+        <p>The yield to maturity we computed in Section I assumed that every coupon and the full face value arrive on schedule. For a bond that might default, that number is the <strong>promised yield</strong> &mdash; the return you earn <em>if</em> nothing goes wrong. It is not your expected return, because sometimes something does. To be held at all, a risky bond must promise a higher yield than a Treasury of the same maturity; the difference is the <strong>credit spread</strong>. But the spread is not free money. Part of it merely offsets expected losses from default; only what remains is genuine compensation for bearing the risk.</p>
+
+        <div class="equation">
+            <p class="equation-label">Promised Yield, Spread, and Expected Return</p>
+            $$\underbrace{y_{\text{promised}}}_{\text{YTM}}=\underbrace{r}_{\text{riskless}}+\underbrace{s}_{\text{credit spread}},\qquad \mathbb{E}[\text{return}]\approx y_{\text{promised}}-\underbrace{p\times \ell}_{\text{expected loss}}$$
+        </div>
+
+        <p>Here $p$ is the probability of default and $\ell$ is the loss given default &mdash; the fraction of value not recovered. A number makes it concrete. Suppose a bond promises 8% when Treasuries yield 4%, a spread of 4%. If the bond defaults with probability 3% a year and, in default, holders lose 60% of value, the expected loss is about $0.03\times0.60=1.8\%$ a year. Your <em>expected</em> return is then roughly $8\%-1.8\%\approx6.2\%$ &mdash; not the 8% on the screen. The remaining 2.2% of spread is your reward for bearing the risk. The promised yield always overstates what you can expect to earn; the gap is the expected loss you have quietly agreed to absorb.</p>
+
+        <div class="key-concept">
+            <h4>Key Idea: The Yield You Are Quoted Is a Promise, Not a Forecast</h4>
+            <p>Quoted yield to maturity is the return assuming full and timely payment. For any bond that can default, expected return is <em>lower</em> &mdash; by the expected loss, the default probability times the loss given default. Two bonds with the same promised yield can have very different expected returns if one is far likelier to default than the other.</p>
+        </div>
+
+        <h3>Debt and Equity as Options: The Capital-Structure Waterfall</h3>
+
+        <p>Where does default risk come from, structurally? Chapter IX gave the key: the equity of a firm financed with debt is a <em>call option</em> on the firm&rsquo;s assets, struck at the face value of the debt, and the debt is a riskless bond minus a <em>put</em>. Bring that lens to a firm with a genuine priority structure &mdash; <strong>senior</strong> debt paid first, then <strong>junior</strong> (subordinated) debt, and <strong>equity</strong> last. At maturity the assets are worth $V$, and they are distributed in strict order of priority:</p>
+
+        <ul>
+            <li>The senior lenders take the first slice: they receive $\min(V,\,F_s)$, the smaller of the asset value and their face $F_s$.</li>
+            <li>The junior lenders take what is left, up to their own face: $\min\!\big(\max(V-F_s,0),\,F_j\big)$.</li>
+            <li>The shareholders keep the residual and nothing less than zero: $\max(V-F_s-F_j,\,0)$.</li>
+        </ul>
+
+        <p>The three payoffs always sum to $V$: whatever the firm is worth, someone owns it. And each tranche is a spread of options. Senior debt fails only if $V$ falls below $F_s$; junior debt is impaired the moment $V$ dips below $F_s+F_j$; equity is wiped out in that same event, yet it alone owns the entire upside. Drag the figure&rsquo;s sliders and watch the priority waterfall &mdash; and the distribution of where the firm might land &mdash; do the rest.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px;font-size:.92rem;color:#26221a">
+              <label>Senior face F<sub>s</sub>: <input id="wf-s" type="range" min="10" max="130" step="5" value="60" style="vertical-align:middle;width:110px"> <strong id="wf-sv" style="color:#1a5276">60</strong></label>
+              <label>Junior face F<sub>j</sub>: <input id="wf-j" type="range" min="0" max="100" step="5" value="30" style="vertical-align:middle;width:110px"> <strong id="wf-jv" style="color:#b9770e">30</strong></label>
+              <label>Asset volatility: <input id="wf-v" type="range" min="5" max="60" step="1" value="25" style="vertical-align:middle;width:110px"> <strong id="wf-vv" style="color:#7a1414">25%</strong></label>
+            </div>
+            <div id="wf-chart"></div>
+            <div id="wf-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 11.5.</strong> A firm&rsquo;s capital structure as options on its assets. <em>Top:</em> the payoff to each claim as a function of the firm&rsquo;s value $V$ at maturity &mdash; senior debt (blue) fills first up to its face, junior debt (gold) next, equity (green) takes the residual; stacked, they always sum to $V$. <em>Bottom:</em> the probability distribution of $V$ at maturity, tinted by outcome &mdash; red where the firm cannot cover its senior debt, gold where it covers senior but not junior, green where all debt is paid and equity has value. Raise the asset volatility and the distribution fans out: more mass slides below the debt thresholds, the bonds&rsquo; default probabilities climb and their value falls, while equity &mdash; a call option &mdash; gains from the fatter upside. The conflict of interest between bondholders and shareholders is right there in the geometry.</p>
+        </div>
+        <script>
+        (function(){
+          var W=720,H=452,mL=52,mR=16,mT=16,pw=W-mL-mR;
+          var ph1=250,gap=12,ph2=92,V0=120,mu=0.05,T=5,Vmax=240;
+          var yT=mT,yTB=mT+ph1,yB=mT+ph1+gap,yBB=mT+ph1+gap+ph2;
+          var sfs=document.getElementById('wf-s'),sfj=document.getElementById('wf-j'),ssig=document.getElementById('wf-v'),el=document.getElementById('wf-chart');
+          function ncdf(x){var t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2),p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return x>0?1-p:p;}
+          function render(){
+            var Fs=+sfs.value,Fj=+sfj.value,sig=+ssig.value/100;
+            document.getElementById('wf-sv').textContent=Fs;document.getElementById('wf-jv').textContent=Fj;document.getElementById('wf-vv').textContent=(+ssig.value)+'%';
+            var m=Math.log(V0)+(mu-sig*sig/2)*T,sd=sig*Math.sqrt(T);
+            function pdf(V){if(V<=0)return 0;var z=(Math.log(V)-m)/sd;return Math.exp(-z*z/2)/(V*sd*2.5066283);}
+            function cdf(K){return ncdf((Math.log(K)-m)/sd);}
+            function X(V){return mL+V/Vmax*pw;}
+            function Yp(v){return yTB-v/Vmax*ph1;}
+            var sen=function(V){return Math.min(V,Fs);},jun=function(V){return Math.min(Math.max(V-Fs,0),Fj);},cumSJ=function(V){return sen(V)+jun(V);};
+            var N=170;
+            function area(topFn,botFn){var p='';for(var i=0;i<=N;i++){var V=i/N*Vmax;p+=X(V).toFixed(1)+','+Yp(topFn(V)).toFixed(1)+' ';}for(var i2=N;i2>=0;i2--){var V2=i2/N*Vmax;p+=X(V2).toFixed(1)+','+Yp(botFn(V2)).toFixed(1)+' ';}return p;}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var v=0;v<=Vmax;v+=40){var yy=Yp(v);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c">'+v+'</text>';}
+            s+='<polygon points="'+area(sen,function(){return 0;})+'" fill="#1a5276" opacity="0.82"/>';
+            s+='<polygon points="'+area(cumSJ,sen)+'" fill="#b9770e" opacity="0.82"/>';
+            s+='<polygon points="'+area(function(V){return V;},cumSJ)+'" fill="#1e8b3a" opacity="0.82"/>';
+            s+='<line x1="'+X(0)+'" y1="'+Yp(0)+'" x2="'+X(Vmax)+'" y2="'+Yp(Vmax)+'" stroke="#26221a" stroke-width="1" stroke-dasharray="2 3" opacity="0.45"/>';
+            // density panel
+            var pm=0;for(var i=1;i<=N;i++){var pv=pdf(i/N*Vmax);if(pv>pm)pm=pv;}
+            function Yd(p){return yBB-p/pm*ph2;}
+            function densPoly(a,b){var p=X(a).toFixed(1)+','+yBB.toFixed(1)+' ';for(var V=a;V<=b+1e-9;V+=Vmax/N)p+=X(V).toFixed(1)+','+Yd(pdf(V)).toFixed(1)+' ';p+=X(Math.min(b,Vmax)).toFixed(1)+','+yBB.toFixed(1)+' ';return p;}
+            s+='<polygon points="'+densPoly(0,Math.min(Fs,Vmax))+'" fill="#c0392b" opacity="0.42"/>';
+            if(Fs<Vmax)s+='<polygon points="'+densPoly(Fs,Math.min(Fs+Fj,Vmax))+'" fill="#b9770e" opacity="0.4"/>';
+            if(Fs+Fj<Vmax)s+='<polygon points="'+densPoly(Fs+Fj,Vmax)+'" fill="#1e8b3a" opacity="0.34"/>';
+            var dl='';for(var V=0;V<=Vmax+1e-9;V+=Vmax/N)dl+=(V===0?'M':'L')+X(V).toFixed(1)+' '+Yd(pdf(V)).toFixed(1)+' ';
+            s+='<path d="'+dl+'" fill="none" stroke="#7a6f57" stroke-width="1.2"/>';
+            // threshold lines across both panels
+            s+='<line x1="'+X(Fs)+'" y1="'+yT+'" x2="'+X(Fs)+'" y2="'+yBB+'" stroke="#c0392b" stroke-width="1.3" stroke-dasharray="4 3"/><text x="'+X(Fs)+'" y="'+(yT-3)+'" text-anchor="middle" font-size="10.5" fill="#c0392b">F&#8347;</text>';
+            if(Fs+Fj<=Vmax)s+='<line x1="'+X(Fs+Fj)+'" y1="'+yT+'" x2="'+X(Fs+Fj)+'" y2="'+yBB+'" stroke="#7a1414" stroke-width="1.3" stroke-dasharray="4 3"/><text x="'+X(Fs+Fj)+'" y="'+(yT-3)+'" text-anchor="middle" font-size="10.5" fill="#7a1414">F&#8347;+F&#11002;</text>';
+            // axes
+            s+='<line x1="'+mL+'" y1="'+yT+'" x2="'+mL+'" y2="'+yTB+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+yTB+'" x2="'+(mL+pw)+'" y2="'+yTB+'" stroke="#26221a" stroke-width="1.1"/>';
+            s+='<line x1="'+mL+'" y1="'+yB+'" x2="'+mL+'" y2="'+yBB+'" stroke="#26221a" stroke-width="1.1"/><line x1="'+mL+'" y1="'+yBB+'" x2="'+(mL+pw)+'" y2="'+yBB+'" stroke="#26221a" stroke-width="1.1"/>';
+            for(var vx=0;vx<=Vmax;vx+=40){s+='<text x="'+X(vx)+'" y="'+(yBB+15)+'" text-anchor="middle" font-size="10" fill="#8a7f6c">'+vx+'</text>';}
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Firm asset value V at maturity</text>';
+            s+='<text transform="translate(13 '+(yT+ph1/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Payoff to each claim</text>';
+            s+='<text x="'+(mL+6)+'" y="'+(yB+12)+'" font-size="10.5" font-style="italic" fill="#8a7f6c">distribution of V</text>';
+            // legend
+            var lx=mL+pw-124,ly=yT+8;
+            s+='<g font-size="11"><rect x="'+lx+'" y="'+ly+'" width="120" height="50" fill="#fbf7ec" opacity="0.92" stroke="#e0d6bf" rx="4"/>';
+            s+='<rect x="'+(lx+8)+'" y="'+(ly+8)+'" width="12" height="9" fill="#1a5276" opacity="0.82"/><text x="'+(lx+25)+'" y="'+(ly+16)+'" fill="#5c5344">senior debt</text>';
+            s+='<rect x="'+(lx+8)+'" y="'+(ly+22)+'" width="12" height="9" fill="#b9770e" opacity="0.82"/><text x="'+(lx+25)+'" y="'+(ly+30)+'" fill="#5c5344">junior debt</text>';
+            s+='<rect x="'+(lx+8)+'" y="'+(ly+36)+'" width="12" height="9" fill="#1e8b3a" opacity="0.82"/><text x="'+(lx+25)+'" y="'+(ly+44)+'" fill="#5c5344">equity</text></g>';
+            s+='</svg>';el.innerHTML=s;
+            var pSen=cdf(Fs),pTot=cdf(Fs+Fj);
+            var EV=V0*Math.exp(mu*T);
+            function Ecall(K){var lk=Math.log(K);return EV*ncdf((m+sd*sd-lk)/sd)-K*ncdf((m-lk)/sd);}
+            var eS=EV-Ecall(Fs),eJ=Ecall(Fs)-Ecall(Fs+Fj),eE=Ecall(Fs+Fj);
+            document.getElementById('wf-read').innerHTML='With assets starting at '+V0+' and volatility '+(+ssig.value)+'%, the firm ends below its senior face ('+Fs+') with probability <strong style="color:#c0392b">'+(pSen*100).toFixed(1)+'%</strong> &mdash; the senior tranche&rsquo;s default probability. It ends below total debt ('+(Fs+Fj)+') with probability <strong style="color:#7a1414">'+(pTot*100).toFixed(1)+'%</strong>, impairing the junior debt and wiping out the equity together. Expected payoffs at maturity: senior <strong style="color:#1a5276">'+eS.toFixed(1)+'</strong>, junior <strong style="color:#b9770e">'+eJ.toFixed(1)+'</strong>, equity <strong style="color:#1e8b3a">'+eE.toFixed(1)+'</strong>. Raise the volatility and value drains from the debt into the equity &mdash; options love risk, which is exactly why bondholders fear it.';
+          }
+          [sfs,sfj,ssig].forEach(function(x){x.addEventListener('input',render);});render();
+        })();
+        </script>
+
+        <p>The figure makes visible a conflict that sits at the heart of corporate finance. Because equity is a call option, its value <em>rises</em> with the firm&rsquo;s risk: a wider spread of outcomes fattens the upside the shareholders keep while their downside is capped at zero. The bondholders own the mirror image and feel the opposite &mdash; more risk only deepens their exposure to default. Shareholders of a distressed firm can therefore prefer a wild gamble that its creditors would refuse. This is not a market imperfection; it is the geometry of options, now stretched across an entire balance sheet. It is also why bond contracts bristle with covenants, and why credit analysis is, at bottom, the pricing of a put.</p>
+
+        <h3>A History of Default: Russia&rsquo;s Bonds</h3>
+
+        <p>Default risk is easy to underrate in calm times, so it helps to look at a spectacular instance. In 1822 Nathan Mayer Rothschild floated a 5% loan for the Russian Empire in London &mdash; roughly &pound;3.5 million, and a genuine landmark: it is widely regarded as the first sovereign bond <em>denominated and payable in sterling</em> rather than the borrower&rsquo;s own currency. A holder could clip coupons in London, Paris, Frankfurt, Vienna, or St. Petersburg. For nearly a century it was a fine investment. Imperial Russia paid, through wars and revolutions and financial panics, decade after decade &mdash; the London coupon stamps on surviving certificates run deep into the nineteenth century and beyond.</p>
+
+        <div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;margin:16px 0">
+          <figure style="flex:0 0 260px;margin:0">
+            <img src="figures/hist-russian-bond-1822.jpg" alt="A 720-rouble / 111-pound certificate of the 1822 Russian 5% sterling loan issued in London by N. M. Rothschild" style="width:100%;border:1px solid #d8ccb0;border-radius:4px">
+            <figcaption style="font-size:.8rem;color:#8a7f6c;margin-top:5px;font-style:italic;line-height:1.4">A 720-rouble (&pound;111) certificate of the Russian 5% sterling loan of 1822, issued in London by N. M. Rothschild &mdash; the first foreign sovereign bond payable in sterling. The bilingual text promises a perpetual 5% income (&ldquo;5 &#1085;&#1072; &#1089;&#1090;&#1086;&rdquo;) collectible in St. Petersburg or London; the round stamps record coupons delivered in London in 1834 and 1846. (Wikimedia Commons, public domain.)</figcaption>
+          </figure>
+          <div style="flex:1 1 300px">
+            <p style="margin-top:0">Then the promise was broken all at once. In early 1918 the new Bolshevik government repudiated every debt of the Tsarist state by decree. Holders of Russian bonds &mdash; French and British households above all, who had been sold Russian paper as the safest of investments &mdash; were left with beautiful, worthless certificates. Only generations later did they recover anything: a 1986 settlement between Britain and the USSR, and a 1997 accord between France and Russia, together returned on the order of one percent of the original claims.</p>
+            <p>The 1822 bond is default risk written large. Here was the grandest name in Europe, floated by the most powerful bank of the age, an impeccable payer for ninety-five years &mdash; and then a near-total loss that no duration calculation could have anticipated. Interest-rate risk would have told you how the bond&rsquo;s price wobbled as yields moved. It would have said nothing about the risk that actually mattered. Promised yield is not expected return; and the difference, once in a long while, is nearly everything.</p>
+          </div>
+        </div>
+
+        <h2>VI. The Mathematics <span style="font-weight:400;font-size:1rem;color:#b9770e;">(optional)</span></h2>
 
         <p>The three lenses above require no calculus. But duration and convexity have exact definitions, and for readers who want to compute rather than merely picture them, the formulas are clean and worth seeing. They also make precise the two readings of duration &mdash; average waiting time and price sensitivity &mdash; and show why they are the same number.</p>
 
@@ -404,7 +525,7 @@
             <p style="margin-bottom:0;">Its moment came in the 1970s and early 1980s, when interest rates in the United States turned wildly volatile &mdash; long-bond yields swinging from 6% to over 15% and back &mdash; and the old buy-and-hold complacency of bond management became untenable. Suddenly every insurer and pension fund needed to know its exposure to rates, and duration was the number that answered. What Macaulay had offered as a statistical nicety became, forty years on, the central instrument of an entire industry.</p>
         </aside>
 
-        <h2>VI. Summary</h2>
+        <h2>VII. Summary</h2>
 
         <p>The bond price&ndash;yield curve is the quietest of our five pictures and, by dollar volume, the one that governs the most wealth. Its logic is the logic of discounting run in reverse: a bond is a fixed stream of promises, its price is their present value, and because the yield sits in every denominator, the price falls as the yield rises. That is why the curve slopes down. Because discounting decelerates, the curve also bows &mdash; it is convex &mdash; and the bow is a small standing gift to the bondholder, since gains from falling rates outrun losses from rising ones.</p>
 
