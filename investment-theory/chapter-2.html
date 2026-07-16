@@ -152,41 +152,57 @@
         <p><strong>When $\rho = -1$ (perfect negative correlation):</strong></p>
         <p>A mixture of 66.5% Security A and 33.5% Security B produces approximately zero standard deviation &mdash; a nearly perfect hedge. This scenario rarely occurs in practice except with offsetting long and short positions.</p>
 
-        <div class="figure">
-            <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Effect of correlation on portfolio risk">
-                <defs>
-                    <marker id="arrowhead2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                        <polygon points="0 0, 8 3, 0 6" fill="#666"/>
-                    </marker>
-                </defs>
-                <!-- axes -->
-                <line x1="80" y1="20" x2="80" y2="380" stroke="#999" stroke-width="1"/>
-                <line x1="80" y1="380" x2="660" y2="380" stroke="#999" stroke-width="1"/>
-                <text x="370" y="420" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif">Standard Deviation (&sigma;)</text>
-                <text x="25" y="200" text-anchor="middle" font-size="13" fill="#333" font-family="Inter, sans-serif" transform="rotate(-90, 25, 200)">Expected Return</text>
-                <!-- Point A -->
-                <circle cx="230" cy="280" r="6" fill="#00356b"/>
-                <text x="218" y="300" font-size="12" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">A</text>
-                <text x="218" y="315" font-size="10" fill="#666" font-family="Inter, sans-serif">10%, 15%</text>
-                <!-- Point B -->
-                <circle cx="480" cy="100" r="6" fill="#bd5319"/>
-                <text x="490" y="95" font-size="12" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">B</text>
-                <text x="490" y="110" font-size="10" fill="#666" font-family="Inter, sans-serif">20%, 30%</text>
-                <!-- rho = +1 (straight line) -->
-                <line x1="230" y1="280" x2="480" y2="100" stroke="#aaa" stroke-width="2" stroke-dasharray="8,4"/>
-                <text x="390" y="165" font-size="11" fill="#888" font-family="Inter, sans-serif">&rho; = +1</text>
-                <!-- rho = 0 (curved left) -->
-                <path d="M230,280 Q140,200 250,150 Q350,110 480,100" fill="none" stroke="#00356b" stroke-width="2.5"/>
-                <text x="148" y="185" font-size="11" fill="#00356b" font-weight="600" font-family="Inter, sans-serif">&rho; = 0</text>
-                <!-- rho = -1 (kinked to y-axis) -->
-                <path d="M230,280 L95,160 L480,100" fill="none" stroke="#bd5319" stroke-width="2.5"/>
-                <text x="95" y="145" font-size="11" fill="#bd5319" font-weight="600" font-family="Inter, sans-serif">&rho; = &minus;1</text>
-                <!-- zero-risk point -->
-                <circle cx="95" cy="160" r="5" fill="#bd5319" stroke="white" stroke-width="2"/>
-                <text x="100" y="175" font-size="10" fill="#bd5319" font-family="Inter, sans-serif">Zero risk!</text>
-            </svg>
-            <p class="figure-caption"><strong>Figure 2.2.</strong> Effect of correlation on portfolio risk for two assets. Lower correlation bends the opportunity set leftward, creating diversification benefits. At $\rho = -1$, risk can be eliminated entirely.</p>
+        <div class="figure" id="frontier-lab">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px">
+              <strong style="font-size:.95rem;color:#26221a">Two assets, one correlation</strong>
+              <label style="font-size:.86rem;color:#26221a">Correlation &rho;:
+                <input id="fl-rho" type="range" min="-1" max="1" step="0.05" value="0" style="vertical-align:middle;width:180px">
+                <strong id="fl-rhov" style="color:#1a5276">0.00</strong>
+              </label>
+            </div>
+            <div id="fl-chart"></div>
+            <div id="fl-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 2.2.</strong> Two assets in risk&ndash;return space &mdash; A ($\bar{R}=10\%$, $\sigma=15\%$) and B ($\bar{R}=20\%$, $\sigma=30\%$) &mdash; and every portfolio you can build from them. Drag the correlation. At $\rho = +1$ the opportunity set is the straight dashed line, with no diversification. As $\rho$ falls, the curve bows left of that line: the same two assets now offer less risk for the same return. At $\rho = -1$ they combine into a nearly riskless portfolio. The <span style="color:#b9770e;font-weight:700">minimum-variance portfolio</span> is marked; the solid blue arc above it is efficient, the dashed arc below it is dominated.</p>
         </div>
+        <script>
+        (function(){
+          var W=700,H=430,mL=64,mR=94,mT=18,mB=48,pw=W-mL-mR,ph=H-mT-mB;
+          var RMAX=0.24,SMAX=0.34,RA=0.10,SA=0.15,RB=0.20,SB=0.30;
+          function px(s){return mL+s/SMAX*pw;} function py(r){return mT+ph-r/RMAX*ph;}
+          function sig(w,rho){var v=w*w*SA*SA+(1-w)*(1-w)*SB*SB+2*w*(1-w)*rho*SA*SB;return Math.sqrt(Math.max(v,0));}
+          function render(){
+            var rho=parseFloat(document.getElementById('fl-rho').value);
+            document.getElementById('fl-rhov').textContent=rho.toFixed(2);
+            var wmv=(SB*SB-rho*SA*SB)/(SA*SA+SB*SB-2*rho*SA*SB); wmv=Math.max(0,Math.min(1,wmv));
+            var smv=sig(wmv,rho), rmv=wmv*RA+(1-wmv)*RB;
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            for(var sd=0;sd<=SMAX+1e-9;sd+=0.05){var x=px(sd);s+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6"/><text x="'+x+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';}
+            for(var r=0;r<=RMAX+1e-9;r+=0.04){var y=py(r);s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(mL+pw)+'" y2="'+y+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+Math.round(r*100)+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Standard deviation (risk)</text>';
+            s+='<text transform="translate(16 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Expected return</text>';
+            s+='<line x1="'+px(SA)+'" y1="'+py(RA)+'" x2="'+px(SB)+'" y2="'+py(RB)+'" stroke="#c9bfa6" stroke-width="1.6" stroke-dasharray="7 4"/>';
+            s+='<text x="'+px((SA+SB)/2+0.006)+'" y="'+(py((RA+RB)/2)-7)+'" font-size="10.5" fill="#a89a78" font-style="italic">&rho; = +1</text>';
+            function path(w0,w1){var d='',first=true,steps=44;for(var k=0;k<=steps;k++){var w=w0+(w1-w0)*k/steps;var x=px(sig(w,rho)),y=py(w*RA+(1-w)*RB);d+=(first?'M':'L')+x.toFixed(1)+' '+y.toFixed(1);first=false;}return d;}
+            s+='<path d="'+path(wmv,1)+'" fill="none" stroke="#9c8fbf" stroke-width="2" stroke-dasharray="5 4" opacity="0.8"/>';
+            s+='<path d="'+path(wmv,0)+'" fill="none" stroke="#1a5276" stroke-width="3.4"/>';
+            s+='<circle cx="'+px(SA)+'" cy="'+py(RA)+'" r="6.5" fill="#7a1414"/><text x="'+px(SA)+'" y="'+(py(RA)+22)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#7a1414">A</text>';
+            s+='<circle cx="'+px(SB)+'" cy="'+py(RB)+'" r="6.5" fill="#7a1414"/><text x="'+(px(SB)+13)+'" y="'+(py(RB)+4)+'" font-size="12" font-weight="700" fill="#7a1414">B</text>';
+            s+='<circle cx="'+px(smv)+'" cy="'+py(rmv)+'" r="6" fill="#b9770e" stroke="#fff" stroke-width="1.6"/>';
+            s+='<text x="'+(px(smv)-10)+'" y="'+(py(rmv)-9)+'" text-anchor="end" font-size="11" font-weight="700" fill="#b9770e">min variance</text>';
+            s+='</svg>';
+            document.getElementById('fl-chart').innerHTML=s;
+            var msg;
+            if(wmv>=0.999){msg='No gain: for &rho; this high the least-risk portfolio is simply asset A. Diversification begins only once correlation drops below +0.5.';}
+            else if(smv<0.005){msg='Near &rho; = &minus;1 the two assets almost cancel: a mix reaches close to zero risk.';}
+            else{msg='The curve bows left of the &rho; = +1 line &mdash; the minimum-variance mix has lower risk ('+(smv*100).toFixed(1)+'%) than asset A (15%) alone.';}
+            document.getElementById('fl-read').innerHTML='&rho; = '+rho.toFixed(2)+'. &nbsp;Minimum-variance portfolio: <strong>'+Math.round(wmv*100)+'% A / '+Math.round((1-wmv)*100)+'% B</strong>, &sigma; = <strong>'+(smv*100).toFixed(1)+'%</strong>. &nbsp;'+msg;
+          }
+          document.getElementById('fl-rho').addEventListener('input',render); render();
+        })();
+        </script>
 
         <div class="key-concept">
             <h4>Key Concept: Diversification</h4>
@@ -202,10 +218,61 @@
 
         <p>Examining portfolios with multiple securities &mdash; all having zero correlation and identical risk &mdash; reveals significant diversification benefits. An equally-weighted portfolio progressively improves as more securities are added.</p>
 
-        <div class="figure">
-            <img src="figures/diversification_benefit.svg" alt="Diversification benefit: portfolio risk vs number of stocks" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 2.1c.</strong> The diversification curve: portfolio standard deviation falls rapidly as the number of equally-weighted, uncorrelated holdings increases, but flattens after roughly 25&ndash;30 securities.</p>
+        <div class="figure" id="diversification-lab">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px">
+              <strong style="font-size:.95rem;color:#26221a">Risk as holdings are added</strong>
+              <span style="display:flex;gap:16px;flex-wrap:wrap">
+                <label style="font-size:.86rem;color:#26221a">Assets n:
+                  <input id="dv-n" type="range" min="1" max="50" step="1" value="8" style="vertical-align:middle;width:130px">
+                  <strong id="dv-nv" style="color:#1a5276">8</strong>
+                </label>
+                <label style="font-size:.86rem;color:#26221a">Avg. &rho;:
+                  <input id="dv-rho" type="range" min="0" max="0.6" step="0.05" value="0.20" style="vertical-align:middle;width:130px">
+                  <strong id="dv-rhov" style="color:#1a5276">0.20</strong>
+                </label>
+              </span>
+            </div>
+            <div id="dv-chart"></div>
+            <div id="dv-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 2.1c.</strong> How portfolio risk falls as holdings are added, for equally-weighted assets each with 20% volatility. Set the average correlation between them. When it is zero, risk falls as $20\%/\sqrt{n}$ toward zero. When it is positive, the fall stops at a floor of $20\%\cdot\sqrt{\bar{\rho}}$ &mdash; the systematic risk that no amount of diversification removes. Most of the benefit arrives in the first 20&ndash;30 names.</p>
         </div>
+        <script>
+        (function(){
+          var W=700,H=380,mL=62,mR=30,mT=18,mB=48,pw=W-mL-mR,ph=H-mT-mB;
+          var NMAX=50,SIG=0.20,YMAX=0.22;
+          function px(n){return mL+(n-1)/(NMAX-1)*pw;} function py(s){return mT+ph-s/YMAX*ph;}
+          function sp(n,rho){return SIG*Math.sqrt(1/n+(1-1/n)*rho);}
+          function render(){
+            var n=parseInt(document.getElementById('dv-n').value,10);
+            var rho=parseFloat(document.getElementById('dv-rho').value);
+            document.getElementById('dv-nv').textContent=n;
+            document.getElementById('dv-rhov').textContent=rho.toFixed(2);
+            var floor=SIG*Math.sqrt(rho);
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
+            var xt=[1,10,20,30,40,50];
+            for(var i=0;i<xt.length;i++){var x=px(xt[i]);s+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6"/><text x="'+x+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+xt[i]+'</text>';}
+            for(var sy=0;sy<=YMAX+1e-9;sy+=0.05){var y=py(sy);s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(mL+pw)+'" y2="'+y+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+Math.round(sy*100)+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Number of assets in the portfolio</text>';
+            s+='<text transform="translate(16 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Portfolio standard deviation</text>';
+            if(floor>0.0008){var yf=py(floor);s+='<line x1="'+mL+'" y1="'+yf+'" x2="'+(mL+pw)+'" y2="'+yf+'" stroke="#7a1414" stroke-width="1.6" stroke-dasharray="6 4"/><text x="'+(mL+pw-4)+'" y="'+(yf-6)+'" text-anchor="end" font-size="10.5" fill="#7a1414" font-style="italic">systematic floor = '+(floor*100).toFixed(1)+'%</text>';}
+            var d='',first=true;for(var k=1;k<=NMAX;k++){var x=px(k),y=py(sp(k,rho));d+=(first?'M':'L')+x.toFixed(1)+' '+y.toFixed(1);first=false;}
+            s+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="3"/>';
+            var cx=px(n),cy=py(sp(n,rho));
+            s+='<line x1="'+cx+'" y1="'+(mT+ph)+'" x2="'+cx+'" y2="'+cy+'" stroke="#b9770e" stroke-width="1" stroke-dasharray="3 3"/>';
+            s+='<circle cx="'+cx+'" cy="'+cy+'" r="6" fill="#b9770e" stroke="#fff" stroke-width="1.6"/>';
+            s+='</svg>';
+            document.getElementById('dv-chart').innerHTML=s;
+            var cur=sp(n,rho);
+            var msg=rho<0.005?'With uncorrelated assets the risk falls as 20%/&radic;n, heading toward zero &mdash; but ever more slowly.':'Adding assets removes the independent risk but never the shared part: the curve flattens onto the '+(floor*100).toFixed(1)+'% floor.';
+            document.getElementById('dv-read').innerHTML='n = <strong>'+n+'</strong>, average &rho; = <strong>'+rho.toFixed(2)+'</strong> &rarr; portfolio &sigma; = <strong>'+(cur*100).toFixed(1)+'%</strong> (each asset 20%). &nbsp;'+msg;
+          }
+          var e1=document.getElementById('dv-n'),e2=document.getElementById('dv-rho');
+          e1.addEventListener('input',render);e2.addEventListener('input',render);render();
+        })();
+        </script>
 
         <blockquote>After 30 stocks, diversification is mostly achieved. There are enormous gains to diversification beyond one or two stocks.</blockquote>
 
