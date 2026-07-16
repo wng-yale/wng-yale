@@ -51,67 +51,60 @@
 
         <p>Chapters IV and V drew the <strong>Security Market Line</strong>: in a market at rest, every security sits on that line, its expected return fixed by its beta &mdash; the price of risk. But markets are never quite at rest. News arrives, expectations diverge, and a price is knocked off the line: for a moment the security is <em>mispriced</em>. What pulls it back is <strong>arbitrage</strong>. Let a stock drift below the line (too dear for its risk) or above it (too cheap), and investors who notice will sell the overpriced and buy the bargain, and their trading nudges the price back. This chapter takes a deeper dive into that machinery &mdash; how mispricings arise as information arrives, and how fast, and how completely, arbitrage makes them disappear.</p>
 
-        <p>The hunt is what does the work. Arbitrageurs dig into cash flows, discount rates, and the idiosyncratic signals that move a single firm &mdash; a CEO&rsquo;s health, a product&rsquo;s reception, a looming lawsuit. Opportunities for this &ldquo;arbitrage in expectations&rdquo; are rare, and rarer still once discovered, because <strong>speed</strong> is everything: the moment the buying starts, the price adjusts and the edge is gone. The chapter&rsquo;s central question is simply how good this mechanism is &mdash; <strong>how rapidly, and how thoroughly, do mispricings vanish?</strong></p>
+        <p>This search is the mechanism at work. Arbitrageurs study cash flows, discount rates, and the firm-specific factors that move a single stock &mdash; the health of a chief executive, the reception of a product, a pending lawsuit. Opportunities for this &ldquo;arbitrage in expectations&rdquo; are uncommon, and briefer still once found, because <strong>speed</strong> matters: once the buying begins, the price adjusts and the opportunity closes. The chapter&rsquo;s central question is simply how good this mechanism is &mdash; <strong>how rapidly, and how thoroughly, do mispricings vanish?</strong></p>
 
         <h3>The Invisible Hand of the Arbitrageur</h3>
 
         <p>Market efficiency is a statement about <em>speed</em>: how quickly relevant information becomes embedded in prices. The mechanism is a kind of invisible hand &mdash; an overpriced asset attracts short-sellers who push it down, an underpriced one attracts buyers who push it up. This is <em>informational</em> efficiency, about how fast news enters prices, not the Pareto efficiency of how resources are allocated. Two forces govern it: <strong>liquidity</strong>, since an illiquid market cannot react quickly, and <strong>psychology</strong>, since a crowd can over- or under-react when the meaning of the news is hard to judge.</p>
 
-        <p>Information once travelled only as fast as people did. In the eighteenth century a price change in Amsterdam reached London on the Thursday after the Monday it occurred &mdash; the time a fast messenger needed to cross the Channel. Today the same news circles the globe in milliseconds, and the invisible hand moves at the speed of light.</p>
+        <p>Information once travelled only as fast as people did. In the eighteenth century a price change in Amsterdam reached London on the Thursday after the Monday it occurred &mdash; the time a fast messenger needed to cross the Channel. Today the same information reaches every market within seconds.</p>
 
         <h2>II. Regnault and the Value of a Secret</h2>
 
         <p>The idea that prices already reflect what is knowable is usually dated to the 1950s and 1960s. In fact it was <em>stated and tested</em> nearly a century earlier &mdash; and by someone who actually worked the market. <strong>Jules Regnault</strong> (1834&ndash;1894), a broker&rsquo;s assistant in Second-Empire Paris, taught himself mathematics in a garret near the Bourse and in 1863 published <em>Calcul des chances et philosophie de la bourse</em>, arguably the first statistical theory of the stock market. He built the theory, tested it against data, and then used it to grow rich, retiring as a <em>rentier</em> with a fortune held, tellingly, mostly in bonds.</p>
 
-        <p>Regnault began with a hard question: who actually makes money in the market? His answer was bracing. For the ordinary investor, trading is a fair game at best; the only <em>reliable</em> profit belongs to those who know something the public does not.</p>
+        <p>Regnault began with a direct question: who actually makes money in the market? For the ordinary investor, he argued, trading is a fair game at best; the only <em>reliable</em> profit belongs to those who know something the public does not.</p>
 
         <blockquote>&ldquo;There is only one certain way of making a sure profit at the Stock Market, which is to only trade in guaranteed information unknown to the public &hellip; accessible only to a happy few, who is admitted to &hellip; those private meetings where the great political and financial decisions are plotted. This is the primary cause of the detrimental inequality which it is impossible to escape.&rdquo;<br><span style="font-size:.9rem;color:#6b6252;">&mdash; Jules Regnault, <em>Calcul des chances</em> (1863), &sect;15</span></blockquote>
 
-        <p>His example was close at hand: the French <em>rente</em>, the government bond whose price swung on decisions taken in ministries, where a civil servant &ldquo;who takes advantage of his position and State secrets&rdquo; held every advantage. Nathan Rothschild is the legend of the type &mdash; his courier network is said to have brought him word of Waterloo before London had it, letting him trade ahead of the news. Regnault&rsquo;s insight, in modern terms, is that markets are efficient with respect to <em>public</em> information but not necessarily <em>private</em>: the edge lives in the secret. And that reframes the whole subject &mdash; for if only private information pays, the interesting question becomes exactly how quickly private information stops being private and turns into price.</p>
+        <p>His example was close at hand: the French <em>rente</em>, the government bond whose price swung on decisions taken in ministries, where a civil servant &ldquo;who takes advantage of his position and State secrets&rdquo; held every advantage. Nathan Rothschild is the legend of the type &mdash; his courier network is said to have brought him word of Waterloo before London had it, letting him trade ahead of the news. Regnault&rsquo;s insight, in modern terms, is that markets are efficient with respect to <em>public</em> information but not necessarily <em>private</em>: the advantage lies in what is not yet known. This reframes the question. If only private information pays, then what matters is how quickly private information ceases to be private and is reflected in the price.</p>
 
-        <p>Watch what happens when a secret goes public. A major corporate event &mdash; a merger, a disaster, a rate decision &mdash; instantly rewrites expected cash flows, and the price moves. The Bhopal chemical disaster collapsed Union Carbide&rsquo;s stock within minutes; a Federal Reserve rate decision moves stocks the same day, not the day after. The tool for seeing this is the <strong>event study</strong>, which lines up many such events at day zero and averages the cumulative abnormal return around them.</p>
+        <p>Consider what happens when private information becomes public. A major corporate event &mdash; a merger, a disaster, a rate decision &mdash; instantly rewrites expected cash flows, and the price moves. The Bhopal chemical disaster collapsed Union Carbide&rsquo;s stock within minutes; a Federal Reserve rate decision moves stocks the same day, not the day after. The tool for seeing this is the <strong>event study</strong>, which lines up many such events at day zero and averages the cumulative abnormal return around them.</p>
 
 <div class="figure">
-            <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <marker id="arrowEV" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                        <polygon points="0 0, 8 3, 0 6" fill="#00356b"/>
-                    </marker>
-                </defs>
-                <!-- Axes -->
-                <line x1="70" y1="320" x2="480" y2="320" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowEV)"/>
-                <line x1="70" y1="320" x2="70" y2="30" stroke="#00356b" stroke-width="1.5" marker-end="url(#arrowEV)"/>
-                <text x="280" y="355" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Days relative to event</text>
-                <text x="25" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#00356b" transform="rotate(-90,25,175)">Cumulative Abnormal Return</text>
-                <!-- Day markers -->
-                <text x="120" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">-20</text>
-                <text x="195" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">-10</text>
-                <text x="270" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">0</text>
-                <text x="345" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">+10</text>
-                <text x="420" y="338" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#666">+20</text>
-                <!-- Event day vertical -->
-                <line x1="270" y1="315" x2="270" y2="45" stroke="#999" stroke-width="1" stroke-dasharray="4,3"/>
-                <text x="275" y="42" font-family="Inter, sans-serif" font-size="10" fill="#999">Event day</text>
-                <!-- Zero line -->
-                <line x1="70" y1="220" x2="470" y2="220" stroke="#ddd" stroke-width="1"/>
-                <text x="65" y="224" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#999">0</text>
-                <!-- Positive event (good news) - CAR rises at event, flat after -->
-                <polyline points="120,220 135,218 150,217 165,215 180,213 195,210 210,208 225,205 240,203 255,198 265,185 270,120 275,118 285,117 300,118 315,119 330,118 345,120 360,119 375,118 390,120 405,119 420,118" fill="none" stroke="#2d8f4e" stroke-width="2.5"/>
-                <text x="425" y="115" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#2d8f4e">Good news</text>
-                <!-- Negative event (bad news) - CAR drops at event, flat after -->
-                <polyline points="120,220 135,222 150,223 165,225 180,228 195,230 210,233 225,235 240,238 255,242 265,255 270,305 275,307 285,308 300,306 315,305 330,307 345,305 360,306 375,308 390,306 405,307 420,305" fill="none" stroke="#c0392b" stroke-width="2.5"/>
-                <text x="425" y="310" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#c0392b">Bad news</text>
-                <!-- Annotations -->
-                <text x="290" y="80" font-family="Inter, sans-serif" font-size="10" fill="#00356b">Price adjusts immediately;</text>
-                <text x="290" y="93" font-family="Inter, sans-serif" font-size="10" fill="#00356b">no post-event drift</text>
-                <!-- Pre-event leakage annotation -->
-                <text x="170" y="190" font-family="Inter, sans-serif" font-size="9" fill="#666">Slight pre-event</text>
-                <text x="170" y="201" font-family="Inter, sans-serif" font-size="9" fill="#666">leakage</text>
+            <svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:Georgia,serif">
+            <line x1="56" y1="334.0" x2="622" y2="334.0" stroke="#efe7d4"/><text x="49" y="338.0" text-anchor="end" font-size="11" fill="#8a7f6c">0%</text>
+            <line x1="56" y1="279.0" x2="622" y2="279.0" stroke="#efe7d4"/><text x="49" y="283.0" text-anchor="end" font-size="11" fill="#8a7f6c">5%</text>
+            <line x1="56" y1="224.0" x2="622" y2="224.0" stroke="#efe7d4"/><text x="49" y="228.0" text-anchor="end" font-size="11" fill="#8a7f6c">10%</text>
+            <line x1="56" y1="169.0" x2="622" y2="169.0" stroke="#efe7d4"/><text x="49" y="173.0" text-anchor="end" font-size="11" fill="#8a7f6c">15%</text>
+            <line x1="56" y1="114.0" x2="622" y2="114.0" stroke="#efe7d4"/><text x="49" y="118.0" text-anchor="end" font-size="11" fill="#8a7f6c">20%</text>
+            <line x1="56" y1="59.0" x2="622" y2="59.0" stroke="#efe7d4"/><text x="49" y="63.0" text-anchor="end" font-size="11" fill="#8a7f6c">25%</text>
+            <line x1="460.3" y1="26" x2="460.3" y2="334" stroke="#7a1414" stroke-width="1.2" stroke-dasharray="5 3"/>
+            <text x="460.3" y="20" text-anchor="middle" font-size="11" fill="#7a1414">announcement (day 0)</text>
+            <rect x="56.0" y="26" width="404.3" height="308" fill="#b9770e" opacity="0.05"/>
+            <path d="M56.0 334.0 L104.5 328.5 L136.9 323.0 L169.2 316.4 L201.5 308.7 L233.9 299.9 L266.2 290.0 L298.6 279.0 L330.9 265.8 L363.3 250.4 L379.4 240.5 L395.6 229.5 L411.8 217.4 L427.9 206.4 L444.1 196.5 L460.3 72.2 L476.5 63.4 L492.6 61.2 L508.8 60.1 L541.1 59.0 L589.7 59.0 L622.0 59.0 " fill="none" stroke="#1a5276" stroke-width="2.8"/>
+            <circle cx="444.1" cy="196.5" r="3.4" fill="#b9770e"/>
+            <circle cx="460.3" cy="72.2" r="3.4" fill="#1a5276"/>
+            <line x1="56" y1="26" x2="56" y2="334" stroke="#26221a" stroke-width="1.1"/><line x1="56" y1="334" x2="622" y2="334" stroke="#26221a" stroke-width="1.1"/>
+            <text x="56.0" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">-25</text>
+            <text x="136.9" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">-20</text>
+            <text x="217.7" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">-15</text>
+            <text x="298.6" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">-10</text>
+            <text x="379.4" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">-5</text>
+            <text x="460.3" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">0</text>
+            <text x="541.1" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">5</text>
+            <text x="622.0" y="351" text-anchor="middle" font-size="10.5" fill="#8a7f6c">10</text>
+            <text x="339.0" y="374" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Trading days relative to the announcement</text>
+            <text transform="translate(15 180) rotate(-90)" text-anchor="middle" font-size="12" font-style="italic" fill="#5c5344">Cumulative abnormal return</text>
+            <text x="250.1" y="147.0" text-anchor="middle" font-size="10.5" fill="#8a5a12">run-up <tspan font-style="italic">before</tspan> the news</text>
+            <text x="250.1" y="160.0" text-anchor="middle" font-size="10.5" fill="#8a5a12">(leaked private information)</text>
+            <text x="557.3" y="103.0" text-anchor="middle" font-size="10.5" fill="#5c5344">flat afterward:</text>
+            <text x="557.3" y="116.0" text-anchor="middle" font-size="10.5" fill="#5c5344">news fully absorbed</text>
             </svg>
-            <p class="figure-caption"><strong>Figure 8.1.</strong> Event study: Cumulative Abnormal Returns (CAR) around a corporate event. In efficient markets, prices adjust immediately on the event day with no post-announcement drift. Slight pre-event drift may indicate information leakage.</p>
+            <p class="figure-caption"><strong>Figure 8.1.</strong> An event study of merger targets. The line is the cumulative abnormal return of firms that received a takeover bid, averaged and aligned on the announcement day (day 0). Roughly half of the total run-up occurs <em>before</em> the announcement &mdash; the mark of private information reaching the market ahead of the news &mdash; and the remainder arrives at once on the day itself. Afterward the return is flat: the public news is fully absorbed, leaving no drift to trade on. After Keown and Pinkerton, &ldquo;Merger Announcements and Insider Trading Activity,&rdquo; <em>Journal of Finance</em> (1981).</p>
         </div>
 
-        <p>The picture is the signature of an efficient market. The price jumps almost entirely <em>on</em> the event day and then goes flat &mdash; no drift afterward, because no stale news is left to trade on. Any small run-up <em>before</em> the day is the fingerprint of leakage: private information seeping into the price, exactly as Regnault said it would, until the announcement makes it public and the advantage evaporates. It also disciplines corporate managers: in an efficient market, genuine news moves prices but accounting cosmetics do not &mdash; you cannot fool the crowd by burying a number in a footnote.</p>
+        <p>The pattern is characteristic of an efficient market, with a revealing wrinkle. Part of the adjustment happens <em>on</em> the announcement day, and none afterward &mdash; no drift, because no public news remains to trade on. But much of the run-up comes <em>before</em> the announcement: private information entering the price ahead of the news, as Regnault described, until the announcement makes it public and the remaining gap closes at once. Efficiency also constrains managers: genuine news moves prices, but cosmetic accounting does not, and a figure buried in a footnote will not fool the market.</p>
 
         <h3>Three Degrees of Efficiency</h3>
 
@@ -152,21 +145,17 @@
 
         <h2>III. The Random Walk</h2>
 
-        <p>Regnault&rsquo;s second great idea followed from his first. If the crowd&rsquo;s trading has already squeezed all public information into the price, then only <em>new</em> information can move it &mdash; and new information, by definition, is unpredictable. At any instant, he reasoned, a price is as likely to rise as to fall, a coin toss, because if the odds tilted, <em>arbitrage</em> (his word) would level them. Successive changes are therefore <em>independent</em>: the past holds no usable signal about the future. The shape this implies for prices over time is a <strong>random walk</strong>. He grounded it in a homely picture of the wisdom of the crowd.</p>
+        <p>Regnault&rsquo;s second great idea followed from his first. If the crowd&rsquo;s trading has already squeezed all public information into the price, then only <em>new</em> information can move it &mdash; and new information, by definition, is unpredictable. At any instant, he reasoned, a price is as likely to rise as to fall, a coin toss, because if the odds tilted, <em>arbitrage</em> (his word) would level them. Successive changes are therefore <em>independent</em>: the past holds no usable signal about the future. The shape this implies for prices over time is a <strong>random walk</strong>. He illustrated it with a simple analogy for the wisdom of the crowd.</p>
 
-<aside class="sidebar" style="border:1px solid #d8ccb0; border-left:4px solid #7a1414; background:#fbf7ec; border-radius:8px; padding:18px 22px; margin:26px 0;">
-          <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
-            <figure style="flex:0 0 330px; margin:0">
-              <img src="figures/hist-palais-brongniart.jpg" alt="The Palais Brongniart, the Paris stock exchange, with a crowd on the steps and omnibuses on the square, c. 1890" style="width:100%; border:1px solid #d8ccb0; border-radius:4px">
-              <figcaption style="font-size:.8rem; color:#8a7f6c; margin-top:5px; font-style:italic; line-height:1.4">The Palais Brongniart &mdash; the Bourse de Paris, where Regnault worked as a broker &mdash; photographed around 1890, brokers and speculators crowding its steps. (Rijksmuseum, public domain.)</figcaption>
-            </figure>
-            <div style="flex:1 1 300px">
-              <h4 style="margin-top:0; color:#7a1414; font-variant:small-caps; letter-spacing:.02em;">The Crowd and the Building</h4>
-              <p style="margin-top:0">Regnault gave the idea a homely image. Picture a crowd asked to judge the height of a tall building none of them may approach:</p>
-              <blockquote style="margin:10px 0; padding-left:14px; border-left:3px solid #d8ccb0; font-style:italic; color:#4a4438;">&ldquo;&hellip; if a large number of people, placed at a certain distance from a high building which they could not approach, were made responsible for approximately measuring with the naked eye its height from base to summit &hellip; by adding up all of the collected evaluations and dividing by the number of participants, we get an average height, differing from the actual height only by an average deviation, which would decrease the larger the number of observers, in proportion to the <strong>square root</strong> of this increase.&rdquo;</blockquote>
-              <p style="font-size:.92rem; color:#5c5344; margin-bottom:0;">&mdash; Jules Regnault, <em>Calcul des chances et philosophie de la bourse</em> (1863). The crowd&rsquo;s averaged guess converges on the truth, and its error falls as the square root of the number of observers &mdash; the very &radic; law that governs prices. A few pages on, Regnault lets the same observers turn speculators: they split into bulls and bears, and their average estimate <em>becomes the price</em>. The market is the crowd measuring the building.</p>
-            </div>
-          </div>
+<aside class="sidebar" style="border:1px solid #d8ccb0; border-left:4px solid #7a1414; background:#fbf7ec; border-radius:8px; padding:20px 24px; margin:26px 0;">
+          <h4 style="margin:0 0 12px; color:#7a1414; font-variant:small-caps; letter-spacing:.02em;">The Crowd and the Building</h4>
+          <figure style="margin:0 0 14px; text-align:center;">
+            <img src="figures/hist-palais-brongniart.jpg" alt="The Palais Brongniart, the Paris stock exchange, its steps crowded with brokers, around 1890" style="width:100%; max-width:600px; border:1px solid #d8ccb0; border-radius:4px">
+            <figcaption style="font-size:.8rem; color:#8a7f6c; margin-top:6px; font-style:italic; line-height:1.4;">The Palais Brongniart &mdash; the Bourse de Paris, where Regnault worked as a broker &mdash; around 1890, its steps crowded with brokers and speculators. (Rijksmuseum, public domain.)</figcaption>
+          </figure>
+          <p style="margin-top:0;">Regnault illustrated the idea simply. Picture a crowd asked to judge the height of a tall building none of them may approach:</p>
+          <blockquote style="margin:10px 0; padding-left:14px; border-left:3px solid #d8ccb0; font-style:italic; color:#4a4438;">&ldquo;&hellip; if a large number of people, placed at a certain distance from a high building which they could not approach, were made responsible for approximately measuring with the naked eye its height from base to summit &hellip; by adding up all of the collected evaluations and dividing by the number of participants, we get an average height, differing from the actual height only by an average deviation, which would decrease the larger the number of observers, in proportion to the <strong>square root</strong> of this increase.&rdquo;</blockquote>
+          <p style="font-size:.95rem; color:#5c5344; margin-bottom:0;">&mdash; Jules Regnault, <em>Calcul des chances et philosophie de la bourse</em> (1863). The crowd&rsquo;s averaged estimate converges on the true value, and its error falls as the square root of the number of observers &mdash; the same &radic; law that governs prices. A few pages later, Regnault lets the observers turn speculators: they divide into bulls and bears, and their average estimate becomes the price.</p>
         </aside>
 
         <p>From independence Regnault drew a sharp, testable prediction. If each interval adds its own independent jostle to the price, the <em>spread</em> of prices around their starting point must widen &mdash; not in proportion to time, but to its <em>square root</em>, because it is variances, not deviations, that add up. In his own capitals: <strong>the deviation of prices is in direct relation to the square root of time.</strong> It is the signature of the random walk &mdash; the same &radic;time law Louis Bachelier would rediscover in 1900 and physicists would attach to Brownian motion.</p>
@@ -214,7 +203,7 @@
 
         <p>&ldquo;Is there,&rdquo; Regnault asked, &ldquo;a better example of the harmony of theory and experience?&rdquo; The fit is the first empirical confirmation of the random walk &mdash; the founding test of the efficient-market hypothesis, run ninety years before the phrase existed.</p>
 
-        <p>He also saw the model&rsquo;s dark corollary, and it is one every day-trader relearns. The fair game is fair only <em>before costs</em>. Each trade pays a small brokerage fee, so the expected profit of a round trip, zero before costs, becomes <em>negative</em> after them. Because the speculator&rsquo;s edge grows only as &radic;time while the fees pile up trade by trade, frequent short-term trading is a slow, near-certain ruin &mdash; Regnault reckoned a heavy speculator would be wiped out, on average, within about <strong>forty trades</strong>. Patient long-term <em>investment</em>, he concluded, is a fundamentally different activity from restless short-term <em>speculation</em>. Hold that thought: it is exactly what the fund scorecard at the end of this chapter will confirm.</p>
+        <p>Regnault also drew a sobering corollary. The fair game is fair only <em>before costs</em>. Each trade pays a brokerage fee, so the expected profit of a round trip, zero before costs, is <em>negative</em> after them. Because the speculator&rsquo;s edge grows only as &radic;time while the fees accumulate trade by trade, frequent short-term trading tends steadily toward loss &mdash; Regnault estimated that a heavy speculator would be wiped out, on average, within about <strong>forty trades</strong>. Patient long-term <em>investment</em>, he concluded, is a fundamentally different activity from short-term <em>speculation</em> &mdash; a distinction the fund scorecard at the end of this chapter will confirm.</p>
 
         <p>Like Bachelier after him, Regnault was forgotten for the better part of a century. He deserves to be remembered as the first to state the efficient-market idea clearly, test it against data, and follow it to its unsettling conclusions.</p>
 
@@ -222,7 +211,7 @@
 
         <p>Regnault&rsquo;s &radic;time law was the first confirmation; the modern case for efficiency was built on regressions. In the 1960s <strong>Eugene Fama</strong> and others ran the test Regnault could not, correlating each day&rsquo;s return with the returns before it across thousands of stocks. The serial correlation came back indistinguishable from zero: the past, statistically, said nothing about the future. It was weak-form efficiency again &mdash; now with a mountain of data behind it.</p>
 
-        <p>The most vivid evidence, though, comes from the events that seem to <em>refute</em> efficiency: bubbles. If any pattern should be exploitable, surely it is the industry that has just doubled, or just halved. Robin Greenwood, Andrei Shleifer, and Yang You asked whether a sharp run-up reliably foretells a crash; in related work, using a database of industry returns reaching back to the eighteenth century, we asked a simpler question still &mdash; after an industry has soared, or collapsed, what happens <em>next</em>?</p>
+        <p>The most telling evidence comes from the events that appear to <em>refute</em> efficiency: bubbles. If any pattern should be exploitable, it is the industry that has just doubled or just halved. <strong>Robin Greenwood, Andrei Shleifer, and Yang You</strong> examined exactly this in modern U.S. data, tracking what becomes of an industry <em>after</em> a sharp run-up or run-down. In later work, using a database of industry returns reaching back to the nineteenth century, we tested their finding out of sample &mdash; on a century of earlier history the original data could not reach.</p>
 
 <div class="figure">
           <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center; align-items:flex-start">
@@ -235,10 +224,10 @@
               <figcaption style="font-size:.8rem; color:#8a7f6c; margin-top:5px; font-style:italic; text-align:center;">Fama&ndash;French 49 industries, 1926&ndash;2024 &mdash; the modern era.</figcaption>
             </figure>
           </div>
-          <p class="figure-caption"><strong>Figure 8.4.</strong> Booms and crashes converge &mdash; in two different centuries. Industries with the biggest twelve-month <span style="color:#1e8b3a;font-weight:600">run-ups</span> and <span style="color:#c0392b;font-weight:600">run-downs</span>, tracked from before the event (t = 0) to three years after, in returns measured <em>net of the market</em>. Before the event the two groups are worlds apart; after it, both flatten to essentially the market&rsquo;s own return &mdash; the confidence bands overlap, and neither earns an excess return going forward. The left panel uses the Cowles indexes reaching back to the nineteenth century, the right modern Fama&ndash;French industries; that the same pattern holds in both eras reinforces the finding of Greenwood, Shleifer &amp; You. From W. N. Goetzmann et al., &ldquo;Bubbles, Booms &amp; Crashes.&rdquo;</p>
+          <p class="figure-caption"><strong>Figure 8.4.</strong> Booms and crashes converge &mdash; in two eras. Industries with the largest twelve-month <span style="color:#1e8b3a;font-weight:600">run-ups</span> and <span style="color:#c0392b;font-weight:600">run-downs</span>, tracked from before the event (t = 0) to three years after, in returns measured <em>net of the market</em>. Before the event the two groups are far apart; after it, both settle at essentially the market&rsquo;s return, their confidence bands overlapping. <strong>Right:</strong> modern Fama&ndash;French industries (1926&ndash;2024), reproducing the result of Greenwood, Shleifer, and You. <strong>Left:</strong> Cowles industries reaching back to 1870 &mdash; an out-of-sample test of that result on earlier history (Goetzmann and coauthors, &ldquo;Bubbles, Booms &amp; Crashes&rdquo;). The pattern holds in both.</p>
         </div>
 
-        <p>The answer, drawn in the figure, is humbling. Measured against the market, industries that had just soared and industries that had just crashed &mdash; as opposite as two recent histories can be &mdash; went on to earn almost exactly the market&rsquo;s return, the same flat path whichever they had been. All the drama is in the past; the future holds no excess return either way. This is the sixth of our master pictures: two lines that could not look more different before the event fold into one after it. The market had already priced whatever the boom or the crash was going to mean, and left no free lunch for the investor who arrived late.</p>
+        <p>The result is the same in both panels. Measured net of the market, industries that had just soared and industries that had just crashed &mdash; opposite recent histories &mdash; went on to earn essentially the market&rsquo;s return, along nearly the same path. The divergence is all in the past; there is no excess return to come, either way. This is the sixth of our master pictures: two paths far apart before the event, together after it. The market had already priced whatever the boom or crash would mean, leaving nothing on the table for the investor who arrived late. That the modern result (right panel) reappears in the earlier data (left) makes the case stronger &mdash; it is not an artifact of a single period.</p>
 
         <h3>Testing the Three Forms</h3>
 
@@ -285,9 +274,9 @@
 
         <h2>IV. A Hidden Ancestor: Regnault and the Arbitrage Pricing Theory</h2>
 
-        <p>There is a final irony worth pausing on. The Arbitrage Pricing Theory of Chapter VI &mdash; Stephen Ross&rsquo;s elegant alternative to the CAPM &mdash; rests on nothing more than the refusal to leave a free lunch on the table: if two portfolios carried the same risk but sold at different prices, arbitrageurs would trade the gap away, so in equilibrium the gap cannot exist. From that single, simple motive Ross built a pricing theory flexible enough to admit many sources of systematic risk, and free of the CAPM&rsquo;s heavy machinery &mdash; the utility curves, the assumptions about aggregate holdings and identical beliefs. It is, at bottom, Regnault&rsquo;s idea: speculators dig up information and act on it fast, and prices are dragged into line.</p>
+        <p>There is a final irony worth pausing on. The Arbitrage Pricing Theory of Chapter VI &mdash; Stephen Ross&rsquo;s elegant alternative to the CAPM &mdash; rests on nothing more than the refusal to leave a free lunch on the table: if two portfolios carried the same risk but sold at different prices, arbitrageurs would trade the gap away, so in equilibrium the gap cannot exist. From that single, simple motive Ross built a pricing theory flexible enough to admit many sources of systematic risk, and free of the CAPM&rsquo;s heavy machinery &mdash; the utility curves, the assumptions about aggregate holdings and identical beliefs. At its core it is Regnault&rsquo;s idea: speculators seek out information and act on it quickly, and prices are pulled into line.</p>
 
-        <p>Ross, of course, had never heard of Regnault, who by 1976 had been forgotten for a century. The insight that so naturally underpins the modern theory of arbitrage was not, in fact, its foundation. It is the same irony as Bachelier and Black&ndash;Scholes: a solitary nineteenth-century mind reaching a result the twentieth century would rediscover, independently, and build an edifice upon &mdash; never knowing the first architect had come and gone.</p>
+        <p>Ross, of course, had never heard of Regnault, who by 1976 had been forgotten for a century. The insight that so naturally underpins the modern theory of arbitrage was not, in fact, its foundation. It is the same irony as Bachelier and Black&ndash;Scholes: a nineteenth-century figure reaching a result that the twentieth century would rediscover independently, and build upon, without ever knowing he had come first.</p>
 
         <h2>V. Conclusion</h2>
 
