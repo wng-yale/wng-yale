@@ -74,6 +74,27 @@
             font-size: .82rem; font-weight: 500; color: #b9770e; text-decoration: none;
         }
         .fig-link:hover { text-decoration: underline; }
+
+        .ai-challenge {
+            background: #e9f0f4;
+            border: 1px solid #c5d6df;
+            border-left: 3px solid #1a5276;
+            border-radius: 5px;
+            padding: .9rem 1.1rem .8rem;
+            margin: 1rem 0 .2rem;
+        }
+        .ai-challenge .task { margin: 0 0 .35rem; }
+        .ai-challenge .task .tag {
+            font-family: 'Inter', sans-serif; font-size: .72rem; font-weight: 700;
+            letter-spacing: .07em; text-transform: uppercase; color: #1a5276;
+            display: inline-block; margin-right: .55rem;
+        }
+        .ai-challenge .task .tag::before { content: "⌁ "; color: #7a1414; }
+        .ai-challenge .tools {
+            font-family: 'Inter', sans-serif; font-size: .78rem; color: #5f7280;
+            margin: .25rem 0 0; letter-spacing: .01em;
+        }
+
         details.eq-appendix > summary {
             cursor: pointer; font-weight: 600; color: #1a5276; margin: 1rem 0;
         }
@@ -163,6 +184,11 @@
                 </details>
                 <a class="fig-link" href="chapter-1.html#tt-chart">Open the figure &rarr;</a>
             </div>
+
+            <div class="ai-challenge">
+                <p class="task"><span class="tag">AI Challenge</span><strong>Build your own retirement planner.</strong> With Claude Code or Julius.ai, build a small app that takes your age, current savings, monthly contribution, and target retirement income, then runs a Monte Carlo simulation drawing each year&rsquo;s return from a historical mean and volatility. Have it draw the trumpet of possible ending wealth and report the probability your plan funds the income you want. Then answer a real question with it: what monthly contribution gives you an 80 percent chance of success?</p>
+                <p class="tools">Tools: Claude Code or Julius.ai &nbsp;·&nbsp; Deliverable: a working simulator, and the contribution that reaches 80 percent.</p>
+            </div>
         </section>
 
         <!-- ============ PICTURE 2 ============ -->
@@ -208,6 +234,11 @@
                     <div class="answer-body">If the returns are independent, portfolio variance is $\sigma^2/n$, so its standard deviation is $\sigma/\sqrt{n}$. Risk falls, but with diminishing speed: going from 1 to 4 assets halves it; halving again needs 16. And it does not reach zero if the assets share a common source of risk &mdash; a market factor. Averaging removes only the independent part of each return; the shared part survives no matter how many you add. That surviving remainder is <em>systematic</em> risk, and it is the subject of the next picture.</div>
                 </details>
                 <a class="fig-link" href="chapter-2.html">Open the figure &rarr;</a>
+            </div>
+
+            <div class="ai-challenge">
+                <p class="task"><span class="tag">AI Challenge</span><strong>Draw a real efficient frontier.</strong> Ask an AI tool to pull ten years of monthly returns for five assets you care about &mdash; a few stocks, an index fund, gold, bonds &mdash; estimate their covariance matrix, and plot the efficient frontier. Mark where an equal-weighted portfolio of the five sits, and where your own current holdings sit. How far inside the frontier are you, and what reallocation would move you onto it?</p>
+                <p class="tools">Tools: Julius.ai or Claude Code &nbsp;·&nbsp; Deliverable: a plotted frontier with your portfolio located on it.</p>
             </div>
         </section>
 
@@ -264,6 +295,11 @@
                 </details>
                 <a class="fig-link" href="chapter-6.html">Open the figure &rarr;</a>
             </div>
+
+            <div class="ai-challenge">
+                <p class="task"><span class="tag">AI Challenge</span><strong>Find what has driven a stock.</strong> Pick a company and use an AI research agent to estimate its beta to the market and to decompose its past returns into factors &mdash; market, size, value, momentum, and any macro or industry driver you can identify. How much of its return has been systematic, and how much idiosyncratic? Then specify the hedge from the puzzle above that would have isolated its stock-specific return, and check how that hedged return actually behaved.</p>
+                <p class="tools">Tools: an AI research agent such as Claude or Julius.ai &nbsp;·&nbsp; Deliverable: a factor decomposition, and the alpha the hedge would have captured.</p>
+            </div>
         </section>
 
         <!-- ============ PICTURE 4 ============ -->
@@ -316,6 +352,11 @@
                     <div class="answer-body">Three forces compound. Skill is rare, so few managers have a genuine edge. Luck averages out over time, steadily exposing the merely lucky. And costs &mdash; fees and trading &mdash; subtract every year and accumulate. Even before costs, active management is close to a zero-sum game among professionals; after costs the average active dollar must trail the index, and the more surely the longer you wait.</div>
                 </details>
                 <a class="fig-link" href="chapter-8.html#spiva-chart">Open the figure &rarr;</a>
+            </div>
+
+            <div class="ai-challenge">
+                <p class="task"><span class="tag">AI Challenge</span><strong>Search for a merger before it is announced.</strong> Choose an industry and use AI to search recent news, filings, and market chatter for signals that raise the odds of a takeover &mdash; activist stakes, unusual options activity, strategic-review language, analyst speculation. Rank two or three plausible targets by the probability you would assign each. Then test yourself against the efficiency picture: for a merger that has already happened, pull the price history and see whether the run-up began before the public announcement &mdash; and ask what that implies about whether your search could have earned anything.</p>
+                <p class="tools">Tools: an AI research agent with web access &nbsp;·&nbsp; Deliverable: a ranked target list, and an event-study check on a past deal.</p>
             </div>
         </section>
 
@@ -371,6 +412,11 @@
                 </details>
                 <a class="fig-link" href="chapter-9.html#po-chart">Open the figure &rarr;</a>
             </div>
+
+            <div class="ai-challenge">
+                <p class="task"><span class="tag">AI Challenge</span><strong>Build an option strategy tool.</strong> Use Claude Code to build a tool that combines stock, calls, and puts and shows the resulting payoff diagram and its Black&ndash;Scholes value as you change the inputs. Use it to design a protective put for a stock you own, and to watch what rising volatility does to the value of a call. For a harder version, pick a firm with real leverage, treat its equity as a call on its assets, and estimate how much value would shift from creditors to shareholders if the firm&rsquo;s asset volatility rose.</p>
+                <p class="tools">Tools: Claude Code &nbsp;·&nbsp; Deliverable: a working payoff-and-value tool, and a protective put designed with it.</p>
+            </div>
         </section>
 
         <!-- ============ PICTURE 6 ============ -->
@@ -424,6 +470,11 @@
                     <div class="answer-body">No. The 8 percent is the <em>promised</em> yield, paid only if the firm does not default. Your <em>expected</em> return is lower: subtract the probability of default times the loss it would bring. Part of the 4 percent spread compensates for that expected loss, and the rest is a premium for bearing default risk you cannot fully diversify. The waterfall makes it concrete: in default, cash flows to creditors in order of seniority, and equity is paid last, often nothing. Promised yield is what you are told; expected yield is what you should plan on.</div>
                 </details>
                 <a class="fig-link" href="chapter-11.html#wf-chart">Open the figure &rarr;</a>
+            </div>
+
+            <div class="ai-challenge">
+                <p class="task"><span class="tag">AI Challenge</span><strong>Stress-test a bond.</strong> Use an AI tool to fetch today&rsquo;s Treasury yield curve and the terms of a specific corporate bond, compute its duration and convexity, and simulate its price under a one- and two-point rate shock &mdash; showing where the duration estimate and the true price diverge. Then split the bond&rsquo;s yield spread over Treasuries into the part that compensates for expected default loss and the part that is a risk premium. As an extension, have the app flag whether the current curve is inverted, and what that has historically signaled.</p>
+                <p class="tools">Tools: Claude Code or Julius.ai &nbsp;·&nbsp; Deliverable: a duration-and-convexity calculator with a spread decomposition.</p>
             </div>
         </section>
 
