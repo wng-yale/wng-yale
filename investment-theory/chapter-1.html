@@ -552,12 +552,6 @@
             <p>Standard deviation provides a single, comparable measure of risk that enables systematic portfolio analysis. Despite its limitations &mdash; especially its assumption of symmetric, normally distributed returns &mdash; it remains the foundational risk measure in modern portfolio theory.</p>
         </div>
 
-        <div class="note">
-            <strong>Interactive Tool:</strong> Explore these concepts interactively using the
-            <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
-            created by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
-        </div>
-
     
         <h2>IX. Risk and the Investment Horizon</h2>
 
@@ -591,19 +585,20 @@
             function X(t){return mL+t/T*pw;}
             var svg='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
             if(mode==='trumpet'){
-              var ymax=Math.exp(m*T+2*s*Math.sqrt(T))*1.04,ymin=0;
-              function Y(v){return mT+ph-(v-ymin)/(ymax-ymin)*ph;}
-              var st=nstep(ymax);
-              for(var g=0;g<=ymax+1e-9;g+=st){var yy=Y(g);svg+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+(g>=10?g.toFixed(0):g.toFixed(g>=1?0:1))+'&#215;</text>';}
+              var bandmin=1;for(var tt=1;tt<=T;tt++){var lb=Math.exp(m*tt-2.2*s*Math.sqrt(tt));if(lb<bandmin)bandmin=lb;}
+              var glo=Math.min(bandmin,0.5),ghi=Math.exp(m*T+2.2*s*Math.sqrt(T)),lg=Math.log(glo),lh=Math.log(ghi);
+              function Y(v){return mT+ph-(Math.log(v)-lg)/(lh-lg)*ph;}
+              var e0=Math.floor(Math.log(glo)/Math.LN10),e1=Math.ceil(Math.log(ghi)/Math.LN10);
+              for(var k=e0;k<=e1;k++){[1,2,5].forEach(function(mm){var g=mm*Math.pow(10,k);if(g<glo*0.999||g>ghi*1.001)return;var yy=Y(g);svg+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#8a7f6c">'+(g<1?g:g.toFixed(0))+'&#215;</text>';});}
               function bnd(k){var p='';for(var t=0;t<=T;t++)p+=X(t).toFixed(1)+','+Y(Math.exp(m*t+k*s*Math.sqrt(t))).toFixed(1)+' ';for(var u=T;u>=0;u--)p+=X(u).toFixed(1)+','+Y(Math.exp(m*u-k*s*Math.sqrt(u))).toFixed(1)+' ';return p;}
               svg+='<polygon points="'+bnd(2)+'" fill="#1a5276" opacity="0.10"/>';
               svg+='<polygon points="'+bnd(1)+'" fill="#1a5276" opacity="0.16"/>';
-              for(var i=0;i<N;i++){var d='';for(var t=0;t<=T;t++){var v=Math.exp(cum[i][t]);d+=(t===0?'M':'L')+X(t).toFixed(1)+' '+Y(Math.min(v,ymax)).toFixed(1)+' ';}svg+='<path d="'+d+'" fill="none" stroke="#7a6f57" stroke-width="0.7" opacity="0.42"/>';}
+              for(var i=0;i<N;i++){var d='';for(var t=0;t<=T;t++){var v=Math.max(glo,Math.min(Math.exp(cum[i][t]),ghi));d+=(t===0?'M':'L')+X(t).toFixed(1)+' '+Y(v).toFixed(1)+' ';}svg+='<path d="'+d+'" fill="none" stroke="#7a6f57" stroke-width="0.7" opacity="0.42"/>';}
               var md='';for(var t=0;t<=T;t++)md+=(t===0?'M':'L')+X(t).toFixed(1)+' '+Y(Math.exp(m*t)).toFixed(1)+' ';
               svg+='<path d="'+md+'" fill="none" stroke="#1a5276" stroke-width="2.4"/>';
-              svg+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Wealth (growth of one dollar)</text>';
+              svg+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Wealth (growth of one dollar, log scale)</text>';
               var lo=Math.exp(m*T-2*s*Math.sqrt(T)),hi=Math.exp(m*T+2*s*Math.sqrt(T)),med=Math.exp(m*T);
-              rd.innerHTML='Over 40 years a dollar most likely grows to about <strong style="color:#1a5276">'+med.toFixed(1)+'&#215;</strong>, but the 95% range runs from roughly <strong>'+lo.toFixed(1)+'&#215;</strong> to <strong>'+hi.toFixed(1)+'&#215;</strong>. The spread of ending wealth widens with the square root of time &mdash; the trumpet flares.';
+              rd.innerHTML='Over 40 years a dollar most likely grows to about <strong style="color:#1a5276">'+med.toFixed(1)+'&#215;</strong>, but the 95% range runs from roughly <strong>'+lo.toFixed(1)+'&#215;</strong> to <strong>'+hi.toFixed(1)+'&#215;</strong>. On this log scale the band is a widening cone &mdash; the spread of ending wealth grows with the square root of time.';
             } else {
               var yc=(Math.exp(m)-1)*100, hw1=Math.max((Math.exp(m+2*s)-1)*100-yc, yc-(Math.exp(m-2*s)-1)*100);
               var ymax=yc+hw1*1.08, ymin=yc-hw1*1.08;
@@ -631,14 +626,6 @@
 
         <p>The lesson is subtle and important. Give the market enough time and you can pin down what its <em>average</em> return has been to within a fraction of a percent &mdash; the tulip closing on its stem. Yet the same random walk guarantees that where any single dollar actually <em>ends up</em> stays wildly uncertain, however long you wait &mdash; the trumpet flaring open. It is why we can speak with confidence about the historical equity premium, and yet no one can tell you what your retirement account will be worth in forty years.</p>
 
-    </div>
-
-    
-    <div class="note" style="margin-top:32px; background:#f0faf8; border:1px solid #c8e0f0; border-radius:8px;">
-        <strong>Acknowledgement:</strong> The interactive tools referenced in this textbook are from the
-        <a href="https://learn-investments.rice-business.org/" target="_blank">Rice Business Investments Compendium</a>,
-        created and maintained by Kerry Back and Kevin Crotty at the Jones Graduate School of Business, Rice University.
-        We gratefully acknowledge their contribution to investment education.
     </div>
 
     <footer class="chapter-footer">
