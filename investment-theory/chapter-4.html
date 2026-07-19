@@ -248,6 +248,38 @@
             <p class="figure-caption"><strong>Figure 4.3.</strong> The Security Market Line (SML). Expected return is a linear function of beta &mdash; a security's contribution to portfolio risk. Securities above the line are undervalued (positive alpha); those below are overvalued.</p>
         </div>
 
+        <p>This picture, too, is older than it looks. Its first drawing was <strong>William Sharpe&rsquo;s</strong>, in his 1961 doctoral thesis &mdash; and, like Markowitz&rsquo;s frontier, he drew it with the axes the other way around: his risk measure <em>B</em> (the ancestor of beta) up the vertical, expected return <em>E</em> along the horizontal, and the line cutting the return axis at the <em>pure interest rate</em>.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px;text-align:center">
+            <div id="sharpe-sml"></div>
+          </div>
+          <p class="figure-caption">Sharpe&rsquo;s original Security Market Line, redrawn. In equilibrium every security lies on one straight line: its risk <em>B</em> and its expected return <em>E</em> rise together, and the line meets the E-axis at <em>P</em>, the pure interest rate &mdash; the return on a riskless, zero-risk security. Redrawn after W. F. Sharpe, <em>Portfolio Analysis Based on a Simplified Model of the Relationships Among Securities</em> (Ph.D. dissertation, UCLA, 1961), Fig. 24. Its axes are transposed from the modern convention above &mdash; the same &ldquo;old-convention&rdquo; tell as Markowitz&rsquo;s first frontier.</p>
+        </div>
+        <script>
+        (function(){
+          var el=document.getElementById('sharpe-sml'); if(!el)return;
+          var W=440,H=330,mL=44,mR=52,mT=22,mB=40,pw=W-mL-mR,ph=H-mT-mB;
+          function px(u){return mL+u*pw;} function py(v){return mT+ph-v*ph;}
+          var P=[0.28,0], Pp=[0.92,0.92], slope=(Pp[1]-P[1])/(Pp[0]-P[0]);
+          var uE=0.62, vB=slope*(uE-P[0]);
+          var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;max-width:400px;font-family:Georgia,serif">';
+          s+='<line x1="'+px(0).toFixed(1)+'" y1="'+py(0).toFixed(1)+'" x2="'+px(0).toFixed(1)+'" y2="'+py(1.03).toFixed(1)+'" stroke="#26221a" stroke-width="1.3"/>';
+          s+='<line x1="'+px(0).toFixed(1)+'" y1="'+py(0).toFixed(1)+'" x2="'+px(1.03).toFixed(1)+'" y2="'+py(0).toFixed(1)+'" stroke="#26221a" stroke-width="1.3"/>';
+          s+='<text x="'+px(0).toFixed(1)+'" y="'+(py(1.03)-6).toFixed(1)+'" text-anchor="middle" font-size="13" font-style="italic" fill="#26221a">B</text>';
+          s+='<text x="'+(px(1.03)+9).toFixed(1)+'" y="'+(py(0)+4).toFixed(1)+'" font-size="13" font-style="italic" fill="#26221a">E</text>';
+          s+='<line x1="'+px(0).toFixed(1)+'" y1="'+py(vB).toFixed(1)+'" x2="'+px(uE).toFixed(1)+'" y2="'+py(vB).toFixed(1)+'" stroke="#b9770e" stroke-width="1" stroke-dasharray="4 3"/>';
+          s+='<line x1="'+px(uE).toFixed(1)+'" y1="'+py(0).toFixed(1)+'" x2="'+px(uE).toFixed(1)+'" y2="'+py(vB).toFixed(1)+'" stroke="#b9770e" stroke-width="1" stroke-dasharray="4 3"/>';
+          s+='<line x1="'+px(P[0]).toFixed(1)+'" y1="'+py(P[1]).toFixed(1)+'" x2="'+px(Pp[0]).toFixed(1)+'" y2="'+py(Pp[1]).toFixed(1)+'" stroke="#1a5276" stroke-width="2.6"/>';
+          s+='<circle cx="'+px(P[0]).toFixed(1)+'" cy="'+py(0).toFixed(1)+'" r="3.5" fill="#26221a"/><text x="'+px(P[0]).toFixed(1)+'" y="'+(py(0)+18).toFixed(1)+'" text-anchor="middle" font-size="12" fill="#5c5344">P</text>';
+          s+='<text x="'+(px(Pp[0])+7).toFixed(1)+'" y="'+(py(Pp[1])+4).toFixed(1)+'" font-size="12" fill="#1a5276">P&#8242;</text>';
+          s+='<circle cx="'+px(uE).toFixed(1)+'" cy="'+py(vB).toFixed(1)+'" r="4.5" fill="#7a1414"/>';
+          s+='<text x="'+px(uE).toFixed(1)+'" y="'+(py(0)+18).toFixed(1)+'" text-anchor="middle" font-size="12" fill="#5c5344">E<tspan font-size="9" dy="3">1</tspan></text>';
+          s+='<text x="'+(px(0)-7).toFixed(1)+'" y="'+(py(vB)+4).toFixed(1)+'" text-anchor="end" font-size="12" fill="#5c5344">B<tspan font-size="9" dy="3">1</tspan></text>';
+          s+='</svg>';el.innerHTML=s;
+        })();
+        </script>
+
         <h2>VI. Conclusion</h2>
 
         <p>The CAPM is a theoretical solution to the identity of the tangency portfolio. It uses some ideal assumptions about the economy to argue that the capital-weighted world wealth portfolio is the tangency portfolio, and that every investor will hold this same portfolio of risky assets. Even though it is clear they do not, the CAPM is still a very useful tool. It has been taken as a prescription for the investment portfolio, as well as a tool for estimating an expected rate of return.</p>
