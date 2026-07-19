@@ -320,7 +320,7 @@
             var Inv=[];for(i=0;i<n;i++)Inv[i]=M[i].slice(n);return Inv;}
           function fetchTicker(t){
             var url='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(t)+'?range=5y&interval=1mo';
-            return fetch('https://corsproxy.io/?url='+encodeURIComponent(url)).then(function(r){return r.json();}).then(function(j){
+            return fetch('https://yfetch.cfgwgc2scv.workers.dev/?url='+encodeURIComponent(url)).then(function(r){return r.json();}).then(function(j){
               var res=j&&j.chart&&j.chart.result&&j.chart.result[0];if(!res||!res.timestamp)return null;
               var ts=res.timestamp,ind=res.indicators,adj=(ind.adjclose&&ind.adjclose[0]&&ind.adjclose[0].adjclose)||(ind.quote[0].close),out={};
               for(var i=0;i<ts.length;i++){if(adj[i]==null)continue;var dt=new Date(ts[i]*1000);out[dt.getUTCFullYear()+'-'+('0'+(dt.getUTCMonth()+1)).slice(-2)]=adj[i];}
