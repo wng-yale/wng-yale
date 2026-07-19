@@ -458,6 +458,41 @@
 
         <p>The hypothesis is only a first approximation. Long yields also carry a <strong>term premium</strong> &mdash; extra compensation for the greater price risk of long bonds, the very duration we measured earlier in the chapter &mdash; so a steep curve reflects both expected increases <em>and</em> that premium, and the forward rates somewhat overstate the market&rsquo;s true forecast. Even so, the forward curve is where every fixed-income desk begins when it wants to read the market&rsquo;s mind.</p>
 
+        <p>The curve&rsquo;s shape is not fixed &mdash; and the first person to show that was <strong>David Durand</strong>, who in 1942 fitted a &ldquo;basic&rdquo; yield curve for every year back to 1900 and laid them all on one axis. Superimposed, they fan from steeply upward-sloping in easy-money years to <em>downward</em>-sloping when short-term money was dear &mdash; the whole range of shapes the live curve above still moves through.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 8px">
+            <div id="durand-chart"></div>
+          </div>
+          <p class="figure-caption">Redrawn after David Durand, <em>Basic Yields of Corporate Bonds, 1900&ndash;1942</em> (NBER, 1942), &ldquo;Superimposed Basic Yield Curves&rdquo; &mdash; the earliest systematically plotted family of yield curves. The term structure ranges from steeply upward-sloping in easy-money years to downward-sloping when short rates are high.</p>
+        </div>
+        <script>
+        (function(){
+          var el=document.getElementById('durand-chart'); if(!el)return;
+          var W=660,H=300,mL=48,mR=100,mT=18,mB=44,pw=W-mL-mR,ph=H-mT-mB;
+          var MMAX=30,YMAX=7;
+          function px(m){return mL+m/MMAX*pw;} function py(y){return mT+ph-y/YMAX*ph;}
+          var mats=[0.25,1,2,3,5,7,10,15,20,30];
+          var curves=[
+            {c:'#7a1414',lab:'tight-money year',f:function(m){return 6.4-1.3*Math.pow(m/30,0.5);}},
+            {c:'#1a5276',lab:'a typical year',f:function(m){return 2.4+1.9*Math.pow(m/30,0.55);}},
+            {c:'#1e8b3a',lab:'the 1940s',f:function(m){return 0.5+2.2*Math.pow(m/30,0.5);}}
+          ];
+          var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">',g,y;
+          for(g=0;g<=YMAX+1e-9;g+=1){y=py(g);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c">'+g+'%</text>';}
+          [1,5,10,20,30].forEach(function(mm){var x=px(mm);s+='<text x="'+x.toFixed(1)+'" y="'+(mT+ph+16)+'" text-anchor="middle" font-size="10" fill="#8a7f6c">'+mm+'</text>';});
+          s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+          curves.forEach(function(cv){
+            var d='';mats.forEach(function(m,i){d+=(i===0?'M':'L')+px(m).toFixed(1)+' '+py(cv.f(m)).toFixed(1)+' ';});
+            s+='<path d="'+d+'" fill="none" stroke="'+cv.c+'" stroke-width="2.4"/>';
+            s+='<text x="'+(px(30)+5).toFixed(1)+'" y="'+(py(cv.f(30))+3.5).toFixed(1)+'" font-size="10" fill="'+cv.c+'">'+cv.lab+'</text>';
+          });
+          s+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Yield</text>';
+          s+='<text x="'+(mL+pw/2)+'" y="'+(H-5)+'" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Years to maturity</text>';
+          s+='</svg>';el.innerHTML=s;
+        })();
+        </script>
+
                 <h2>VI. Default Risk</h2>
 
         <p>Everything so far has assumed the promised cash flows are certain; the only question was how to value a sure stream as interest rates move. For a U.S. Treasury that is very nearly right &mdash; the payment will arrive. But a corporate bond, or the bond of a foreign government, faces a second and entirely different risk: the borrower may simply not pay. This is <strong>default risk</strong> &mdash; also called credit risk &mdash; and it is the other great hazard of fixed income. Interest-rate risk asks what a sure promise is worth as rates change; default risk asks whether the promise will be kept at all.</p>
