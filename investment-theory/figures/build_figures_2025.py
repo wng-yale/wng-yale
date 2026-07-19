@@ -106,14 +106,28 @@ res_mv = optimize.minimize(min_var_obj, w0, method='SLSQP', bounds=bounds, const
 mv_ret, mv_vol = pstats(res_mv.x)
 res_tan = optimize.minimize(neg_sharpe, w0, method='SLSQP', bounds=bounds, constraints=constraints)
 tan_ret, tan_vol = pstats(res_tan.x)
-target_rets = np.linspace(mv_ret, mu_vec.max(), 80)
-frontier_vols = []
+target_rets = np.linspace(mv_ret, mu_vec.max(), 160)
+_fvar = []; _wp = res_mv.x.copy()
 for tr in target_rets:
     cons = [{'type': 'eq', 'fun': lambda w: np.sum(w) - 1},
             {'type': 'eq', 'fun': lambda w, t=tr: w @ mu_vec - t}]
-    res = optimize.minimize(min_var_obj, res_mv.x, method='SLSQP', bounds=bounds, constraints=cons)
-    frontier_vols.append(np.sqrt(res.fun))
-frontier_vols = np.array(frontier_vols)
+    # continuation: warm-start each target from the previous solution, tight tol
+    res = optimize.minimize(min_var_obj, _wp, method='SLSQP', bounds=bounds, constraints=cons,
+                            options={'maxiter': 1000, 'ftol': 1e-12})
+    if res.success: _wp = res.x
+    _fvar.append(float(res.fun))
+_fvar = np.array(_fvar)
+# frontier variance is convex in the target return; take the lower convex envelope
+# to drop any SLSQP under-convergence blips (keeps the curve smooth, no kinks)
+def _lower_env(x, y):
+    h = []
+    for xi, yi in zip(x, y):
+        while len(h) >= 2 and (h[-1][0]-h[-2][0])*(yi-h[-2][1]) - (h[-1][1]-h[-2][1])*(xi-h[-2][0]) <= 0:
+            h.pop()
+        h.append((xi, yi))
+    hx = [p[0] for p in h]; hy = [p[1] for p in h]
+    return np.interp(x, hx, hy)
+frontier_vols = np.sqrt(np.maximum(_lower_env(target_rets, _fvar), 0))
 asset_vols = np.sqrt(np.diag(cov_mat)); asset_rets = mu_vec
 
 # ================================================================

@@ -211,7 +211,7 @@
 
         <div class="figure">
             <img src="figures/correlation_matrix.svg" alt="Asset class correlation matrix heatmap" style="width:100%; max-width:620px;">
-            <p class="figure-caption"><strong>Figure 2.1b.</strong> Correlation matrix for major U.S. asset classes, computed from SBBI data. Lower correlations (cooler colors) indicate greater diversification potential when assets are combined in a portfolio.</p>
+            <p class="figure-caption"><strong>Figure 2.3.</strong> Correlation matrix for major U.S. asset classes, computed from SBBI data. Lower correlations (cooler colors) indicate greater diversification potential when assets are combined in a portfolio.</p>
         </div>
 
         <h2>III. More Securities and More Diversification</h2>
@@ -236,7 +236,7 @@
             <div id="dv-chart"></div>
             <div id="dv-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.1c.</strong> How portfolio risk falls as holdings are added, for equally-weighted assets each with 20% volatility. Set the average correlation between them. When it is zero, risk falls as $20\%/\sqrt{n}$ toward zero. When it is positive, the fall stops at a floor of $20\%\cdot\sqrt{\bar{\rho}}$ &mdash; the systematic risk that no amount of diversification removes. Most of the benefit arrives in the first 20&ndash;30 names.</p>
+          <p class="figure-caption"><strong>Figure 2.4.</strong> How portfolio risk falls as holdings are added, for equally-weighted assets each with 20% volatility. Set the average correlation between them. When it is zero, risk falls as $20\%/\sqrt{n}$ toward zero. When it is positive, the fall stops at a floor of $20\%\cdot\sqrt{\bar{\rho}}$ &mdash; the systematic risk that no amount of diversification removes. Most of the benefit arrives in the first 20&ndash;30 names.</p>
         </div>
         <script>
         (function(){
@@ -284,7 +284,7 @@
 
         <div class="figure">
             <img src="figures/efficient_frontier.svg" alt="Markowitz efficient frontier computed from SBBI data" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 2.3.</strong> The Markowitz efficient frontier, computed from SBBI asset class data. The bold curve represents the efficient frontier &mdash; no portfolio exists to the northwest. Interior points are dominated: for any given risk level, a higher-returning portfolio exists on the frontier.</p>
+            <p class="figure-caption"><strong>Figure 2.5.</strong> The Markowitz efficient frontier, computed from SBBI asset class data. The bold curve represents the efficient frontier &mdash; no portfolio exists to the northwest. Interior points are dominated: for any given risk level, a higher-returning portfolio exists on the frontier.</p>
         </div>
 
         <h2>IV. Markowitz and the First Efficient Frontier</h2>
@@ -292,9 +292,46 @@
         <p>Harry Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis &mdash; a convention later reversed. The frontier itself drew its statistical inputs from just <strong>ten stocks</strong> on the New York Stock Exchange; adding more assets to the optimization pushed the limits of the computing power available at the time.</p>
 
         <div class="figure">
-            <img src="figures/markowitz-1959.gif" alt="Markowitz's original efficient frontier, 1959" style="width:100%; max-width:340px;">
-            <p class="figure-caption"><strong>Figure 2.4.</strong> Markowitz&rsquo;s original efficient frontier, reproduced from <em>Portfolio Selection</em> (1959). Note the older convention &mdash; standard deviation on the <em>vertical</em> axis and average return on the horizontal &mdash; and the straight line running down to the origin, which mixes the risky portfolio with the riskless asset.</p>
+          <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;justify-content:center">
+            <figure style="margin:0;flex:1 1 250px;max-width:320px;text-align:center">
+              <img src="figures/markowitz-1959.gif" alt="Markowitz's original efficient frontier, 1959, with standard deviation on the vertical axis" style="width:100%;border:1px solid #e0d6bf;border-radius:6px;background:#fff">
+              <figcaption style="font-size:.8rem;color:#8a7f6c;font-style:italic;margin-top:6px">Markowitz&rsquo;s original (1959): &sigma; on the <em>vertical</em> axis, return on the horizontal.</figcaption>
+            </figure>
+            <figure style="margin:0;flex:1 1 300px;max-width:380px">
+              <div id="mk-modern" style="border:1px solid #e0d6bf;border-radius:6px;background:#fbf7ec;padding:4px"></div>
+              <figcaption style="font-size:.8rem;color:#8a7f6c;font-style:italic;margin-top:6px;text-align:center">The same frontier transposed: &sigma; on the <em>horizontal</em> axis &mdash; today&rsquo;s convention.</figcaption>
+            </figure>
+          </div>
+          <p class="figure-caption"><strong>Figure 2.6.</strong> Markowitz&rsquo;s original efficient frontier, reproduced from <em>Portfolio Selection</em> (1959) (<em>left</em>), beside the same picture in the modern convention (<em>right</em>). Markowitz drew standard deviation on the <em>vertical</em> axis and expected return on the horizontal, with a straight line running to the origin that mixes the risky portfolio with the riskless asset. Swap the axes &mdash; standard deviation on the horizontal, expected return on the vertical &mdash; and his diagram becomes the efficient frontier used throughout this chapter: a bowed curve of risky portfolios (dominated portfolios dashed below), with the straight <span style="color:#7a1414;font-weight:700">capital allocation line</span> from the riskless rate tangent to it. Same economics, transposed axes.</p>
         </div>
+        <script>
+        (function(){
+          var el=document.getElementById('mk-modern'); if(!el)return;
+          var W=380,H=300,mL=48,mR=14,mT=14,mB=40,pw=W-mL-mR,ph=H-mT-mB;
+          var SMAX=0.30,EMAX=0.16,smv=0.09,Emv=0.07,C=3.58,Rf=0.0;
+          function px(s){return mL+s/SMAX*pw;} function py(e){return mT+ph-e/EMAX*ph;}
+          function sig(E){return Math.sqrt(smv*smv+Math.pow((E-Emv)*C,2));}
+          var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">',sd,e,x,y;
+          for(sd=0;sd<=SMAX+1e-9;sd+=0.05){x=px(sd);s+='<line x1="'+x.toFixed(1)+'" y1="'+mT+'" x2="'+x.toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#eee5d0"/><text x="'+x.toFixed(1)+'" y="'+(mT+ph+15)+'" text-anchor="middle" font-size="10" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';}
+          for(e=0;e<=EMAX+1e-9;e+=0.04){y=py(e);s+='<line x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'" stroke="#eee5d0"/><text x="'+(mL-6)+'" y="'+(y+3.5).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c">'+Math.round(e*100)+'%</text>';}
+          s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+          s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="11" font-style="italic" fill="#5c5344">Standard deviation &sigma;</text>';
+          s+='<text transform="translate(12 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11" font-style="italic" fill="#5c5344">Expected return</text>';
+          var uT=Emv+smv*smv/(C*C*(Emv-Rf)),sT=sig(uT),slope=(uT-Rf)/sT;
+          var sEnd=(EMAX-Rf)/slope; if(sEnd>SMAX)sEnd=SMAX; var Eend=Rf+slope*sEnd;
+          s+='<line x1="'+px(0).toFixed(1)+'" y1="'+py(Rf).toFixed(1)+'" x2="'+px(sEnd).toFixed(1)+'" y2="'+py(Eend).toFixed(1)+'" stroke="#7a1414" stroke-width="1.8" stroke-dasharray="6 4"/>';
+          var d='',first=true,E;
+          for(E=0.018;E<=Emv+1e-9;E+=0.004){d+=(first?'M':'L')+px(sig(E)).toFixed(1)+' '+py(E).toFixed(1);first=false;}
+          s+='<path d="'+d+'" fill="none" stroke="#9c8fbf" stroke-width="1.8" stroke-dasharray="4 4" opacity="0.85"/>';
+          d='';first=true;
+          for(E=Emv;E<=0.15+1e-9;E+=0.004){d+=(first?'M':'L')+px(sig(E)).toFixed(1)+' '+py(E).toFixed(1);first=false;}
+          s+='<path d="'+d+'" fill="none" stroke="#1a5276" stroke-width="3"/>';
+          s+='<circle cx="'+px(smv).toFixed(1)+'" cy="'+py(Emv).toFixed(1)+'" r="4.5" fill="#b9770e" stroke="#fff" stroke-width="1.3"/><text x="'+(px(smv)-6).toFixed(1)+'" y="'+(py(Emv)+13).toFixed(1)+'" text-anchor="end" font-size="9.5" fill="#b9770e" font-weight="700">min var</text>';
+          s+='<circle cx="'+px(sT).toFixed(1)+'" cy="'+py(uT).toFixed(1)+'" r="4.5" fill="#7a1414"/><text x="'+(px(sT)+7).toFixed(1)+'" y="'+(py(uT)-4).toFixed(1)+'" font-size="9.5" fill="#7a1414" font-weight="700">tangency</text>';
+          s+='<circle cx="'+px(0).toFixed(1)+'" cy="'+py(Rf).toFixed(1)+'" r="3" fill="#26221a"/><text x="'+(px(0)+5).toFixed(1)+'" y="'+(py(Rf)-4).toFixed(1)+'" font-size="9.5" fill="#5c5344">R<tspan baseline-shift="sub" font-size="7">f</tspan></text>';
+          s+='</svg>';el.innerHTML=s;
+        })();
+        </script>
 
         <div class="note">
             <strong>Historical note:</strong> Markowitz's 1952 paper and 1959 monograph laid the groundwork for all of modern portfolio theory. He shared the 1990 Nobel Prize in Economics with William Sharpe and Merton Miller for this contribution.
@@ -328,7 +365,7 @@
             <div id="mcf-chart" style="position:relative"></div>
             <div id="mcf-corr" style="margin-top:6px;font-size:.8rem;color:#5c5344"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.5.</strong> Four hypothetical assets, A&ndash;D, with fixed expected returns (6, 9, 11, 14%) and standard deviations (8, 13, 17, 20%). Each draw uses a fresh <em>random correlation matrix</em> centered on the average correlation you choose with the slider (the realized matrix and its average &#961; appear below the chart). The blue cloud is 1,400 random <em>long-only</em> portfolios; grey arcs oversample the six pairwise mixes; the solid red curve is the long-only efficient frontier. The dashed curve is the <em>unconstrained</em> frontier (short sales allowed) &mdash; a smooth hyperbola. Notice how the no-short (positivity) constraint cuts the hyperbola off: the long-only frontier hugs it in the middle but cannot follow it past the extreme assets. Press <em>Regenerate</em> for a new correlation structure.</p>
+          <p class="figure-caption"><strong>Figure 2.7.</strong> Four hypothetical assets, A&ndash;D, with fixed expected returns (6, 9, 11, 14%) and standard deviations (8, 13, 17, 20%). Each draw uses a fresh <em>random correlation matrix</em> centered on the average correlation you choose with the slider (the realized matrix and its average &#961; appear below the chart). The blue cloud is 1,400 random <em>long-only</em> portfolios; grey arcs oversample the six pairwise mixes; the solid red curve is the long-only efficient frontier. The dashed curve is the <em>unconstrained</em> frontier (short sales allowed) &mdash; a smooth hyperbola. Notice how the no-short (positivity) constraint cuts the hyperbola off: the long-only frontier hugs it in the middle but cannot follow it past the extreme assets. Press <em>Regenerate</em> for a new correlation structure.</p>
         </div>
         <script>
         (function(){
@@ -421,7 +458,7 @@
 
         <div class="figure">
             <img src="figures/frontier-anatomy.svg" alt="Labeled schematic of the efficient frontier, feasible set, and Capital Market Line" style="width:100%; max-width:760px;">
-            <p class="figure-caption"><strong>Figure 2.6.</strong> The anatomy of the efficient frontier. The shaded region is the <em>feasible set</em> of attainable portfolios; its upper-left edge is the <em>efficient frontier</em> (bold), and its lower edge holds the <em>dominated</em> portfolios. The <em>minimum-variance portfolio</em> sits at the leftmost point and the <em>highest-return asset</em> at the top. Adding the <em>riskless asset</em> $R_f$ and drawing the tangent line yields the <em>Capital Market Line</em>, which touches the frontier at the <em>tangency portfolio</em> $M$. Investors hold combinations of $R_f$ and $M$ along this line &mdash; lending below $M$, borrowing above it.</p>
+            <p class="figure-caption"><strong>Figure 2.8.</strong> The anatomy of the efficient frontier. The shaded region is the <em>feasible set</em> of attainable portfolios; its upper-left edge is the <em>efficient frontier</em> (bold), and its lower edge holds the <em>dominated</em> portfolios. The <em>minimum-variance portfolio</em> sits at the leftmost point and the <em>highest-return asset</em> at the top. Adding the <em>riskless asset</em> $R_f$ and drawing the tangent line yields the <em>Capital Market Line</em>, which touches the frontier at the <em>tangency portfolio</em> $M$. Investors hold combinations of $R_f$ and $M$ along this line &mdash; lending below $M$, borrowing above it.</p>
         </div>
 
         <div class="key-concept">
@@ -449,7 +486,7 @@
             <div id="oos-chart"></div>
             <div id="oos-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.7.</strong> In-sample versus out-of-sample. The bold curve is the holdout period&rsquo;s <em>ex-post</em> efficient frontier &mdash; the frontier hindsight would have drawn. The large <span style="color:#7a1414;font-weight:700">&#9733; star</span> is the tangency portfolio estimated from the earlier window, plotted at the risk and return it actually produced in the holdout. Because it is a <em>feasible</em> holdout portfolio, it lies <em>on or inside</em> this frontier &mdash; it cannot beat what hindsight made achievable, and only occasionally sits right on it. The faint stars repeat the calculation on 30 bootstrap resamples of the estimation window &mdash; each a portfolio that looked optimal on slightly different data; they scatter along and inside the frontier. The <span style="color:#1e8b3a;font-weight:700">&#9670; diamond</span> is the ex-post tangency (hindsight&rsquo;s best). Note that the holdout may yield <em>higher</em> returns than the estimation window predicted &mdash; the market does its own thing out of sample &mdash; yet the in-sample weights still leave Sharpe on the table, because the estimation error lies in the portfolio <em>mix</em>, not in the market&rsquo;s overall level. Drag the split year, or resample, to watch the gap persist.</p>
+          <p class="figure-caption"><strong>Figure 2.9.</strong> In-sample versus out-of-sample. The bold curve is the holdout period&rsquo;s <em>ex-post</em> efficient frontier &mdash; the frontier hindsight would have drawn. The large <span style="color:#7a1414;font-weight:700">&#9733; star</span> is the tangency portfolio estimated from the earlier window, plotted at the risk and return it actually produced in the holdout. Because it is a <em>feasible</em> holdout portfolio, it lies <em>on or inside</em> this frontier &mdash; it cannot beat what hindsight made achievable, and only occasionally sits right on it. The faint stars repeat the calculation on 30 bootstrap resamples of the estimation window &mdash; each a portfolio that looked optimal on slightly different data; they scatter along and inside the frontier. The <span style="color:#1e8b3a;font-weight:700">&#9670; diamond</span> is the ex-post tangency (hindsight&rsquo;s best). Note that the holdout may yield <em>higher</em> returns than the estimation window predicted &mdash; the market does its own thing out of sample &mdash; yet the in-sample weights still leave Sharpe on the table, because the estimation error lies in the portfolio <em>mix</em>, not in the market&rsquo;s overall level. Drag the split year, or resample, to watch the gap persist.</p>
         </div>
 
         <script>
