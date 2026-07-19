@@ -340,5 +340,16 @@
     </div>
 </footer>
 
+<!--iglyph-->
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var G='<span title="Interactive \u2014 try the controls" style="cursor:help"><svg width="16" height="11" viewBox="0 0 16 11" style="vertical-align:-1px;margin-right:5px"><line x1="1" y1="5.5" x2="15" y2="5.5" stroke="#1a5276" stroke-width="1.5"/><circle cx="6" cy="5.5" r="2.6" fill="#1a5276"/></svg></span>';
+  document.querySelectorAll('.figure').forEach(function(fig){
+    if(!fig.querySelector('input,button,select'))return;
+    var cap=fig.querySelector('.figure-caption');
+    if(cap && !cap.dataset.iflag){cap.insertAdjacentHTML('afterbegin',G);cap.dataset.iflag='1';}
+  });
+});
+</script>
 </body>
 </html>
