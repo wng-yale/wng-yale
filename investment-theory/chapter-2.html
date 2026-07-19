@@ -165,6 +165,8 @@
             <div id="fl-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
           <p class="figure-caption"><strong>Figure 2.2.</strong> Two assets in risk&ndash;return space &mdash; A ($\bar{R}=10\%$, $\sigma=15\%$) and B ($\bar{R}=20\%$, $\sigma=30\%$) &mdash; and every portfolio you can build from them. Drag the correlation. At $\rho = +1$ the opportunity set is the straight dashed line, with no diversification. As $\rho$ falls, the curve bows left of that line: the same two assets now offer less risk for the same return. At $\rho = -1$ they combine into a nearly riskless portfolio. The <span style="color:#b9770e;font-weight:700">minimum-variance portfolio</span> is marked; the solid blue arc above it is efficient, the dashed arc below it is dominated.</p>
+
+        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Set &rho; = +1: the opportunity set collapses to a straight line, with no diversification at all. Now drag &rho; down toward &minus;0.5 and watch the curve bow left. In one sentence, why is it <em>low correlation</em> &mdash; not low risk &mdash; that opens the free lunch?</div>
         </div>
         <script>
         (function(){
@@ -487,6 +489,8 @@
             <div id="oos-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
           <p class="figure-caption"><strong>Figure 2.9.</strong> In-sample versus out-of-sample. The bold curve is the holdout period&rsquo;s <em>ex-post</em> efficient frontier &mdash; the frontier hindsight would have drawn. The large <span style="color:#7a1414;font-weight:700">&#9733; star</span> is the tangency portfolio estimated from the earlier window, plotted at the risk and return it actually produced in the holdout. Because it is a <em>feasible</em> holdout portfolio, it lies <em>on or inside</em> this frontier &mdash; it cannot beat what hindsight made achievable, and only occasionally sits right on it. The faint stars repeat the calculation on 30 bootstrap resamples of the estimation window &mdash; each a portfolio that looked optimal on slightly different data; they scatter along and inside the frontier. The <span style="color:#1e8b3a;font-weight:700">&#9670; diamond</span> is the ex-post tangency (hindsight&rsquo;s best). Note that the holdout may yield <em>higher</em> returns than the estimation window predicted &mdash; the market does its own thing out of sample &mdash; yet the in-sample weights still leave Sharpe on the table, because the estimation error lies in the portfolio <em>mix</em>, not in the market&rsquo;s overall level. Drag the split year, or resample, to watch the gap persist.</p>
+
+        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Drag the split year to an early value. Why does the tangency portfolio estimated from the first window land <em>inside</em> the holdout frontier, instead of on it? What does that imply for anyone running a Markowitz optimizer on historical means and covariances?</div>
         </div>
 
         <script>
