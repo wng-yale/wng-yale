@@ -460,6 +460,73 @@
 
         <p>The hypothesis is only a first approximation. Long yields also carry a <strong>term premium</strong> &mdash; extra compensation for the greater price risk of long bonds, the very duration we measured earlier in the chapter &mdash; so a steep curve reflects both expected increases <em>and</em> that premium, and the forward rates somewhat overstate the market&rsquo;s true forecast. Even so, the forward curve is where every fixed-income desk begins when it wants to read the market&rsquo;s mind.</p>
 
+        <h3>Using the Curve: Growth, Inflation, and How Much to Trust It</h3>
+
+        <p>A single nominal yield is really a stack of forecasts. Strip out inflation and what remains is the <strong>real yield</strong> &mdash; the return investors demand <em>after</em> inflation, which rises and falls with expected real growth. The split is observable, because the Treasury publishes both curves daily: the real (inflation-protected, TIPS) yield is the growth component, and the difference &mdash; <strong>breakeven inflation</strong> &mdash; is the market&rsquo;s expected inflation, plus a small inflation risk premium (D&rsquo;Amico, Kim &amp; Wei, 2018). Add the <strong>term premium</strong> of the previous section, and a long yield decomposes into three readable pieces: an expected real short rate, compensation for duration risk, and expected inflation.</p>
+
+        <p>Analysts read these pieces for different questions, and the most watched is the <strong>slope</strong>. An inverted curve &mdash; short rates above long &mdash; has preceded every modern U.S. recession, and the Federal Reserve still publishes a recession probability from the ten-year-minus-three-month spread (Estrella &amp; Hardouvelis, 1991; Estrella &amp; Mishkin, 1998). The signal is genuine: Rudebusch &amp; Williams (2009) found the simple spread beats professional forecasters at calling recessions a few quarters out.</p>
+
+        <p>But it is a signal, not an oracle, and this section would be dishonest without the caveats. Its predictive power lives in the <em>expectations</em> part of the slope, not the term premium (Benzoni, Chyruk &amp; Kelley, 2018) &mdash; so once quantitative easing compressed term premia, the raw slope became a distorted gauge: a curve can invert on a shrinking premium with no recession implied at all. Lead times run from six months to two years, false alarms happen, and the most recent episode is the cautionary tale &mdash; the 2022&ndash;2024 inversion was the longest in modern history, yet no recession followed. Even <strong>Campbell Harvey</strong>, whose dissertation first proposed the indicator, called that inversion a likely false signal. The broader lesson is the one Dimson, Marsh &amp; Staunton draw from 125 years of global data: historical market signals are informative, but their out-of-sample power is weaker than the in-sample fit suggests.</p>
+
+        <div class="figure">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div style="margin-bottom:8px;font-size:.9rem;color:#26221a">Assumed term premium (10-yr): <input id="yd-tp" type="range" min="0" max="1.5" step="0.05" value="0.5" style="vertical-align:middle;width:180px"> <strong id="yd-tpv" style="color:#7a1414">0.50%</strong></div>
+            <div id="yd-chart"></div>
+            <div id="yd-read" style="font-size:.86rem;color:#5c5344;margin-top:8px;line-height:1.6">Loading the live decomposition&hellip;</div>
+          </div>
+          <p class="figure-caption"><strong>Anatomy of a yield, live.</strong> Each bar splits a Treasury yield into the <span style="color:#1a5276;font-weight:600">expected real rate</span> (the growth signal), an <span style="color:#7a1414;font-weight:600">assumed term premium</span> (compensation for duration risk &mdash; slide to set it, since it is not directly observed), and <span style="color:#b9770e;font-weight:600">expected inflation</span> (breakeven = nominal &minus; real). Real yields come from inflation-protected securities. The recession probability applies the Estrella&ndash;Mishkin probit to the 10-year&ndash;3-month spread &mdash; read it with the caveats above; it misfired through the 2022&ndash;24 inversion. Drawn live from the U.S. Treasury.</p>
+        </div>
+        <script>
+        (function(){
+          var el=document.getElementById('yd-chart'); if(!el)return;
+          var read=document.getElementById('yd-read'),tpS=document.getElementById('yd-tp'),tpV=document.getElementById('yd-tpv');
+          var NF={'3M':'BC_3MONTH','5Y':'BC_5YEAR','7Y':'BC_7YEAR','10Y':'BC_10YEAR','20Y':'BC_20YEAR','30Y':'BC_30YEAR'};
+          var RF={'5Y':'TC_5YEAR','7Y':'TC_7YEAR','10Y':'TC_10YEAR','20Y':'TC_20YEAR','30Y':'TC_30YEAR'};
+          var MATS=[5,7,10,20,30],LAB={5:'5Y',7:'7Y',10:'10Y',20:'20Y',30:'30Y'},DATA=null;
+          var FB={date:'2026-07-17',nom:{'3M':3.83,'5Y':4.30,'7Y':4.44,'10Y':4.55,'20Y':4.95,'30Y':5.06},re:{'5Y':2.01,'7Y':2.15,'10Y':2.31,'20Y':2.67,'30Y':2.87}};
+          function field(x,tag){var m=x.match(new RegExp('<d:'+tag+'[^>]*>([^<]*)</d:'+tag+'>'));return m&&m[1]!==''?parseFloat(m[1]):null;}
+          function parse(xml,map){var parts=xml.split('<entry>');for(var i=parts.length-1;i>=1;i--){if(parts[i].indexOf('NEW_DATE')<0)continue;var dm=parts[i].match(/<d:NEW_DATE[^>]*>([^<]*)</),date=dm?dm[1].slice(0,10):'',v={},any=false;for(var k in map){var x=field(parts[i],map[k]);if(x!=null){v[k]=x;any=true;}}if(any)return{date:date,vals:v};}return null;}
+          function ym(d){return d.getFullYear()+('0'+(d.getMonth()+1)).slice(-2);}
+          function Phi(x){var t=1/(1+0.2316419*Math.abs(x)),d=0.3989423*Math.exp(-x*x/2),p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));return x>0?1-p:p;}
+          var base='https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=';
+          function load(ds,map,mo){return fetch(base+ds+'&field_tdr_date_value_month='+mo).then(function(r){return r.text();}).then(function(t){return parse(t,map);}).catch(function(){return null;});}
+          function draw(){
+            if(!DATA)return;var tp10=parseFloat(tpS.value);tpV.textContent=tp10.toFixed(2)+'%';
+            var W=680,H=340,mL=44,mR=124,mT=16,mB=40,pw=W-mL-mR,ph=H-mT-mB,YMAX=6,n=MATS.length,bw=pw/n*0.5;
+            function py(y){return mT+ph-y/YMAX*ph;}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">',g;
+            for(g=0;g<=YMAX+1e-9;g+=1){var yy=py(g);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c">'+g+'%</text>';}
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            MATS.forEach(function(M,i){var L=LAB[M],nom=DATA.nom[L],re=DATA.re[L];if(nom==null||re==null)return;
+              var brk=nom-re,tp=Math.min(tp10*(M/10),0.85*re),er=re-tp,cx=mL+(i+0.5)/n*pw,x=cx-bw/2,y0=mT+ph;
+              var h1=er/YMAX*ph,h2=tp/YMAX*ph,h3=brk/YMAX*ph;
+              s+='<rect x="'+x.toFixed(1)+'" y="'+(y0-h1).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h1.toFixed(1)+'" fill="#1a5276"/>';
+              s+='<rect x="'+x.toFixed(1)+'" y="'+(y0-h1-h2).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h2.toFixed(1)+'" fill="#7a1414"/>';
+              s+='<rect x="'+x.toFixed(1)+'" y="'+(y0-h1-h2-h3).toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h3.toFixed(1)+'" fill="#b9770e"/>';
+              s+='<text x="'+cx.toFixed(1)+'" y="'+(y0-h1-h2-h3-4).toFixed(1)+'" text-anchor="middle" font-size="9.5" fill="#5c5344">'+nom.toFixed(1)+'</text>';
+              s+='<text x="'+cx.toFixed(1)+'" y="'+(mT+ph+15)+'" text-anchor="middle" font-size="10" fill="#8a7f6c">'+L+'</text>';});
+            var lx=mL+pw+12,ly=mT+18;
+            [['#b9770e','expected inflation'],['#7a1414','term premium'],['#1a5276','expected real rate']].forEach(function(it,i){s+='<rect x="'+lx+'" y="'+(ly+i*18)+'" width="11" height="11" fill="'+it[0]+'"/><text x="'+(lx+16)+'" y="'+(ly+i*18+9.5)+'" font-size="9.5" fill="#5c5344">'+it[1]+'</text>';});
+            s+='<text transform="translate(13 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11" font-style="italic" fill="#5c5344">Yield</text>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="11" font-style="italic" fill="#5c5344">Maturity</text>';
+            s+='</svg>';el.innerHTML=s;
+            var nom10=DATA.nom['10Y'],re10=DATA.re['10Y'],brk10=nom10-re10,tp10u=Math.min(tp10,0.85*re10),er10=re10-tp10u;
+            var sp=(DATA.nom['10Y']!=null&&DATA.nom['3M']!=null)?DATA.nom['10Y']-DATA.nom['3M']:null;
+            var txt='On <strong>'+DATA.date+'</strong>, the 10-year at <strong>'+nom10.toFixed(2)+'%</strong> = <strong style="color:#1a5276">'+er10.toFixed(2)+'% real</strong> + <strong style="color:#7a1414">'+tp10u.toFixed(2)+'% term premium</strong> + <strong style="color:#b9770e">'+brk10.toFixed(2)+'% expected inflation</strong>. ';
+            if(sp!=null){var P=Phi(-0.5333-0.6330*sp)*100;txt+='The 10Y&ndash;3M spread is '+(sp>=0?'+':'')+sp.toFixed(2)+' pts &rarr; the Estrella&ndash;Mishkin probit reads a <strong style="color:#c0392b">'+P.toFixed(0)+'% chance of recession within a year</strong> &mdash; a noisy gauge, as noted above.';}
+            read.innerHTML=txt;
+          }
+          tpS.addEventListener('input',draw);
+          var now=new Date(),prev=new Date(now.getFullYear(),now.getMonth()-1,1);
+          Promise.all([
+            load('daily_treasury_yield_curve',NF,ym(now)).then(function(r){return r||load('daily_treasury_yield_curve',NF,ym(prev));}),
+            load('daily_treasury_real_yield_curve',RF,ym(now)).then(function(r){return r||load('daily_treasury_real_yield_curve',RF,ym(prev));})
+          ]).then(function(res){DATA=(res[0]&&res[1])?{date:res[0].date,nom:res[0].vals,re:res[1].vals}:FB;draw();}).catch(function(){DATA=FB;draw();});
+        })();
+        </script>
+
+        <p>Beyond forecasting, the curve is the working tool of fixed income: its spot and forward rates are the discount factors for every dated cash flow, and let a treasurer lock in a future borrowing rate today; an upward slope pays a bondholder to hold duration (carry and roll-down); pension funds and insurers discount their liabilities along it &mdash; the immunization of Section IV; and it is the riskless benchmark from which every credit spread is measured.</p>
+
         <p>The curve&rsquo;s shape is not fixed &mdash; and the first person to show that was <strong>David Durand</strong>, who in 1942 fitted a &ldquo;basic&rdquo; yield curve for every year back to 1900 and laid them all on one axis. Superimposed, they fan from steeply upward-sloping in easy-money years to <em>downward</em>-sloping when short-term money was dear &mdash; the whole range of shapes the live curve above still moves through.</p>
 
         <div class="figure">
