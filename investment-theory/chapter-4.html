@@ -280,6 +280,123 @@
         })();
         </script>
 
+        <h3>Build Your Own Long-Short Book</h3>
+
+        <p>The line is not just a picture &mdash; it is a tool. Enter up to eight tickers and weights (negative to short); the figure fetches five years of monthly prices, regresses each stock on the market for its <em>beta</em> and <em>alpha</em>, and plots them against the SML. Dots above the line beat what their beta warranted (positive alpha); dots below fell short. The reward for combining them is the <strong>information ratio</strong> &mdash; alpha per unit of the diversifiable risk you carry &mdash; and the figure shows both its estimate and how little we should trust it.</p>
+
+        <div class="figure" id="ir-lab">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
+            <div id="ir-inputs" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px 14px;font-size:.85rem;margin-bottom:8px"></div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin:6px 0 10px;font-size:.85rem">
+              <label>Risk-free <input id="ir-rf" type="number" value="4" step="0.5" style="width:52px"> %/yr</label>
+              <label><input id="ir-shrink" type="checkbox"> shrink alphas for estimation error</label>
+              <button id="ir-go" type="button" style="font-family:inherit;font-size:.85rem;padding:5px 14px;border:1px solid #1a5276;border-radius:6px;background:#1a5276;color:#fff;cursor:pointer">Compute &#8635;</button>
+              <span id="ir-status" style="color:#8a7f6c;font-style:italic"></span>
+            </div>
+            <div id="ir-chart"></div>
+            <div id="ir-read" style="font-size:.86rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
+          </div>
+          <p class="figure-caption"><strong>Figure 4.4.</strong> The Security Market Line as a research tool. Each dot is a stock at its estimated beta (horizontal) and realized annual return (vertical); the line is the SML from the risk-free rate through the market. Green dots sit above it (positive alpha), red below; dot size is the weight. The portfolio&rsquo;s beta is marked on the line. The readout gives the <strong>information ratio</strong> &mdash; portfolio alpha over residual risk computed from the full residual covariance matrix &mdash; with a 95% band of $\pm 1.96/\sqrt{\text{years}}$ and a &ldquo;noise floor&rdquo; $\sqrt{N/\text{years}}$, the in-sample IR a skill-less book of $N$ names produces by chance (Grinold &amp; Kahn). Tick <em>shrink alphas</em> for the honest expected IR once estimation error is removed. Live data via Yahoo Finance.</p>
+        </div>
+        <script>
+        (function(){
+          var lab=document.getElementById('ir-lab'); if(!lab)return;
+          var DEF=[['AAPL',0.30],['MSFT',0.25],['NVDA',0.20],['XOM',-0.15],['KO',-0.15],['PG',-0.10],['',''],['','']];
+          var inp=document.getElementById('ir-inputs');
+          for(var k=0;k<8;k++){var d=DEF[k];
+            inp.innerHTML+='<span><input class="ir-t" placeholder="ticker" value="'+d[0]+'" style="width:76px;text-transform:uppercase"> <input class="ir-w" type="number" step="0.05" placeholder="wt" value="'+(d[1]===''?'':d[1])+'" style="width:58px"></span>';}
+          var status=document.getElementById('ir-status'),read=document.getElementById('ir-read'),chart=document.getElementById('ir-chart');
+          function mean(a){var s=0;for(var i=0;i<a.length;i++)s+=a[i];return s/a.length;}
+          function varc(a,m){var s=0;for(var i=0;i<a.length;i++)s+=(a[i]-m)*(a[i]-m);return s/(a.length-1);}
+          function dot(a,b){var s=0;for(var i=0;i<a.length;i++)s+=a[i]*b[i];return s;}
+          function quad(w,S){var s=0,n=w.length;for(var i=0;i<n;i++)for(var j=0;j<n;j++)s+=w[i]*S[i][j]*w[j];return s;}
+          function matInv(A){var n=A.length,M=[],i,j,r,c;for(i=0;i<n;i++){M[i]=A[i].slice();for(j=0;j<n;j++)M[i].push(i===j?1:0);}
+            for(c=0;c<n;c++){var p=c;for(r=c+1;r<n;r++)if(Math.abs(M[r][c])>Math.abs(M[p][c]))p=r;
+              if(Math.abs(M[p][c])<1e-11)return null;var tmp=M[c];M[c]=M[p];M[p]=tmp;var pv=M[c][c];
+              for(j=0;j<2*n;j++)M[c][j]/=pv;
+              for(r=0;r<n;r++){if(r===c)continue;var f=M[r][c];for(j=0;j<2*n;j++)M[r][j]-=f*M[c][j];}}
+            var Inv=[];for(i=0;i<n;i++)Inv[i]=M[i].slice(n);return Inv;}
+          function fetchTicker(t){
+            var url='https://query1.finance.yahoo.com/v8/finance/chart/'+encodeURIComponent(t)+'?range=5y&interval=1mo';
+            return fetch('https://corsproxy.io/?url='+encodeURIComponent(url)).then(function(r){return r.json();}).then(function(j){
+              var res=j&&j.chart&&j.chart.result&&j.chart.result[0];if(!res||!res.timestamp)return null;
+              var ts=res.timestamp,ind=res.indicators,adj=(ind.adjclose&&ind.adjclose[0]&&ind.adjclose[0].adjclose)||(ind.quote[0].close),out={};
+              for(var i=0;i<ts.length;i++){if(adj[i]==null)continue;var dt=new Date(ts[i]*1000);out[dt.getUTCFullYear()+'-'+('0'+(dt.getUTCMonth()+1)).slice(-2)]=adj[i];}
+              return out;}).catch(function(){return null;});}
+          function rets(m){var ks=Object.keys(m).sort(),o={};for(var i=1;i<ks.length;i++)o[ks[i]]=m[ks[i]]/m[ks[i-1]]-1;return o;}
+          function compute(){
+            status.textContent='fetching…';read.innerHTML='';chart.innerHTML='';
+            var rows=[];lab.querySelectorAll('#ir-inputs > span').forEach(function(sp){
+              var t=sp.querySelector('.ir-t').value.trim().toUpperCase(),w=parseFloat(sp.querySelector('.ir-w').value);
+              if(t&&!isNaN(w)&&w!==0)rows.push({t:t,w:w});});
+            if(!rows.length){status.textContent='enter at least one ticker and non-zero weight';return;}
+            rows=rows.slice(0,8);var rf=parseFloat(document.getElementById('ir-rf').value)/100/12;
+            Promise.all([fetchTicker('SPY')].concat(rows.map(function(r){return fetchTicker(r.t);}))).then(function(all){
+              var spy=all[0];if(!spy){status.textContent='could not fetch the market (SPY) — data source unavailable';return;}
+              var rm=rets(spy),valid=[],dropped=[];
+              rows.forEach(function(r,i){var px=all[i+1];if(!px){dropped.push(r.t+' (no data)');return;}
+                var rr=rets(px),ov=Object.keys(rr).filter(function(k){return rm[k]!=null;});
+                if(ov.length<30){dropped.push(r.t+' ('+ov.length+' mo)');return;}valid.push({t:r.t,w:r.w,r:rr});});
+              if(!valid.length){status.textContent='no ticker had ≥30 months of data. Dropped: '+dropped.join(', ');return;}
+              var common=Object.keys(rm);valid.forEach(function(v){common=common.filter(function(k){return v.r[k]!=null;});});common.sort();
+              if(common.length<30){status.textContent='overlapping history too short ('+common.length+' mo across the set) — try fewer or longer-listed names';return;}
+              var Tc=common.length,N=valid.length,years=Tc/12;
+              var xm=common.map(function(k){return rm[k]-rf;}),mbar=mean(xm),mvar=varc(xm,mbar);
+              valid.forEach(function(v){var xi=common.map(function(k){return v.r[k]-rf;}),ibar=mean(xi),cov=0;
+                for(var t=0;t<Tc;t++)cov+=(xi[t]-ibar)*(xm[t]-mbar);cov/=(Tc-1);
+                v.beta=cov/mvar;v.alpha=ibar-v.beta*mbar;v.resid=xi.map(function(x,t){return x-v.alpha-v.beta*xm[t];});
+                v.realAnn=mean(common.map(function(k){return v.r[k];}))*12;});
+              var S=[];for(var i=0;i<N;i++){S[i]=[];for(var j=0;j<N;j++){var c=0;for(var t=0;t<Tc;t++)c+=valid[i].resid[t]*valid[j].resid[t];S[i][j]=c/(Tc-2);}}
+              var w=valid.map(function(v){return v.w;}),alphaM=valid.map(function(v){return v.alpha;});
+              var seA=valid.map(function(v,i){return Math.sqrt(S[i][i]/Tc);}),shrink=document.getElementById('ir-shrink').checked,aUse=alphaM.slice();
+              if(shrink){var abar=mean(alphaM),avar=varc(alphaM,abar),mSE2=mean(seA.map(function(s){return s*s;})),tau2=Math.max(0,avar-mSE2);
+                aUse=alphaM.map(function(a,i){return a*tau2/(tau2+seA[i]*seA[i]);});}
+              var apM=dot(w,aUse),wSw=Math.max(quad(w,S),1e-12),omM=Math.sqrt(wSw);
+              var IR=Math.sqrt(12)*apM/omM,band=1.96/Math.sqrt(years),floor=Math.sqrt(N/years),bp=dot(w,valid.map(function(v){return v.beta;}));
+              var Sinv=matInv(S),IRmax=null;if(Sinv){var q=0;for(i=0;i<N;i++)for(j=0;j<N;j++)q+=aUse[i]*Sinv[i][j]*aUse[j];if(q>0)IRmax=Math.sqrt(12*q);}
+              draw(valid,w,rf,mbar,bp);
+              renderRead(valid,aUse,shrink,rf,IR,band,floor,IRmax,apM,omM,bp,N,years,Tc,dropped);
+              status.textContent='';
+            }).catch(function(){status.textContent='fetch failed — the data source may be blocking requests right now';});
+          }
+          function draw(valid,w,rf,mbar,bp){
+            var W=700,H=380,mL=56,mR=18,mT=18,mB=44,pw=W-mL-mR,ph=H-mT-mB;
+            var bs=valid.map(function(v){return v.beta;}),ys=valid.map(function(v){return v.realAnn*100;});
+            var bmin=Math.min(0,Math.min.apply(null,bs))-0.15,bmax=Math.max(1.25,Math.max.apply(null,bs))+0.15;
+            var sml=function(b){return (rf*12 + b*mbar*12)*100;};
+            var yvals=ys.concat([sml(bmin),sml(bmax),rf*1200]),ylo=Math.min.apply(null,yvals)-3,yhi=Math.max.apply(null,yvals)+3;
+            function px(b){return mL+(b-bmin)/(bmax-bmin)*pw;}function py(y){return mT+ph-(y-ylo)/(yhi-ylo)*ph;}
+            var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">',g;
+            for(g=Math.ceil(ylo/5)*5;g<=yhi;g+=5){var yy=py(g);s+='<line x1="'+mL+'" y1="'+yy.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+yy.toFixed(1)+'" stroke="#efe7d4"/><text x="'+(mL-6)+'" y="'+(yy+3.5).toFixed(1)+'" text-anchor="end" font-size="10" fill="#8a7f6c">'+g+'%</text>';}
+            for(g=Math.ceil(bmin*2)/2;g<=bmax;g+=0.5){var xx=px(g);s+='<text x="'+xx.toFixed(1)+'" y="'+(mT+ph+16)+'" text-anchor="middle" font-size="10" fill="#8a7f6c">'+g.toFixed(1)+'</text>';}
+            if(bmin<0&&bmax>0)s+='<line x1="'+px(0).toFixed(1)+'" y1="'+mT+'" x2="'+px(0).toFixed(1)+'" y2="'+(mT+ph)+'" stroke="#e0d6bf"/>';
+            s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.2"/>';
+            s+='<line x1="'+px(bmin).toFixed(1)+'" y1="'+py(sml(bmin)).toFixed(1)+'" x2="'+px(bmax).toFixed(1)+'" y2="'+py(sml(bmax)).toFixed(1)+'" stroke="#7a1414" stroke-width="2"/>';
+            s+='<text x="'+(px(bmax)-4).toFixed(1)+'" y="'+(py(sml(bmax))-6).toFixed(1)+'" text-anchor="end" font-size="10.5" fill="#7a1414">SML</text>';
+            s+='<circle cx="'+px(1).toFixed(1)+'" cy="'+py(sml(1)).toFixed(1)+'" r="4" fill="#7a1414"/><text x="'+px(1).toFixed(1)+'" y="'+(py(sml(1))-8).toFixed(1)+'" text-anchor="middle" font-size="9.5" fill="#7a1414">market</text>';
+            valid.forEach(function(v,i){var above=v.realAnn*100>=sml(v.beta),col=above?'#1e8b3a':'#c0392b',r=4+Math.min(7,Math.abs(w[i])*10);
+              s+='<line x1="'+px(v.beta).toFixed(1)+'" y1="'+py(v.realAnn*100).toFixed(1)+'" x2="'+px(v.beta).toFixed(1)+'" y2="'+py(sml(v.beta)).toFixed(1)+'" stroke="'+col+'" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>';
+              s+='<circle cx="'+px(v.beta).toFixed(1)+'" cy="'+py(v.realAnn*100).toFixed(1)+'" r="'+r.toFixed(1)+'" fill="'+col+'" opacity="0.82"/>';
+              s+='<text x="'+(px(v.beta)+r+3).toFixed(1)+'" y="'+(py(v.realAnn*100)+3.5).toFixed(1)+'" font-size="10" fill="#26221a">'+v.t+(w[i]<0?' (short)':'')+'</text>';});
+            s+='<path d="M'+px(bp).toFixed(1)+' '+(py(sml(bp))-8).toFixed(1)+' l-6 8 l6 8 l6 -8 Z" fill="#1a5276"/><text x="'+px(bp).toFixed(1)+'" y="'+(py(sml(bp))+22).toFixed(1)+'" text-anchor="middle" font-size="9.5" fill="#1a5276">portfolio &beta;='+bp.toFixed(2)+'</text>';
+            s+='<text transform="translate(14 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Annualized return</text>';
+            s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="11.5" font-style="italic" fill="#5c5344">Beta</text>';
+            s+='</svg>';chart.innerHTML=s;}
+          function pct(x){return (x>=0?'+':'')+x.toFixed(1)+'%';}
+          function renderRead(valid,aUse,shrink,rf,IR,band,floor,IRmax,apM,omM,bp,N,years,Tc,dropped){
+            var rowsH=valid.map(function(v,i){return v.t+': &beta;='+v.beta.toFixed(2)+', &alpha;='+pct(aUse[i]*1200);}).join(' &nbsp;&middot;&nbsp; ');
+            var lo=(IR-band),hi=(IR+band);
+            var h='<div style="margin-bottom:5px">'+rowsH+'</div>';
+            h+='Portfolio: <strong>&beta; = '+bp.toFixed(2)+'</strong>, active return &alpha;<sub>p</sub> = <strong>'+pct(apM*1200)+'</strong>/yr, residual risk &omega;<sub>p</sub> = <strong>'+(omM*Math.sqrt(12)*100).toFixed(1)+'%</strong>. ';
+            h+='<strong style="color:#1a5276">Information ratio = '+IR.toFixed(2)+'</strong> '+(shrink?'(shrunk, <em>expected</em>)':'(in-sample)')+', 95% band ['+lo.toFixed(2)+', '+hi.toFixed(2)+'] over '+years.toFixed(1)+' years. ';
+            h+='Noise floor &radic;(N/years) = <strong style="color:#c0392b">'+floor.toFixed(2)+'</strong>'+(IRmax!=null?'; best attainable IR from these names = <strong>'+IRmax.toFixed(2)+'</strong>':'')+'.';
+            h+='<div style="margin-top:5px;font-size:.82rem;color:#8a7f6c">'+Tc+' overlapping months'+(dropped.length?'; dropped: '+dropped.join(', '):'')+'. Alphas are estimated with error &mdash; the band, not the point, is the honest reading.</div>';
+            read.innerHTML=h;}
+          document.getElementById('ir-go').addEventListener('click',compute);
+          compute();
+        })();
+        </script>
+
         <h2>VI. Conclusion</h2>
 
         <p>The CAPM is a theoretical solution to the identity of the tangency portfolio. It uses some ideal assumptions about the economy to argue that the capital-weighted world wealth portfolio is the tangency portfolio, and that every investor will hold this same portfolio of risky assets. Even though it is clear they do not, the CAPM is still a very useful tool. It has been taken as a prescription for the investment portfolio, as well as a tool for estimating an expected rate of return.</p>
