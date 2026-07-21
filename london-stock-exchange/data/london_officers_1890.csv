@@ -1,0 +1,306 @@
+name,db_id,industry,chairman,secretary,address,market,lat,lon,street
+"Agra, Limited",20063,BANKING COMPANIES,In rotation,"W. Blackhall, M.","35 Nicholas lane, Lombard st., E.C.",London.,51.512710000000006,-0.08529999999999999,Nicholas lane
+"Alliance, Limited",20078,BANKING COMPANIES,"Sir L. Playfair, M.P.","R.O.Yeats, M.","1 Bartholomew lane, E.C.",London.,51.514006,-0.08597999999999999,Bartholomew lane
+"Anglo-Argentine, Limited",20084,BANKING COMPANIES,,"J. Chidley, S.","17 Moorgate street, E.C.",London.,51.516602,-0.08765999999999999,Moorgate street
+Anglo-Austrian,20081,BANKING COMPANIES,Pasco Grenfell,"H.Schumann, M.","31 and 32 Lombard st., E.C.","London, Vienna.",51.513192,-0.08635999999999999,Lombard st
+"Anglo-Californian, Limited",20086,BANKING COMPANIES,C. Simpson,,"6 Tokenhouse yard, E.C.",London.,51.514836,-0.08688,Tokenhouse yard
+"Anglo-Egyptian, Limited",20087,BANKING COMPANIES,Thos. Osborne,"W. Hart, M.","27 Clement's lane, Lombard st., E.C.",London.,51.512662000000006,-0.08496000000000001,Clement's lane
+"Anglo-Foreign Banking, Limited",20091,BANKING COMPANIES,"J. Moyse, M.","W. Davies, S.","27 Clements lane, E.C.; 99 Bishopsgate street Within.",London.,51.512662000000006,-0.08496000000000001,Clements lane
+"Anglo-Italian, Limited",20095,BANKING COMPANIES,Sir J. P. Lacaita,"V. Monaco, S.","12 St Helen's place, E.C.",London.,51.515572000000006,-0.08176,St Helen's place
+Australian Joint-Stock,20111,BANKING COMPANIES,Hon.J.R. Dickson,"E. L. Campbell, M.","17 Billiter street, E.C.","Sydney, London.",51.512102,-0.07866000000000001,Billiter street
+"Bank of Africa, Limited",20128,BANKING COMPANIES,D. P. Blaine,"R. G. Davis, S.","27 Fenchurch lane, E.C.",London.,51.511962000000004,-0.07946,Fenchurch lane
+Bank of Australasia,20132,BANKING COMPANIES,,"E. Selby, S.","4 Threadneedle street, E.C.",London.,51.514024000000006,-0.08392000000000001,Threadneedle street
+"Bank of Bolton, Lim. A",20027,BANKING COMPANIES,In rotation,"A. G. Wallis, S.","3 Clement's lane, Lombard st., E.C.",London.,51.512518,-0.08544,Clement's lane
+"Bank of Egypt, Limited",20009,BANKING COMPANIES,Hon. S. C. Glyn,"E. Cheshire, S.","29 Old Broad street, E.C.",1st London.,51.515674000000004,-0.08292000000000001,Old Broad street
+Bank of Montreal,20141,BANKING COMPANIES,SirWm.Rose,"E.H.Burne, M.","13 Old Broad st. and 13 Fenchurch st., E.C.",London.,51.515578000000005,-0.08324000000000001,Old Broad st
+Bank of Westmoreland,20152,BANKING COMPANIES,R. H. Smith,"G. Hague, M.","6 Abchurch lane, E.C.",Montreal.,51.511836,-0.08538000000000001,Abchurch lane
+Bank of New South Wales,20021,BANKING COMPANIES,D. Larnach,"D. George, M.","64 Old Broad st., E.C.; & Sydney.",London.,51.515884,-0.08222,Old Broad st
+Bank of New Zealand,20022,BANKING COMPANIES,J. L. Campbell,"Jas. Macdonald, M.","1 Queen Victoria st., & Dunedin, E.C.",London.,51.512006,-0.09298,Queen Victoria st
+Bank of Scotland,20030,BANKING COMPANIES,L. M. Rafe.,"C. B. Page, S.","7 Great Winchester street, E.C.",London.,51.515542,-0.08386,Great Winchester street
+Royal Bank of Scotland,20891,BANKING COMPANIES,Earl & Marchess,"A. Wendy, M.","Bishopsgate and Lothbury, E.C.","Edinbrgh., Glasgow",51.5145,-0.088,Lothbury
+"Bank of South Australia, L.",20031,BANKING COMPANIES,Rotation.,"Jas.Anderson, G. M.","31 Lombard st., E.C.",London.,51.513186,-0.08638,Lombard st
+"Bank of Victoria, L.",20149,BANKING COMPANIES,W. Helder,"W. H. King, S.","4 Threadneedle street, E.C.",London.,51.514024000000006,-0.08392000000000001,Threadneedle street
+"Land Mort. Bk. of Victoria, L.",45289,MISCELLANEOUS,H. L. Taylor.,"W. Fairclough, M.","Melbourne; & 28 Clement's lane, E.C.","London, Mlbourne",51.512668000000005,-0.08494,Clement's lane
+"Ottoman Gas, Limited",47325,MISCELLANEOUS,Gen. Mac Murdo,S. Bradley.,26 Throgmorton street.,London.,51.515156,-0.08547999999999999,Throgmorton street
+British Linen Company,20216,BANKING COMPANIES,Earl of Rosebery,"J. A. Wendy, M.","6 Edin.; & 41 Lombard st., E.C.","Edinbrgh., Glasgow.",51.513245999999995,-0.08617999999999999,Lombard st
+"Capital and Counties, Lim.",20240,BANKING COMPANIES,E. R. Merriman.,"John Reid, S.","39 Threadneedle street, E.C.",London.*,51.514234,-0.08322,Threadneedle street
+"City, Limited",20258,BANKING COMPANIES,,O. Kennedy M.,"Threadneedle street, E.C.",London.,51.514,-0.084,Threadneedle street
+Colonial,20270,BANKING COMPANIES,H. H. Dobree.,"E. Carpenter, S.","13 Bishopsgate street Within, E.C.",London.,51.515578000000005,-0.08124,Bishopsgate street
+"Commercial of Australia, L.",20276,BANKING COMPANIES,P. Melvill,"C. Clapin, M.","109 Cannon st. Within, E.C.; & Melhourne",London.,51.511554,-0.08982,Cannon st
+"North of Scotland, Limited",20778,BANKING COMPANIES,Marquis of Tweeddale.,A. A1d.,Edinbro; & 65 Cornhill.,"Edin., Glasgow",51.5135,-0.083,Cornhill
+"Land Co. of Australasia, L",45301,MISCELLANEOUS,In rotation.,"R. A. Black, S.",E.C.; & Hobart 122 Leadenhall st.,"London, Manchstr.",51.512632,-0.07956,Leadenhall st
+"Delhi and London, Limited",20343,BANKING COMPANIES,D. H. Small.,"P. B. Baker, J., M.","123 Bishopsgate street Within, E.C.",London.*,51.515638,-0.08104,Bishopsgate street
+"English Bk of Rio de Jan., L.",20383,BANKING COMPANIES,"C. Carrington, M.","A. Dick-Cunynghara, S.","2a Moorgate st., E C",London.,51.516512,-0.08796,Moorgate st
+"McEwan & Co., James, Ltd.",46135,MISCELLANEOUS,C. J. Hogan.,"Jas. Campbell, S.","73 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+Hongkong & Shanghai Corp.,20045,BANKING COMPANIES,Lt. L. Dalrymple.,"G. Cameron, S.","31 Lombard street, E.C.",London.,51.513186,-0.08638,Lombard street
+Imperial Ottoman,20468,BANKING COMPANIES,J. Keswick.,"G. Newall, M.","Bartholomew Lane, E.C.",[not]e.London.,51.514,-0.086,Bartholomew Lane
+"Internationl Bank of Londn, Limited",20484,BANKING COMPANIES,Hon. P. C. Glyn.,"H. Gwinner, M.-D.","113 Cannon street, E.C.",London.,51.511578,-0.08974,Cannon street
+"Ionian, Limited (liab. 25 l)",20489,BANKING COMPANIES,Chas. Fredk. Tyser.,"J. H. Bulley, S.","39 Lombard street, E.C.",London.*,51.513234,-0.08621999999999999,Lombard street
+"London & Brazilian, Limtd.",20581,BANKING COMPANIES,P. W. Erskine.,"M. Gordon, M.-D.","108 Old Broad street, E.C.",London.,51.515548,-0.08334000000000001,Old Broad street
+"London Platino-Brazilian, L",45660,MISCELLANEOUS,Hon. P. C. Glyn.,"J. Gordon, M.","8 Tokenhouse yard, E.C.",London.,51.514848,-0.08684,Tokenhouse yard
+"London & County Bnkng, L.",20585,BANKING COMPANIES,W. Tattersall.,"P. Dryland, S.","21 Lombard street, E.C.",London.,51.513126,-0.08657999999999999,Lombard street
+"London & Provincial, Lim.",20602,BANKING COMPANIES,"J.B.Corner,M.P.","J.J.Grigson,S.","Bank buildings, Lothbury, E.C.",London.,51.5145,-0.088,Bank buildings
+"London, Paris & American, L.",20653,BANKING COMPANIES,"W. Lowson, M.P.",,"12 Mansion House street, E.C.",London.,51.512272,-0.08975999999999999,Mansion House street
+"London & Westminster, L.",20618,BANKING COMPANIES,"J. W. Attlee, M.","G.W. Barnet,S.","1 St. James's square, & 213 Regent street, & 44 Lothbury, E.C.","London, London.",51.510078,-0.13674,Regent street
+"Lands Allotment, Limited",45307,MISCELLANEOUS,W. Massingberd.,"M. Soule, S.","144 Leadenhall street, E.C.",London.,51.512764000000004,-0.07912,Leadenhall street
+"National Discount Co., Lim",20735,DISCOUNT COMPANIES,H. F. Daggett.,"R. Blower, M.","Old Broad street, E.C.",London.,51.5155,-0.0835,Old Broad street
+"Manchester & County, Lim.",20657,BANKING COMPANIES,G. Loch.,"T. E. Moore, S.","85 King street, Manchester.",Manchester.,51.51451,-0.0933,King street
+"Manchester Joint Stock, L.",20667,BANKING COMPANIES,J. J. Aitken.,"W. M. Evans, S.","70 King street, Manchester.",Manchester.,51.51442,-0.0936,King street
+Mercantile Bk. of Australia,20688,BANKING COMPANIES,"Sir M. H. Davies,G. W. Booker, M.",,"39 Lombard st, E.C.",London.,51.513234,-0.08621999999999999,Lombard st
+"Metrop. & Birming. Bank., L.",20694,BANKING COMPANIES,"T. Lea, M.P.","Jas. Leigh, M.","126 Cannon street, E.C.",London.,51.511655999999995,-0.08947999999999999,Cannon street
+National Bank of Austrlsia,20723,BANKING COMPANIES,H. F. Slatter.,"W. C. Satterw.,S.","153 Fenchurch street, E.C.; and Dublin.","Dublin, London.",51.512318,-0.07794,Fenchurch street
+National Bank of India,20725,BANKING COMPANIES,"G. O. Campbell. R. Campbell, M.",,"47 Threadneedle street, E.C.",London.*,51.514282,-0.08306000000000001,Threadneedle street
+"National Bank of Wales, L.",20734,BANKING COMPANIES,Messrs. Baxter.,"Duncan,S.","47 New Broad street, E.C.",London.,51.516082,-0.08306000000000001,New Broad street
+"National Boiler Insur., L.",20715,INSURANCE COMPANIES,E. B. Hoare.,"Richd. Maxwell, S.","3 Gracechurch street, E.C.",,51.512518,-0.08244,Gracechurch street
+"National Marine Insrnce, L.",20745,INSURANCE COMPANIES,,,"112 Bishopsgate street, E.C.","London, &c.",51.515572000000006,-0.08126,Bishopsgate street
+New Viola,46925,MISCELLANEOUS,In rotation.,"R. T. Rohde, [secretary.]","40 Threadneedle st., E.C.",London.,51.51424,-0.08320000000000001,Threadneedle st
+"Oriental Gas, Limited",47288,MISCELLANEOUS,"Sir H. Charlesworth. Andrew Whyte,M.",,"64, Old Broad street, Manch., Oldham, Oldhm.",,51.5155,-0.0835,Old Broad street
+Standard Life,20967,INSURANCE COMPANIES,In rotation.,"H. Frost, S.","10 Clement's lane, Lombard st., E.C. London.",,51.51256,-0.0853,Clement's lane
+"Union Bank of Australia, L.",21018,BANKING COMPANIES,In rotation.,"W.C. Newburn, M.","1 Bank buildings, Lothbury, E.C.",London.,51.514506,-0.08797999999999999,Bank buildings
+"Union Bank of London, L.",21012,BANKING COMPANIES,In rotation.,"C. H. Grant, S.","2 Princes street, Bank, E.C.",London.,51.514012,-0.08696,Princes street
+Union - Fire and Life,21010,INSURANCE COMPANIES,J. West.,"W. A. Harrison, M.","51 Old Broad street, E.C.",London.,51.515806000000005,-0.08248,Old Broad street
+"National Safe Deposit, Lim.",46771,MISCELLANEOUS,W.J. Thomson.,"W. Hancock, M.","35 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+Union Discount of London,21025,DISCOUNT COMPANIES,C. R. Nugent.,M.,39 Cornhill. E.C.,London.,51.5135,-0.083,Cornhill
+Alliance Assurance,20071,INSURANCE COMPANIES,Lord Rothschild.,"R. Lewis, S.","Bartholomew lane, Bank, E.C.","London, &c.",51.514,-0.086,Bartholomew lane
+Atlas Fire and Life,20109,INSURANCE COMPANIES,Sir W. S. W. Baynes.,,"92 Cheapside, E.C.",London.*,51.514,-0.0935,Cheapside
+"Boiler Insurance and Steam Power, Limited",20190,INSURANCE COMPANIES,C. J. Galloway.,"E. Hudseth, S.","67 King street, Manchester.",Manchester.*,51.514402000000004,-0.09366000000000001,King street
+"British Wagon, Limited",41722,MISCELLANEOUS,,,"126 Cornhill, E.C.",,51.5135,-0.083,Cornhill
+"British Law Fire, Limited",20211,INSURANCE COMPANIES,"Sir H.W. Parker, Bt.",F. Quiller,"26 Lothbury, E.C.",London.,51.5145,-0.088,Lothbury
+Church of England Life,20256,INSURANCE COMPANIES,W. Edmunds.,"H. T. Easton, M.",20 King William st; Edinbh,"Edinburgh, Londn*",51.51162,-0.0866,King William st
+"City of Lon. Fire Insur., L.",20264,INSURANCE COMPANIES,Hon. C.N. Lawrence.,"Rt. Hon. Sir J. T. Maberly, M.","40 Threadneedle street, E.C.",London.,51.51424,-0.08320000000000001,Threadneedle street
+Commercial Cable,42666,MISCELLANEOUS,"Right Hon. C. T. Ritchie, M.P.","Benj. Wood, M.","19 Cornhill, E.C.",London.*,51.5135,-0.083,Cornhill
+Rock Life,20880,INSURANCE COMPANIES,J. W. Watson.,"A. MacKay, S.","183 Fleet street, E.C.",London.*,51.514498,-0.10734,Fleet street
+Eagle Life,20360,INSURANCE COMPANIES,Sir Samuel O.Haughton.,"A.S.H. Newton, A.","70 Pall Mall, S.W.",London.,51.507,-0.131,Pall Mall
+"Employers' Liability Assurance Corporation, Lim",20371,INSURANCE COMPANIES,Lord St. A. Hamilton.,M.P.,"25 and 26, King William street, E.C.",London,51.5115,-0.087,King William street
+Edinburgh Street Tramwys,43513,MISCELLANEOUS,"J.R. Bulwer, M.A.","A. Jackson, M.","12 Waterloo place, S.W.; 129 Edinbrgh, Londa.*",,51.507072,-0.13276000000000002,Waterloo place
+"Equity & Law Life (10, 000 l c.)",20393,INSURANCE COMPANIES,J. A. Cooke.,"G. W. Berridge, S.","43 Lincoln's Inn fields, W.C.",London.*,51.516,-0.118,Lincoln'S Inn Fields
+"Fire Insurance Association, Limited",20405,INSURANCE COMPANIES,Sir I.N. Fowler.,"D. Lawrie, M.","90 Cannon street, E.C.",London.*,51.51204,-0.0882,Cannon street
+"General Mining Assoc., Limited",44027,MISCELLANEOUS,Hon. Fred. E. Baring.,"A. M. Hime, M.","100 Cannon street, E.C.",London.*,51.5115,-0.09,Cannon street
+General Revers. & Invstmt.,20410,INSURANCE COMPANIES,E. Walmsley.,"D.A. Bumsted, L.& S.","5 Whitehall, S.W.",London.*,51.504,-0.126,Whitehall
+Guardian In. Trust L. Prf.,44356,MISCELLANEOUS,J. R. Martin.,"T.G.C. Browne, S.","11 Lombard street, E.C.",London.,51.513065999999995,-0.08678,Lombard street
+Imperial Fire,20462,INSURANCE COMPANIES,M. K. Smith,"E. Cozens S., S.","1 Old Broad st., E.C.","London, &c.",51.515506,-0.08348,Old Broad st
+Imperial Life,20463,INSURANCE COMPANIES,A. Lawrie,"J. Crichton, S.","1 Old Broad street, E.C.","London, &c.",51.515506,-0.08348,Old Broad street
+Legal and General Life,20544,INSURANCE COMPANIES,"G. E. Gregory, M.P.","E. Colqn., M.","10 Fleet street, E.C.",London.,51.51406,-0.1088,Fleet street
+Life Association of Scotland,20551,INSURANCE COMPANIES,"H.Harben, M.P.","R. H. Barker, S.","11 King William st., Edinburgh.",Edinburgh.,51.511565999999995,-0.08678,King William st
+"London & Provincial Fire, L.",20604,INSURANCE COMPANIES,E.C. Morgan,"Henry Williams, M.","11 Abchurch lane, E.C.",London.,51.511866,-0.08528000000000001,Abchurch lane
+"Prudential Assurance, Lim.",20863,INSURANCE COMPANIES,J. B. Moffat,"G. Daniell, S.","7 Royal Exchange buildings, E.C.",London.,51.513542,-0.08486,Royal Exchange buildings
+"Marine Insurance, Limited",20670,INSURANCE COMPANIES,A. Wallace,"J. D. Laurence, S.","7 Royal Exchange, Cornhill.",London.,51.5135,-0.083,Cornhill
+"Land Securities, Limited",45306,MISCELLANEOUS,J. R. Smith,"A. F. Davies, S.","Royal Exchange, Lvrpl.",Liverpool.*,51.5135,-0.085,Royal Exchange
+"Merchants, Lim. 4 % pref.",46211,MISCELLANEOUS,J. A. Steel,"M. Dawson, S.","37 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+"North British & Mercantile, Fire and Life",20771,INSURANCE COMPANIES,Baron Schreder,"F.W. Lance, S.","Edinburgh; 61 Threadneedle st, E.C.","London, Edinbrgh",51.514366,-0.08278,Threadneedle st
+Northern Agricultural,47120,MISCELLANEOUS,J. W. Gates,"G. Fry, Joint-Secs.","1 Moorgate street, E.C.","Lncln,Edite.,Lon.",51.516506,-0.08797999999999999,Moorgate street
+"Bodega, Limited",41197,MISCELLANEOUS,H. J. Jonathan,"Alfred Pirie, S.","82 and 83 & 24 Broad street ct., E.C.",London.,51.515944,-0.08352000000000001,Broad street
+Pelican Life,20841,INSURANCE COMPANIES,Hon. H. R. Brand,"R. C. Traelver, S.","70 Lombard street, E.C.",London.*,51.513419999999996,-0.0856,Lombard street
+Provident Life,20858,INSURANCE COMPANIES,W. H. Sprowson,"G. Stevens, S.",30 Regent street.,London.,51.51018,-0.13640000000000002,Regent street
+Railway Passengers,20869,INSURANCE COMPANIES,Earl of Jersey,"W. S. Watson, S.","64 Cornhill, E.C.",London.*,51.5135,-0.083,Cornhill
+Reliance Marine Limited,20874,INSURANCE COMPANIES,W. Blane,"J. Hodge, S.","Royal Exchange buildings East, Liverpool.",Liverpool.,51.5135,-0.085,Royal Exchange buildings East
+Glasgow Royal Exchange,44129,MISCELLANEOUS,"J. Lubbock, Bart., M.P.","Geo.H.Barber, S.","Royal Exchange, E.C.",London.*,51.5135,-0.085,Royal Exchange
+South Australian Company,48960,MISCELLANEOUS,W. Watson,"J. Buchanan, S.","52 Moorgate st., & Princes Exchange, Liverpool.",Liverpool.,51.516812,-0.08696,Moorgate st
+Standard Marine Lim.,20970,INSURANCE COMPANIES,W. Newburn,"W. W. Baynes, S.","52 Moorgate street, E.C.",London.,51.516812,-0.08696,Moorgate street
+"Thames &Mersey Marine, L.",20990,INSURANCE COMPANIES,R. E. Junner,"R. Bucklands, S.","Royal Exchange buildings, E.C.","Lon.,Lv'pool., Man.",51.5135,-0.085,Royal Exchange buildings
+"Guardian, Fire & Life (40 l c)",20439,INSURANCE COMPANIES,S. Seamer,"C. Darrell, S.","81 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+Universal Life Assurnc. Soc,21037,INSURANCE COMPANIES,Hon. J. Byng,"F. Hendrick, S.","1 King William street, E.C.",London.*,51.511506,-0.08697999999999999,King William street
+University Life Assurnc. Soc,21038,INSURANCE COMPANIES,J. C. Wray,"H. W. Andrae, S.","23 Pall Mall, S.W.",London.,51.507,-0.131,Pall Mall
+"Car Trust Invstmt. Co., L.",42131,MISCELLANEOUS,Sir J. H. Morris.,R. H. Hay.,"11 Abchurch lane, E.C.",London.,51.511866,-0.08528000000000001,Abchurch lane
+"Ch'lt'nhm. Orig. Bwy, L, Ord.",42266,MISCELLANEOUS,"J. T. Agg-Gardner, M.P.",,"11 Abchurch lane, E.C.",London.,51.511866,-0.08528000000000001,Abchurch lane
+"City Offices, Limited",42414,MISCELLANEOUS,,D. Willink.,"1 Copthall avenue, E.C.",London.,51.515806,-0.08697999999999999,Copthall avenue
+"Dublin Distillers, L",43276,MISCELLANEOUS,,C. H. Jones.,"9 Mark lane, E.C.","Dublin, London.",51.511554,-0.07982,Mark lane
+Geldenhuis ?,44023,MISCELLANEOUS,Sir A.H.W.Scriven.,G.Taylor.,"44 Gracechurch street, E.C.",London.,51.512764000000004,-0.08162,Gracechurch street
+"Guinness, Arthur, & Co. L. Ord",44372,MISCELLANEOUS,R. Kinsman.,C. Purser.,"St. James's gate, Dublin; 6 Strand.",London.,51.511,-0.12,Strand
+"St. Pauli Breweries, L., ord.",49134,MISCELLANEOUS,A. H. Bevan.,D. Willack,"Copthall avenue, E.C.",London.,51.5158,-0.087,Copthall avenue
+"Dortmund Breweries, L. ord.",43202,MISCELLANEOUS,G.McL.McHardy,C.A.Weikert,"3 Great Winchester street, E.C.",London.,51.515518,-0.08394,Great Winchester street
+"White Lead, L.",50500,MISCELLANEOUS,"S.Whitbread, M.P.",J. P. Root,"The Brewery, Chiswell street, E.C.",London.,51.519,-0.088,Chiswell street
+"Cordoba Central, Limited",31079,RAILWAYS,,Agents—Messrs Baring Bros. and Co.,"8, Bishopsgate st. within, E.C.",London.*,51.5155,-0.0815,Bishopsgate st
+"Northrn. Invest. of N. Z., Lim.",47121,MISCELLANEOUS,,Agents—Bank of New Zealand,"1 Queen Victoria street, E.C.",,51.512006,-0.09298,Queen Victoria street
+Edinburgh Cemetery,43539,MISCELLANEOUS,"Lord Provost. W. Anderson, Treas.| 11 Royal Exchange, Edin.",,"11 Royal Exchange, Edin.",Edinburgh.,51.5135,-0.085,Royal Exchange
+"St Louis City 6 %, red. 1893-5",49127,MISCELLANEOUS,"Agents—J. Morgan and Co.,",,"22 Old Broad street, E.C.",London.,51.515632000000004,-0.08306000000000001,Old Broad street
+"Platte Land, Limited",47668,MISCELLANEOUS,Lord Tredegar.,"J. S. Adam,","60 Gracechurch street, E.C.","London, Cardiff, Newport.",51.51286,-0.0813,Gracechurch street
+London & St Katharine Dks.,45698,MISCELLANEOUS,C. M. Norwood.,"S. J. Becher,","109 Leadenhall street, E.C.",London.,51.512554,-0.07982,Leadenhall street
+Southampton Tramway,49021,MISCELLANEOUS,Sir Stewart Macnaghten.,"P. Hedger, J",60 and 61 Lime street.,London.,51.513366,-0.08028,Lime street
+Brighton & Hove Generl. Gas,41401,MISCELLANEOUS,F. E. Webb.,W. H. Hardy.,"5 Great Winchester street, E.C.",London.*,51.515530000000005,-0.0839,Great Winchester street
+"Cagliari Gas and Water, L.",41952,MISCELLANEOUS,John Aird.,R. Mackay.,"3 Lothbury, E.C.",London.*,51.5145,-0.088,Lothbury
+East London Waterworks,43372,MISCELLANEOUS,A. W. Gadesden.,,"6 St Helen's place, E.C.",London.,51.515536000000004,-0.08188000000000001,St Helen's place
+Edin. & Leith Cor. Gas Pound1 an.,43518,MISCELLANEOUS,"J. Syme, D., G. J. K. Watson, M.",,"25 Waterloo place, Edinburgh.",Edinburgh.,51.507149999999996,-0.1325,Waterloo place
+"Morgan and Co., Limited",46577,MISCELLANEOUS,Sir Julian Goldsmid.,"R. S. Gardiner, M.","30 Clement's lane, Lombard st., E.C.",London.,51.51268,-0.0849,Clement's lane
+"Bombay Gas, Limited",41218,MISCELLANEOUS,A. J. Macdonald.,W. Vincent.,"10 Cannon street, E.C.",London.*,51.511559999999996,-0.08979999999999999,Cannon street
+"Malta & Mediterran. Gas, L.",45925,MISCELLANEOUS,,"A. Robinson, Treasurer.","3, Copthall avenue, 50 Gracechurch street, E.C.",London.*,51.512800000000006,-0.0815,Gracechurch street
+Wolverhampton Gas,50604,MISCELLANEOUS,,A. J. King.,"53 Cannon street, E.C.",London.*,51.511818,-0.08893999999999999,Cannon street
+Railway Debenture Trust,47906,MISCELLANEOUS,,"Knowles and Foster, S.","8 Moorgate street, E.C.",London.,51.516548,-0.08784,Moorgate street
+"San Paulo Gas, Limited",48383,MISCELLANEOUS,Frank Deimar.,J. Hush.,"Plumer's Hall,Great Winchester st.",London.*,51.5155,-0.084,Great Winchester st
+"Ebbw Vale Stl., Irn. & C'al, L",43496,MISCELLANEOUS,Ed. Coward.,Robt. Smith.,"89, King street, Manchester.","Manchester, Lond.",51.514,-0.095,King street
+Lehigh & Wilkes-Barre Coal 6 % 1st Mort. gua.,45411,MISCELLANEOUS,"Agents—Messrs Thomson, Bonar, & Co., Old Broad street, E.C.",P. W. Spence.,"F. Birkinshaw. 78 Queen Victoria street, E.C.",London.,51.512468,-0.09144,Queen Victoria street
+"New Sharlston Colls., L., prf.",46836,MISCELLANEOUS,Thos. V. Strachan.,H. Mountcastle.,"110 Cannon street, E.C.",London.,51.511559999999996,-0.08979999999999999,Cannon street
+Oldbury Ry. Car. & Wgn. Co. L.,47234,MISCELLANEOUS,Col. T. H. North.,"E. T. Prior, A.S.","3 Gracechurch street, E.C.",London.,51.512518,-0.08244,Gracechurch street
+"Aerated Bread, Limited",40057,MISCELLANEOUS,E. Charles.,,"9 New Broad street, E.C.",London.,51.515854,-0.08382,New Broad street
+"Steel Compny of Scotland, L.",49195,MISCELLANEOUS,"Sir C. Tennant, M.P.",W. Clarke.,"23 Royal Exchange sq., Glasgow.","Glasw., Edinbrgh.",51.5135,-0.085,Royal Exchange
+"Sydney & Louisburg Coal & Railway, Limited, ord.",49434,MISCELLANEOUS,G. W. Medley.,W. R. Hart.,43 Lothbury E.C.,London.*,51.5145,-0.088,Lothbury
+"Australian Pastoral, Lim.",40684,MISCELLANEOUS,"C. E. Bright, C.B.",E. N. Senior.,"1 Lothbury, E.C.",London.,51.5145,-0.088,Lothbury
+British American Land,41551,MISCELLANEOUS,Henry Paull.,A. H. Brown.,"Old Broad street, E.C.",London.,51.5155,-0.0835,Old Broad street
+"Canada North-West Land, L",42077,MISCELLANEOUS,Thomas Skinner.,J. K. Nesbitt.,"30 Cannon street, E.C.","London, Edinbg.",51.51168,-0.0894,Cannon street
+"Cattle Ranche, L, pref.",42189,MISCELLANEOUS,M. M. Moore.,J. D. Poltullo.,28 and 29 St Swithin's lane.,Edinburgh.,51.512174,-0.08642,St Swithin's lane
+Wheal Grenville,50460,MISCELLANEOUS,C. Whitaker.,A. D. Buchanan.,"75 King street, Aberdeen.",Aberdeen.*,51.514450000000004,-0.0935,King street
+"Hodgson's Kngstn Brewy., L.",44614,MISCELLANEOUS,Sir D. A. Smith.,Wm. Armit.,"1 Lime street, E.C.",London.,51.513006,-0.08148,Lime street
+Imperial of Persia,20459,BANKING COMPANIES,J. Beaton.,T. W. Galloway.,"21 Moorgate street, E.C.",London.*,51.516626,-0.08757999999999999,Moorgate street
+Lancashire & Yorkshire 4 % deb. stk.,32332,RAILWAYS,"Sir S. H. Waterlow, M.P.",I. Moore.,"18 Moorgate street, E.C.",London.,51.516608,-0.08764,Moorgate street
+New Morgan Gold.,46835,MISCELLANEOUS,,"Hook, Green & Co.","12 St Helen's place, E.C.",London.*,51.515572000000006,-0.08176,St Helen's place
+"Nrth. British Australasian, L.",47066,MISCELLANEOUS,S. Ohling.,J. E. Millas.,"30 Moorgate street, E.C.","London, Aberdeen",51.51668,-0.08739999999999999,Moorgate street
+"Oceana Transvaal Land, L",47194,MISCELLANEOUS,,A. W. Heron-Maxwell.,"33 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+"Eastern Mortg. & Agcy, L.",43465,MISCELLANEOUS,In rotation.,Alfred G. Dick.,"17 Change alley, Cornhill, E.C.",London.*,51.5135,-0.083,Cornhill
+"Anglo-Amer. Deb. Cor., L.",40325,MISCELLANEOUS,,E. C. Feddeu.,"17 Lombard street, E.C.",London.,51.513101999999996,-0.08665999999999999,Lombard street
+"Anglo-Am. Lnd Mg. & Ag., L.",40324,MISCELLANEOUS,"C. F. Macintosh, M.P.",C. A. Bennett.,"3 & 4 St Helen's place, E.C.",London.,51.515524000000006,-0.08192,St Helen's place
+"Texas Land and Mort., L.",49548,MISCELLANEOUS,In rotation.,W. R. McComak.,"13 Leadenhall street, E.C.",London.,51.512578000000005,-0.07974,Leadenhall street
+Dolcoath Tin (Camborne),43215,MISCELLANEOUS,,W. C. Gould.,"54 Old Broad street, E.C.",London.,51.515824,-0.08242000000000001,Old Broad street
+Montana,46528,MISCELLANEOUS,F. G. Dalgety.,T. D. Saunders,"98 and 69 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+"Colorado Mortgage & Investment of London, Limited",42580,MISCELLANEOUS,"J. W. Barclay, M.P.",O. W. C.,"Great Winchester street, E.C.","Aber., Edin., Lon.",51.5155,-0.084,Great Winchester street
+Credit Foncier Egyptien,42873,MISCELLANEOUS,,"H. Henderson, M.","17 Change alley, Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+"Indian Gold Mines, Limited",44895,MISCELLANEOUS,,,"34 Clement's lane, E.C.",London.,51.512704,-0.08482,Clement's lane
+"Salt Union, Limited, Ord.",48351,MISCELLANEOUS,Sir F. Stafford.,"Arthur Pell, M.","46 Queen Victoria street, E.C.",London.,51.512276,-0.09208,Queen Victoria street
+Mexican Southern 6 % Deb.,32979,RAILWAYS,,W. Jordan.,"31 Lombard street, E.C.",London.,51.513186,-0.08638,Lombard street
+"Mortgage Co. of the River Plate, Limited",46590,MISCELLANEOUS,J. Morris.,J. Anderson.,"61 Moorgate street, E.C.",London.,51.516866,-0.08678,Moorgate street
+"National Mortgage & Agency Co. of New Zealand, L.",46731,MISCELLANEOUS,H. R. Grenfell.,"W. Brodie, M.","8 Great Winchester street, E.C.","London, Edingh",51.515548,-0.08384000000000001,Great Winchester street
+N. Y. Susq. & Western Pref.,33314,RAILWAYS,A. McArthur.,Williams S. Cole.,"90 Cannon street, E.C.",London.,51.51204,-0.0882,Cannon street
+New Zealand Shipping Lim,46941,MISCELLANEOUS,"H. M. Paul, M.",,"1 Queen Victoria street, E.C.",London.,51.512006,-0.09298,Queen Victoria street
+Globe Telegraph and Trust,44140,MISCELLANEOUS,Sir J. Kitson.,T.D. Saunders.,"68 and 69 Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+"Oriental Bank Estates, Ld.",47282,MISCELLANEOUS,A. W. Crichton.,"W. C. Rhodie, M.-D., S.",97 Bishopsgate st.,London.*,51.516082000000004,-0.07956,Bishopsgate st
+"Queensland Investment and Land Mortgage, Lim.",47870,MISCELLANEOUS,In rotation.,R. W. Shire.,"Winchendollblgy., Gracechurch st., EC","Edinbg., London.",51.5125,-0.0825,Gracechurch st
+"River Plate Trust, Loan, and Agency, Limited, ""A""",48092,MISCELLANEOUS,John Morris.,James Anderson.,"61 Moorgate street, E.C.",London.,51.516866,-0.08678,Moorgate street
+"Dooars Tea, Limited",43237,MISCELLANEOUS,"Agents—Messrs Thomson, Bonar, & Co.",,"Old Broad street, E.C.",London.,51.5155,-0.0835,Old Broad street
+South Wheal Frances,49009,MISCELLANEOUS,Ch. E. Searle-Hayne,G. A. Mosdhall,"9 King William street, E.C.",London.*,51.511554,-0.08682,King William street
+Sth. Austrian 3 % oblig. red. in 90 yrs.,34108,RAILWAYS,Wm.Richardson,T. A. Stanley,"2 Moorgate street buildings, E.C.",London,51.516512,-0.08796,Moorgate street buildings
+"Trust & Agy. of Australs., L.",49734,MISCELLANEOUS,W. J. Thompson,A. W. H. Maxwell.,"33 Cornhill, E.C.","London, Glasgow",51.5135,-0.083,Cornhill
+"Trust & Loan of China, Japan, and the Straits, L.",49748,MISCELLANEOUS,W. J. Thompson,E. P. Pullan,"33 Cornhill, E.C.",London,51.5135,-0.083,Cornhill
+"Union Mortgage & Agency of Australia L., ord",49871,MISCELLANEOUS,W. Keswick,G. H. Campbell,"31 Lombard street, E.C.",London,51.513186,-0.08638,Lombard street
+"Brunner, Mond, and Co., L.",41788,MISCELLANEOUS,C. Wigram,"J. W. Ash, R. J. Jeffrey, M.-D.","123 Bishopsgate st. Within, E.C.",London,51.515638,-0.08104,Bishopsgate st
+"Assets Realisation, Limited",40570,MISCELLANEOUS,T. Gallaway.,John Gray,"35 Leadenhall street, Belfast","Belfast, Dublin",51.512710000000006,-0.0793,Leadenhall street
+"British India Steam Nav., L.",41635,MISCELLANEOUS,The Macdonald.,P. Mackinnon,"41/r Fenchurch street, London",Liverpool.*,51.512,-0.079,r Fenchurch street
+"Calcutta Tramways, Lim",41970,MISCELLANEOUS,Dowall and Pawn,H. A. Lemon,"Offices, 4 of Fenchurch street, E.C.",London,51.512024000000004,-0.07892,of Fenchurch street
+Irish Civil Service Per. Bldg.,44994,MISCELLANEOUS,"Sir W. G. Pearce, Bart.",W. M. Rhodes.,"113 Cannon street, E.C.",Glasgow.,51.511578,-0.08974,Cannon street
+"Tyne Steam Shipping, Lim.",49794,MISCELLANEOUS,"E. H. Banks, J. Chambers & Co., M.",,"3 King st., Liverpool; & Lancaster.","Lancaster, Livrpl.",51.514018,-0.09494,King st
+Langlaagte Central ?,45319,MISCELLANEOUS,A. W. Young.,"J. W. Sparkes, S. & M.","34 Gracechurch street, E.C.","London, Glasgow.",51.512704,-0.08182,Gracechurch street
+"New Eberhardt, L.",46833,MISCELLANEOUS,Sir J. E. Gorst.,"O. R. Strickland, M.","188 Leadenhall street, E.C.",,51.513028000000006,-0.07824,Leadenhall street
+"Pumpherston Oil, ""A""",47839,MISCELLANEOUS,"P. Sutherland, M.P.",,"122 Leadenhall street, E.C.",London.,51.512632,-0.07956,Leadenhall street
+Royal Mail Steam Packet,48227,MISCELLANEOUS,,A. A. Lloyd.,"15 Moorgate street, E.C.",London.,51.51659,-0.0877,Moorgate street
+"Sth. Afrcn. Gld. Tst. & Agy, L.",48942,MISCELLANEOUS,"G. T. Hotine, D. F. D. Tanner.",,"36 Leadenhall street, E.C.",London.*,51.512716000000005,-0.07928,Leadenhall street
+"Belfast Steam Ship, Lim.",40929,MISCELLANEOUS,W. D.Stephens. R. C. Wood & M.,,"53 King street, Newcastle-on-Tyne.",Newcastle.,51.514318,-0.09394,King street
+"Tramways Union, Limited",49682,MISCELLANEOUS,H. G. Beaufort.,"E. A. Hume, S.","97 and 98 Bishopsgate street Within, E.C.",London.,51.516088,-0.07954,Bishopsgate street
+"Central Uruguay East Extension, L",30872,RAILWAYS,J. W. Young.,"W. Taylor, S. & M.","103 Cannon street, and at Calcutta.",London.*,51.511517999999995,-0.08993999999999999,Cannon street
+"Jorehaut Tea, Limited",45078,MISCELLANEOUS,Sir E. Drummond. H. F. Turner.,,"60 Gracechurch street, E.C.",London.,51.51286,-0.0813,Gracechurch street
+"Eastern Telegraph, Limited",43478,MISCELLANEOUS,Wm. Moran.,"J. A. Hume, S.",27 Abchurch Lane & 28 Eastchp.,London.,51.511962000000004,-0.08496000000000001,Abchurch Lane
+"Lebong Tea, Limited",45366,MISCELLANEOUS,,W. C. Fairley. W.Ward.,"Prince's street, Mansion House, London.*",,51.514,-0.087,Prince's street
+"Lanka Plantations, Limited",45324,MISCELLANEOUS,Sir E. C. Farquhar.,"W. Beadon, S.","53 Moorgate street, E.C.",London.*,51.516818,-0.08693999999999999,Moorgate street
+Kleinfontein,45188,MISCELLANEOUS,Sir Jas. Caird.,G. C. Playfair.,"93 Cannon street, E.C.",London.,51.512057999999996,-0.08814,Cannon street
+Carn Brea (Tin),50797,MISCELLANEOUS,J. A. Patteson.,J. E. Heaysman.,"187 Fenchurch street, E.C.",London.*,51.512522,-0.07726,Fenchurch street
+City and Suburban ?,42423,MISCELLANEOUS,,"Helston, H. Tolputt.","Mon. &c., 52 Cannon street, E.C.",London.*,51.511812,-0.08896,Cannon street
+Anglo-American Telegph. L.,40281,MISCELLANEOUS,Rt. Hon.Vis.t Monck.,H.Wells.,"29 Old Broad street, E.C.","London,Livrp'l,&c",51.515674000000004,-0.08292000000000001,Old Broad street
+"Brazilian Submarine Tel., L",41342,MISCELLANEOUS,Rt.Hon.Vinc.t Monck. R. Collett.,,"7 and 8 Great Winchester street, London,",,51.515548,-0.08384000000000001,Great Winchester street
+"Barlow and Jones, Limited",40813,MISCELLANEOUS,"Hy. Schey, Pres. G. G. Ward.",,"23 Royal Exchange, E.C.; & N. York.",,51.5135,-0.085,Royal Exchange
+"African Direct, L., 4 % Deb.",40067,MISCELLANEOUS,"Sir J. Pender, M.P.",T. Finnis.,"50 Old Broad street, E.C.",London.,51.515800000000006,-0.0825,Old Broad street
+Eastern & South African Telegraph 5 % deb. 1900,43452,MISCELLANEOUS,"Sir J. Pender, M.P.",G. Draper.,"50 Old Broad street, E.C.",London.,51.515800000000006,-0.0825,Old Broad street
+"N.-Western, Lim. (Liverpl.)",20713,BANKING COMPANIES,"Sir J. Pender, M.P. Geo. Draper.",,"50 Old Broad street, E.C.","London, &c.",51.515800000000006,-0.0825,Old Broad street
+"Nobel Dynamite Trust, L.",47044,MISCELLANEOUS,C. F. Tidgen. H. G. Erichsen.—,,"3 St Helen's place, E.C.","London, &c.",51.515518,-0.08194,St Helen's place
+"Eley Brothers, Limited",43643,MISCELLANEOUS,Geo. Henderson.,W. J. Tyler.,"106 Cannon street, E.C.",London.,51.511536,-0.08988,Cannon street
+"India Rubber, Gutta Percha, and Telegph. Works, L.",44880,MISCELLANEOUS,J. H. Tritton.,"W. Andrews, M.","-D.) 18 Old Broad street, E.C.",London.,51.515608,-0.08314,Old Broad street
+"Brazilian Street Railway, L",41337,MISCELLANEOUS,W. S. Andrews.,,"19 Great Winchester street, E.C.",London.*,51.51561400000001,-0.08362,Great Winchester street
+"United Lankat Plantns., L.",49893,MISCELLANEOUS,"Sir G. Dillen, M.P.",E. Dickens.,"Messrs Dutton Bros. 9 Old Broad street, E.C.","London, Liverpool",51.515554,-0.08332,Old Broad street
+"United Mexican, Limited",49938,MISCELLANEOUS,Lord Thurlow.,J. O. Unwin.,"53 New Broad street, E.C.",London.,51.516118,-0.08294,New Broad street
+"West African Telegraph, L.",50379,MISCELLANEOUS,Sir J. Pender.,W. Payton,"50 Old Broad street, E.C.",London.,51.515800000000006,-0.0825,Old Broad street
+"W.C. of America Telegrph, L.",50139,MISCELLANEOUS,A. Maudall.,F. L. Robinson.,"98 Cannon street, E.C.",London.,51.512088,-0.08804,Cannon street
+"Calais Tramways, Limited",41963,MISCELLANEOUS,John Morris.,J. Anderson.,"51 Moorgate street, E.C.",London.,51.516806,-0.08698,Moorgate street
+"Buenos Ayres (New) Gas, L.",41846,MISCELLANEOUS,J. W. Andréws.,E. C. Price.,"57 Moorgate st, E.C.",London.,51.516842000000004,-0.08685999999999999,Moorgate st
+"Lautaro Nitrate, L.",45337,MISCELLANEOUS,E. C. Morgan.,Chas. Akers.,"1 Abchurch lane, E.C.",London.,51.511806,-0.08548,Abchurch lane
+"City Buenos Ayres Tram., L",42398,MISCELLANEOUS,B. Isaac.,John Heaton.,"1 Great Winchester street, E.C.",London.,51.515506,-0.08398,Great Winchester street
+Ferreira,43784,MISCELLANEOUS,A. T. Lambert.,W. W. Alison.,"Copthall bildngs, Throgmorton st., E.C.",London.,51.515,-0.086,Throgmorton st
+Garfield,43961,MISCELLANEOUS,E. Edinger.,Ch. Selby.,"29 Queen Victoria street, E.C.",Sheffield.,51.512174,-0.09242,Queen Victoria street
+"Sadler & Co., ""B"" and ""C""",48323,MISCELLANEOUS,J. M. Gillies.,J. W. Alison.,"574 Old Broad street, E.C.",London.*,51.515944000000005,-0.08202000000000001,Old Broad street
+"Vienna General Omnibus, L",50101,MISCELLANEOUS,A.C. Price.,R. T. Fewings.,1 Great Winchester st. Woolwich London.,London.,51.515506,-0.08398,Great Winchester st
+Investment Trust Corp Pref.,44977,MISCELLANEOUS,F. Cox.,F. Frasd.,"7 Lothbury, E.C.",London.,51.5145,-0.088,Lothbury
+"British and Foreign Marine, Limited (2 l c)",20200,INSURANCE COMPANIES,"Right Hon. A.J. Mundella, M.P.",T. Cornish,"81 Gracechurch street, E.C.",London,51.512986000000005,-0.08088000000000001,Gracechurch street
+"South-Eastern deb. stock, 4 %",34173,RAILWAYS,,R. C. Vaughan,"76 Cornhill, E.C.",London,51.5135,-0.083,Cornhill
+"City of Glas. Union, 5 % pref.",31012,RAILWAYS,"L. H. Isaacs, M.P.",J. Filby,"11 St Helen's place, E.C.","Lond., Edinburgh &c.",51.515566,-0.08178,St Helen's place
+"North. West Argentine (L.), 7 % Pref.",33576,RAILWAYS,S. Boulter,H. Milton,"22 Old Broad street, E.C.",London,51.515632000000004,-0.08306000000000001,Old Broad street
+"Stock Convn. & Invest. Tst., L.",49242,MISCELLANEOUS,F. Bennoch,"A. W. Ray, M.-D.","52 Queen Victoria street, E.C.",,51.512312,-0.09196,Queen Victoria street
+"Price's Patent Candle, Lim.",47773,MISCELLANEOUS,W. Fowler,W. Aherne,"Prince's street, Bank, E.C.",London,51.514,-0.087,Prince's street
+"London Scottish American Trust, L., preferred",45640,MISCELLANEOUS,Lord Hamilton,H. Ansell,"113 Cannon street, E.C.","Lond., Edinburgh &c.",51.511578,-0.08974,Cannon street
+"Lond. & S.-Western ""A"" 4 % deb. stk.",32545,RAILWAYS,Sir John Lubbock,J. Young,"57 Lombard street, E.C.",London,51.513342,-0.08585999999999999,Lombard street
+"Coats (J. & P.), Limited",42565,MISCELLANEOUS,R. H. Benson,J. C. Brougham,"3 Cornhill, E.C.",London,51.5135,-0.083,Cornhill
+"Ruston, Proctor & Co., Lim.",48270,MISCELLANEOUS,E. H. Palmer.,Walter Lean.,"4 Lothbury, E.C.","Glasgow, Edinb'gh, London.",51.5145,-0.088,Lothbury
+"Bell's Asbestos, Limited",40954,MISCELLANEOUS,John Morris.,J. Anderson,"Men. Off. T'hy'd 3 1 Moorgate street, E.C.",London.,51.516506,-0.08797999999999999,Moorgate street
+"R. Plate & Gn. Invest. Trst., L.",47879,MISCELLANEOUS,John Morris.,J. Anderson,"31 Moorgate street, E.C.",London.,51.516686,-0.08738,Moorgate street
+"Scottish Invest. Trst., L. pf.",48530,MISCELLANEOUS,John Morris.,J. Anderson,"31 Moorgate street, E.C.",London.,51.516686,-0.08738,Moorgate street
+"Electric Construction, L.",43630,MISCELLANEOUS,Marquis of Tweeddale.,,"2 and 13 St Nicholas lane, E.C.",London.,51.512578000000005,-0.08574,St Nicholas lane
+Submarine Cables' Trust,49317,MISCELLANEOUS,"Sir J. Pender, M.P.",Lewis Wells.,"30 Old Broad street, E.C.",London.,51.51568,-0.0829,Old Broad street
+"Lincoln & Lindsey Banking Company, Limited",20555,BANKING COMPANIES,T. C. Fletcher.,R. Weston.,"9 King st., High st., Lincoln.",Sheffield.*,51.514054,-0.09482,King st
+United States Rolling Stock,49962,MISCELLANEOUS,J.M.Douglas.,"D.Cornfoot, Agent","31 Lombard street, E.C.",London.,51.513186,-0.08638,Lombard street
+"Anglo-Chilian Nitrate and Rly., L., 7 % cum. pref.",40291,MISCELLANEOUS,W. Mcandrews.,Noel Ware.,"19 Gracechurch street, E.C.",London.,51.512614000000006,-0.08212,Gracechurch street
+"Bahia Cntrl. Sugar Fac., Lim.",40732,MISCELLANEOUS,Sir P. R. Pollock.,F.Johnason.,"io New Broad street, E.C.",London.,51.5158,-0.084,io New Broad street
+"Barnagore Jute Factory, L.",40820,MISCELLANEOUS,P. Richardson.,Wm. Horsley.,"28 Fenchurch street, E.C.",London.*,51.512168,-0.07844,Fenchurch street
+"Campbell, Robert, & Sons, L.",42056,MISCELLANEOUS,John Bell.,R. L. McLaren,"18 Southwark street, E.C.",Lon on.,51.505108,-0.09264,Southwark street
+"Braby, Frederick, & Co., L.",41288,MISCELLANEOUS,F. Cox.,W. J. Tanner.,"Broad street avenue, E.C.",London.,51.5158,-0.084,Broad street avenue
+"Liebig's Extract of Meat, L.",45463,MISCELLANEOUS,P. Vanderlyl.,W. Barrett.,"3 Great Winchester street, E.C.",London.,51.515518,-0.08394,Great Winchester street
+"Pim Brothers, Limited",47657,MISCELLANEOUS,E. Redsell.,T. E. Smith.,"47 New Broad street, E.C.",London.,51.516082,-0.08306000000000001,New Broad street
+"Broxburn Oil, Limited, ord.",41783,MISCELLANEOUS,H. Bell.,"W. Kennedy, M.-D.","28 Royal Exchange square, Glasgow.","Glasg., Edinburgh",51.513668,-0.08444,Royal Exchange square
+"Cape Copper, Limited",42108,MISCELLANEOUS,,D. Todd.,"20 New Broad street, E.C.",London.*,51.51592,-0.08360000000000001,New Broad street
+"Clippen's Oil, Limited",42545,MISCELLANEOUS,R. R. Carew.,W. A. Godwin.,"159 Fenchurch street, E.C.",London.,51.512354,-0.07782,Fenchurch street
+"City of London Brewery, L., 6 % minimum preferred.",42450,MISCELLANEOUS,E. J. Swaan.,H. G. Marshall.,"20 Broad street, Bristol.",Bristol.*,51.51592,-0.08360000000000001,Broad street
+"Holmes Oil, Limited",44642,MISCELLANEOUS,T. Mackinnon.,James Arown.,"27 Royal Exchange square, Glasgow.",Glasgow.,51.513662000000004,-0.08446000000000001,Royal Exchange square
+"Colorado Silver, Limited",42628,MISCELLANEOUS,R. Gillespie.,R. Brown.,"16 Leadenhall street, E.C.",London.,51.512596,-0.07968,Leadenhall street
+"Crosses and Winkworth, L",42944,MISCELLANEOUS,Col.J.A.North.,D. A. Cooper.,"King street, Liverpool.",Liverpool.,51.514,-0.095,King street
+"Davy Brothers, Lim.",43068,MISCELLANEOUS,G. F. Routledge.,T. E. Devos.,"20 Cannon street, E.C.",Sheffield.*,51.51162,-0.0896,Cannon street
+"Elmore's Wire Manufact., L.",43649,MISCELLANEOUS,Sir J. H. Morris.,J. Shermer.,"64 Cannon street, E.C.",London.,51.511883999999995,-0.08872,Cannon street
+"Glenboig Union Fire-Clay, L.",44134,MISCELLANEOUS,J. Wilson.,"John Trench, S.","106 West Regent street, Glasgow.",Glasgow.*,51.510036,-0.13688,West Regent street
+"Goulding, W. & H. M., Lim.",44207,MISCELLANEOUS,A. Scott.,W. B. Harvey.,"149 Leadenhall street, E.C.",London.*,51.512794,-0.07902,Leadenhall street
+"Don Pedro Gold Mining, L.",43232,MISCELLANEOUS,"Wm. J. Goulding, G. R. Meyer",,"The Glen, Cork. 23 Moorgate street, E.C.","Cork, Dublin, London.",51.516638,-0.08753999999999999,Moorgate street
+"Tolima, Lim. ""A shares""",49624,MISCELLANEOUS,J. Gow.,F. Willey,"8 Regent street, S.W.",London.*,51.510048,-0.13684000000000002,Regent street
+Impl. Col. Fin. & Agency,44802,MISCELLANEOUS,Dr. B. Knight.,T. Newson.,"56 Threadneedle street, E.C.",London.,51.514336,-0.08288000000000001,Threadneedle street
+"Improvd. Wood Pavement, L.",44862,MISCELLANEOUS,A. K. Grentell.,,"W. Mobile, 46 Queen Victoria street, E.C.",London.*,51.512276,-0.09208,Queen Victoria street
+"Westminstr Elec. Supply, L",50439,MISCELLANEOUS,"P. H. Evans, M.P. S. Gorringe.",,"70 Gracechurch street, E.C.",London.,51.51292,-0.0811,Gracechurch street
+"Linoleum Manufacturing, L.",45482,MISCELLANEOUS,Maj. J. Gorman. E. B. Presslau,,"d.} 144 Queen Victoria street, E.C.",London.*,51.512264,-0.09212,Queen Victoria street
+Rosario Nitrate,48179,MISCELLANEOUS,Col.J.T. North. D. C. Cooper,,"King street, Liverpool.",,51.514,-0.095,King street
+"London & Tilbury Lightrg., L.",45705,MISCELLANEOUS,"E. Crayford. G. Harry Gordon, S.",,"50 Mark lane, E.C.",London.,51.5118,-0.079,Mark lane
+"San Donato Nitrate, Ltd.",48371,MISCELLANEOUS,M. Nicholson.,W. J. Petrie.,"9 Gracechurch street, E.C.",London.,51.512554,-0.08232,Gracechurch street
+"London & San Francisco, L.",20609,BANKING COMPANIES,,J. Collenette.,"J. Mincing lane, E.C.",London.,51.5118,-0.081,Mincing lane
+"London Stereoscopic, &c., L.",45799,MISCELLANEOUS,H. J. Kennard.,S. M. Clark.,"54 Cheapside, E.C.",London.*,51.514,-0.0935,Cheapside
+"Westhead, J. P., & Co., Lim.",50438,MISCELLANEOUS,,,"7 and 8 Great Winchester street,","London, Glasgow.",51.515548,-0.08384000000000001,Great Winchester street
+Mosman Gold,46610,MISCELLANEOUS,A. J. Malcolm.,A. Sindall,"27 Lombard street, E.C.",London.,51.513162,-0.08646,Lombard street
+St John and Maine,34311,RAILWAYS,R. Milburn.,W. C. Gray.,"148 Leadenhall street, E.C.",London.*,51.512788,-0.07904,Leadenhall street
+"Morgan Crucible, Limited",46578,MISCELLANEOUS,G. H. Morgan. H.G.Micheson,,"s.} 3 Great Winchester street, E.C.",London.,51.515518,-0.08394,Great Winchester street
+"National Telephone, L., 1st 6 % preference",46750,MISCELLANEOUS,Marq. Tweedale. J. S. Wilkes,,"M.} 1 Queen Victoria street, E.C.",London.*,51.512006,-0.09298,Queen Victoria street
+"Nettlefolds, Limited",46821,MISCELLANEOUS,Fredk. Nettlefold.,R. Parker.,"16 Broad street, Birmingham.",Birmingham.,51.515896,-0.08368,Broad street
+Espirito Santo and Car. debs.,31497,RAILWAYS,T. C. Wright.,W. H. Withnall.,"31 Threadneedle street, E.C.",London.,51.514186,-0.08338000000000001,Threadneedle street
+"San Pablo Nitrate, Limited",48378,MISCELLANEOUS,Col. J. Nepean.,J. C. Fox.,"16 King street, Liverpool.",,51.514096,-0.09468,King street
+Central Argentine 6 % deb. Stock,30800,RAILWAYS,J. R. Ravenhill.,James Ball.,"St Helen's place, Bishopsgate",London.,51.5155,-0.082,St Helen's place
+"Sheff. Forge & Roll. Mills, Limited",48618,MISCELLANEOUS,R. Foster.,"J. Bulkley, M. & S.","48 Moorgate street, E.C.",London.,51.516788,-0.08703999999999999,Moorgate street
+"Young's Paraffin. L. & M Oil, L",50670,MISCELLANEOUS,A. Balfour.,R. R. Paul.,"571 Old Broad street, E.C.",London.,51.515926,-0.08208,Old Broad street
+"Primitiva Nitrate, Limited",47800,MISCELLANEOUS,R. Harvey.,W. J. Petrie.,"8 Gracechurch street, E.C.",London.,51.512548,-0.08234000000000001,Gracechurch street
+Santa Fe (City of) 6 % Stg. Bds.,48405,MISCELLANEOUS,Ed Harvey.,R. Bulkeley.,"8 Gracechurch street, E.C.",London.,51.512548,-0.08234000000000001,Gracechurch street
+Glencairn ?,44135,MISCELLANEOUS,P.H. Evans.,S. Horringe. [S],"8 Gracechurch street, E.C.","London, Liverpl.",51.512548,-0.08234000000000001,Gracechurch street
+Smedley's Hyd. (Matlock) L.,48873,MISCELLANEOUS,L.T. M. Mason.,P. C. Edwards.,"5 St Peter's alley, Cornhill, E.C.",London.,51.5135,-0.083,Cornhill
+"Scottsh Austrln Invstmt, L.",48467,MISCELLANEOUS,W. Bird.,D. Maclean.,"69 Cornhill, E.C.",London.*,51.5135,-0.083,Cornhill
+"Walker, Parker, & Co., L., 6 % Cumulative Pref",50197,MISCELLANEOUS,W. W. Weaker.,,"93 Gracechurch street, E.C., and J. Barrett Lennard.",,51.513058,-0.08064,Gracechurch street
+Jubilee ?,45081,MISCELLANEOUS,K. Hopkins.,"E. Habben, S.","7, Winder; 3 and 5 Gracechurch streets, E.C.",London.,51.512530000000005,-0.0824,Gracechurch street
+Durban-Roodepoort ?,43363,MISCELLANEOUS,R. A. Poultice.,"J. W. Hutton, S.","62 Gracechurch street, E.C.",,51.512872,-0.08126,Gracechurch street
+"Pestarena United Gold, Limited",47618,MISCELLANEOUS,J. Higson.,"W. Whitaker, S.","86 King street, Manchester.","London, Mancstr.",51.514516,-0.09328,King street
+Day Dawn,43078,MISCELLANEOUS,G. Hopkins.,"J. Winser, S.","5 Gracechurch street, E.C.",,51.512530000000005,-0.0824,Gracechurch street
+Nundydroog,47166,MISCELLANEOUS,J.E.D.D.Hartland.,"J. E. Dawson, S.","4 Devonshire chambers, Bishopsgate st., Without.",London.,51.5155,-0.0815,Bishopsgate st
+"West Bassett, (Illogan)",50384,MISCELLANEOUS,"Agents, Baring Bros. and Co., S.",,8 Bishopsgate street Within.,London.,51.515548,-0.08134000000000001,Bishopsgate street
+"Fore Street Warehouse, Lim.",43839,MISCELLANEOUS,E. H. Faviell.,"W. Garduer, S.","45 Leadenhall street, E.C.",London.,51.51277,-0.0791,Leadenhall street
+"Sierra Buttes Gold, Lim.",48815,MISCELLANEOUS,Count de Torre Diaz.,"D. Urquhart, S.","74 Gracechurch street, E.C.",,51.512944000000005,-0.08102000000000001,Gracechurch street
+"Maudslay, Sons, & Field, L., Pf",46102,MISCELLANEOUS,James Mason.,"J. G. Parry, S.","87 Cannon street, E.C.",London.,51.512021999999995,-0.08825999999999999,Cannon street
+"Moodie's Gold Mining & Exploration, Ltd.",46569,MISCELLANEOUS,W. de la Rue.,"Guy Robins, S.","101 Leadenhall street, E.C.",London.,51.512506,-0.07998,Leadenhall street
+New Brunswick 1st mort. 5 % bnds.,33219,RAILWAYS,J. R. Chipperton.,A.H. Oxenford,"5 Angel court, E.C.",,51.51483,-0.0854,Angel court
+"Maxim-Nordenfelt Guns & Ammunition, Limited",46113,MISCELLANEOUS,L. Fisher.,E. McNeill,"Old Broad street, E.C.",,51.5155,-0.0835,Old Broad street
+"New South Wales Mortgage, Loan, and Agency, Lim.",46910,MISCELLANEOUS,Hon.G.T.Kenyon.,D. Mitchell,"Queen Victoria street, E.C.",,51.512,-0.093,Queen Victoria street
+Indo-European Telegrph. L,44920,MISCELLANEOUS,"J. D. Dyason, C.M.G. W. E. Goode",,"Queen Victoria street, E.C.",London.,51.512,-0.093,Queen Victoria street
+"Richmond Consolidated Mining, Limited",48045,MISCELLANEOUS,,B. McNeill,"25A Old Broad street, E.C.",London.,51.51565,-0.083,Old Broad street
+Beira Alta (Portuguese) 3 % obligns.,30330,RAILWAYS,A. Bischoffberger.,J.B. Pitman,"10 Clements lane, E.C.",London,51.51256,-0.0853,Clements lane
+"Rio Tinto 5 % mortgage bonds, 1880",48085,MISCELLANEOUS,H.M. Matheson.,G.N. Thomson,"30 St Swithin's lane, E.C.","London, &c.",51.51218,-0.08639999999999999,St Swithin's lane
+Somerset & Dorset Bath Exten. 5 %,34098,RAILWAYS,Fred. Tendron.,John Saul,"138 Leadenhall street, E.C.",London.,51.512728,-0.07924,Leadenhall street
+West of England Fire & Life,21051,INSURANCE COMPANIES,"C. A. V. Conybeare, M.P.",S. C. Fox,"76 Cornhill, E.C.",London. [Earg-,51.5135,-0.083,Cornhill
+"South Indian 4 1/2 % per. deb. stock, gtd.",34134,RAILWAYS,H. J. Marshale.,H. Clarke,"4 Nicholas lane, E.C.",London.,51.512524000000006,-0.08592,Nicholas lane
+Isle of Wight,32274,RAILWAYS,Wm. Gen. Hartsford. C.E.,W.M. Jackson,"38 Lombard street, E.C.",,51.513228,-0.08624,Lombard street
+"Panulcillo Copper Co., Limited, ord",47429,MISCELLANEOUS,R. L. Barrow.,W. W. Holmes,"18 King st., Cheapside, E.C.",London.*,51.514108,-0.09464,King st
+United N. Jersey Cnl. & Rl. 6 % stl. 1894,34446,RAILWAYS,J. G. Johnson.,David Greene,"3 Great Winchester street, E.C.",,51.515518,-0.08394,Great Winchester street
+"Rudge Cycle, Limited",48244,MISCELLANEOUS,J. W. Johns.,C. L. Emmott,"61 Moorgate st., Leadenhall buildings, E.C.",,51.516866,-0.08678,Moorgate st
+West Ham Corp. 3 1/4 % stock,50398,MISCELLANEOUS,R. Cowling.,H. M. Trower,"34 Nicholas lane, Lombard street, E.C.",London.,51.512704,-0.08532,Nicholas lane
+"East Argentine, L., ? 6 % deb. stock",31327,RAILWAYS,,W. F. Owen,"35 Queen Victoria street, E.C.",,51.51221,-0.0923,Queen Victoria street
+"Greenwood & Batley, L, ord",44325,MISCELLANEOUS,Lord Gifford.,C. H. Weatherley,"19 St Swithin's lane, E.C.",London.,51.512114000000004,-0.08661999999999999,St Swithin's lane

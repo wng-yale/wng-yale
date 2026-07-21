@@ -18,10 +18,12 @@
   header .kicker{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--maroon)}
   h1{font-size:2rem;margin:.15em 0 .1em;font-weight:700}
   .sub{color:var(--ink2);font-size:1.04rem;max-width:820px}
-  .hero{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;margin:18px 0 6px}
-  .hero figure{margin:0;flex:0 0 300px;max-width:320px}
-  .hero img{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
-  .hero figcaption{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:5px}
+  .herofig{margin:16px 0 10px;text-align:center}
+  .herofig img{width:100%;max-width:900px;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 34px rgba(0,0,0,.18)}
+  .herofig figcaption{font-size:.8rem;color:var(--muted);font-style:italic;margin:8px auto 0;max-width:820px}
+  .archival{margin:0;text-align:center}
+  .archival img{width:100%;max-width:360px;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .archival figcaption{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:5px}
   .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
   h2{font-size:1.3rem;margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
   .paper{padding:18px 20px;display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
@@ -30,6 +32,16 @@
   .paper .auth{color:var(--ink2);font-size:.92rem;margin:0 0 10px}
   .paper a.btn{display:inline-block;margin-right:10px;font-size:.9rem;padding:6px 13px;border:1px solid var(--line);border-radius:6px;text-decoration:none;background:var(--surface)}
   .paper a.btn:hover{border-color:var(--accent)}
+  .paper .cite{font-size:.82rem;color:var(--muted);margin:8px 0 2px}
+  .rtable{flex:1 1 320px;min-width:300px}
+  .rtable .cap{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  table.senior{border-collapse:collapse;width:100%;font-size:.9rem}
+  table.senior th,table.senior td{padding:5px 9px;text-align:right;border-bottom:1px solid var(--line)}
+  table.senior th:first-child,table.senior td:first-child{text-align:left}
+  table.senior thead th{font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink2)}
+  table.senior tbody tr:first-child td{font-weight:700;color:var(--accent)}
+  table.senior .rf td{color:var(--muted);font-style:italic}
+  .rtable .note2{font-size:.76rem;color:var(--muted);margin:6px 0 0;line-height:1.45}
   .controls{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;padding:14px 18px;margin:14px 0 18px}
   .ctl label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
   .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
@@ -63,6 +75,21 @@
   .dl a:hover{border-color:var(--accent)}
   .note{padding:16px 18px;font-size:.86rem;color:var(--ink2)}
   .related a{display:block;margin-bottom:8px}
+  .newsmod{display:flex;gap:22px;align-items:center;padding:20px 22px;flex-wrap:wrap}
+  .newsmod .newsthumb{flex:0 0 130px}
+  .newsmod .newsthumb img{width:130px;border:1px solid var(--line);border-radius:6px}
+  .newsmod .body2{flex:1 1 380px}
+  .newsmod h3{margin:0 0 6px;font-size:1.18rem}
+  .newsmod p{margin:0 0 10px;color:var(--ink2)}
+  .newsmod .teaser{font-size:.9rem;border-left:3px solid var(--gold,#b9770e);background:rgba(185,119,14,.07);padding:8px 13px;border-radius:0 6px 6px 0;color:var(--ink2)}
+  a.btn.big{display:inline-block;font-size:.96rem;padding:9px 18px;border:1px solid var(--accent);border-radius:7px;text-decoration:none;background:var(--accent);color:#fff}
+  a.btn.big:hover{opacity:.9}
+  .govmod{padding:18px 20px}
+  .govmod p{color:var(--ink2);margin:0 0 12px;max-width:840px}
+  .govmod .frame{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+  .govmod iframe{display:block;width:100%;height:460px;border:0}
+  .govmod .dllink{font-size:.86rem;margin:10px 0 0}
+  .exps{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold,#b9770e);font-weight:700}
 </style>
 </head>
 <body>
@@ -71,32 +98,54 @@
     <a class="backlink" href="../">&larr; William N. Goetzmann &mdash; Home</a>
     <div class="kicker">International Center for Finance &middot; Historical Markets</div>
     <h1>The London Stock Exchange, 1869&ndash;1929</h1>
-    <div class="hero">
-      <p class="sub">The <em>Investor&rsquo;s Monthly Manual</em> recorded the world&rsquo;s largest securities market
-        month by month for six decades. From its hand-collected record we reconstruct the London equity market &mdash;
-        its return, its risk premium, and how much of that return came from dividends rather than price appreciation.
-        Explore the indexes below, read the paper, and download the data to replicate the results.</p>
-      <figure>
-        <img src="london-capel-court.jpg" alt="The London Stock Exchange at Capel Court">
-        <figcaption>The London Stock Exchange, Capel Court.</figcaption>
-      </figure>
-    </div>
+    <figure class="herofig">
+      <img src="lse-microcosm-1809.jpg" alt="The crowded trading floor of the London Stock Exchange, Capel Court, 1809">
+      <figcaption>The Stock Exchange, Capel Court &mdash; hand-coloured aquatint by Thomas Rowlandson &amp; Augustus Charles Pugin,
+        from Ackermann&rsquo;s <em>Microcosm of London</em> (1809). Public domain, via Wikimedia Commons.</figcaption>
+    </figure>
+    <p class="sub">The <em>Investor&rsquo;s Monthly Manual</em> recorded the world&rsquo;s largest securities market
+      month by month for six decades. From its hand-collected record we reconstruct the London market &mdash;
+      its return, its risk premium, and how the reward for bearing risk fell as you climbed the capital structure
+      from common stock to preferred shares to bonds. Explore the indexes below, read the papers, and download the
+      data to replicate the results.</p>
   </header>
 
   <h2>The research</h2>
   <div class="paper panel">
     <div class="body">
-      <h3>Risk Premiums in the London Market, 1870&ndash;1929</h3>
-      <p class="auth">William N. Goetzmann, Fernando Reyes De La Luz &amp; K. Geert Rouwenhorst
-        &mdash; chapter forthcoming in the Ibbotson volume; extended version circulated as an NBER working paper,
-        &ldquo;Capital Structure, Seniority, and Risk Premia: Evidence from the London Stock Exchange.&rdquo;</p>
-      <p>Using the <em>Investor&rsquo;s Monthly Manual</em>, we measure the realized equity risk premium on the
-        London market and decompose returns across the capital structure and across domestic versus overseas
-        securities. The cap-weighted equity premium over the risk-free rate averaged roughly
-        <strong>2&ndash;3% a year</strong> &mdash; and, strikingly for the era, most of the total return came
-        from <strong>dividends</strong>, not price appreciation, as the explorer below makes plain.</p>
-      <p><a class="btn" href="data/london-risk-premia-chapter.pdf" target="_blank">Read the chapter (PDF)</a>
+      <h3>Capital Structure, Seniority, and Risk Premia</h3>
+      <p class="auth">Evidence from the London Stock Exchange, 1870&ndash;1929</p>
+      <p>Using security-level data from the <em>Investor&rsquo;s Monthly Manual</em>, we build capital-weighted
+        return indexes for the London market and measure the reward for risk at each level of the capital
+        structure. We find a persistent equity risk premium of about <strong>3.7% over commercial paper</strong>
+        and <strong>4.5% over long-term government bonds</strong>, and returns that <strong>decline monotonically
+        with seniority</strong> &mdash; common stocks earned more than preferred shares, which earned more than
+        corporate bonds. The rolling ten-year stock-minus-bond spread was positive in every interval of the
+        sixty-year sample. Most of the total return came from <strong>income</strong>, not price appreciation, as
+        the explorer below makes plain.</p>
+      <p class="cite">Two write-ups, one dataset:</p>
+      <p><a class="btn" href="https://www.nber.org/papers/w34899" target="_blank">NBER Working Paper 34899 &nearr;</a>
+         <a class="btn" href="data/london-risk-premia-chapter.pdf" target="_blank">Book chapter (PDF)</a>
          <a class="btn" href="#explore">Explore the indexes &darr;</a></p>
+      <p class="cite">Goetzmann &amp; Rouwenhorst, NBER WP 34899 (Feb 2026). A companion chapter appears in the
+        Ibbotson volume (with Fernando Reyes De La Luz).</p>
+    </div>
+    <div class="rtable">
+      <p class="cap">The seniority ladder &mdash; UK, top-100 firms, 1870&ndash;1929</p>
+      <table class="senior">
+        <thead><tr><th>Asset class</th><th>Return</th><th>Std dev</th><th>Sharpe</th></tr></thead>
+        <tbody>
+          <tr><td>Common stock</td><td>7.33</td><td>7.77</td><td>0.44</td></tr>
+          <tr><td>Preferred stock</td><td>4.18</td><td>6.01</td><td>0.08</td></tr>
+          <tr><td>Corporate bond</td><td>3.62</td><td>4.90</td><td>&minus;0.01</td></tr>
+          <tr><td>Municipal bond</td><td>3.36</td><td>4.36</td><td>&minus;0.06</td></tr>
+          <tr><td>Government bond</td><td>2.88</td><td>4.39</td><td>&minus;0.16</td></tr>
+          <tr class="rf"><td>Commercial paper</td><td>3.67</td><td>1.19</td><td>&mdash;</td></tr>
+          <tr class="rf"><td>Inflation</td><td>1.18</td><td>6.31</td><td>&mdash;</td></tr>
+        </tbody>
+      </table>
+      <p class="note2">Annualized percent (arithmetic mean), Sharpe ratio over commercial paper.
+        Table 1, Panel A of NBER WP 34899. Return falls at every step down the seniority hierarchy.</p>
     </div>
   </div>
 
@@ -122,11 +171,40 @@
     </div>
   </div>
 
+  <h2>The structure of the news</h2>
+  <div class="newsmod panel">
+    <a class="newsthumb" href="../structure-london-financial-news/" target="_blank"><img src="../classic_files/london_news_thumb.png" alt="Structure of London Financial News"></a>
+    <div class="body2">
+      <h3>The Structure of London Financial News</h3>
+      <p>A companion project reads the London financial press &mdash; the <em>Investor&rsquo;s Monthly Manual</em> and
+        <em>The Statist</em> &mdash; end to end, using topic models and diachronic word embeddings to trace how
+        reporting shifted from terse price records to narrative-driven coverage over roughly 150 years.</p>
+      <p class="teaser"><strong>News and prices are linked.</strong> In the companion <em>Financial Times</em> series,
+        the mix of news topics forecasts the market: commodity, labour, and foreign coverage predict higher future
+        volatility, while routine corporate and dividend coverage predicts calm &mdash; explaining as much as
+        <strong>~22% of forward volatility</strong> in the 1931&ndash;45 era.</p>
+      <a class="btn big" href="../structure-london-financial-news/" target="_blank">Open the news site &rarr;</a>
+    </div>
+  </div>
+
+  <h2>Governance &amp; geography <span class="exps">&middot; exploratory</span></h2>
+  <div class="govmod panel">
+    <p>Who ran these companies, and where? From the December annual issues of the IMM we extract each firm&rsquo;s
+      chairman, secretary, and registered office, then geocode the addresses. The map below places roughly
+      <strong>370 City of London companies in 1890</strong>, coloured by sector &mdash; a first look at the physical
+      geography of Victorian finance. Extending this to board interlocks and directorial dynasties across
+      1880&ndash;1929 is work in progress.</p>
+    <div class="frame"><iframe src="london-officers-1890-map.html" title="Geocoded map of London company offices, 1890" loading="lazy"></iframe></div>
+    <p class="dllink"><a href="data/london_officers_1890.csv" download>Download the 1890 geocoded officer data (CSV)</a></p>
+  </div>
+
+  <h2>Data &amp; links</h2>
   <div class="foot">
     <div class="dl panel">
       <h3>Download &amp; replicate</h3>
       <a href="data/london_indexes.csv" download>Index series (CSV)</a>
       <a href="data/london_indexes.json" download>Index series (JSON)</a>
+      <a href="data/london_officers_1890.csv" download>1890 officer/address data (CSV)</a>
       <a href="data/replicate_tables_nber_wp.py" download>Replication script (Python)</a>
       <a href="https://som.yale.edu/faculty-research/our-centers-initiatives/international-center-finance/data/historical-financial" target="_blank">Full IMM security-level data &rarr; ICF</a>
       <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">The interactive indexes are computed from the same
@@ -135,9 +213,11 @@
     </div>
     <div class="panel note related">
       <h3>Related</h3>
-      <a href="../structure-london-financial-news/" target="_blank">The Structure of London Financial News &rarr;</a>
-      <span style="font-size:.84rem">Full-text topic analysis of the London financial press (IMM &amp; The Statist).</span>
-      <a href="../money-markets/" target="_blank" style="margin-top:10px">Money Markets: the London Stock Exchange &rarr;</a>
+      <figure class="archival" style="margin-bottom:12px">
+        <img src="london-capel-court.jpg" alt="The London Stock Exchange at Capel Court">
+        <figcaption>The London Stock Exchange, Capel Court.</figcaption>
+      </figure>
+      <a href="../money-markets/" target="_blank">Money Markets: the London Stock Exchange &rarr;</a>
       <span style="font-size:.84rem">The LSE in the 3,000-year history of the world&rsquo;s exchanges.</span>
     </div>
   </div>
