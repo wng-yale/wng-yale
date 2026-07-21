@@ -19,7 +19,7 @@
   h1{font-size:2rem;margin:.15em 0 .1em;font-weight:700}
   .sub{color:var(--ink2);font-size:1.04rem;max-width:820px}
   .herofig{margin:16px 0 10px;text-align:center}
-  .herofig img{width:100%;max-width:900px;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 34px rgba(0,0,0,.18)}
+  .herofig img{width:100%;max-width:450px;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 34px rgba(0,0,0,.18)}
   .herofig figcaption{font-size:.8rem;color:var(--muted);font-style:italic;margin:8px auto 0;max-width:820px}
   .archival{margin:0;text-align:center}
   .archival img{width:100%;max-width:360px;border:1px solid var(--line);border-radius:8px;background:#fff}
@@ -180,7 +180,7 @@
 
   <h2>The structure of the news</h2>
   <div class="newsmod panel">
-    <a class="newsthumb" href="../structure-london-financial-news/" target="_blank"><img src="../classic_files/london_news_thumb.png" alt="Structure of London Financial News"></a>
+    <a class="newsthumb" href="https://wng-yale.github.io/structure-london-financial-news/" target="_blank"><img src="../classic_files/london_news_thumb.png" alt="Structure of London Financial News"></a>
     <div class="body2">
       <h3>The Structure of London Financial News</h3>
       <p>A companion project reads the London financial press &mdash; the <em>Investor&rsquo;s Monthly Manual</em> and
@@ -190,7 +190,7 @@
         the mix of news topics forecasts the market: commodity, labour, and foreign coverage predict higher future
         volatility, while routine corporate and dividend coverage predicts calm &mdash; explaining as much as
         <strong>~22% of forward volatility</strong> in the 1931&ndash;45 era.</p>
-      <a class="btn big" href="../structure-london-financial-news/" target="_blank">Open the news site &rarr;</a>
+      <a class="btn big" href="https://wng-yale.github.io/structure-london-financial-news/" target="_blank">Open the news site &rarr;</a>
     </div>
   </div>
 
@@ -213,10 +213,11 @@
       <a href="data/london_indexes.json" download>Index series (JSON)</a>
       <a href="data/london_officers_1890.csv" download>1890 officer/address data (CSV)</a>
       <a href="data/replicate_tables_nber_wp.py" download>Replication script (Python)</a>
-      <a href="https://som.yale.edu/faculty-research/our-centers-initiatives/international-center-finance/data/historical-financial" target="_blank">Full IMM security-level data &rarr; ICF</a>
-      <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">The interactive indexes are computed from the same
-      annual security-level file the paper uses (<code>IMM_A_11_25_2025.csv</code>); the full 45&nbsp;MB file and its
-      macro inputs are hosted at the ICF for replication.</p>
+      <a href="data/london_imm_data.zip" download>Full IMM security-level data (ZIP, 6&nbsp;MB)</a>
+      <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">The interactive indexes are computed from the
+      same annual security-level file the paper uses. The ZIP bundles the full
+      <code>IMM_A_11_25_2025.csv</code> (~162,500 rows, 1870&ndash;1929) with the Bank-of-England and
+      Jorda&ndash;Schularick&ndash;Taylor macro inputs, so the replication script below runs end to end.</p>
     </div>
     <div class="panel note related">
       <h3>Related</h3>
@@ -224,7 +225,7 @@
         <img src="london-capel-court.jpg" alt="The London Stock Exchange at Capel Court">
         <figcaption>The London Stock Exchange, Capel Court.</figcaption>
       </figure>
-      <a href="../money-markets/" target="_blank">Money Markets: the London Stock Exchange &rarr;</a>
+      <a href="https://wng-yale.github.io/money-markets/" target="_blank">Money Markets: the London Stock Exchange &rarr;</a>
       <span style="font-size:.84rem">The LSE in the 3,000-year history of the world&rsquo;s exchanges.</span>
     </div>
   </div>
