@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The St. Petersburg Stock Exchange, 1865&ndash;1917 &mdash; W. N. Goetzmann</title>
+<style>
+  :root{ --bg:#f3ecd9; --surface:#fbf7ec; --ink:#26221a; --ink2:#5c5344; --muted:#8a7f6c;
+    --line:#d8ccb0; --accent:#1a5276; --maroon:#7a1414; --grid:#e7ddc6; }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#1a1712; --surface:#221e17; --ink:#ece5d4; --ink2:#c2b79e; --muted:#8f836b;
+           --line:#3a3327; --accent:#7fb2d6; --maroon:#d98c8c; --grid:#2c2619; } }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 60px}
+  .backlink{font-size:.85rem}
+  header .kicker{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--maroon)}
+  h1{font-size:2rem;margin:.15em 0 .1em;font-weight:700}
+  .sub{color:var(--ink2);font-size:1.04rem;max-width:900px}
+  .herofig{margin:16px 0 10px;text-align:center}
+  .herofig img{width:100%;max-width:560px;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 34px rgba(0,0,0,.18)}
+  .herofig figcaption{font-size:.8rem;color:var(--muted);font-style:italic;margin:8px auto 0;max-width:820px}
+  .archival{margin:0;text-align:center}
+  .archival img{width:100%;max-width:360px;border:1px solid var(--line);border-radius:8px;background:#fff}
+  .archival figcaption{font-size:.78rem;color:var(--muted);font-style:italic;margin-top:5px}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+  h2{font-size:1.3rem;margin:34px 0 12px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  .paper{padding:18px 20px;display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+  .paper .body{flex:1 1 380px}
+  .paper h3{margin:0 0 4px;font-size:1.12rem}
+  .paper .auth{color:var(--ink2);font-size:.92rem;margin:0 0 10px}
+  .paper a.btn{display:inline-block;margin-right:10px;font-size:.9rem;padding:6px 13px;border:1px solid var(--line);border-radius:6px;text-decoration:none;background:var(--surface)}
+  .paper a.btn:hover{border-color:var(--accent)}
+  .paper .cite{font-size:.82rem;color:var(--muted);margin:8px 0 2px}
+  .rtable{flex:1 1 320px;min-width:300px}
+  .rtable .cap{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+  table.senior{border-collapse:collapse;width:100%;font-size:.9rem}
+  table.senior th,table.senior td{padding:5px 9px;text-align:right;border-bottom:1px solid var(--line)}
+  table.senior th:first-child,table.senior td:first-child{text-align:left}
+  table.senior thead th{font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border-bottom:1.5px solid var(--ink2)}
+  table.senior tbody tr:last-child td{font-weight:700;color:var(--accent);border-top:1.5px solid var(--ink2)}
+  table.senior .t td{color:var(--muted);font-style:italic;font-size:.8rem;border-bottom:0;padding-top:0}
+  .rtable .note2{font-size:.76rem;color:var(--muted);margin:6px 0 0;line-height:1.45}
+  .controls{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;padding:14px 18px;margin:14px 0 18px}
+  .ctl label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  .seg button{border:0;background:transparent;color:var(--ink2);font-family:inherit;font-size:.88rem;padding:6px 12px;cursor:pointer}
+  .seg button.on{background:var(--accent);color:#fff}
+  select{font-family:inherit;font-size:.9rem;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+  .layout{display:grid;grid-template-columns:236px 1fr;gap:20px}
+  @media(max-width:820px){.layout{grid-template-columns:1fr}}
+  .markets{padding:12px 12px 16px;max-height:520px;overflow-y:auto}
+  .markets h3{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:4px}
+  .chip{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:transparent;color:var(--ink);font-family:inherit;font-size:.9rem;padding:5px 6px;border-radius:6px;cursor:pointer}
+  .chip:hover{background:var(--grid)}
+  .chip .sw{width:12px;height:12px;border-radius:3px;flex:0 0 auto;border:1px solid rgba(0,0,0,.15);background:transparent}
+  .chip.off .name{color:var(--ink2)}
+  .chip.mkt{font-weight:700}
+  .chartbox{padding:14px 12px 6px}
+  svg{display:block;width:100%;height:auto;font-family:Georgia,serif}
+  .gl{stroke:var(--grid);stroke-width:1}.zero{stroke:var(--line);stroke-width:1}
+  .lbl{font-size:11px;font-weight:700}
+  .crosshair{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+  .tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.82rem;box-shadow:0 6px 24px rgba(0,0,0,.16);min-width:170px;z-index:5}
+  .tip .d{font-weight:700;margin-bottom:4px}.tip .r{display:flex;align-items:center;gap:6px;justify-content:space-between}
+  .tip .r span.l{display:flex;align-items:center;gap:6px}.tip .sw{width:9px;height:9px;border-radius:2px}
+  .empty{color:var(--muted);text-align:center;padding:80px 20px;font-style:italic}
+  .readout{font-size:.86rem;color:var(--ink2);padding:2px 4px 0;line-height:1.5}
+  .foot{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+  @media(max-width:820px){.foot{grid-template-columns:1fr}}
+  .dl{padding:16px 18px}.dl h3,.note h3{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+  .dl a{display:inline-block;margin:0 8px 8px 0;font-size:.88rem;padding:6px 12px;border:1px solid var(--line);border-radius:6px;text-decoration:none;background:var(--surface)}
+  .dl a:hover{border-color:var(--accent)}
+  .note{padding:16px 18px;font-size:.86rem;color:var(--ink2)}
+  .related a{display:block;margin-bottom:8px}
+  .newsmod{display:flex;gap:22px;align-items:center;padding:20px 22px;flex-wrap:wrap}
+  .newsmod .newsthumb{flex:0 0 150px}
+  .newsmod .newsthumb img{width:150px;border:1px solid var(--line);border-radius:6px}
+  .newsmod .body2{flex:1 1 380px}
+  .newsmod h3{margin:0 0 6px;font-size:1.18rem}
+  .newsmod p{margin:0 0 10px;color:var(--ink2)}
+  .newsmod .teaser{font-size:.9rem;border-left:3px solid #b9770e;background:rgba(185,119,14,.07);padding:8px 13px;border-radius:0 6px 6px 0;color:var(--ink2)}
+  a.btn.big{display:inline-block;font-size:.96rem;padding:9px 18px;border:1px solid var(--accent);border-radius:7px;text-decoration:none;background:var(--accent);color:#fff}
+  a.btn.big:hover{opacity:.9}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="backlink" href="../">&larr; William N. Goetzmann &mdash; Home</a>
+    <div class="kicker">International Center for Finance &middot; Historical Markets</div>
+    <h1>The St. Petersburg Stock Exchange, 1865&ndash;1917</h1>
+    <figure class="herofig">
+      <img src="spb-bourse-alekseev-1810.jpg" alt="The St. Petersburg Bourse and the Spit of Vasilievsky Island, painted by Fyodor Alekseyev in 1810">
+      <figcaption>The Bourse and the Spit of Vasilievsky Island &mdash; oil painting by Fyodor Alekseyev, 1810.
+        Thomas de Thomon&rsquo;s exchange, flanked by the rostral columns, is at right. Public domain, via Wikimedia Commons.</figcaption>
+    </figure>
+    <p class="sub">For half a century the St. Petersburg Bourse was the capital market of the Russian Empire.
+      From the hand-collected monthly quotations of every listed security, 1865&ndash;1917, we reconstruct the
+      market and its industries &mdash; and use this deep, pre-modern market to test why <em>momentum</em>
+      exists. Explore the indexes below, read the paper, and download the data to replicate the results.</p>
+  </header>
+
+  <h2>The research</h2>
+  <div class="paper panel">
+    <div class="body">
+      <h3>Momentum in Imperial Russia</h3>
+      <p class="auth">William N. Goetzmann &amp; Simon Huang &mdash; <em>Journal of Financial Economics</em> 130 (2018), 579&ndash;591.</p>
+      <p>Leading theories of momentum make different predictions depending on a market&rsquo;s composition and
+        institutions. We assemble a security-level dataset for a major nineteenth-century equity market &mdash;
+        the St. Petersburg Stock Exchange, with limited delegated asset management &mdash; to test them.
+        A strategy that <strong>buys recent winners and sells recent losers earned a significant, positive
+        return</strong> that grew with the holding period, and an 1893 regulatory change lets us test behavioral
+        explanations directly. We find <strong>no support for the agency (institutional) theory</strong> and
+        evidence <strong>consistent with investor overreaction</strong>. The market as a whole compounded at
+        roughly <strong>5.8% a year</strong> in price terms over 1865&ndash;1914.</p>
+      <p class="cite">Momentum &middot; behavioral finance &middot; return predictability</p>
+      <p><a class="btn" href="https://www.nber.org/papers/w21700" target="_blank">NBER Working Paper 21700 &nearr;</a>
+         <a class="btn" href="data/momentum-imperial-russia-jfe-2018.pdf" target="_blank">Published paper (PDF)</a>
+         <a class="btn" href="#explore">Explore the indexes &darr;</a></p>
+    </div>
+    <div class="rtable">
+      <p class="cap">Momentum, buy&ndash;minus&ndash;sell (3-month formation)</p>
+      <table class="senior">
+        <thead><tr><th>Holding period</th><th>3&nbsp;mo</th><th>6&nbsp;mo</th><th>9&nbsp;mo</th><th>12&nbsp;mo</th></tr></thead>
+        <tbody>
+          <tr><td>Winners (buy)</td><td>0.58</td><td>0.69</td><td>0.70</td><td>0.74</td></tr>
+          <tr><td>Losers (sell)</td><td>0.43</td><td>0.41</td><td>0.40</td><td>0.32</td></tr>
+          <tr><td>Winners &minus; losers</td><td>0.14</td><td>0.28</td><td>0.30</td><td>0.43</td></tr>
+          <tr class="t"><td></td><td>(1.2)</td><td>(2.9)</td><td>(3.5)</td><td>(5.4)</td></tr>
+        </tbody>
+      </table>
+      <p class="note2">Average monthly return in percent; <em>t</em>-statistics in parentheses.
+        From the paper&rsquo;s momentum tables. The winner&ndash;loser spread strengthens with the holding horizon.</p>
+    </div>
+  </div>
+
+  <h2 id="explore">The market, reconstructed</h2>
+  <div class="controls panel">
+    <div class="ctl"><label>Base</label>
+      <div class="seg" id="segBase"><button data-v="rebase" class="on">Index = 100</button><button data-v="raw">Growth of &times;1</button></div></div>
+    <div class="ctl"><label>Scale</label>
+      <div class="seg" id="segScale"><button data-v="log" class="on">Log</button><button data-v="lin">Linear</button></div></div>
+    <div class="ctl"><label>From</label><select id="fromY"></select></div>
+    <div class="ctl"><label>To</label><select id="toY"></select></div>
+  </div>
+  <div class="layout">
+    <div class="markets panel" id="markets"><h3>Series</h3></div>
+    <div>
+      <div class="chartbox panel"><div id="chart" style="position:relative"></div>
+        <div class="readout" id="readout"></div></div>
+    </div>
+  </div>
+
+  <h2>The structure of the news</h2>
+  <div class="newsmod panel">
+    <a class="newsthumb" href="https://wng-yale.github.io/structure-russian-financial-news/" target="_blank"><img src="russian_news_thumb.png" alt="Structure of Russian Financial News"></a>
+    <div class="body2">
+      <h3>The Structure of Russian Financial News</h3>
+      <p>A companion project reads the Russian financial press &mdash; <em>Vestnik Finansov, Promyshlennosti i
+        Torgovli</em> (&ldquo;Herald of Finance, Industry and Trade&rdquo;), the finance ministry&rsquo;s official
+        weekly, 1883&ndash;1917 &mdash; end to end. Topic models and Cyrillic diachronic word embeddings recover
+        how the Empire&rsquo;s financial reporting was organized and how it changed across a half-century of
+        industrialization, crisis, and war.</p>
+      <p class="teaser">The same market whose prices you can explore here was narrated, week by week, in the
+        pages of the <em>Vestnik</em> &mdash; the news layer for the price layer.</p>
+      <a class="btn big" href="https://wng-yale.github.io/structure-russian-financial-news/" target="_blank">Open the news site &rarr;</a>
+    </div>
+  </div>
+
+  <h2>Data &amp; links</h2>
+  <div class="foot">
+    <div class="dl panel">
+      <h3>Download &amp; replicate</h3>
+      <a href="data/spb_indexes.csv" download>Index series (CSV)</a>
+      <a href="data/spb_indexes.json" download>Index series (JSON)</a>
+      <a href="data/spb_data.zip" download>Full security-level data (ZIP, 2&nbsp;MB)</a>
+      <a href="https://som.yale.edu/centers/international-center-for-finance/data/historical-financial-research-data/st-petersburg" target="_blank">ICF project page &nearr;</a>
+      <p style="font-size:.82rem;color:var(--muted);margin:6px 0 0">The ZIP bundles the master workbook
+        (monthly prices for every listed security, English + Cyrillic names, annual dividends), the 40 industry
+        return indexes, and the paper&rsquo;s market/momentum series. Returns are <strong>price / capital
+        appreciation</strong> &mdash; Imperial-Russian dividend data is annual and sparse, so unlike the London
+        series these track price, not total return. Academic use only.</p>
+    </div>
+    <div class="panel note related">
+      <h3>Related</h3>
+      <figure class="archival" style="margin-bottom:12px">
+        <img src="spb-bourse-today.jpg" alt="The former St. Petersburg Bourse today">
+        <figcaption>De Thomon&rsquo;s Bourse still stands on the Spit of Vasilievsky Island today.</figcaption>
+      </figure>
+      <a href="https://wng-yale.github.io/money-markets/" target="_blank">Money Markets: the St. Petersburg Exchange &rarr;</a>
+      <span style="font-size:.84rem">The SPSE in the 3,000-year history of the world&rsquo;s exchanges.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+const IND=[
+  {k:'Commercial Bank',c:'#1a5276'},
+  {k:'Railway',c:'#c0392b'},
+  {k:'Oil Production & Refining',c:'#7a5c00'},
+  {k:'Land Bank',c:'#1e8b3a'},
+  {k:'Iron & Steel',c:'#5a3e9b'},
+  {k:'Gold & Precious Metals',c:'#b9770e'},
+  {k:'Sugar',c:'#c94f7c'},
+  {k:'Cotton Textiles',c:'#2c8c99'},
+  {k:'Steamship & Shipping',c:'#417a3f'},
+  {k:'Insurance',c:'#8a6d3b'},
+  {k:'Coal Mining',c:'#6b6b6b'},
+  {k:'Machinery & Mechanical Engineering',c:'#9b59b6'},
+  {k:'Trading & Commerce',c:'#d35400'},
+  {k:'Rubber Manufacturing',c:'#16a085'}
+];
+const MKT={k:'__market',name:'Market (all stocks)',c:'#111'};
+const CMAP={}; CMAP['__market']=MKT; IND.forEach(c=>{c.name=c.k;CMAP[c.k]=c;});
+let DATA=null, DATES=[], YEARS=[];
+const state={base:'rebase',scale:'log',from:null,to:null,sel:new Set(['__market','Commercial Bank','Railway','Oil Production & Refining'])};
+
+fetch('data/spb_indexes.json').then(r=>r.json()).then(d=>{
+  DATA=d; DATES=d.dates;
+  YEARS=[...new Set(DATES.map(s=>+s.slice(0,4)))].sort((a,b)=>a-b);
+  state.from=YEARS[0]; state.to=YEARS[YEARS.length-1];
+  buildYearSelects(); buildMarkets(); wireControls(); render();
+});
+function buildYearSelects(){
+  const f=document.getElementById('fromY'),t=document.getElementById('toY');
+  YEARS.forEach(y=>{f.add(new Option(y,y));t.add(new Option(y,y));});
+  f.value=state.from;t.value=state.to;
+  f.onchange=()=>{state.from=+f.value;if(state.from>state.to){state.to=state.from;t.value=state.to;}render();};
+  t.onchange=()=>{state.to=+t.value;if(state.to<state.from){state.from=state.to;f.value=state.from;}render();};
+}
+function buildMarkets(){
+  const host=document.getElementById('markets'); host.innerHTML='<h3>Series</h3>';
+  [MKT,...IND].forEach(cat=>{
+    const on=state.sel.has(cat.k);
+    const b=document.createElement('button'); b.className='chip '+(cat.k==='__market'?'mkt ':'')+(on?'on':'off');
+    b.innerHTML='<span class="sw" style="background:'+(on?cat.c:'transparent')+';border-color:'+cat.c+'"></span><span class="name">'+cat.name+'</span>';
+    b.onclick=()=>{ state.sel.has(cat.k)?state.sel.delete(cat.k):state.sel.add(cat.k); buildMarkets(); render(); };
+    host.appendChild(b);
+  });
+}
+function wireControls(){ seg('segBase','base'); seg('segScale','scale'); }
+function seg(id,key){ const el=document.getElementById(id);
+  el.querySelectorAll('button').forEach(b=>b.onclick=()=>{ el.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); state[key]=b.dataset.v; render(); }); }
+function rawOf(k){ return k==='__market'?DATA.market:DATA.industries[k]; }
+function bounds(){ let r0=0,r1=DATES.length-1;
+  while(r0<DATES.length && +DATES[r0].slice(0,4)<state.from) r0++;
+  while(r1>0 && +DATES[r1].slice(0,4)>state.to) r1--;
+  return [r0,r1]; }
+function seriesFor(k){
+  const [r0,r1]=bounds(); const raw=rawOf(k);
+  let base=null; if(state.base==='rebase'){ for(let i=r0;i<=r1;i++){ if(raw[i]!=null){base=raw[i];break;} } }
+  const pts=[]; for(let i=r0;i<=r1;i++){ let v=raw[i]; if(v==null){pts.push(null);continue;} if(state.base==='rebase'&&base) v=v/base*100; pts.push(v); }
+  return {k,name:CMAP[k].name,color:CMAP[k].c,pts};
+}
+function niceTicks(min,max,n){const span=max-min||1,s0=Math.pow(10,Math.floor(Math.log10(span/n)));const e=(span/n)/s0;let st=s0*(e>=7.5?10:e>=3?5:e>=1.5?2:1);const t=[];for(let v=Math.ceil(min/st)*st;v<=max+1e-9;v+=st)t.push(+v.toFixed(6));return t;}
+function logTicks(min,max){const t=[];for(let e=Math.floor(Math.log10(min));e<=Math.ceil(Math.log10(max));e++)for(const b of[1,2,5]){const v=b*Math.pow(10,e);if(v>=min*0.999&&v<=max*1.001)t.push(v);}return t;}
+function render(){
+  const host=document.getElementById('chart');
+  const series=[MKT,...IND].filter(c=>state.sel.has(c.k)).map(c=>seriesFor(c.k)).filter(s=>s.pts.some(v=>v!=null));
+  const [r0,r1]=bounds(), N=r1-r0+1;
+  const W=Math.max(560,host.clientWidth||860),H=470,mL=60,mR=series.length<=8?150:20,mT=16,mB=34,pw=W-mL-mR,ph=H-mT-mB;
+  if(!series.length){ host.innerHTML='<div class="empty">Select one or more series.</div>'; return; }
+  let lo=Infinity,hi=-Infinity; series.forEach(s=>s.pts.forEach(v=>{if(v!=null){if(v<lo)lo=v;if(v>hi)hi=v;}}));
+  const log=state.scale==='log'; if(log&&lo<=0)lo=Math.max(0.01,lo);
+  if(log){lo=Math.pow(10,Math.floor(Math.log10(lo)));hi=Math.pow(10,Math.ceil(Math.log10(hi)));}
+  else{const pad=(hi-lo)*0.04;lo=lo-pad;hi=hi+pad;}
+  const X=i=>mL+(N<=1?0:i/(N-1)*pw);
+  const Y=v=>log?mT+ph-(Math.log10(v)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo))*ph:mT+ph-(v-lo)/(hi-lo)*ph;
+  const yt=log?logTicks(lo,hi):niceTicks(lo,hi,6);
+  const fmt=v=>v>=1000?Math.round(v).toLocaleString():(v>=10?v.toFixed(0):(v>=1?v.toFixed(1):v.toFixed(2)));
+  let svg='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMinYMin meet" role="img">';
+  yt.forEach(v=>{const y=Y(v);svg+='<line class="gl" x1="'+mL+'" y1="'+y.toFixed(1)+'" x2="'+(mL+pw)+'" y2="'+y.toFixed(1)+'"/><text x="'+(mL-8)+'" y="'+(y+3).toFixed(1)+'" text-anchor="end" fill="var(--muted)" font-size="11">'+fmt(v)+'</text>';});
+  // year gridlines: label first month of each decade-ish
+  let lastY=null; const span=YEARS[YEARS.length-1]-YEARS[0]; const stepY=span>60?10:(span>25?5:2);
+  for(let i=0;i<N;i++){ const yr=+DATES[r0+i].slice(0,4), mo=+DATES[r0+i].slice(5,7);
+    if(mo!==1) continue; if(yr%stepY) continue; if(yr===lastY) continue; lastY=yr;
+    const x=X(i); svg+='<line class="gl" x1="'+x.toFixed(1)+'" y1="'+mT+'" x2="'+x.toFixed(1)+'" y2="'+(mT+ph)+'" opacity="0.5"/><text x="'+x.toFixed(1)+'" y="'+(mT+ph+20)+'" text-anchor="middle" fill="var(--muted)" font-size="11">'+yr+'</text>'; }
+  svg+='<line class="zero" x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'"/>';
+  series.forEach(s=>{ let d='',pen=false; s.pts.forEach((v,i)=>{if(v==null){pen=false;return;}const x=X(i),y=Y(v);d+=(pen?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';pen=true;});
+    svg+='<path d="'+d+'" fill="none" stroke="'+s.color+'" stroke-width="'+(s.k==='__market'?3:1.8)+'" stroke-linejoin="round" opacity="'+(s.k==='__market'?1:.92)+'"/>';
+    if(mR>20){let li=-1;for(let i=s.pts.length-1;i>=0;i--){if(s.pts[i]!=null){li=i;break;}} if(li>=0)svg+='<text class="lbl" x="'+(X(li)+6)+'" y="'+(Y(s.pts[li])+4).toFixed(1)+'" fill="'+s.color+'" font-size="'+(s.k==='__market'?12:10.5)+'">'+s.name+'</text>';}});
+  svg+='<rect id="hit" x="'+mL+'" y="'+mT+'" width="'+pw+'" height="'+ph+'" fill="transparent"/><line id="cross" class="crosshair" x1="0" y1="'+mT+'" x2="0" y2="'+(mT+ph)+'" style="display:none"/></svg>';
+  host.innerHTML=svg+'<div class="tip" id="tip" style="display:none"></div>';
+  const svgEl=host.querySelector('svg'),tip=host.querySelector('#tip'),cross=host.querySelector('#cross'),hit=host.querySelector('#hit');
+  const MON=['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  hit.addEventListener('mousemove',ev=>{const rect=svgEl.getBoundingClientRect(),sc=W/rect.width;const px=(ev.clientX-rect.left)*sc;
+    let i=Math.round((px-mL)/(pw||1)*(N-1));i=Math.max(0,Math.min(N-1,i));const xx=X(i);cross.style.display='';cross.setAttribute('x1',xx);cross.setAttribute('x2',xx);
+    let rows='';series.forEach(s=>{const v=s.pts[i];if(v==null)return;rows+='<div class="r"><span class="l"><span class="sw" style="background:'+s.color+'"></span>'+s.name+'</span><b>'+fmt(v)+'</b></div>';});
+    const d=DATES[r0+i]; tip.innerHTML='<div class="d">'+MON[+d.slice(5,7)]+' '+d.slice(0,4)+'</div>'+(rows||'<div class="r" style="color:var(--muted)">no data</div>');tip.style.display='';
+    const tx=(xx/sc)+14,over=tx+tip.offsetWidth>rect.width;tip.style.left=(over?(xx/sc)-tip.offsetWidth-14:tx)+'px';tip.style.top=Math.max(0,(ev.clientY-rect.top)-tip.offsetHeight/2)+'px';});
+  hit.addEventListener('mouseleave',()=>{tip.style.display='none';cross.style.display='none';});
+  // readout: market annualized over window
+  const m=seriesFor('__market').pts.filter(v=>v!=null);
+  const rd=document.getElementById('readout');
+  if(m.length>1){ const [a,b]=bounds(); const yrs=(r1-r0+1)/12; const cagr=(Math.pow(m[m.length-1]/m[0],1/yrs)-1)*100;
+    rd.innerHTML='Over '+state.from+'&ndash;'+state.to+', the St. Petersburg market index compounded at <strong>'+cagr.toFixed(1)+'%/yr</strong> in price terms (equal-weighted, capital appreciation only). Full sample 1865&ndash;1914: 5.8%/yr, volatility 11.0%.'; }
+  else rd.textContent='';
+}
+window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(()=>render(),150);});
+</script>
+</body>
+</html>
