@@ -86,7 +86,8 @@
 
         <p>The put's hockey stick is the call's reflected in a vertical mirror: high on the left, sloping down to the strike, then flat along the floor to the right. And here the insurance analogy is exact. A put on a stock you own is <em>literally</em> an insurance policy on that stock: pay a premium today, and if the price collapses, the put pays you the difference, restoring your losses below $K$. The strike is the deductible level; the premium is the insurance premium; the expiration is the term of the policy. Homeowners understand options perfectly well &mdash; they simply call them by another name.</p>
 
-        <div class="figure">
+        <div class="figure master-figure" id="master-payoff">
+          <a class="mf-badge" href="introduction.html#picture-5">One of the Six &middot; Picture 5 <span class="mf-badge-name">&mdash; The Payoff</span></a>
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
             <div id="po-presets" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px"></div>
             <div id="po-legs" style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:6px;font-size:.9rem;color:#26221a"></div>
@@ -94,6 +95,11 @@
             <div id="po-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55;min-height:2.6em"></div>
           </div>
           <p class="figure-caption"><strong>Figure 9.1.</strong> The payoff-diagram builder. The horizontal axis is the underlying asset&rsquo;s value at maturity; the vertical axis is the <em>payoff</em> of your position. Four primitives &mdash; a <span style="color:#1a5276;font-weight:700">stock</span>, a riskless <span style="color:#b9770e;font-weight:700">bond</span> (face value $K$), a <span style="color:#1e8b3a;font-weight:700">call</span> and a <span style="color:#c0392b;font-weight:700">put</span> (both struck at $K$) &mdash; combine into any position. Toggle each block long or short, or pick a preset: a <em>straddle</em> that pays off when the stock moves a lot either way, a <em>protective put</em> that floors a crash, a <em>defaultable corporate bond</em>, or <em>put&ndash;call parity</em>. No prices yet &mdash; only payoffs at maturity.</p>
+          <div class="mf-use">
+            <span class="mf-use-tag">How you use it</span>
+            <p>Use it to engineer an exposure. Stack these payoff lines to build the outcome you want &mdash; floor a loss with a protective put, fund it by selling away upside, or replicate one security from a bundle of others. When two positions trace the same broken line, they must cost the same today &mdash; and that is where option pricing begins.</p>
+            <a class="mf-lenses" href="introduction.html#how-to-read">The four lenses for reading each picture &nearr;</a>
+          </div>
 
         <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Load the <em>protective put</em> preset, then the <em>put&ndash;call parity</em> preset, and convince yourself the two payoffs are the same shape. Now build a <em>straddle</em> &mdash; long a call and a put at one strike. In a sentence, what view of the world does a straddle express?</div>
         </div>

@@ -210,7 +210,8 @@
 
         <p>This works in the bondholder&rsquo;s favor. Because the curve bows, a drop in yields raises the price by <em>more</em> than an equal rise in yields lowers it: gains from falling rates slightly exceed losses from rising rates of the same size. Convexity, as we will see, benefits the holder, and investors pay for it.</p>
 
-        <div class="figure">
+        <div class="figure master-figure" id="master-duration">
+          <a class="mf-badge" href="introduction.html#picture-6">One of the Six &middot; Picture 6 <span class="mf-badge-name">&mdash; Bond Duration</span></a>
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
             <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:8px;font-size:.92rem;color:#26221a">
               <label>Maturity: <input id="d1-n" type="range" min="1" max="30" step="1" value="10" style="vertical-align:middle;width:110px"> <strong id="d1-nv" style="color:#1a5276">10 yr</strong></label>
@@ -225,6 +226,11 @@
             <div id="d1-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
           <p class="figure-caption"><strong>Figure 11.3.</strong> The price&ndash;yield curve and its tangent. The bold curve is the bond's price as a function of its yield &mdash; falling and convex. Slide the <em>maturity</em> and <em>coupon</em> to watch the curve steepen and bow: longer maturities and smaller coupons make it plunge more sharply. Tick <em>show tangent</em> to draw the straight line just touching the curve at the current yield &mdash; its slope <em>is</em> the bond's duration, the local sensitivity of price to rate. Tick <em>shade convexity gap</em> to fill the sliver between that straight tangent and the true curve: because the curve bows above its tangent on both sides, the duration estimate always understates the price, and that sliver is the bond's <strong>convexity</strong>. <span style="color:#8a7f6c">(The convex price&ndash;yield curve lived as yield-book tables and actuarial calculus &mdash; Hicks 1939, Redington 1952, Malkiel 1962 &mdash; long before it was routinely drawn; it was popularized by Homer &amp; Leibowitz, <em>Inside the Yield Book</em> (1972). &ldquo;Duration&rdquo; is due to Macaulay 1938.)</span></p>
+          <div class="mf-use">
+            <span class="mf-use-tag">How you use it</span>
+            <p>Use it to manage interest-rate risk. Duration is the slope of this curve &mdash; a one-number estimate of how far a bond's price moves when yields shift. Match the duration of what you own to the timing of what you owe, and a change in rates leaves your net position roughly unchanged. That is immunization.</p>
+            <a class="mf-lenses" href="introduction.html#how-to-read">The four lenses for reading each picture &nearr;</a>
+          </div>
 
         <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Set a long maturity and a small coupon, then push the yield far from where it starts. With the tangent on, read how badly the straight-line (duration) estimate misses. Now shade the convexity gap: which way does the error <em>always</em> point, and why does that asymmetry work in the bondholder&rsquo;s favor?</div>
         </div>

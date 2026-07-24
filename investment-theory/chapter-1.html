@@ -176,7 +176,8 @@
         <h3>Many Periods: The Exponential Curve</h3>
         <p>Stretch the wait to many years and the logic compounds. A dollar today grows to $(1+r)^t$ after $t$ years, so a dollar promised $t$ years out is worth $1/(1+r)^t$ today. Both are <strong>exponential</strong> curves &mdash; one rising, one falling &mdash; and they are the same curve traced in opposite directions. Set the rate below and watch either one: how a dollar grows if you invest it, or how little a distant dollar is worth if you must wait for it.</p>
 
-        <div class="figure">
+        <div class="figure master-figure" id="master-figure">
+          <a class="mf-badge" href="introduction.html#picture-1">One of the Six &middot; Picture 1 <span class="mf-badge-name">&mdash; Compound Growth</span></a>
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
             <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:.92rem;color:#26221a">
               <label>Interest rate r: <input id="tm-r" type="range" min="0.5" max="15" step="0.5" value="6" style="vertical-align:middle;width:120px"> <strong id="tm-rv" style="color:#7a1414">6.0%</strong></label>
@@ -188,6 +189,11 @@
             <div id="tm-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
           <p class="figure-caption"><strong>Figure 1.2.</strong> The value of money across time. Set the interest rate and slide the horizon. In its default view the curve shows what a single future dollar is worth today: it begins at a full dollar now and decays toward nothing the farther off the payment lies &mdash; and the higher the rate, the faster it falls. Flip the switch to run the same exponential <em>forward</em>, and it becomes the compound-growth curve, what a dollar invested today becomes. Tick <em>log scale</em> and the exponential straightens into a line whose slope is the rate itself. Discounting and growing are one curve traced in two directions.</p>
+          <div class="mf-use">
+            <span class="mf-use-tag">How you use it</span>
+            <p>Use this curve to put money from different dates on equal footing. Before you compare, price, or decide, pull every future sum back to today's dollars by discounting it down this curve &mdash; a distant payment is worth its height on the falling line, not its face value. Every valuation in the book begins here.</p>
+            <a class="mf-lenses" href="introduction.html#how-to-read">The four lenses for reading each picture &nearr;</a>
+          </div>
         </div>
         <script>
         (function(){
