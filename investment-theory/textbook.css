@@ -395,3 +395,24 @@ blockquote {
 .bern-hint { color: #8a7f6c; font-style: italic; }
 
 @media (max-width: 560px) { .bern-chip { font-size: .76rem; padding: 3px 9px; } }
+
+/* ── Footnotes ── */
+.fn-ref { font-size: .68em; line-height: 0; vertical-align: super; }
+.fn-ref a { color: var(--accent); text-decoration: none; font-weight: 600; padding: 0 1px; }
+.fn-ref a:hover { text-decoration: underline; }
+
+.fn {
+    border-top: 1px solid #ded3ba;
+    margin: 30px 0 24px;
+    padding-top: 12px;
+}
+.fn p {
+    font-size: .86rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    text-indent: -1.15em;
+    padding-left: 1.15em;
+}
+.fn sup { font-weight: 600; color: var(--accent); margin-right: 3px; }
+.fn-back { text-decoration: none; margin-left: 4px; }

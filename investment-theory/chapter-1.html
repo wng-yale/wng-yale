@@ -242,7 +242,13 @@
         })();
         </script>
 
-        <p>This is not a modern picture, and it is a great deal older than the textbooks suggest. The compound-growth curve was drawn &mdash; and drawn <em>as a loan at interest</em> &mdash; by <strong>Jakob Bernoulli</strong> in 1713, in the <em>Tractatus de seriebus infinitis</em> bound with his posthumous <em>Ars Conjectandi</em>. The passage is the one in which continuous compounding is invented; what is less often noticed is that Bernoulli states it geometrically, and the plate carries the figure.</p>
+        <p>This is not a modern picture, and the question behind it was not a modern question. <strong>Jakob Bernoulli</strong> asked what becomes of a loan when the interest is credited not once a year, nor quarterly, nor daily, but at every instant &mdash; the year cut into moments <em>innumera aequalia</em>, innumerably many and all equal. It reads like a scholastic exercise about slicing time into nothing. Its answer was a new number.</p>
+
+        <p>Bernoulli showed the amount cannot run away. However finely the year is divided, a sum lent for a year at 100% does not grow without bound: it converges, and the limit lies between 2 and 3.<sup class="fn-ref"><a href="#fn-bern1690" id="fnref-bern1690">1</a></sup> That limit is <strong><em>e</em></strong>, the base of the natural logarithm, and Bernoulli reached it by way of a lending problem &mdash; not through geometry, not through quadrature, but by asking what a creditor is owed. Euler would not give the number a name for another four decades.</p>
+
+        <p>The abstraction turned out to be literal. Continuous compounding is no longer a thought experiment about infinitesimal slices of a year: it is how money is priced. It is the force of interest in an actuarial table, the drift in a diffusion, the instantaneous rate sitting underneath every option formula on a modern desk. What Bernoulli proposed as a limiting case is the assumption that quantitative finance now runs on as a matter of course.</p>
+
+        <p>And he drew it. The result appears in the <em>Tractatus de seriebus infinitis</em>, bound with his posthumous <em>Ars Conjectandi</em> of 1713, and what is rarely noticed is that the argument is stated as a <em>figure</em>. The Scholium reads as instructions for reading a plate, and the plate is there.</p>
 
         <p>He sets the principal as an ordinate, <em>BC</em> = 1. The year runs along the axis as <em>BI</em>, &ldquo;divided at the points <em>E</em>, <em>F</em>, <em>G</em>, &amp;c. into innumerably many equal moments.&rdquo; At each moment the sum is struck again, giving the ordinates <em>EK</em>, <em>FL</em>, <em>GM</em> &mdash; and because the moments are equal, those ordinates stand in <strong>continued proportion</strong>. The last ordinate, <em>IO</em>, &ldquo;will denote the value of what is owed to the creditor when the whole year has elapsed.&rdquo;</p>
 
@@ -275,8 +281,8 @@
                 <circle cx="523" cy="225" r="19" fill="#7a1414"/>
               </g>
               <g id="bh-curve" class="bh">
-                <polyline points="523,225 575,502 628,622 679,710 730,786 781,843 900,930 1050,1010 1190,1070"
-                          fill="none" stroke="#c0392b" stroke-width="12" stroke-linejoin="round"/>
+                <polyline points="510,500 538,551 570,639 602,716 634,765 666,787 698,812 730,843 762,872 790,898 822,920 854,942 886,961 918,981 950,998 982,1015 1014,1032 1042,1046 1074,1060 1106,1072 1138,1084 1170,1094 1202,1102 1234,1108 1266,1111 1298,1112"
+                          fill="none" stroke="#c0392b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
               </g>
               <g class="bh-hots">
                 <line class="bh-hot" data-f="year" x1="523" y1="1298" x2="781" y2="1298" stroke="transparent" stroke-width="70"/>
@@ -335,6 +341,18 @@
           });
         })();
         </script>
+
+        <div class="fn" id="fn-bern1690">
+          <p><sup>1</sup> Jakob Bernoulli, &ldquo;Quaestiones nonnullae de usuris, cum solutione
+          problematis de sorte alearum, propositi in Ephem. Gall. A. 1685,&rdquo;
+          <em>Acta Eruditorum</em> (Leipzig), May 1690, pp. 219&ndash;223 &mdash; where the
+          continuous-compounding question is posed and the limit shown to fall between 2 and 3.
+          The pairing is characteristic: a question about interest answered alongside a problem
+          about dice from the <em>Journal des S&ccedil;avans</em> of 1685, by the man who would
+          go on to write the <em>Ars Conjectandi</em>. Bernoulli sends the reader back to this
+          article himself &mdash; the 1713 Scholium closes &ldquo;Conf. Act. Lips. 1690 p. 222,&rdquo;
+          a page inside it. <a href="#fnref-bern1690" class="fn-back">&#8617;</a></p>
+        </div>
 
         <p>The actuary <strong>William Sutton</strong> drew it again in the Institute of Actuaries&rsquo; text-book of 1882 &mdash; this time in the orientation we still use, with growth running to the right of the origin and present values falling away to the left.</p>
 
