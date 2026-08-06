@@ -307,3 +307,57 @@ blockquote {
 .chapter-nav-link:hover {
     color: var(--accent);
 }
+
+/* ── Artifact pair: a source document beside its redrawing ──
+   Used in chapter 4 for Sharpe's 1961 Figure 24. The scan is faint and
+   drawn by hand, so the redraw carries the argument while the artifact
+   carries the evidence; neither substitutes for the other. */
+.artifact-pair {
+    display: flex;
+    gap: 18px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.artifact-panel {
+    flex: 1 1 0;
+    min-width: 0;                 /* let flex children actually shrink */
+    margin: 0;
+    border: 1px solid #d8ccb0;
+    border-radius: 8px;
+    background: #fbf7ec;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.artifact-panel img,
+.artifact-panel svg {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* The scan is a tall portrait plate; cap it so it cannot tower over the
+   landscape redraw beside it. */
+.artifact-panel img {
+    max-height: 340px;
+    object-fit: contain;
+    align-self: center;
+    width: auto;
+    max-width: 100%;
+}
+
+.artifact-panel figcaption {
+    font-size: 0.78rem;
+    color: #8a7f6c;
+    font-style: italic;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@media (max-width: 620px) {
+    .artifact-pair { flex-direction: column; }
+    .artifact-panel img { max-height: none; }
+}
