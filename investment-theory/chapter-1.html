@@ -242,11 +242,105 @@
         })();
         </script>
 
-        <p>This is not a modern picture. The first person to <em>draw</em> the compound-growth curve appears to have been the actuary <strong>William Sutton</strong>, in the Institute of Actuaries&rsquo; text-book of 1882 &mdash; and he drew it exactly as we just did, with growth running to the right of the origin and present values falling away to the left.</p>
+        <p>This is not a modern picture, and it is a great deal older than the textbooks suggest. The compound-growth curve was drawn &mdash; and drawn <em>as a loan at interest</em> &mdash; by <strong>Jakob Bernoulli</strong> in 1713, in the <em>Tractatus de seriebus infinitis</em> bound with his posthumous <em>Ars Conjectandi</em>. The passage is the one in which continuous compounding is invented; what is less often noticed is that Bernoulli states it geometrically, and the plate carries the figure.</p>
+
+        <p>He sets the principal as an ordinate, <em>BC</em> = 1. The year runs along the axis as <em>BI</em>, &ldquo;divided at the points <em>E</em>, <em>F</em>, <em>G</em>, &amp;c. into innumerably many equal moments.&rdquo; At each moment the sum is struck again, giving the ordinates <em>EK</em>, <em>FL</em>, <em>GM</em> &mdash; and because the moments are equal, those ordinates stand in <strong>continued proportion</strong>. The last ordinate, <em>IO</em>, &ldquo;will denote the value of what is owed to the creditor when the whole year has elapsed.&rdquo;</p>
+
+        <div class="figure">
+          <div class="bern-stage" id="bern-fig">
+            <img src="figures/bernoulli-1713-fig1.png"
+                 alt="Jakob Bernoulli's Figure 1 of 1713: a logarithmic curve above an axis, with ordinates rising from the points B, E, F, G, R, I to the curve at C, K, L, M, N, O">
+            <svg viewBox="0 0 1600 1617" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g id="bh-year" class="bh">
+                <line x1="523" y1="1298" x2="781" y2="1298" stroke="#b9770e" stroke-width="16"/>
+              </g>
+              <g id="bh-sors" class="bh">
+                <line x1="781" y1="1298" x2="781" y2="843" stroke="#1a5276" stroke-width="14"/>
+                <circle cx="781" cy="843" r="17" fill="#1a5276"/>
+              </g>
+              <g id="bh-moments" class="bh">
+                <circle cx="730" cy="1298" r="15" fill="#1e8b3a"/>
+                <circle cx="679" cy="1298" r="15" fill="#1e8b3a"/>
+                <circle cx="628" cy="1298" r="15" fill="#1e8b3a"/>
+                <circle cx="575" cy="1298" r="15" fill="#1e8b3a"/>
+              </g>
+              <g id="bh-steps" class="bh">
+                <line x1="730" y1="1298" x2="730" y2="786" stroke="#1e8b3a" stroke-width="11"/>
+                <line x1="679" y1="1298" x2="679" y2="710" stroke="#1e8b3a" stroke-width="11"/>
+                <line x1="628" y1="1298" x2="628" y2="622" stroke="#1e8b3a" stroke-width="11"/>
+                <line x1="575" y1="1298" x2="575" y2="502" stroke="#1e8b3a" stroke-width="11"/>
+              </g>
+              <g id="bh-io" class="bh">
+                <line x1="523" y1="1298" x2="523" y2="225" stroke="#7a1414" stroke-width="16"/>
+                <circle cx="523" cy="225" r="19" fill="#7a1414"/>
+              </g>
+              <g id="bh-curve" class="bh">
+                <polyline points="523,225 575,502 628,622 679,710 730,786 781,843 900,930 1050,1010 1190,1070"
+                          fill="none" stroke="#c0392b" stroke-width="12" stroke-linejoin="round"/>
+              </g>
+              <g class="bh-hots">
+                <line class="bh-hot" data-f="year" x1="523" y1="1298" x2="781" y2="1298" stroke="transparent" stroke-width="70"/>
+                <line class="bh-hot" data-f="sors" x1="781" y1="1298" x2="781" y2="843" stroke="transparent" stroke-width="64"/>
+                <line class="bh-hot" data-f="steps" x1="679" y1="1298" x2="679" y2="710" stroke="transparent" stroke-width="64"/>
+                <line class="bh-hot" data-f="io" x1="523" y1="1298" x2="523" y2="225" stroke="transparent" stroke-width="64"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="bern-chips">
+            <span class="bern-chip" data-f="year">The year &mdash; <em>BI</em></span>
+            <span class="bern-chip" data-f="sors">The principal &mdash; <em>BC</em> = 1</span>
+            <span class="bern-chip" data-f="moments">The moments &mdash; <em>E, F, G</em></span>
+            <span class="bern-chip" data-f="steps">Struck again &mdash; <em>EK, FL, GM, RN</em></span>
+            <span class="bern-chip" data-f="io">The year&rsquo;s end &mdash; <em>IO</em></span>
+            <span class="bern-chip" data-f="curve">The curve</span>
+          </div>
+          <div id="bern-read"><span class="bern-hint">Tap a label &mdash; or the engraving itself &mdash; to pick the construction out of the plate.</span></div>
+
+          <p class="figure-caption"><strong>Figure 1.3.</strong> Compound interest, drawn in 1713. Read the base line right to left: the ordinate at <em>B</em> is the principal, and at each of the equal moments <em>E</em>, <em>F</em>, <em>G</em> the sum is struck again, so that <em>BC</em>, <em>EK</em>, <em>FL</em>, <em>GM</em> climb in continued proportion to the terminal ordinate <em>IO</em>. Measuring the engraving, those successive heights stand in ratios of about 1.13, 1.15 and 1.15 &mdash; roughly constant, as continued proportion requires, on a plate drawn by hand. Bernoulli then makes the number of moments infinite: the chord &ldquo;passes into the <em>tangent</em>, and <em>t</em> into the <em>subtangent</em> of the logarithmic curve.&rdquo; That subtangent is the reciprocal of what we now call the force of interest, and the terminal ordinate is <em>e</em><sup><em>r</em></sup>. Source: Jakob Bernoulli, <em>Tractatus de seriebus infinitis</em>, Prop. LIX and Scholium, pp. 303&ndash;304, with Fig. 1 on the plate &ldquo;Ad pag. 306,&rdquo; bound with <em>Ars Conjectandi</em> (Basel, 1713); Smithsonian Libraries copy, public domain.</p>
+        </div>
+
+        <p>Bernoulli&rsquo;s own cross-reference, &ldquo;Conf. Act. Lips. 1690 p. 222,&rdquo; points back to the <em>Acta Eruditorum</em> of 1690, where he had first posed the problem. The Latin reads almost as a caption for a figure one is meant to manipulate: divide the year more finely, and watch the polygon of chords flatten onto the curve. It took another century and a half for the picture to reach a textbook.</p>
+
+
+        <script>
+        (function(){
+          var stage=document.getElementById('bern-fig'); if(!stage) return;
+          var read=document.getElementById('bern-read');
+          var TXT={
+            year:'<b style="color:#b9770e">BI &mdash; the year.</b> The abscissa is one year, &ldquo;divided at the points <i>E, F, G</i>, &amp;c. into innumerably many equal moments.&rdquo; Read the base line <em>right to left</em>: time runs from <i>B</i> toward <i>I</i>.',
+            sors:'<b style="color:#1a5276">BC &mdash; the principal.</b> Bernoulli sets the <i>sors</i>, the sum lent, as an ordinate of length 1. Everything else on the plate is measured against it.',
+            moments:'<b style="color:#1e8b3a">E, F, G &mdash; the moments.</b> The partition points at which interest is struck and added to the principal. Bernoulli\'s move is to let their number run to infinity.',
+            steps:'<b style="color:#1e8b3a">EK, FL, GM, RN &mdash; the sum struck again.</b> At each moment a proportional part of the annual interest is computed into the principal. Because the moments are equal, these ordinates stand in <b>continued proportion</b>, so that (as Bernoulli puts it) <i>FL</i> is the second power, <i>GM</i> the third, <i>RN</i> the fourth. The text prints &there4;, the period symbol for continued proportion. Measured off the plate they rise by about 1.13, 1.15, 1.15.',
+            io:'<b style="color:#7a1414">IO &mdash; the year\'s end.</b> &ldquo;The last ordinate <i>IO</i> &hellip; will denote the value of what is owed to the creditor when the whole year has elapsed.&rdquo; This is (1 + <i>r</i>/<i>n</i>)<sup><i>n</i></sup>, and in the limit <i>e</i><sup><i>r</i></sup>.',
+            curve:'<b style="color:#c0392b">The logarithmic curve PCQ.</b> Discrete compounding is a polygon of chords; continuous compounding is the curve they become tangent to. Make the moments infinite and the chord &ldquo;passes into the tangent, and <i>t</i> into the subtangent of the logarithmic curve&rdquo; &mdash; that subtangent being the reciprocal of the force of interest.'
+          };
+          var cur=null;
+          function show(f){
+            cur = (cur===f) ? null : f;
+            stage.querySelectorAll('.bh').forEach(function(g){
+              g.classList.toggle('on', cur!==null && g.id==='bh-'+cur);
+            });
+            document.querySelectorAll('.bern-chip').forEach(function(c){
+              c.classList.toggle('on', c.dataset.f===cur);
+            });
+            read.innerHTML = cur ? TXT[cur]
+              : '<span class="bern-hint">Tap a label &mdash; or the engraving itself &mdash; to pick the construction out of the plate.</span>';
+          }
+          document.querySelectorAll('.bern-chip').forEach(function(c){
+            c.addEventListener('click', function(){ show(c.dataset.f); });
+          });
+          stage.querySelectorAll('.bh-hot').forEach(function(h){
+            h.addEventListener('click', function(){ show(h.dataset.f); });
+          });
+        })();
+        </script>
+
+        <p>The actuary <strong>William Sutton</strong> drew it again in the Institute of Actuaries&rsquo; text-book of 1882 &mdash; this time in the orientation we still use, with growth running to the right of the origin and present values falling away to the left.</p>
 
         <div class="figure">
           <img src="figures/sutton-1882-compound.jpg" alt="William Sutton's 1882 figure of the compound-interest curve: the accumulation of 1 to the right of the origin, present values to the left" style="width:100%;max-width:580px;border:1px solid #d8ccb0;background:#fff;padding:5px;border-radius:4px">
-          <p class="figure-caption">The compound-interest curve, first drawn. To the right of the origin the ordinate <em>PA</em> is the amount to which 1 grows over the time <em>OA</em> at rate <em>i</em>; to the left, <em>QB</em> is the present value of 1 &mdash; the same curve run in both directions, a century and a half before the interactive above. Source: William Sutton, <em>Institute of Actuaries&rsquo; Text-Book</em>, Part I (London, 1882), Fig. 1; public domain.</p>
+          <p class="figure-caption"><strong>Figure 1.4.</strong> The compound-interest curve in its modern orientation. To the right of the origin the ordinate <em>PA</em> is the amount to which 1 grows over the time <em>OA</em> at rate <em>i</em>; to the left, <em>QB</em> is the present value of 1 &mdash; the same curve run in both directions, a century and a half before the interactive above &mdash; and 169 years after Bernoulli. Source: William Sutton, <em>Institute of Actuaries&rsquo; Text-Book</em>, Part I (London, 1882), Fig. 1; public domain.</p>
         </div>
 
         <h3>Discounting Is Perspective</h3>

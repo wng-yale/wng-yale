@@ -361,3 +361,37 @@ blockquote {
     .artifact-pair { flex-direction: column; }
     .artifact-panel img { max-height: none; }
 }
+
+/* ── Bernoulli 1713, Fig. 1 — highlight overlay on the engraving ──
+   Same pattern as the Sharpe plate: the source image carries the argument,
+   an SVG layer picks the construction out of it on demand. */
+.bern-stage { position: relative; width: 100%; max-width: 620px; margin: 0 auto; }
+.bern-stage img { width: 100%; display: block; border: 1px solid #d8ccb0;
+                  background: #fff; padding: 5px; border-radius: 4px; }
+.bern-stage svg { position: absolute; top: 5px; left: 5px;
+                  width: calc(100% - 10px); height: calc(100% - 10px);
+                  pointer-events: none; }
+.bern-stage .bh { opacity: 0; transition: opacity .18s ease; }
+.bern-stage .bh.on { opacity: .85; }
+.bern-stage .bh-hots { pointer-events: auto; }
+.bern-stage .bh-hot { cursor: pointer; }
+
+.bern-chips { display: flex; flex-wrap: wrap; gap: 7px;
+              justify-content: center; margin: 14px 0 4px; }
+.bern-chip { font-size: .82rem; border: 1px solid #d8ccb0; background: #fff;
+             border-radius: 14px; padding: 4px 12px; cursor: pointer;
+             color: #5c5344; transition: background .15s, color .15s; }
+.bern-chip em { font-style: italic; }
+.bern-chip.on { color: #fff; border-color: transparent; }
+.bern-chip[data-f=year].on    { background: #b9770e; }
+.bern-chip[data-f=sors].on    { background: #1a5276; }
+.bern-chip[data-f=moments].on { background: #1e8b3a; }
+.bern-chip[data-f=steps].on   { background: #1e8b3a; }
+.bern-chip[data-f=io].on      { background: #7a1414; }
+.bern-chip[data-f=curve].on   { background: #c0392b; }
+
+#bern-read { font-size: .9rem; color: #5c5344; line-height: 1.55;
+             margin: 8px auto 0; min-height: 3.2em; max-width: 620px; }
+.bern-hint { color: #8a7f6c; font-style: italic; }
+
+@media (max-width: 560px) { .bern-chip { font-size: .76rem; padding: 3px 9px; } }
