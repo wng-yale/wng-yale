@@ -1,0 +1,120 @@
+Definition,Year,Sector,Lookback_Return
+Greenwood (2yr 100%),1921,Cement & Building,1.296
+Greenwood (2yr 100%),1906,Cotton & Textiles,2.186
+Greenwood (2yr 100%),1919,Cotton & Textiles,4.154
+Greenwood (2yr 100%),1899,General Mining,1.699
+Greenwood (2yr 100%),1897,Gold Mining,4.535
+Greenwood (2yr 100%),1923,Gold Mining,7.106
+Greenwood (2yr 100%),1940,Land & Property,1.517
+Greenwood (2yr 100%),1909,Rubber Plantations,2.782
+Greenwood (2yr 100%),1925,Rubber Plantations,3.144
+Greenwood (2yr 100%),1882,Steam Navigation,2.172
+Greenwood (2yr 100%),1927,Sugar,3.278
+Simple (>=100%),1873,Banks,1.474
+Simple (>=100%),1885,Banks,1.152
+Simple (>=100%),1912,Banks,4.134
+Simple (>=100%),1896,Bonds & Preferences,1.575
+Simple (>=100%),1921,Cement & Building,1.676
+Simple (>=100%),1926,Cement & Building,1.173
+Simple (>=100%),1896,Cotton & Textiles,1.072
+Simple (>=100%),1919,Cotton & Textiles,2.836
+Simple (>=100%),1924,General Insurance,1.466
+Simple (>=100%),1899,General Mining,1.009
+Simple (>=100%),1912,General Mining,1.329
+Simple (>=100%),1918,General Miscellaneous,1.450
+Simple (>=100%),1896,Gold Mining,1.419
+Simple (>=100%),1923,Gold Mining,4.556
+Simple (>=100%),1940,Land & Property,3.132
+Simple (>=100%),1916,Other Plantations,1.033
+Simple (>=100%),1924,Other Plantations,1.056
+Simple (>=100%),1909,Rubber Plantations,2.782
+Simple (>=100%),1915,Rubber Plantations,1.703
+Simple (>=100%),1925,Rubber Plantations,3.029
+Simple (>=100%),1882,Steam Navigation,1.017
+Simple (>=100%),1889,Sugar,1.046
+Simple (>=100%),1893,Sugar,1.338
+Simple (>=100%),1927,Sugar,1.655
+Simple (>=100%),1933,Utilities,1.530
+Simple (>=50%),1873,Banks,1.474
+Simple (>=50%),1879,Banks,0.701
+Simple (>=50%),1885,Banks,1.152
+Simple (>=50%),1912,Banks,4.134
+Simple (>=50%),1922,Banks,0.712
+Simple (>=50%),1896,Bonds & Preferences,1.575
+Simple (>=50%),1904,Cement & Building,0.595
+Simple (>=50%),1916,Cement & Building,0.778
+Simple (>=50%),1921,Cement & Building,1.676
+Simple (>=50%),1926,Cement & Building,1.173
+Simple (>=50%),1896,Cotton & Textiles,1.072
+Simple (>=50%),1905,Cotton & Textiles,0.891
+Simple (>=50%),1912,Cotton & Textiles,0.739
+Simple (>=50%),1916,Cotton & Textiles,0.826
+Simple (>=50%),1919,Cotton & Textiles,2.836
+Simple (>=50%),1936,Cotton & Textiles,0.768
+Simple (>=50%),1895,Fire Insurance,0.530
+Simple (>=50%),1897,Food & Beverage,0.642
+Simple (>=50%),1918,Food & Beverage,0.612
+Simple (>=50%),1928,Food & Beverage,0.866
+Simple (>=50%),1918,General Insurance,0.666
+Simple (>=50%),1924,General Insurance,1.466
+Simple (>=50%),1896,General Mining,0.522
+Simple (>=50%),1899,General Mining,1.009
+Simple (>=50%),1907,General Mining,0.672
+Simple (>=50%),1912,General Mining,1.329
+Simple (>=50%),1919,General Mining,0.918
+Simple (>=50%),1927,General Mining,0.671
+Simple (>=50%),1901,General Miscellaneous,0.909
+Simple (>=50%),1918,General Miscellaneous,1.450
+Simple (>=50%),1923,General Miscellaneous,0.527
+Simple (>=50%),1896,Gold Mining,1.419
+Simple (>=50%),1898,Gold Mining,0.911
+Simple (>=50%),1912,Gold Mining,0.517
+Simple (>=50%),1923,Gold Mining,4.556
+Simple (>=50%),1930,Gold Mining,0.999
+Simple (>=50%),1894,Hotels,0.501
+Simple (>=50%),1918,Hotels,0.805
+Simple (>=50%),1895,Land & Property,0.801
+Simple (>=50%),1919,Land & Property,0.532
+Simple (>=50%),1940,Land & Property,3.132
+Simple (>=50%),1872,Marine Insurance,0.715
+Simple (>=50%),1895,Marine Insurance,0.550
+Simple (>=50%),1912,Other Plantations,0.652
+Simple (>=50%),1916,Other Plantations,1.033
+Simple (>=50%),1918,Other Plantations,0.801
+Simple (>=50%),1924,Other Plantations,1.056
+Simple (>=50%),1895,Retail & Stores,0.675
+Simple (>=50%),1901,Retail & Stores,0.721
+Simple (>=50%),1916,Retail & Stores,0.574
+Simple (>=50%),1909,Rubber Plantations,2.782
+Simple (>=50%),1912,Rubber Plantations,0.558
+Simple (>=50%),1915,Rubber Plantations,1.703
+Simple (>=50%),1922,Rubber Plantations,0.746
+Simple (>=50%),1925,Rubber Plantations,3.029
+Simple (>=50%),1934,Rubber Plantations,0.586
+Simple (>=50%),1936,Rubber Plantations,0.932
+Simple (>=50%),1881,Steam Navigation,0.572
+Simple (>=50%),1891,Steam Navigation,0.536
+Simple (>=50%),1895,Steam Navigation,0.609
+Simple (>=50%),1907,Steam Navigation,0.616
+Simple (>=50%),1919,Steam Navigation,0.698
+Simple (>=50%),1921,Steam Navigation,0.590
+Simple (>=50%),1889,Sugar,1.046
+Simple (>=50%),1893,Sugar,1.338
+Simple (>=50%),1904,Sugar,0.753
+Simple (>=50%),1923,Sugar,0.574
+Simple (>=50%),1926,Sugar,0.611
+Simple (>=50%),1928,Sugar,2.119
+Simple (>=50%),1894,Tobacco,0.597
+Simple (>=50%),1899,Tobacco,0.512
+Simple (>=50%),1872,Tugs & Lighters,0.653
+Simple (>=50%),1891,Tugs & Lighters,0.622
+Simple (>=50%),1895,Tugs & Lighters,0.551
+Simple (>=50%),1905,Tugs & Lighters,0.696
+Simple (>=50%),1919,Tugs & Lighters,0.514
+Simple (>=50%),1922,Tugs & Lighters,0.704
+Simple (>=50%),1878,Utilities,0.579
+Simple (>=50%),1933,Utilities,1.530
+Simple (>=50%),1878,Wharves & Godowns,0.786
+Simple (>=50%),1895,Wharves & Godowns,0.521
+Simple (>=50%),1916,Wharves & Godowns,0.974
+Simple (>=50%),1918,Wharves & Godowns,0.829
