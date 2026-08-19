@@ -192,18 +192,24 @@ that appear in both months. Toggle the vintages against each other, or jump to a
     <div class="tscroll"><table class="senior">
       <thead><tr><th>Months</th><th>Why</th></tr></thead>
       <tbody>
-        <tr><td>Mar&ndash;Apr 1817</td><td>No surviving price list</td></tr>
-        <tr><td>Jan&ndash;Nov 1822</td><td>No surviving price list</td></tr>
-        <tr><td>Mar&ndash;Dec 1848</td><td>No surviving price list</td></tr>
-        <tr><td>Dec 1858</td><td>No surviving price list</td></tr>
+        <tr><td>Mar&ndash;Apr 1817</td><td>Not collected &mdash; source now digitised</td></tr>
+        <tr><td>Jan&ndash;Nov 1822</td><td>Not collected &mdash; source now digitised</td></tr>
+        <tr><td>Mar&ndash;Dec 1848</td><td>Not collected &mdash; source now digitised</td></tr>
+        <tr><td>Dec 1858</td><td>No digitised source located</td></tr>
         <tr class="hl"><td>Jul&ndash;Nov 1914</td><td>The exchange was closed</td></tr>
       </tbody>
     </table></div>
     <p class="note2">The 1914 gap is history rather than a defect: the NYSE suspended trading on 31 July 1914 as
-    the European exchanges closed, and did not resume in full until December. The other twenty-four months are
-    genuine holes in the archive. The published index carries a return through all of them by spreading the
-    across-gap return geometrically over the missing months, which is why the series never shows a jump at a
-    reopening.</p>
+    the European exchanges closed, and did not resume in full until December.</p>
+    <p class="note2">The other twenty-four months were long described here as having no surviving price list. That
+    is no longer true. The <em>New-York Shipping and Commercial List</em> &mdash; a twice-weekly paper carrying the
+    quotations &ldquo;corrected yesterday by the New-York Stock and Exchange Board&rdquo; &mdash; was digitised by
+    <a href="https://fraser.stlouisfed.org/title/shipping-commercial-list-9803">FRASER</a> at the Federal Reserve
+    Bank of St. Louis, and covers twenty-three of the twenty-four. Those months have now been transcribed and are
+    <a href="#gapfill">published below</a> as a separate file. Only December 1858 remains without a located source.</p>
+    <p class="note2">The published index still carries a return through every gap by spreading the across-gap return
+    geometrically over the missing months, which is why the series never shows a jump at a reopening. The new
+    transcription is <em>not</em> folded into that index.</p>
   </div>
 </div>
 
@@ -286,6 +292,51 @@ that appear in both months. Toggle the vintages against each other, or jump to a
     <div class="readout" id="readout2"></div></div>
 </div>
 
+<h2 id="gapfill">Filling the blank months</h2>
+<div class="grid2">
+  <div class="panel pad">
+    <p class="note">Twenty-three of the twenty-four blank months have now been transcribed from the
+    <em>New-York Shipping and Commercial List</em>, which printed the Board&rsquo;s quotations twice a week from
+    1815. The 1817 and 1822 tables give a <strong>bid and an ask</strong> for a standing list of securities, with a
+    &ldquo;sales&rdquo; annotation marking where a trade actually took place. By 1848 the paper had switched to
+    printing <strong>actual transactions with volume</strong> instead, so those months carry traded prices rather
+    than quotations.</p>
+    <p class="note">Prices follow the rule used for the original database: the transaction price where one is
+    printed, otherwise the average of bid and ask.</p>
+    <div class="tscroll">
+    <table class="senior">
+      <thead><tr><th>Months</th><th>Basis</th><th>Observations</th></tr></thead>
+      <tbody>
+        <tr><td>Mar 1817</td><td>bid / ask quotations</td><td>22</td></tr>
+        <tr><td>Jan&ndash;Nov 1822</td><td>bid / ask quotations</td><td>253</td></tr>
+        <tr><td>Mar&ndash;Dec 1848</td><td>transactions, with volume</td><td>274</td></tr>
+        <tr class="hl"><td>total</td><td>22 months</td><td>549</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note2">Securities are identified by the codes of Sylla, Wilson and Wright,
+    <em>Price Quotations in Early United States Securities Markets, 1790&ndash;1860</em> (ICPSR 4053), so the file
+    merges directly with theirs. The US federal loans, which their New York set does not carry, are given codes of
+    their own anchored on Bayley&rsquo;s <em>National Loans of the United States</em> (1882).</p>
+  </div>
+  <div class="panel pad">
+    <h3>Read this before using it</h3>
+    <p class="note">This file is <strong>machine transcription, not hand-verified data</strong>, and it is
+    deliberately kept separate from the monthly price database rather than merged into it.</p>
+    <p class="note">Each page was read three times independently and the majority value taken. Where the three
+    readings disagreed, the row is flagged: <strong>74% of the published observations had all three agree</strong>,
+    the remaining 26% did not and are marked <code>passes disagreed &ndash; unverified</code> in the
+    <code>confidence</code> column.</p>
+    <p class="note">Agreement is not proof. On a hand-check of two 1817 issues, about one cell in eight that the
+    transcription was confident about still needed correcting. Whole numbers are considerably more reliable than
+    the fractions: readings agree on the whole number 93&ndash;95% of the time and within one point 95% of the
+    time, so <strong>treat the prices as good to about half a point, not to the fraction</strong>.</p>
+    <p class="note2"><strong>April 1817 is withheld.</strong> That issue set the table sideways across the foot of
+    the page and the transcription is not good enough to publish; it needs to be keyed by hand. December 1858 has
+    no digitised source. Full method, measured error rates and the security crosswalk accompany the download.</p>
+  </div>
+</div>
+
 <h2>The structure of the news</h2>
 <div class="panel paper">
   <div class="body">
@@ -320,6 +371,9 @@ that appear in both months. Toggle the vintages against each other, or jump to a
     <a href="data/preexchange_prices_1800_1859.csv">Pre-exchange prices, 1800&ndash;1859</a>
     <a href="data/govbond_yields_1843_1860.csv">Government yields, weekly</a>
     <a href="data/govbond_prices_1843_1860.csv">Government prices, weekly</a>
+    <a href="data/nyse-gapfill-1817-1848.csv">Blank months transcribed, 1817&ndash;1848</a>
+    <a href="data/SECURITY_CROSSWALK.csv">Security crosswalk (ICF &middot; SWW &middot; SCL)</a>
+    <a href="data/METHODOLOGY-gapfill.md">Transcription methodology</a>
     <a href="data/build_nyse_index.py">build_nyse_index.py</a>
     <a href="data/RevisionNotes-2020-08-20.pdf">Revision notes, 2020</a>
     <a href="data/UpdateNotes-2021-09-04.pdf">Update notes, 2021</a>
