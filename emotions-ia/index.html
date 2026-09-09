@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internet Appendix — Access Required</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #1a1814; color: #e8e0d0;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  }
+  .gate {
+    background: rgba(20,18,14,0.9); border: 1px solid #3a3428;
+    border-radius: 14px; padding: 44px 40px; max-width: 420px; width: 90%;
+    text-align: center; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .gate-icon { font-size: 42px; margin-bottom: 14px; opacity: 0.85; }
+  h1 { font-size: 20px; font-weight: normal; color: #d4c9a8; letter-spacing: 0.02em; line-height: 1.4; }
+  .subtitle { font-size: 12px; color: #7a6e58; font-style: italic; margin: 8px 0 24px; }
+  input[type=password] {
+    width: 100%; padding: 11px 14px; font-size: 14px; font-family: inherit;
+    background: #2a2520; border: 1px solid #3a3428; border-radius: 6px;
+    color: #e8e0d0; outline: none; margin-bottom: 14px;
+  }
+  input[type=password]:focus { border-color: #c9a84c; }
+  input[type=password]::placeholder { color: #6a6050; }
+  button {
+    width: 100%; padding: 11px; font-size: 14px; font-family: inherit; cursor: pointer;
+    background: #c9a84c; color: #1a1814; border: none; border-radius: 6px; font-weight: bold;
+  }
+  button:hover { background: #d8b85c; }
+  .error-msg { display: none; color: #c0603a; font-size: 12px; margin-top: 14px; }
+  .footer-text { font-size: 11px; color: #6a6050; margin-top: 22px; font-style: italic; }
+</style>
+</head>
+<body>
+  <div class="gate">
+    <div class="gate-icon">&#128330;</div>
+    <h1>Emotions and Subjective Investor Crash Beliefs</h1>
+    <p class="subtitle">Internet Appendix &middot; confidential working draft</p>
+    <form id="auth-form" onsubmit="return handleDecrypt(event)">
+      <input type="password" id="password-input" placeholder="Password" autocomplete="off" autofocus>
+      <button type="submit">Unlock</button>
+    </form>
+    <p class="error-msg" id="error-msg">Incorrect password. Please try again.</p>
+    <p class="footer-text">Yale School of Management &middot; International Center for Finance</p>
+  </div>
+
+  <!-- Encrypted page content (AES-256-GCM) -->
+  <div id="encrypted-payload" style="display:none">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</div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
