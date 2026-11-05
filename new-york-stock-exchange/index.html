@@ -205,7 +205,7 @@ that appear in both months. Toggle the vintages against each other, or jump to a
     is no longer true. The <em>New-York Shipping and Commercial List</em> &mdash; a twice-weekly paper carrying the
     quotations &ldquo;corrected yesterday by the New-York Stock and Exchange Board&rdquo; &mdash; was digitised by
     <a href="https://fraser.stlouisfed.org/title/shipping-commercial-list-9803">FRASER</a> at the Federal Reserve
-    Bank of St. Louis, and covers twenty-three of the twenty-four. Those months have now been transcribed and are
+    Bank of St. Louis, and covers twenty-three of the twenty-four. Those months are
     <a href="#gapfill">published below</a> as a separate file. Only December 1858 remains without a located source.</p>
     <p class="note2">The published index still carries a return through every gap by spreading the across-gap return
     geometrically over the missing months, which is why the series never shows a jump at a reopening. The new
@@ -295,7 +295,7 @@ that appear in both months. Toggle the vintages against each other, or jump to a
 <h2 id="gapfill">Filling the blank months</h2>
 <div class="grid2">
   <div class="panel pad">
-    <p class="note">Twenty-three of the twenty-four blank months have now been transcribed from the
+    <p class="note">Twenty-three of the twenty-four blank months have now been filled from the
     <em>New-York Shipping and Commercial List</em>, which printed the Board&rsquo;s quotations twice a week from
     1815. The 1817 and 1822 tables give a <strong>bid and an ask</strong> for a standing list of securities, with a
     &ldquo;sales&rdquo; annotation marking where a trade actually took place. By 1848 the paper had switched to
@@ -307,10 +307,10 @@ that appear in both months. Toggle the vintages against each other, or jump to a
     <table class="senior">
       <thead><tr><th>Months</th><th>Basis</th><th>Observations</th></tr></thead>
       <tbody>
-        <tr><td>Mar 1817</td><td>bid / ask quotations</td><td>22</td></tr>
+        <tr><td>Mar&ndash;Apr 1817</td><td>bid / ask, <strong>hand-verified</strong></td><td>48</td></tr>
         <tr><td>Jan&ndash;Nov 1822</td><td>bid / ask quotations</td><td>253</td></tr>
         <tr><td>Mar&ndash;Dec 1848</td><td>transactions, with volume</td><td>274</td></tr>
-        <tr class="hl"><td>total</td><td>22 months</td><td>549</td></tr>
+        <tr class="hl"><td>total</td><td>23 months</td><td>575</td></tr>
       </tbody>
     </table>
     </div>
@@ -323,17 +323,18 @@ that appear in both months. Toggle the vintages against each other, or jump to a
     <h3>Read this before using it</h3>
     <p class="note">This file is <strong>machine transcription, not hand-verified data</strong>, and it is
     deliberately kept separate from the monthly price database rather than merged into it.</p>
-    <p class="note">Each page was read three times independently and the majority value taken. Where the three
-    readings disagreed, the row is flagged: <strong>74% of the published observations had all three agree</strong>,
-    the remaining 26% did not and are marked <code>passes disagreed &ndash; unverified</code> in the
-    <code>confidence</code> column.</p>
+    <p class="note">The <code>confidence</code> column records how each figure was arrived at, at one of three
+    levels. <strong>Hand-verified</strong> &mdash; checked against the scan by eye; both 1817 months are of this
+    kind. <strong>All passes agreed</strong> &mdash; three independent machine readings of the page agreed;
+    67% of the file. <strong>Passes disagreed</strong> &mdash; they did not, and the figure is unverified.</p>
     <p class="note">Agreement is not proof. On a hand-check of two 1817 issues, about one cell in eight that the
     transcription was confident about still needed correcting. Whole numbers are considerably more reliable than
     the fractions: readings agree on the whole number 93&ndash;95% of the time and within one point 95% of the
     time, so <strong>treat the prices as good to about half a point, not to the fraction</strong>.</p>
-    <p class="note2"><strong>April 1817 is withheld.</strong> That issue set the table sideways across the foot of
-    the page and the transcription is not good enough to publish; it needs to be keyed by hand. December 1858 has
-    no digitised source. Full method, measured error rates and the security crosswalk accompany the download.</p>
+    <p class="note2">April 1817 shows why the check matters: that issue set the table sideways across the foot of
+    the page, and the machine reading was too poor to use &mdash; barely half its cells right. It appears here
+    because it was keyed by hand instead. December 1858 remains unfilled: no digitised source has been located.
+    Full method, measured error rates and the security crosswalk accompany the download.</p>
   </div>
 </div>
 

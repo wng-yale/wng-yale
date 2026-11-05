@@ -1,26 +1,52 @@
 month,issue_date,code,security,printed_as,bid,ask,price,basis,n_trades,quantity,confidence,source,source_image
-1817-03,1817-03-28,U-0010,United States 6 per cent stock of 1790,Six pr cent. Old & Defer'd,99.0,,99.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,U-0070,United States 6 per cent Louisiana stock,do Louisiana,99.0,,99.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,U-0050,United States 8 per cent loan of 1798,do War Loans,99.0,,99.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,U-0140,United States 7 per cent stock of 1815,Seven per cent.,104.5,,104.5,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,U-0040,United States 3 per cent stock of 1790,Three per cent.,64.0,,64.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,U-0010,United States 6 per cent stock of 1790,U. S. Bank Script.,,80.5,80.5,ask only,,,passes disagreed - unverified,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,C-0530,New York City 5s,"Six per cent, City Loan",97.0,,97.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,C-0240,Boston 5s,Seven per cent. do.,101.0,,101.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-1930,New York,BANK OF New-York,118.0,,118.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-1590,Merchants,Merchants,115.0,,115.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-1390,Manhattan Company,Manhattan,112.0,,112.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-1500,Mechanics,Mechanics,117.5,,117.5,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-2450,Union Bank,Union,90.0,,90.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-0150,Bank of America,America,91.0,,91.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,F-1506,"Mechanics, Brooklyn",Manufac'rg Com'y,62.5,,62.5,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-0430,Eagle Insurance,Eagle,116.0,,116.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-0700,Globe Insurance,Globe,102.0,,102.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-1860,Washington,Washington,110.0,,110.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-1160,Mutual Fire,Mutual,112.0,,112.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-0040,American,American,105.0,,105.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-1290,New York,New-York,80.0,,80.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
-1817-03,1817-03-28,I-1410,Ocean,Ocean,60.0,,60.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1817/1817-03-28/p01.jpg
+1817-03,1817-03-28,U-0010,United States 6 per cent stock of 1790,Six pr cent. Old & Defer'd,99.0,,99.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,U-0070,United States 6 per cent Louisiana stock,do Louisiana,99.0,,99.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,U-0050,United States 8 per cent loan of 1798,do War Loans,99.0,,99.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,U-0140,United States 7 per cent stock of 1815,Seven per cent.,104.5,,104.5,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,U-0040,United States 3 per cent stock of 1790,Three per cent.,64.0,,64.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,U-0010,United States 6 per cent stock of 1790,U. S. Bank Script.,,80.25,80.25,ask only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,C-0530,New York City 5s,"Six per cent, City Loan",97.0,,97.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,C-0240,Boston 5s,Seven per cent. do.,101.0,,101.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-1930,New York,BANK OF New-York,118.0,,118.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-1590,Merchants,Merchants,115.0,,115.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-1390,Manhattan Company,Manhattan,112.0,,112.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-1500,Mechanics,Mechanics,117.5,,117.5,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-2450,Union Bank,Union,90.0,,90.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-0150,Bank of America,America,91.0,,91.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,F-1506,"Mechanics, Brooklyn",Manufac'rg Com'y,62.5,,62.5,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-0430,Eagle Insurance,Eagle,116.0,,116.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-0700,Globe Insurance,Globe,102.0,,102.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-1860,Washington,Washington,110.0,,110.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-1160,Mutual Fire,Mutual,112.0,,112.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-0040,American,American,105.0,,105.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-1290,New York,New-York,80.0,,80.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-03,1817-03-28,I-1410,Ocean,Ocean,60.0,,60.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,U-0030,"United States 6 per cent stock of 1790, old and deferred (quoted jointly)","Six per cent, Old and Deferred",99.75,,99.75,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,U-0070,United States 6 per cent Louisiana stock,do. Louisiana,99.75,,99.75,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,U-0050,United States 8 per cent loan of 1798,do. War Loans,99.75,,99.75,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,U-0140,United States 7 per cent stock of 1815,Seven per cent.,105.5,,105.5,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,U-0040,United States 3 per cent stock of 1790,Three per cent.,64.0,,64.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,U-0010,United States 6 per cent stock of 1790,United States Bank Scrip,81.5,,81.5,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,S-1510,New York 6s,N. Y. State Sixes,90.25,,90.25,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,S-2160,Ohio 7s,Sevens,101.25,101.25,101.25,mid of bid and ask,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,C-0530,New York City 5s,Six per cent. City Loan,96.0,,96.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-1930,New York,New York,118.5,119.0,118.75,mid of bid and ask,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-1500,Mechanics,Mechanics,111.75,,111.75,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-1390,Manhattan Company,Manhattan,111.0,,111.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-2450,Union Bank,Union,85.0,,85.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-1590,Merchants,Merchants,114.0,,114.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-0600,City,City,93.25,96.0,94.625,mid of bid and ask,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-0150,Bank of America,America,90.25,,90.25,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,F-1810,New Jersey Manufacturing and Banking Company,Manufacturing Company,62.0,63.0,62.5,mid of bid and ask,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-0430,Eagle Insurance,Eagle,120.0,,120.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-0700,Globe Insurance,Globe,101.25,,101.25,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-1860,Washington,Washington,112.5,,112.5,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-1160,Mutual Fire,Mutual,111.0,,111.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-0040,American,American,109.5,110.0,109.75,mid of bid and ask,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-1410,Ocean,Ocean,40.0,,40.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-1500,Phoenix Fire Insurance,Phoenix,93.0,,93.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-1210,National,National,93.0,,93.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
+1817-04,1817-04-29,I-1500,Phoenix Fire Insurance,Phenix,93.0,,93.0,bid only,,,hand-verified,Shipping and Commercial List via FRASER,
 1822-01,1822-01-29,U-0090,United States 6 per cent loan of 1812,"do. War Loans, 1812",106.0,106.5,106.25,mid of bid and ask,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1822/1822-01-29/p04.jpg
 1822-01,1822-01-29,U-0100,United States sixteen-million loan of 1813,do. do. 1813,107.0,107.5,107.25,mid of bid and ask,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1822/1822-01-29/p04.jpg
 1822-01,1822-01-29,U-0120,United States 6 per cent loan of March 1815,do. do. 1815,111.0,,111.0,bid only,,,all passes agreed,Shipping and Commercial List via FRASER,issues/1822/1822-01-29/p04.jpg
