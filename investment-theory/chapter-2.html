@@ -50,17 +50,17 @@
 
         <p>Markowitz's fundamental contribution was recognizing that three measures summarize all the information needed about securities for portfolio selection: the <strong>mean return</strong> (arithmetic mean), the <strong>standard deviation</strong> of returns, and the <strong>correlation</strong> with other assets' returns.</p>
 
-        <p>Using historical data from 1970 through March 1995, a comparative analysis of six asset classes demonstrates the challenge investors face. Asset classes examined include Small Stocks, S&amp;P stocks, Corporate and Government Bonds, T-Bills, and the MSCI World Portfolio.</p>
+        <p>Using historical data from 1970 through March 1995, a comparative analysis of six asset classes illustrates the challenge investors face. Asset classes examined include Small Stocks, S&amp;P stocks, Corporate and Government Bonds, T-Bills, and the MSCI World Portfolio.</p>
 
         <div class="note">
-            <strong>Data note:</strong> The original text used Ibbotson Associates data from 1970 through March 1995. Modern data series extending through recent years confirm the same fundamental risk-return relationships across asset classes.
+            <strong>Data note:</strong> The original text used Ibbotson Associates data from 1970 through March 1995. Modern data series extending through recent years are consistent with the same broad risk-return relationships across asset classes.
         </div>
 
         <blockquote>Small stocks provide the highest return, but with the highest risk.</blockquote>
 
         <p>No single asset class dominates all others. T-Bills appeal to risk-averse investors, while small stocks attract those unconcerned with volatility. No universal "best" security exists for all investors.</p>
 
-        <p>We can picture any security as a single point in <em>risk&ndash;return space</em>. By convention we put the <strong>risk</strong> &mdash; the standard deviation of returns &mdash; on the horizontal axis and the <strong>expected return</strong> on the vertical axis, both <em>annualized</em>. Scatter a handful of securities this way and the investor's dilemma becomes visual.</p>
+        <p>We can picture any security as a single point in risk&ndash;return space. By convention we put the <strong>risk</strong> &mdash; the standard deviation of returns &mdash; on the horizontal axis and the <strong>expected return</strong> on the vertical axis, both annualized. Plotting a handful of securities this way gives a visual representation of the investor's dilemma.</p>
 
         <div class="figure">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 6px">
@@ -70,7 +70,7 @@
             </div>
             <div id="rr-chart" style="position:relative"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.1.</strong> Six hypothetical securities, each a point set by its standard deviation (horizontal) and expected return (vertical), annualized. <strong>Which one would you choose? Is any of them <em>dominant</em></strong> &mdash; offering both a higher return <em>and</em> a lower risk than all the others? The lowest-risk security is highlighted in <span style="color:#2a80c9;font-weight:700">light blue</span> and the highest-return one in <span style="color:#1e8b3a;font-weight:700">bright green</span>. Usually they are different securities, so no single one dominates &mdash; which is exactly why we combine them. Press <em>Regenerate</em> for a new draw.</p>
+          <p class="figure-caption"><strong>Figure 2.1.</strong> Six hypothetical securities, each a point set by its standard deviation (horizontal) and expected return (vertical), annualized. Which one would you choose? Is any of them dominant &mdash; offering both a higher return and a lower risk than all the others? The lowest-risk security is highlighted in <span style="color:#2a80c9;font-weight:700">light blue</span> and the highest-return one in <span style="color:#1e8b3a;font-weight:700">bright green</span>. Usually they are different securities, so no single one dominates, and this absence of a dominant security is the reason for combining them. Press <em>Regenerate</em> for a new draw.</p>
         </div>
         <script>
         (function(){
@@ -105,7 +105,7 @@
 
         <div class="key-concept">
             <h4>Key Concept</h4>
-            <p>No single asset class is universally "best." The optimal choice depends on the investor's willingness to bear risk &mdash; which leads naturally to the idea of <strong>combining</strong> assets into portfolios.</p>
+            <p>No single asset class is universally "best." The optimal choice depends on the investor's willingness to bear risk &mdash; which leads naturally to the idea of combining assets into portfolios.</p>
         </div>
 
         <h2>II. Portfolios of Assets</h2>
@@ -126,7 +126,7 @@
             $$\sigma_p = \sqrt{w_A^2 \sigma_A^2 + w_B^2 \sigma_B^2 + 2\, w_A\, w_B\, \rho_{AB}\, \sigma_A\, \sigma_B}$$
         </div>
 
-        <p>And the portfolio mean return is simply the weighted average:</p>
+        <p>And the portfolio mean return is the weighted average:</p>
 
         <div class="equation">
             <p class="equation-label">Portfolio Expected Return</p>
@@ -141,13 +141,13 @@
         <div class="equation">
             $$\sigma_p = \sqrt{(0.8)^2(0.15)^2 + (0.2)^2(0.30)^2 + 0} = 13.4\%$$
         </div>
-        <p>Adding the riskier security actually <em>reduces</em> portfolio volatility from 15% to 13.4% &mdash; demonstrating the power of diversification.</p>
+        <p>Adding the riskier security reduces portfolio volatility from 15% to 13.4%, an illustration of the diversification benefit.</p>
 
         <p><strong>When $\rho = +1$ (perfect positive correlation):</strong></p>
         <div class="equation">
             $$\sigma_p = w_A \sigma_A + w_B \sigma_B = (0.8)(0.15) + (0.2)(0.30) = 18\%$$
         </div>
-        <p>No diversification benefit exists since assets move in lockstep.</p>
+        <p>No diversification benefit exists, since the two returns are perfectly correlated.</p>
 
         <p><strong>When $\rho = -1$ (perfect negative correlation):</strong></p>
         <p>A mixture of 66.5% Security A and 33.5% Security B produces approximately zero standard deviation &mdash; a nearly perfect hedge. This scenario rarely occurs in practice except with offsetting long and short positions.</p>
@@ -168,11 +168,11 @@
           <p class="figure-caption"><strong>Figure 2.2.</strong> Two assets in risk&ndash;return space &mdash; A ($\bar{R}=10\%$, $\sigma=15\%$) and B ($\bar{R}=20\%$, $\sigma=30\%$) &mdash; and every portfolio you can build from them. Drag the correlation. At $\rho = +1$ the opportunity set is the straight dashed line, with no diversification. As $\rho$ falls, the curve bows left of that line: the same two assets now offer less risk for the same return. At $\rho = -1$ they combine into a nearly riskless portfolio. The <span style="color:#b9770e;font-weight:700">minimum-variance portfolio</span> is marked; the solid blue arc above it is efficient, the dashed arc below it is dominated.</p>
           <div class="mf-use">
             <span class="mf-use-tag">How you use it</span>
-            <p>Use it to build a portfolio, not to pick a single stock. Combine assets whose returns do not move together and read the left-bowing frontier: it marks the least risk available for any target return. Hold something on the solid arc, and reject anything below it &mdash; the same return is always available for less risk.</p>
-            <a class="mf-lenses" href="introduction.html#how-to-read">The four lenses for reading each picture &nearr;</a>
+            <p>Use it to build a portfolio of assets. Combine assets whose returns are imperfectly correlated and read the left-bowing frontier: it marks the least risk available for any target return. Hold a portfolio on the solid arc, and reject anything below it &mdash; the same return is always available for less risk.</p>
+            <a class="mf-lenses" href="introduction.html#how-to-read">How to read each picture &nearr;</a>
           </div>
 
-        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Set &rho; = +1: the opportunity set collapses to a straight line, with no diversification at all. Now drag &rho; down toward &minus;0.5 and watch the curve bow left. In one sentence, why is it <em>low correlation</em> &mdash; not low risk &mdash; that opens the free lunch?</div>
+        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Set &rho; = +1: the opportunity set collapses to a straight line, with no diversification at all. Now drag &rho; down toward &minus;0.5 and watch the curve bow left. In one sentence, explain why low correlation, rather than low individual risk, produces the diversification benefit.</div>
         </div>
         <script>
         (function(){
@@ -214,7 +214,7 @@
 
         <div class="key-concept">
             <h4>Key Concept: Diversification</h4>
-            <p>When correlation is less than +1, combining assets reduces portfolio risk below the weighted average of individual risks. The lower the correlation, the greater the diversification benefit. This is the mathematical foundation of the old adage: "don't put all your eggs in one basket."</p>
+            <p>When correlation is less than +1, combining assets reduces portfolio risk below the weighted average of individual risks. The lower the correlation, the greater the diversification benefit. This result is the mathematical basis of the old adage: "don't put all your eggs in one basket."</p>
         </div>
 
         <div class="figure">
@@ -224,7 +224,7 @@
 
         <h2>III. More Securities and More Diversification</h2>
 
-        <p>Examining portfolios with multiple securities &mdash; all having zero correlation and identical risk &mdash; reveals significant diversification benefits. An equally-weighted portfolio progressively improves as more securities are added.</p>
+        <p>Examining portfolios with multiple securities &mdash; all having zero correlation and identical risk &mdash; reveals large diversification benefits. The risk of an equally-weighted portfolio declines as more securities are added.</p>
 
         <div class="figure" id="diversification-lab">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
@@ -244,7 +244,7 @@
             <div id="dv-chart"></div>
             <div id="dv-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.4.</strong> How portfolio risk falls as holdings are added, for equally-weighted assets each with 20% volatility. Set the average correlation between them. When it is zero, risk falls as $20\%/\sqrt{n}$ toward zero. When it is positive, the fall stops at a floor of $20\%\cdot\sqrt{\bar{\rho}}$ &mdash; the systematic risk that no amount of diversification removes. Most of the benefit arrives in the first 20&ndash;30 names.</p>
+          <p class="figure-caption"><strong>Figure 2.4.</strong> How portfolio risk falls as holdings are added, for equally-weighted assets each with 20% volatility. Set the average correlation between them. When it is zero, risk falls as $20\%/\sqrt{n}$ toward zero. When it is positive, the fall stops at a floor of $20\%\cdot\sqrt{\bar{\rho}}$ &mdash; the systematic risk that no amount of diversification removes. Most of the risk reduction occurs within the first 20&ndash;30 names.</p>
         </div>
         <script>
         (function(){
@@ -286,7 +286,7 @@
 
         <p>When allowing variable portfolio weights rather than equal weighting, benefits increase further. Calculating standard deviations across all possible asset combinations reveals a dominant set: the <strong>efficient frontier</strong>.</p>
 
-        <p>The efficient frontier represents portfolios offering the <em>maximum return for each risk level</em> and <em>minimum risk for each return level</em>. The frontier extends from the maximum return portfolio (typically a single asset) to the minimum variance portfolio.</p>
+        <p>The efficient frontier represents portfolios offering the maximum return for each risk level and minimum risk for each return level. The frontier extends from the maximum return portfolio (typically a single asset) to the minimum variance portfolio.</p>
 
         <p><strong>Geographic perspective:</strong> The feasible set encompasses all possible asset combinations. The efficient frontier forms its northwest boundary &mdash; no portfolios exist beyond this edge.</p>
 
@@ -297,20 +297,20 @@
 
         <h2>IV. Markowitz and the First Efficient Frontier</h2>
 
-        <p>Harry Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis &mdash; a convention later reversed. The frontier itself drew its statistical inputs from just <strong>ten stocks</strong> on the New York Stock Exchange; adding more assets to the optimization pushed the limits of the computing power available at the time.</p>
+        <p>Harry Markowitz created the first efficient frontier using NYSE stocks, published in <em>Portfolio Selection</em> (Cowles Monograph 16, Yale University Press, 1959). His frontier included a line extending to the origin, incorporating combinations of risky assets with riskless assets (cash). The original diagram positioned standard deviation on the vertical axis &mdash; a convention later reversed. The frontier itself drew its statistical inputs from just ten stocks on the New York Stock Exchange; adding more assets to the optimization was difficult with the computing power available at the time.</p>
 
         <div class="figure">
           <div style="display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;justify-content:center">
             <figure style="margin:0;flex:1 1 250px;max-width:320px;text-align:center">
               <img src="figures/markowitz-1959.gif" alt="Markowitz's original efficient frontier, 1959, with standard deviation on the vertical axis" style="width:100%;border:1px solid #e0d6bf;border-radius:6px;background:#fff">
-              <figcaption style="font-size:.8rem;color:#8a7f6c;font-style:italic;margin-top:6px">Markowitz&rsquo;s original (1959): &sigma; on the <em>vertical</em> axis, return on the horizontal.</figcaption>
+              <figcaption style="font-size:.8rem;color:#8a7f6c;font-style:italic;margin-top:6px">Markowitz&rsquo;s original (1959): &sigma; on the vertical axis, return on the horizontal.</figcaption>
             </figure>
             <figure style="margin:0;flex:1 1 300px;max-width:380px">
               <div id="mk-modern" style="border:1px solid #e0d6bf;border-radius:6px;background:#fbf7ec;padding:4px"></div>
-              <figcaption style="font-size:.8rem;color:#8a7f6c;font-style:italic;margin-top:6px;text-align:center">The same frontier transposed: &sigma; on the <em>horizontal</em> axis &mdash; today&rsquo;s convention.</figcaption>
+              <figcaption style="font-size:.8rem;color:#8a7f6c;font-style:italic;margin-top:6px;text-align:center">The same frontier transposed: &sigma; on the horizontal axis &mdash; today&rsquo;s convention.</figcaption>
             </figure>
           </div>
-          <p class="figure-caption"><strong>Figure 2.6.</strong> Markowitz&rsquo;s original efficient frontier, reproduced from <em>Portfolio Selection</em> (1959) (<em>left</em>), beside the same picture in the modern convention (<em>right</em>). Markowitz drew standard deviation on the <em>vertical</em> axis and expected return on the horizontal, with a straight line running to the origin that mixes the risky portfolio with the riskless asset. Swap the axes &mdash; standard deviation on the horizontal, expected return on the vertical &mdash; and his diagram becomes the efficient frontier used throughout this chapter: a bowed curve of risky portfolios (dominated portfolios dashed below), with the straight <span style="color:#7a1414;font-weight:700">capital allocation line</span> from the riskless rate tangent to it. Same economics, transposed axes. The line runs to the <em>origin</em> because Markowitz took <strong>cash</strong> &mdash; a non-interest-bearing, nominally riskless asset returning 0% &mdash; as the riskless asset; using the Treasury-bill rate instead lifts the intercept to R<sub>f</sub> &gt; 0.</p>
+          <p class="figure-caption"><strong>Figure 2.6.</strong> Markowitz&rsquo;s original efficient frontier, reproduced from <em>Portfolio Selection</em> (1959) (left), beside the same picture in the modern convention (right). Markowitz drew standard deviation on the vertical axis and expected return on the horizontal, with a straight line running to the origin that mixes the risky portfolio with the riskless asset. Swap the axes &mdash; standard deviation on the horizontal, expected return on the vertical &mdash; and his diagram becomes the efficient frontier used throughout this chapter: a bowed curve of risky portfolios (dominated portfolios dashed below), with the straight <span style="color:#7a1414;font-weight:700">capital allocation line</span> from the riskless rate tangent to it. The economic content of the two diagrams is identical. The line runs to the origin because Markowitz took cash &mdash; a non-interest-bearing, nominally riskless asset returning 0% &mdash; as the riskless asset; using the Treasury-bill rate instead raises the intercept to R<sub>f</sub> &gt; 0.</p>
         </div>
         <script>
         (function(){
@@ -342,25 +342,25 @@
         </script>
 
         <div class="note">
-            <strong>Historical note:</strong> Markowitz's 1952 paper and 1959 monograph laid the groundwork for all of modern portfolio theory. He shared the 1990 Nobel Prize in Economics with William Sharpe and Merton Miller for this contribution.
+            <strong>Historical note:</strong> Markowitz's 1952 paper and 1959 monograph established the basis of modern portfolio theory. He shared the 1990 Nobel Prize in Economics with William Sharpe and Merton Miller for this contribution.
         </div>
 
         <h2>V. A Simulated Portfolio with Short-Sales Constraints</h2>
 
-        <p>It helps to build a frontier by brute force rather than by formula. The simulation below draws thousands of random portfolios of four hypothetical assets and lets the efficient frontier emerge as the outer edge of the resulting cloud.</p>
+        <p>It helps to build a frontier by brute force rather than by formula. The simulation below draws thousands of random portfolios of four hypothetical assets and shows the efficient frontier as the outer edge of the resulting cloud.</p>
 
-        <p>A <strong>short position</strong> in a security creates a <em>negative weight</em> on it in the portfolio &mdash; the investor sells borrowed shares and puts the proceeds into something else. This can greatly expand the investment opportunity set: with short sales allowed, weights are no longer confined between zero and one, and the feasible set opens up in every direction. The <em>smooth hyperbolic shape</em> of the classic efficient frontier is a result of allowing portfolios with short sales.</p>
+        <p>A <strong>short position</strong> in a security creates a negative weight on it in the portfolio &mdash; the investor sells borrowed shares and invests the proceeds in other securities. Short selling can greatly expand the investment opportunity set: with short sales allowed, weights are no longer confined between zero and one, and the feasible set expands in every direction. The smooth hyperbolic shape of the classic efficient frontier is a result of allowing portfolios with short sales.</p>
 
         <p>The simulation, by contrast, imposes a <strong>no-short-sales (positivity) constraint</strong>: every weight is non-negative and the weights sum to one. Several things follow, all visible in the figure below:</p>
         <ul>
-            <li>The feasible set is <strong>bounded</strong>. Every attainable portfolio lies inside the envelope traced by the pairwise mixes (the grey arcs); nothing outside it can be reached without shorting.</li>
-            <li>The long-only frontier is <strong>piecewise</strong> &mdash; stitched together from segments, and at each junction (a <em>corner portfolio</em>) an asset enters or leaves the optimal mix.</li>
-            <li>The <strong>highest-return portfolio is a single asset</strong>, the highest-returning one (D). Without shorting, nothing can push return above it.</li>
-            <li>The <strong>minimum-variance portfolio</strong> can still sit far to the left of every individual asset. Even when the assets are on average uncorrelated, combining them drives risk well below any one of them &mdash; the essence of diversification.</li>
-            <li>The gap between the solid (long-only) frontier and the dashed (unconstrained) hyperbola is the <strong>value of being able to short</strong>. It is widest at the extremes &mdash; very high or very low target returns &mdash; and often nearly zero in the middle, where the optimum needs no short position.</li>
+            <li>The feasible set is bounded. Every attainable portfolio lies inside the envelope traced by the pairwise mixes (the grey arcs); no portfolio outside it can be reached without shorting.</li>
+            <li>The long-only frontier is piecewise &mdash; made up of segments, and at each junction (a <strong>corner portfolio</strong>) an asset enters or leaves the optimal mix.</li>
+            <li>The highest-return portfolio is a single asset, the highest-returning one (D). Without shorting, no portfolio can have a higher return.</li>
+            <li>The minimum-variance portfolio can still lie far to the left of every individual asset. Even when the assets are on average uncorrelated, combining them reduces risk well below that of any one of them, which is the diversification effect.</li>
+            <li>The gap between the solid (long-only) frontier and the dashed (unconstrained) hyperbola is the value of being able to short. It is widest at the extremes &mdash; very high or very low target returns &mdash; and often nearly zero in the middle, where the optimum needs no short position.</li>
         </ul>
 
-        <p>Use the slider to set the <strong>average correlation</strong> among the assets, then press <em>Regenerate</em> to draw a new random correlation matrix centered on that average. As the average rises toward one, the feasible set collapses toward a line and diversification vanishes; as it falls toward zero, the frontier bows sharply to the left.</p>
+        <p>Use the slider to set the average correlation among the assets, then press <em>Regenerate</em> to draw a new random correlation matrix centered on that average. As the average rises toward one, the feasible set collapses toward a line and the diversification benefit disappears; as it falls toward zero, the frontier bows sharply to the left.</p>
                 <div class="figure">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
             <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
@@ -373,7 +373,7 @@
             <div id="mcf-chart" style="position:relative"></div>
             <div id="mcf-corr" style="margin-top:6px;font-size:.8rem;color:#5c5344"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.7.</strong> Four hypothetical assets, A&ndash;D, with fixed expected returns (6, 9, 11, 14%) and standard deviations (8, 13, 17, 20%). Each draw uses a fresh <em>random correlation matrix</em> centered on the average correlation you choose with the slider (the realized matrix and its average &#961; appear below the chart). The blue cloud is 1,400 random <em>long-only</em> portfolios; grey arcs oversample the six pairwise mixes; the solid red curve is the long-only efficient frontier. The dashed curve is the <em>unconstrained</em> frontier (short sales allowed) &mdash; a smooth hyperbola. Notice how the no-short (positivity) constraint cuts the hyperbola off: the long-only frontier hugs it in the middle but cannot follow it past the extreme assets. Press <em>Regenerate</em> for a new correlation structure.</p>
+          <p class="figure-caption"><strong>Figure 2.7.</strong> Four hypothetical assets, A&ndash;D, with fixed expected returns (6, 9, 11, 14%) and standard deviations (8, 13, 17, 20%). Each draw uses a fresh random correlation matrix centered on the average correlation you choose with the slider (the realized matrix and its average &#961; appear below the chart). The blue cloud is 1,400 random long-only portfolios; grey arcs oversample the six pairwise mixes; the solid red curve is the long-only efficient frontier. The dashed curve is the unconstrained frontier (short sales allowed) &mdash; a smooth hyperbola. The no-short (positivity) constraint truncates the hyperbola: the long-only frontier lies close to it in the middle but cannot extend past the extreme assets. Press <em>Regenerate</em> for a new correlation structure.</p>
         </div>
         <script>
         (function(){
@@ -466,20 +466,20 @@
 
         <div class="figure">
             <img src="figures/frontier-anatomy.svg" alt="Labeled schematic of the efficient frontier, feasible set, and Capital Market Line" style="width:100%; max-width:760px;">
-            <p class="figure-caption"><strong>Figure 2.8.</strong> The anatomy of the efficient frontier. The shaded region is the <em>feasible set</em> of attainable portfolios; its upper-left edge is the <em>efficient frontier</em> (bold), and its lower edge holds the <em>dominated</em> portfolios. The <em>minimum-variance portfolio</em> sits at the leftmost point and the <em>highest-return asset</em> at the top. Adding the <em>riskless asset</em> $R_f$ and drawing the tangent line yields the <em>Capital Market Line</em>, which touches the frontier at the <em>tangency portfolio</em> $M$. Investors hold combinations of $R_f$ and $M$ along this line &mdash; lending below $M$, borrowing above it.</p>
+            <p class="figure-caption"><strong>Figure 2.8.</strong> The anatomy of the efficient frontier. The shaded region is the feasible set of attainable portfolios; its upper-left edge is the efficient frontier (bold), and its lower edge contains the dominated portfolios. The minimum-variance portfolio lies at the leftmost point and the highest-return asset at the top. Adding the riskless asset $R_f$ and drawing the tangent line yields the Capital Market Line, which touches the frontier at the tangency portfolio $M$. Investors hold combinations of $R_f$ and $M$ along this line &mdash; lending below $M$, borrowing above it.</p>
         </div>
 
         <div class="key-concept">
             <h4>Key Concept: Capital Market Line</h4>
-            <p>When a riskless asset exists, the efficient frontier becomes a straight line (the CML) from $R_f$ through the tangency portfolio $M$. Every investor &mdash; regardless of risk preferences &mdash; holds the <em>same</em> portfolio of risky assets ($M$), differing only in how much they allocate to the riskless asset. This is the foundation of the <strong>Two Fund Separation Theorem</strong>.</p>
+            <p>When a riskless asset exists, the efficient frontier becomes a straight line (the CML) from $R_f$ through the tangency portfolio $M$. Every investor &mdash; regardless of risk preferences &mdash; holds the same portfolio of risky assets ($M$), differing only in how much they allocate to the riskless asset. This result is the basis of the <strong>Two Fund Separation Theorem</strong>.</p>
         </div>
 
 
         <h3>The Tangency Portfolio, Out of Sample</h3>
 
-        <p>There is a catch hiding inside the elegant geometry. To locate the tangency portfolio $M$ we needed three sets of inputs &mdash; expected returns, standard deviations, and correlations. In the classroom we treat these as <em>known</em>. In practice we must <strong>estimate</strong> them from historical data, and the estimates contain error. The tangency portfolio is the single point on the frontier that leans hardest on those estimates, so it is precisely where estimation error does the most damage.</p>
+        <p>The geometry has a practical limitation. To locate the tangency portfolio $M$ we needed three sets of inputs &mdash; expected returns, standard deviations, and correlations. In the classroom we treat these as known. In practice we must estimate them from historical data, and the estimates contain error. The tangency portfolio is the point on the frontier most sensitive to those estimates, so estimation error has its largest effect on that portfolio.</p>
 
-        <p>The demonstration below makes the point with real data. We split the 1926&ndash;2025 SBBI history into an <strong>estimation window</strong> (everything up to the split year) and a <strong>holdout</strong> (everything after). From the estimation window we compute the max-Sharpe (tangency) portfolio &mdash; the portfolio that looked optimal <em>looking backward</em>. Then we plot where that portfolio actually landed in the holdout period, against the holdout&rsquo;s own <em>ex-post</em> efficient frontier &mdash; the best that could have been done <em>looking forward</em>.</p>
+        <p>The demonstration below illustrates the problem with historical data. We split the 1926&ndash;2025 SBBI history into an <strong>estimation window</strong> (everything up to the split year) and a <strong>holdout</strong> (everything after). From the estimation window we compute the max-Sharpe (tangency) portfolio &mdash; the portfolio that looked optimal in retrospect at the split year. Then we plot the risk and return that portfolio produced in the holdout period, against the holdout&rsquo;s own <em>ex-post</em> efficient frontier &mdash; the best that could have been done with knowledge of the holdout data.</p>
 
         <div class="figure">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
@@ -494,9 +494,9 @@
             <div id="oos-chart"></div>
             <div id="oos-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.9.</strong> In-sample versus out-of-sample. The bold curve is the holdout period&rsquo;s <em>ex-post</em> efficient frontier &mdash; the frontier hindsight would have drawn. The large <span style="color:#7a1414;font-weight:700">&#9733; star</span> is the tangency portfolio estimated from the earlier window, plotted at the risk and return it actually produced in the holdout. Because it is a <em>feasible</em> holdout portfolio, it lies <em>on or inside</em> this frontier &mdash; it cannot beat what hindsight made achievable, and only occasionally sits right on it. The faint stars repeat the calculation on 30 bootstrap resamples of the estimation window &mdash; each a portfolio that looked optimal on slightly different data; they scatter along and inside the frontier. The <span style="color:#1e8b3a;font-weight:700">&#9670; diamond</span> is the ex-post tangency (hindsight&rsquo;s best). Note that the holdout may yield <em>higher</em> returns than the estimation window predicted &mdash; the market does its own thing out of sample &mdash; yet the in-sample weights still leave Sharpe on the table, because the estimation error lies in the portfolio <em>mix</em>, not in the market&rsquo;s overall level. Drag the split year, or resample, to watch the gap persist.</p>
+          <p class="figure-caption"><strong>Figure 2.9.</strong> In-sample versus out-of-sample. The bold curve is the holdout period&rsquo;s <em>ex-post</em> efficient frontier &mdash; the frontier hindsight would have drawn. The large <span style="color:#7a1414;font-weight:700">&#9733; star</span> is the tangency portfolio estimated from the earlier window, plotted at the risk and return it produced in the holdout. Because it is a feasible holdout portfolio, it lies on or inside this frontier; it cannot exceed the frontier, and it lies on the frontier only occasionally. The faint stars repeat the calculation on 30 bootstrap resamples of the estimation window &mdash; each a portfolio that looked optimal on slightly different data; they scatter along and inside the frontier. The <span style="color:#1e8b3a;font-weight:700">&#9670; diamond</span> is the ex-post tangency (hindsight&rsquo;s best). The holdout may yield higher returns than the estimation window predicted, yet the in-sample weights still produce a lower Sharpe ratio than the ex-post tangency, because the estimation error concerns the relative weights in the portfolio mix, independent of the market&rsquo;s overall level. Drag the split year, or resample, to see the gap under other splits and samples.</p>
 
-        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Drag the split year to an early value. Why does the tangency portfolio estimated from the first window land <em>inside</em> the holdout frontier, instead of on it? What does that imply for anyone running a Markowitz optimizer on historical means and covariances?</div>
+        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Drag the split year to an early value. Why does the tangency portfolio estimated from the first window land inside the holdout frontier, instead of on it? What does that imply for anyone running a Markowitz optimizer on historical means and covariances?</div>
         </div>
 
         <script>
@@ -614,19 +614,19 @@
 
         <blockquote>All the information needed to choose the best portfolio for any given level of risk is contained in three simple statistics: mean, standard deviation and correlation.</blockquote>
 
-        <p>Markowitz fundamentally revolutionized portfolio selection through elegant simplicity. His approach requires no fundamental firm analysis &mdash; dividend policy, earnings, market share, management quality &mdash; eliminating information typically central to Wall Street analysis.</p>
+        <p>Markowitz changed the practice of portfolio selection with a simple framework. His approach requires no fundamental firm analysis &mdash; dividend policy, earnings, market share, management quality &mdash; and so omits information typically central to Wall Street analysis.</p>
 
-        <p>Today, virtually all major portfolio managers employ optimization programs, though not always following exact recommendations. These tools evaluate fundamental risk-return trade-offs.</p>
+        <p>Today, optimization programs are widely used by major portfolio managers, though the managers do not always follow the exact recommendations. These programs evaluate the basic risk-return trade-off.</p>
 
         <h3>Practical Limitations</h3>
         <ul>
             <li>Historical mean returns may poorly predict future returns</li>
             <li>As security count increases, correlation estimation becomes increasingly challenging and error-prone</li>
             <li>With over 1,500 NYSE stocks, some correlations will be substantially inaccurate</li>
-            <li>The model proves sensitive to input errors</li>
+            <li>The model is sensitive to input errors</li>
         </ul>
 
-        <p><strong>Optimal application:</strong> Markowitz optimization performs best with asset class allocation decisions, where correlation counts remain low and summary statistics are reliably estimated.</p>
+        <p><strong>Optimal application:</strong> Markowitz optimization performs best with asset class allocation decisions, where the number of correlations is small and the summary statistics can be estimated more reliably.</p>
 
     </div>
 

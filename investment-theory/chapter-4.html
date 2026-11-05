@@ -47,25 +47,25 @@
 
     <div class="chapter-content">
 
-        <h2>I. The Quest for the Tangency Portfolio</h2>
+        <h2>I. Identifying the Tangency Portfolio</h2>
 
-        <p>In the 1960s, financial researchers working with Harry Markowitz's mean-variance model of portfolio construction made a remarkable discovery that would change investment theory and practice in the United States and the world. The discovery was based upon an idealized model of the markets, in which all the world's risky assets were included in the investor opportunity set and one riskless asset existed, allowing both more and less risk-averse investors to find their optimal portfolio along the tangency ray.</p>
+        <p>In the 1960s, financial researchers working with Harry Markowitz's mean-variance model of portfolio construction made a discovery that changed investment theory and practice in the United States and the world. The discovery was based upon an idealized model of the markets, in which all the world's risky assets were included in the investor opportunity set and one riskless asset existed, allowing both more and less risk-averse investors to find their optimal portfolio along the tangency ray.</p>
 
         <div class="figure">
             <img src="figures/capital_market_line.svg" alt="Capital Market Line showing Two Fund Separation" style="width:100%; max-width:720px;">
             <p class="figure-caption"><strong>Figure 4.1.</strong> Two Fund Separation, computed from SBBI data. All investors hold the same tangency portfolio $T$ of risky assets. More risk-averse (MRA) investors mix $T$ with T-bills; less risk-averse (LRA) investors borrow at $R_f$ to lever up their position in $T$.</p>
         </div>
 
-        <p>Assuming that investors could borrow and lend at the riskless rate, this simple diagram suggested that everyone in the world would want to hold precisely the <em>same</em> portfolio of risky assets! That portfolio, identified at the point of tangency, represents some portfolio mix of the world's assets. Identify it, and the world will beat a path to your door.</p>
+        <p>Assuming that investors could borrow and lend at the riskless rate, this simple diagram suggested that everyone in the world would want to hold precisely the same portfolio of risky assets. That portfolio, identified at the point of tangency, represents some portfolio mix of the world's assets. Anyone able to identify it would have a portfolio of great value to every investor.</p>
 
         <div class="key-concept">
             <h4>Key Concept: Two Fund Separation Theorem</h4>
-            <p>The tangency portfolio became the centerpiece of a classical model in finance. The "Two Fund Separation Theorem" argues that all investors will make their choice between two funds: the risky tangency portfolio and the riskless "fund." Every investor holds the same risky portfolio &mdash; they differ only in leverage.</p>
+            <p>The tangency portfolio became the central element of a classical model in finance. The "Two Fund Separation Theorem" states that all investors will make their choice between two funds: the risky tangency portfolio and the riskless "fund." Every investor holds the same risky portfolio &mdash; they differ only in leverage.</p>
         </div>
 
-        <p>Identifying this tangency portfolio is harder than it looks. Recall that a major difficulty in estimating an efficient frontier accurately is that errors grow as the number of assets increase. You cannot just dump all the means, standard deviations, and correlations for the world's assets into an optimizer and turn the crank. If you did, you would get a nonsensical answer. Sadly enough, empirical research was not the answer, due to statistical estimation problems.</p>
+        <p>Identifying this tangency portfolio is harder than it looks. Recall that a major difficulty in estimating an efficient frontier accurately is that errors grow as the number of assets increase. Entering all the means, standard deviations, and correlations for the world's assets into an optimizer would produce a nonsensical answer. Because of statistical estimation problems, empirical research could not resolve the question.</p>
 
-        <p>The answer to the question came from theory. Financial economist <strong>William Sharpe</strong> is one of the creators of the "Capital Asset Pricing Model," a theory which began as a quest to identify the tangency portfolio. Since that time, it has developed into much, much more. In fact, the CAPM, as it is called, is the predominant model used for estimating equity risk and return.</p>
+        <p>The answer to the question came from theory. Financial economist William Sharpe is one of the creators of the "Capital Asset Pricing Model," a theory that originated as an effort to identify the tangency portfolio. Since that time, the theory has developed considerably. The CAPM, as it is called, is the predominant model used for estimating equity risk and return.</p>
 
         <h2>II. The Capital Asset Pricing Model</h2>
 
@@ -84,11 +84,11 @@
             <li>There are only two periods of time in our world</li>
         </ol>
 
-        <p>This is a long list of requirements, and together they describe the capitalist's ideal world. Everything may be bought and sold in perfectly liquid fractional amounts &mdash; even human capital! There is a perfect, safe haven for risk-averse investors, i.e. the riskless asset. This means that everyone is an equally good credit risk! No one has any informational advantage in the CAPM world. Everyone has already generously shared all of their knowledge about the future risk and return of the securities, so no one disagrees about expected returns. All customer preferences are an open book &mdash; risk attitudes are well described by a simple utility function. There is no mystery about the shape of the future return distributions. Last but not least, decisions are not complicated by the ability to change your mind through time. You invest irrevocably at one point, and reap the rewards of your investment in the next period &mdash; at which time you and the investment problem cease to exist. Terminal wealth is measured at that time.</p>
+        <p>This is a long list of requirements, and together they describe the capitalist's ideal world. Everything may be bought and sold in perfectly liquid fractional amounts, including human capital. There is a perfectly safe asset for risk-averse investors, i.e. the riskless asset. Because everyone borrows and lends at the riskless rate, everyone is an equally good credit risk. No one has any informational advantage in the CAPM world. Everyone has already shared all of their knowledge about the future risk and return of the securities, so no one disagrees about expected returns. All investor preferences are known &mdash; risk attitudes are well described by a simple utility function. The shape of the future return distributions is known. Finally, decisions are not complicated by the ability to change your mind through time. You invest irrevocably at one point, and receive the return on your investment in the next period &mdash; at which time you and the investment problem cease to exist. Terminal wealth is measured at that time.</p>
 
-        <blockquote>He who dies with the most toys wins! The technical name for this setting is "a frictionless one-period, multi-asset economy with no asymmetric information."</blockquote>
+        <blockquote>Terminal wealth is the only objective. The technical name for this setting is "a frictionless one-period, multi-asset economy with no asymmetric information."</blockquote>
 
-        <p>The CAPM argues that these assumptions imply that the tangency portfolio will be a <strong>value-weighted mix of all the assets in the world</strong>.</p>
+        <p>The CAPM shows that these assumptions imply that the tangency portfolio will be a value-weighted mix of all the assets in the world.</p>
 
         <h3>The Equilibrium Proof</h3>
 
@@ -152,26 +152,26 @@
 
         <div class="key-concept">
             <h4>Key Concept: The CAPM Result</h4>
-            <p>The tangency portfolio is a <strong>capital-weighted portfolio of all the world's assets</strong>. This is not an empirical finding &mdash; it is a theoretical conclusion that follows from the equilibrium assumptions. Every investor holds the "market portfolio."</p>
+            <p>The tangency portfolio is a capital-weighted portfolio of all the world's assets. The result is a theoretical conclusion that follows from the equilibrium assumptions. Every investor holds the "market portfolio."</p>
         </div>
 
         <h2>III. Investment Implications</h2>
 
-        <p>The CAPM tells us that all investors will want to hold "capital-weighted" portfolios of global wealth. In the 1960s when the CAPM was developed, this solution looked a lot like a portfolio that was already familiar to many people: the <strong>S&amp;P 500</strong>. The S&amp;P 500 is a capital-weighted portfolio of most of the U.S.'s largest stocks. At that time, the U.S. was the world's largest market, and thus, it seemed to be a fair approximation to the "cake."</p>
+        <p>The CAPM tells us that all investors will want to hold "capital-weighted" portfolios of global wealth. In the 1960s when the CAPM was developed, this solution looked a lot like a portfolio that was already familiar to many people: the S&amp;P 500. The S&amp;P 500 is a capital-weighted portfolio of most of the U.S.'s largest stocks. At that time, the U.S. was the world's largest market, and thus, it seemed to be a fair approximation to the "cake."</p>
 
-        <blockquote>Amazingly, the answer was right under our noses &mdash; the tangency portfolio must be something like the S&amp;P 500!</blockquote>
+        <blockquote>The tangency portfolio, it appeared, must be something like the S&amp;P 500.</blockquote>
 
-        <p>Not coincidentally, widespread use of <strong>index funds</strong> began about this time. Index funds are mutual funds and/or money managers who simply match the performance of the S&amp;P. Many institutions and individuals discovered the virtues of indexing:</p>
+        <p>Widespread use of <strong>index funds</strong> began at about this time. Index funds are mutual funds and/or money managers who match the performance of the S&amp;P. Many institutions and individuals discovered the virtues of indexing:</p>
         <ul>
             <li><strong>Minimal trading costs:</strong> Capital-weighted portfolios automatically adjust to changes in value when stocks grow, so investors need not change their weights all the time &mdash; it is a "buy-and-hold" portfolio</li>
-            <li><strong>Competitive performance:</strong> There was little evidence at the time that active portfolio management beat the S&amp;P index &mdash; so why not simply index?</li>
+            <li><strong>Competitive performance:</strong> There was little evidence at the time that active portfolio management beat the S&amp;P index &mdash; so why not index?</li>
         </ul>
 
         <div class="note">
-            <strong>Modern context:</strong> Today, global index funds encompass far more than the S&amp;P 500. Total-world-market funds (e.g., MSCI ACWI) capture developed and emerging markets, more closely approximating the theoretical "world wealth portfolio" that the CAPM prescribes. The growth of passive indexing from the 1970s through the present &mdash; now representing trillions in assets under management &mdash; is a direct legacy of the CAPM insight.
+            <strong>Modern context:</strong> Today, global index funds encompass far more than the S&amp;P 500. Total-world-market funds (e.g., MSCI ACWI) capture developed and emerging markets, more closely approximating the theoretical "world wealth portfolio" that the CAPM prescribes. The growth of passive indexing from the 1970s through the present &mdash; now representing trillions in assets under management &mdash; reflects in part the influence of the CAPM.
         </div>
 
-        <h2>IV. Is the CAPM True?</h2>
+        <h2>IV. The Validity of the CAPM</h2>
 
         <p>Any theory is only strictly valid if its assumptions are true. There are a few nettlesome issues that call into question the validity of the CAPM:</p>
 
@@ -182,17 +182,17 @@
             <li>What about "human capital?"</li>
         </ul>
 
-        <p>While these problems may violate the letter of the law, perhaps the spirit of the CAPM is correct. That is, the theory may be a good <em>prescription</em> for investment policy. It tells investors to choose a very reasonable, diversified and low-cost portfolio. It also moves them into global assets, i.e. towards investments that are not too correlated with their personal human capital. In fact, even if the CAPM is approximately correct, it will have a major impact upon how investors regard individual securities. Why?</p>
+        <p>While these problems mean that the assumptions do not hold literally, the general implications of the CAPM may still be correct. That is, the theory may be a good prescription for investment policy. It tells investors to choose a very reasonable, diversified and low-cost portfolio. It also directs them toward global assets, i.e. towards investments that are not too correlated with their personal human capital. In fact, even if the CAPM is approximately correct, it will have a major impact upon how investors regard individual securities. Why?</p>
 
         <h2>V. Portfolio Risk</h2>
 
-        <p>Suppose you were a CAPM-style investor holding the world wealth portfolio, and someone offered you another stock to invest in. What rate of return would you demand to hold this stock? The answer <em>before</em> the CAPM might have depended upon the standard deviation of a stock's returns. <em>After</em> the CAPM, it is clear that you care about the effect of this stock on the <strong>tangency portfolio</strong>.</p>
+        <p>Suppose you were a CAPM-style investor holding the world wealth portfolio, and someone offered you another stock to invest in. What rate of return would you demand to hold this stock? The answer before the CAPM might have depended upon the standard deviation of a stock's returns. After the CAPM, it is clear that you care about the effect of this stock on the tangency portfolio.</p>
 
-        <p>The introduction of asset $A$ into the portfolio will move the tangency portfolio. The extent of this movement determines the price you are willing to pay (alternately, the return you demand) for holding asset $A$. The lower the average correlation $A$ has with the rest of the assets in the portfolio, the more the frontier &mdash; and hence $T$ &mdash; will move to the left. This is good news for the investor: if $A$ moves your portfolio left, you will demand lower expected return because it improves your portfolio risk-return profile.</p>
+        <p>The introduction of asset $A$ into the portfolio will change the location of the tangency portfolio. The size of this change determines the price you are willing to pay (alternately, the return you demand) for holding asset $A$. The lower the average correlation $A$ has with the rest of the assets in the portfolio, the farther to the left the frontier &mdash; and hence $T$ &mdash; will lie. A lower correlation benefits the investor: if adding $A$ reduces your portfolio risk, you will demand a lower expected return on $A$ because it improves your portfolio risk-return profile.</p>
 
         <div class="key-concept">
-            <h4>Key Concept: Why it's Called the Capital Asset <em>Pricing</em> Model</h4>
-            <p>The CAPM explains relative security prices in terms of a security's contribution to the risk of the <strong>whole portfolio</strong>, not its individual standard deviation. What matters is not how volatile a stock is on its own, but how it co-moves with the market. This co-movement is measured by <strong>beta</strong> ($\beta$).</p>
+            <h4>Key Concept: The CAPM as a Pricing Model</h4>
+            <p>The CAPM explains relative security prices in terms of a security's contribution to the risk of the whole portfolio, rather than its individual standard deviation. The relevant risk is the stock's co-movement with the market, which is measured by <strong>beta</strong> ($\beta$).</p>
         </div>
 
         <p>The CAPM pricing relationship can be expressed as:</p>
@@ -249,12 +249,12 @@
             <p class="figure-caption"><strong>Figure 4.3.</strong> The Security Market Line (SML). Expected return is a linear function of beta &mdash; a security's contribution to portfolio risk. Securities above the line are undervalued (positive alpha); those below are overvalued.</p>
             <div class="mf-use">
               <span class="mf-use-tag">How you use it</span>
-              <p>Use it as a hurdle rate. Read a security's beta off the horizontal axis and the line returns the rate it must earn to be worth holding &mdash; the benchmark you discount its cash flows against. A security plotting above the line is underpriced (positive alpha); below it, overpriced. The research tool just below lets you build a book and measure that alpha on live data.</p>
-              <a class="mf-lenses" href="introduction.html#how-to-read">The four lenses for reading each picture &nearr;</a>
+              <p>Use it as a hurdle rate. Read a security's beta off the horizontal axis and the line gives the rate it must earn to be worth holding &mdash; the benchmark rate for discounting its cash flows. A security plotting above the line is underpriced (positive alpha); below it, overpriced. The research tool just below lets you build a book and measure that alpha on live data.</p>
+              <a class="mf-lenses" href="introduction.html#how-to-read">How to read each picture &nearr;</a>
             </div>
         </div>
 
-        <p>This picture, too, is older than it looks. Its first drawing was <strong>William Sharpe&rsquo;s</strong>, in his 1961 doctoral thesis &mdash; and, like Markowitz&rsquo;s frontier, he drew it with the axes the other way around: his risk measure <em>B</em> (the ancestor of beta) up the vertical, expected return <em>E</em> along the horizontal, and the line cutting the return axis at the <em>pure interest rate</em>.</p>
+        <p>This picture also has an earlier history. William Sharpe drew it first, in his 1961 doctoral thesis &mdash; and, as with Markowitz&rsquo;s frontier, the axes were the other way around: his risk measure <em>B</em> (the ancestor of beta) on the vertical, expected return <em>E</em> on the horizontal, and the line crossing the return axis at the &ldquo;pure interest rate.&rdquo;</p>
 
         <div class="figure">
           <div class="artifact-pair">
@@ -268,7 +268,7 @@
               <figcaption>The same figure, redrawn</figcaption>
             </figure>
           </div>
-          <p class="figure-caption">Sharpe&rsquo;s original Security Market Line. On the left, Figure 24 as it appears in the thesis &mdash; drawn by hand, the sloping line laid in as a row of dots. On the right the same construction redrawn, because the original is faint. In equilibrium every security lies on one straight line: its risk <em>B</em> and its expected return <em>E</em> rise together, and the line meets the E-axis at <em>P</em>, the pure interest rate &mdash; the return on a riskless, zero-risk security. A security in equilibrium sits at <em>E</em><sub>1</sub>, <em>B</em><sub>1</sub>. From W. F. Sharpe, <em>Portfolio Analysis Based on a Simplified Model of the Relationships Among Securities</em> (Ph.D. dissertation, UCLA, 1961), Fig. 24. Its axes are transposed from the modern convention above &mdash; the same &ldquo;old-convention&rdquo; tell as Markowitz&rsquo;s first frontier.</p>
+          <p class="figure-caption">Sharpe&rsquo;s original Security Market Line. On the left, Figure 24 as it appears in the thesis &mdash; drawn by hand, the sloping line laid in as a row of dots. On the right the same construction redrawn, because the original is faint. In equilibrium every security lies on one straight line: its risk <em>B</em> and its expected return <em>E</em> rise together, and the line meets the E-axis at <em>P</em>, the pure interest rate &mdash; the return on a riskless, zero-risk security. A security in equilibrium lies at <em>E</em><sub>1</sub>, <em>B</em><sub>1</sub>. From W. F. Sharpe, <em>Portfolio Analysis Based on a Simplified Model of the Relationships Among Securities</em> (Ph.D. dissertation, UCLA, 1961), Fig. 24. Its axes are transposed from the modern convention above &mdash; the same &ldquo;old-convention&rdquo; feature as Markowitz&rsquo;s first frontier.</p>
         </div>
         <script>
         (function(){
@@ -294,9 +294,9 @@
         })();
         </script>
 
-        <h3>Build Your Own Long-Short Book</h3>
+        <h3>Interactive Exercise: A Long-Short Portfolio</h3>
 
-        <p>The line is not just a picture &mdash; it is a tool. Enter up to eight tickers and weights (negative to short); the figure fetches five years of monthly prices, regresses each stock on the market for its <em>beta</em> and <em>alpha</em>, and plots them against the SML. Dots above the line beat what their beta warranted (positive alpha); dots below fell short. The reward for combining them is the <strong>information ratio</strong> &mdash; alpha per unit of the diversifiable risk you carry &mdash; and the figure shows both its estimate and how little we should trust it.</p>
+        <p>The line can also serve as a research tool. Enter up to eight tickers and weights (negative to short); the figure fetches five years of monthly prices, regresses each stock on the market for its beta and alpha, and plots them against the SML. Dots above the line earned more than their beta warranted (positive alpha); dots below earned less. The reward for combining them is the <strong>information ratio</strong> &mdash; alpha per unit of the diversifiable risk you bear &mdash; and the figure shows both its estimate and the imprecision of that estimate.</p>
 
         <div class="figure" id="ir-lab">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
@@ -310,9 +310,9 @@
             <div id="ir-chart"></div>
             <div id="ir-read" style="font-size:.86rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 4.4.</strong> The Security Market Line as a research tool. Each dot is a stock at its estimated beta (horizontal) and realized annual return (vertical); the line is the SML from the risk-free rate through the market. Green dots sit above it (positive alpha), red below; dot size is the weight. The portfolio itself is the blue diamond &mdash; plotted at its own beta and return, so its alpha is the gap from the line, just like each stock. The readout gives the <strong>information ratio</strong> &mdash; portfolio alpha over residual risk computed from the full residual covariance matrix &mdash; with a 95% band of $\pm 1.96/\sqrt{\text{years}}$ and a &ldquo;noise floor&rdquo; $\sqrt{N/\text{years}}$, the in-sample IR a skill-less book of $N$ names produces by chance (Grinold &amp; Kahn). Tick <em>shrink alphas</em> for the honest expected IR once estimation error is removed. Live data via Yahoo Finance.</p>
+          <p class="figure-caption"><strong>Figure 4.4.</strong> The Security Market Line as a research tool. Each dot is a stock at its estimated beta (horizontal) and realized annual return (vertical); the line is the SML from the risk-free rate through the market. Green dots lie above it (positive alpha), red below; dot size is the weight. The portfolio itself is the blue diamond &mdash; plotted at its own beta and return, so its alpha is the gap from the line, just like each stock. The readout gives the <strong>information ratio</strong> &mdash; portfolio alpha over residual risk computed from the full residual covariance matrix &mdash; with a 95% band of $\pm 1.96/\sqrt{\text{years}}$ and a &ldquo;noise floor&rdquo; $\sqrt{N/\text{years}}$, the in-sample IR a skill-less book of $N$ names produces by chance (Grinold &amp; Kahn). Tick <em>shrink alphas</em> for the honest expected IR once estimation error is removed. Live data via Yahoo Finance.</p>
 
-        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Add three or four more tickers and watch the in-sample IR climb &mdash; then compare it to the noise floor &radic;(N/years). How much of the gain is skill, and how much is just data-mining more names? Now tick <em>shrink alphas</em>: what happens to the expected IR, and why should that make you doubt almost any backtested long-short strategy?</div>
+        <div style="border-left:3px solid #b9770e;background:#fbf6ea;padding:9px 14px;margin:12px 0;font-size:.9rem;color:#5c5344;border-radius:0 6px 6px 0"><strong style="color:#b9770e;font-variant:small-caps;letter-spacing:.03em">Try it</strong> &mdash; Add three or four more tickers and watch the in-sample IR climb &mdash; then compare it to the noise floor &radic;(N/years). How much of the gain is skill, and how much is data-mining more names? Now tick <em>shrink alphas</em>: what happens to the expected IR, and why should that make you doubt almost any backtested long-short strategy?</div>
         </div>
         <script>
         (function(){
@@ -419,14 +419,14 @@
 
         <h2>VI. Conclusion</h2>
 
-        <p>The CAPM is a theoretical solution to the identity of the tangency portfolio. It uses some ideal assumptions about the economy to argue that the capital-weighted world wealth portfolio is the tangency portfolio, and that every investor will hold this same portfolio of risky assets. Even though it is clear they do not, the CAPM is still a very useful tool. It has been taken as a prescription for the investment portfolio, as well as a tool for estimating an expected rate of return.</p>
+        <p>The CAPM is a theoretical solution to the identity of the tangency portfolio. It uses some ideal assumptions about the economy to argue that the capital-weighted world wealth portfolio is the tangency portfolio, and that every investor will hold this same portfolio of risky assets. Even though investors clearly do not all hold this portfolio, the CAPM is still a very useful tool. It has been taken as a prescription for the investment portfolio, as well as a tool for estimating an expected rate of return.</p>
 
-        <p>The CAPM's practical legacy is enormous:</p>
+        <p>The CAPM has had several practical consequences:</p>
         <ul>
-            <li>It provided the intellectual foundation for <strong>index fund investing</strong></li>
-            <li>It shifted focus from individual stock volatility to <strong>portfolio contribution</strong> (beta)</li>
-            <li>It established the <strong>Security Market Line</strong> as a benchmark for evaluating investment performance (alpha)</li>
-            <li>It remains the predominant model for <strong>estimating equity cost of capital</strong> in corporate finance</li>
+            <li>It provided the intellectual basis for index fund investing</li>
+            <li>It changed the focus from individual stock volatility to portfolio contribution (beta)</li>
+            <li>It established the Security Market Line as a benchmark for evaluating investment performance (alpha)</li>
+            <li>It remains the predominant model for estimating equity cost of capital in corporate finance</li>
         </ul>
 
         <div class="note">

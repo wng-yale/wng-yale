@@ -66,7 +66,7 @@
 
         <h2>I. A Mathematical Model of Expected Returns</h2>
 
-        <p>How much return <em>should</em> a security earn &mdash; not more, not less, but what is fair given its risk? The Capital Asset Pricing Model gives a startlingly simple answer, and it is the single most-used equation in practical finance. It says the expected return on any security is the riskless rate plus a reward for <em>one &mdash; and only one &mdash;</em> kind of risk: the security&rsquo;s exposure to the market as a whole.</p>
+        <p>How much return should a security earn, given its risk? The Capital Asset Pricing Model gives a simple answer, and its equation is among the most widely used in practical finance. It says the expected return on any security is the riskless rate plus a reward for a single kind of risk: the security&rsquo;s exposure to the market as a whole.</p>
 
         <div class="capm-clickable">
           <div class="capm-eq" id="capm-eq">
@@ -79,7 +79,7 @@
           </div>
           <p class="capm-hint">&#128072; click any term to name it</p>
           <div class="capm-panel" id="capm-panel"><em>Click a term in the equation above to see what it is.</em></div>
-          <p style="margin:14px 0 4px">In any single period the security&rsquo;s <em>realized</em> return also includes a residual &mdash; the part the market does not explain:</p>
+          <p style="margin:14px 0 4px">In any single period the security&rsquo;s realized return also includes a residual &mdash; the part the market does not explain:</p>
           <div class="capm-eq" id="capm-eq2" style="font-size:1.7rem;margin:6px 0">
             <span class="vr">R<sub>i</sub></span>
             <span class="op">=</span>
@@ -89,7 +89,7 @@
             <span class="op">+</span>
             <span class="ct" data-n="Residual (idiosyncratic) risk" data-d="The part of a realized return the market does not explain &mdash; the scatter of points around the regression line. It averages zero and can be diversified away, so the market pays nothing for it."><span class="vr">e<sub>i</sub></span></span>
           </div>
-          <p style="margin:6px 0 0;font-size:.92rem;color:#5c5344">On average that residual is zero, so taking expectations returns us to the CAPM above. How are beta and the residual actually measured? By regression &mdash; exactly what the live figure in <strong>Section V</strong> does: the slope of the fitted line is beta, and the scatter of points around it is the residual.</p>
+          <p style="margin:6px 0 0;font-size:.92rem;color:#5c5344">On average that residual is zero, so taking expectations returns us to the CAPM above. How are beta and the residual measured? By regression &mdash; exactly what the live figure in Section V does: the slope of the fitted line is beta, and the scatter of points around it is the residual.</p>
         </div>
 
         <p>The whole model relies on a single statistic, <strong>beta</strong>. Formally, beta is the security&rsquo;s covariance with the market divided by the market&rsquo;s variance:</p>
@@ -100,34 +100,34 @@
         </div>
 
         <div class="key-concept">
-            <h4>Key Concept: What is <em>not</em> in the CAPM</h4>
-            <p>One surprising thing about this equation is what is <em>not</em> in it: there is no measure of the security&rsquo;s own standard deviation. Under the CAPM you do not care about a security&rsquo;s total volatility &mdash; only about its beta with respect to the market. Risk is re-defined as the quantity of exposure the security has to fluctuations in the market portfolio. A wildly volatile stock with a low beta requires only a modest return; a placid stock with a high beta requires a large one.</p>
+            <h4>Key Concept: Total Volatility and the CAPM</h4>
+            <p>The equation contains no measure of the security&rsquo;s own standard deviation. Under the CAPM you care about a security&rsquo;s beta with respect to the market rather than its total volatility. Risk is re-defined as the quantity of exposure the security has to fluctuations in the market portfolio. A wildly volatile stock with a low beta requires only a modest return; a placid stock with a high beta requires a large one.</p>
         </div>
 
-        <h3>Which Model, and When?</h3>
+        <h3>Choosing Between the Two Models</h3>
 
-        <p>It is worth being precise about when each of our two models applies. The Markowitz mean&ndash;variance model of Chapter 2 answers a question about an investor&rsquo;s <em>entire</em> wealth: given all the assets available, what is the single best overall allocation? The CAPM answers a different, <em>marginal</em> question &mdash; what happens to an already-diversified portfolio when one more security is added to it. Ross&rsquo;s argument, expanded below, is exactly that marginal calculation: the effect of a small purchase $dx$ of a single asset.</p>
+        <p>Each of the two models applies to a different question. The Markowitz mean&ndash;variance model of Chapter 2 answers a question about an investor&rsquo;s entire wealth: given all the assets available, what is the single best overall allocation? The CAPM answers a different, marginal question &mdash; what happens to an already-diversified portfolio when one more security is added to it. Ross&rsquo;s argument, expanded below, is exactly that marginal calculation: the effect of a small purchase $dx$ of a single asset.</p>
 
         <div class="key-concept">
-            <h4>Key Concept: Which Model, When?</h4>
-            <p>Use <strong>mean&ndash;variance</strong> to choose the <em>overall allocation</em> of your wealth. Use the <strong>CAPM (beta)</strong> to judge the <em>addition of a single security</em> to an already-diversified portfolio. One question is about the whole; the other about the margin.</p>
+            <h4>Key Concept: Overall Allocation and Marginal Additions</h4>
+            <p>Use mean&ndash;variance analysis to choose the overall allocation of your wealth. Use the CAPM (beta) to judge the addition of a single security to an already-diversified portfolio.</p>
         </div>
 
-        <p>This marginal view lets us re-read a picture from the beginning of the course. Recall the diversification curve: as securities are added to a portfolio &mdash; one, two, ten, thirty and beyond &mdash; its standard deviation falls quickly at first and then flattens toward a floor it never crosses. We can now name the two pieces.</p>
+        <p>This marginal view lets us re-read a picture from the beginning of the course. Recall the diversification curve: as securities are added to a portfolio &mdash; one, two, ten, thirty and beyond &mdash; its standard deviation falls quickly at first and then flattens toward a floor it never crosses. We can now name the two components of risk.</p>
 
         <div class="figure">
             <img src="figures/diversification_beta.svg" alt="Diversification curve with the floor labeled as systematic beta risk" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 5.1.</strong> Recalling the diversification curve. As stocks are added to a portfolio, its standard deviation falls toward a floor. The part that melts away is <em>idiosyncratic</em> (residual) risk &mdash; the $e_i$ of the equation above; the floor that remains is <em>systematic</em>, or <strong>beta</strong>, risk &mdash; the only risk the CAPM prices.</p>
+            <p class="figure-caption"><strong>Figure 5.1.</strong> Recalling the diversification curve. As stocks are added to a portfolio, its standard deviation falls toward a floor. The part that diversification eliminates is idiosyncratic (residual) risk &mdash; the $e_i$ of the equation above; the floor that remains is systematic, or beta, risk &mdash; the only risk the CAPM prices.</p>
         </div>
 
-        <p>The risk that <em>melts away</em> as the portfolio grows is <strong>idiosyncratic risk</strong> &mdash; the residual $e_i$ from the equation above. In a large, well-diversified portfolio it becomes, in the pure model, irrelevant: it averages out, and the investor is paid nothing to bear it. The floor that remains &mdash; the risk that <em>cannot</em> be diversified away &mdash; is <strong>beta risk</strong>, the security&rsquo;s co-movement with the market. Ross&rsquo;s theorem, below, is the formal proof that only this second piece is priced.</p>
+        <p>The risk that diversification eliminates as the portfolio grows is <strong>idiosyncratic risk</strong> &mdash; the residual $e_i$ from the equation above. In a large, well-diversified portfolio it becomes, in the pure model, irrelevant: it averages out, and the investor is paid nothing to bear it. The floor that remains &mdash; the risk that cannot be diversified away &mdash; is <strong>beta risk</strong>, the security&rsquo;s co-movement with the market. Ross&rsquo;s theorem, below, is the formal proof that only this second piece is priced.</p>
 
-        <p>One caveat lies in the fine print of that marginal argument. It sets aside the asset&rsquo;s own-variance term, $(dx)^2\,\text{var}(A)$, as negligible next to its covariance term &mdash; entirely safe for ordinary assets. But for a security with <em>extremely</em> high variance &mdash; a lottery-like payoff, or fat, near-undefined tails &mdash; that own-variance term need not vanish, and the marginal conclusion can fail. Idiosyncratic risk stops being negligible, and such an asset can matter to a portfolio in its own right. The CAPM&rsquo;s clean verdict that only beta is priced is a statement about the well-behaved, marginal case.</p>
+        <p>The marginal argument has one caveat. It sets aside the asset&rsquo;s own-variance term, $(dx)^2\,\text{var}(A)$, as negligible next to its covariance term &mdash; an accurate approximation for ordinary assets. For a security with extremely high variance &mdash; a lottery-like payoff, or fat, near-undefined tails &mdash; that own-variance term need not vanish, and the marginal conclusion can fail. Idiosyncratic risk is then no longer negligible, and such an asset can affect portfolio risk independently of its beta. The CAPM&rsquo;s conclusion that only beta is priced applies to the well-behaved, marginal case.</p>
 
         <details class="deriv">
-          <summary>Where does this come from? Ross&rsquo;s derivation (optional)</summary>
+          <summary>Ross&rsquo;s derivation of the CAPM (optional)</summary>
 
-          <p>The intuition behind beta &mdash; that a well-diversified investor cares about a security&rsquo;s contribution to portfolio risk, not its standalone volatility &mdash; can be made precise. An asset with a low correlation to the tangency portfolio is desirable because it shifts the efficient frontier to the left.</p>
+          <p>The intuition behind beta &mdash; that a well-diversified investor cares about a security&rsquo;s contribution to portfolio risk rather than its standalone volatility &mdash; can be made precise. An asset with a low correlation to the tangency portfolio is desirable because adding it places the efficient frontier farther to the left.</p>
 
           <div class="figure">
             <svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
@@ -149,10 +149,10 @@
                 <circle cx="160" cy="130" r="5" fill="#00356b"/>
                 <text x="172" y="128" font-family="Inter, sans-serif" font-size="12" fill="#00356b">Tangency</text>
             </svg>
-            <p class="figure-caption"><strong>Figure 5.2.</strong> Adding a low-correlation asset shifts the efficient frontier to the left, reducing portfolio risk for a given return level.</p>
+            <p class="figure-caption"><strong>Figure 5.2.</strong> Adding a low-correlation asset places the efficient frontier farther to the left, reducing portfolio risk for a given return level.</p>
           </div>
 
-          <p>Stephen Ross formalized this in an article titled &ldquo;Finance,&rdquo; published in <em>The New Palgrave</em>. Suppose you hold the market portfolio $m$ and consider buying a quantity $dx$ of asset $A$, financed by borrowing at the riskless rate. This augments the market portfolio&rsquo;s expected return by</p>
+          <p>Stephen Ross formalized this intuition in an article titled &ldquo;Finance,&rdquo; published in <em>The New Palgrave</em>. Suppose you hold the market portfolio $m$ and consider buying a quantity $dx$ of asset $A$, financed by borrowing at the riskless rate. This augments the market portfolio&rsquo;s expected return by</p>
 
           <div class="equation">
               <p class="equation-label">Change in Expected Return</p>
@@ -166,18 +166,18 @@
               $$\frac{dE_m}{dv} = \frac{[E_A - R_f]\,dx}{2\,dx\,\text{cov}(A,m)} = \frac{E_A - R_f}{2\,\text{cov}(A,m)}$$
           </div>
 
-          <p>In equilibrium an investor must be indifferent between buying a little more $A$ and simply levering up the market portfolio itself. The same tradeoff for buying $dx$ of the market portfolio is $\dfrac{E_m - R_f}{2\,\text{var}(m)}$ &mdash; identical in form, but with $\text{cov}(A,m)$ replaced by $\text{var}(m)$ (the covariance of the market with itself). Setting the two equal,</p>
+          <p>In equilibrium an investor must be indifferent between buying a little more $A$ and levering up the market portfolio itself. The same tradeoff for buying $dx$ of the market portfolio is $\dfrac{E_m - R_f}{2\,\text{var}(m)}$ &mdash; identical in form, but with $\text{cov}(A,m)$ replaced by $\text{var}(m)$ (the covariance of the market with itself). Setting the two equal,</p>
 
           <div class="equation">
               $$\frac{E_A - R_f}{2\,\text{cov}(A,m)} = \frac{E_m - R_f}{2\,\text{var}(m)} \quad\Longrightarrow\quad E_A - R_f = \frac{\text{cov}(A,m)}{\text{var}(m)}\left[E_m - R_f\right]$$
           </div>
 
-          <p>and the ratio $\text{cov}(A,m)/\text{var}(m)$ is exactly the beta above. The pricing equation of the CAPM falls straight out of the no-free-lunch condition.</p>
-          <h3 style="margin-top:26px">Extension: When Does Idiosyncratic Risk Still Matter?</h3>
+          <p>and the ratio $\text{cov}(A,m)/\text{var}(m)$ is exactly the beta above. The pricing equation of the CAPM follows directly from this equilibrium condition.</p>
+          <h3 style="margin-top:26px">Extension: Retaining the Own-Variance Term</h3>
 
-          <p>The argument above dropped the own-variance term $(\Delta x)^2\,\text{var}(i)$ as small next to the covariance term. If we <em>keep</em> it, we can say exactly when adding an asset still helps a diversified portfolio &mdash; and when a high-variance asset stops obeying the tidy $\beta<1$ rule.</p>
+          <p>The argument above dropped the own-variance term $(\Delta x)^2\,\text{var}(i)$ as small next to the covariance term. Retaining it yields an exact condition for when adding an asset reduces the risk of a diversified portfolio, and for when a high-variance asset no longer satisfies the $\beta<1$ rule.</p>
 
-          <p>Adding $\Delta x$ of asset $i$ raises portfolio variance by $\Delta v_i = 2\,\Delta x\,\text{cov}(i,p) + (\Delta x)^2\,\text{var}(i)$; adding the same amount of the portfolio itself raises it by $\Delta v_p = 2\,\Delta x\,\text{var}(p) + (\Delta x)^2\,\text{var}(p)$. Asset $i$ is <em>diversifying</em> when $\Delta v_i < \Delta v_p$:</p>
+          <p>Adding $\Delta x$ of asset $i$ raises portfolio variance by $\Delta v_i = 2\,\Delta x\,\text{cov}(i,p) + (\Delta x)^2\,\text{var}(i)$; adding the same amount of the portfolio itself raises it by $\Delta v_p = 2\,\Delta x\,\text{var}(p) + (\Delta x)^2\,\text{var}(p)$. Asset $i$ is diversifying when $\Delta v_i < \Delta v_p$:</p>
 
           <div class="equation">
               $$2\,\Delta x\,\text{cov}(i,p) + (\Delta x)^2\,\text{var}(i) \;<\; 2\,\Delta x\,\text{var}(p) + (\Delta x)^2\,\text{var}(p)$$
@@ -190,7 +190,7 @@
               $$\beta_i \;<\; 1 - \frac{\Delta x}{2}\left(\frac{\text{var}(i)}{\text{var}(p)} - 1\right)$$
           </div>
 
-          <p>For an infinitesimal trade ($\Delta x \to 0$) this is just the familiar $\beta_i < 1$. But the own-variance term reasserts itself for larger positions. Setting $\Delta x = \tfrac{1}{2}$ gives $\beta_i + \tfrac{1}{4}\,\dfrac{\text{var}(i)}{\text{var}(p)} < \tfrac{5}{4}$; with $\sigma_i = 40\%$ and $\sigma_p = 20\%$ (a variance ratio of 4), the threshold tightens all the way to $\beta_i < \tfrac{1}{4}$. A very high-variance asset must have a much <em>lower</em> beta before it earns a place &mdash; the CAPM&rsquo;s &ldquo;only beta matters&rdquo; verdict is really the small-trade limit.</p>
+          <p>For an infinitesimal trade ($\Delta x \to 0$) this is the familiar $\beta_i < 1$. For larger positions, however, the own-variance term is no longer negligible. Setting $\Delta x = \tfrac{1}{2}$ gives $\beta_i + \tfrac{1}{4}\,\dfrac{\text{var}(i)}{\text{var}(p)} < \tfrac{5}{4}$; with $\sigma_i = 40\%$ and $\sigma_p = 20\%$ (a variance ratio of 4), the threshold falls to $\beta_i < \tfrac{1}{4}$. A very high-variance asset must have a much lower beta to be diversifying; the CAPM&rsquo;s &ldquo;only beta matters&rdquo; conclusion describes the small-trade limit.</p>
 
           <div class="figure">
             <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
@@ -268,7 +268,7 @@
             <div id="sml-chart" style="touch-action:none;cursor:crosshair"></div>
             <div id="sml-read" style="font-size:.92rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 5.4.</strong> The Security Market Line, made interactive. The line is $E[R_i] = R_f + \beta_i\,(E[R_m]-R_f)$ &mdash; its intercept is the <span style="color:#bd5319;font-weight:700">riskless rate</span> and its slope is the market risk premium; the market portfolio $M$ sits at $\beta=1$. <strong>Drag the security</strong> anywhere in the plot. Its vertical distance from the line is its <em>alpha</em>: land it <span style="color:#1e8b3a;font-weight:700">above</span> the line and it is under-priced (a bargain, positive alpha); <span style="color:#c0392b;font-weight:700">below</span> the line it is over-priced. In equilibrium every security is pulled onto the line, where alpha is zero and expected return depends only on beta &mdash; not on the security&rsquo;s own volatility.</p>
+          <p class="figure-caption"><strong>Figure 5.4.</strong> The Security Market Line, made interactive. The line is $E[R_i] = R_f + \beta_i\,(E[R_m]-R_f)$ &mdash; its intercept is the <span style="color:#bd5319;font-weight:700">riskless rate</span> and its slope is the market risk premium; the market portfolio $M$ lies at $\beta=1$. Drag the security anywhere in the plot. Its vertical distance from the line is its alpha: land it <span style="color:#1e8b3a;font-weight:700">above</span> the line and it is under-priced (a bargain, positive alpha); <span style="color:#c0392b;font-weight:700">below</span> the line it is over-priced. In equilibrium every security lies on the line, where alpha is zero and expected return depends only on beta and is unrelated to the security&rsquo;s own volatility.</p>
         </div>
         <script>
         (function(){
@@ -314,13 +314,13 @@
         })();
         </script>
 
-        <p>One remarkable fact that comes from the linearity of this equation is that we can obtain the beta of a portfolio of assets by simply multiplying the betas of the assets by their portfolio weights. For instance the beta of a 50/50 portfolio of two assets, one with a beta of 0.8 and the other with a beta of 1, is 0.9. Easy!</p>
+        <p>The linearity of this equation implies that we can obtain the beta of a portfolio of assets by multiplying the betas of the assets by their portfolio weights. For instance the beta of a 50/50 portfolio of two assets, one with a beta of 0.8 and the other with a beta of 1, is 0.9.</p>
 
         <p>The line also extends out infinitely to the right, implying that you can borrow infinite amounts to lever up your portfolio.</p>
 
-        <h3>Why is the Line Straight?</h3>
+        <h3>The Linearity of the Security Market Line</h3>
 
-        <p>Well, suppose it curved, as the blue line does in the figure below. An investor could borrow at the riskless rate and invest in the market portfolio. Any investment of this type would provide a higher expected return than a security which lies on the curved line below. In other words, the investor could receive a higher expected return for the same level of systematic risk. In fact, if the security on the curve could be sold short, then the investor could take the proceeds from the short sale and enter into the levered market position -- generating an arbitrage in expectation.</p>
+        <p>Suppose the line curved, as the blue line does in the figure below. An investor could borrow at the riskless rate and invest in the market portfolio. Any investment of this type would provide a higher expected return than a security which lies on the curved line below. In other words, the investor could receive a higher expected return for the same level of systematic risk. In fact, if the security on the curve could be sold short, then the investor could take the proceeds from the short sale and enter into the levered market position -- generating an arbitrage in expectation.</p>
 
         <div class="figure">
             <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg">
@@ -359,22 +359,22 @@
 
         <h2>III. Expectations vs. Realizations</h2>
 
-        <p>It is important to stress that the vertical dimension in the security market line picture is <em>expected</em> return. Things rarely turn out the way you expect. However, the CAPM equation also tells us about the realized rate of return. Since the realization is just the expectation plus random error, we can write:</p>
+        <p>The vertical dimension in the security market line picture is expected return, and outcomes rarely match expectations. However, the CAPM equation also tells us about the realized rate of return. Since the realization is the expectation plus random error, we can write:</p>
 
         <div class="equation">
             <p class="equation-label">Realized Return</p>
             $$R_i = R_f + \beta_i\left[R_m - R_f\right] + e_i$$
         </div>
 
-        <p>This is useful, because it tells us that when we look at past returns, they will typically deviate from the security market line -- not because the CAPM is wrong, but because random error will push the returns off the line. Notice that the realized $R_m$ does not have to behave as expected, either. So, even the slope of the security market line will deviate from the average equity risk premium. Sometimes it will even be negative!</p>
+        <p>The realized-return equation is useful because it implies that past returns will typically deviate from the security market line because of random error, even if the CAPM is correct. Notice that the realized $R_m$ does not have to behave as expected, either. So, even the slope of the security market line will deviate from the average equity risk premium, and in some periods it will be negative.</p>
 
         <div class="note">
-            <strong>Note:</strong> The distinction between expected and realized returns is crucial. Empirical deviations from the SML do not necessarily invalidate the CAPM -- they may simply reflect random error in a single realization.
+            <strong>Note:</strong> The distinction between expected and realized returns is crucial. Empirical deviations from the SML do not necessarily invalidate the CAPM -- they may reflect random error in a single realization.
         </div>
 
         <h2>IV. An Example</h2>
 
-        <p>The appeal of the CAPM is clear -- it radically simplifies an inherently complex and troublesome problem. The question of the appropriate discount rate becomes virtually a back-of-the-envelope calculation! In fact, if you know a security's beta, estimating the discount rate is a snap: multiply beta times the expected risk premia of the market portfolio over the riskless rate.</p>
+        <p>The appeal of the CAPM is clear -- it greatly simplifies a complex and difficult problem. The question of the appropriate discount rate becomes nearly a back-of-the-envelope calculation. If you know a security's beta, estimating the discount rate is straightforward: multiply beta times the expected risk premia of the market portfolio over the riskless rate.</p>
 
         <p>For example, suppose you are a banker considering a private equity investment in a company with a new drug process. The process is inherently risky, i.e. the standard deviation of the project is 75% per year. The beta of the project is 0.5. The $R_f = 5\%$ and the $E[R_m] = 13.5\%$. What is the required rate of return on the project?</p>
 
@@ -384,16 +384,16 @@
             $$E[R_{\text{drug}}] = 5\% + (0.5)(13.5\% - 5\%) = 9.25\%$$
         </div>
 
-        <p>This is the required rate of return on the project. The answer would not change if the range of outcome next year broadened or narrowed. The $\beta$ is the only relevant piece of information -- now all that remains is to estimate it!</p>
+        <p>This figure is the required rate of return on the project. The answer would not change if the range of outcomes next year broadened or narrowed. Under the CAPM, $\beta$ is the only relevant piece of information; the remaining task is to estimate it.</p>
 
         <div class="key-concept">
-            <h4>Key Concept: Only Beta Matters</h4>
-            <p>Under the CAPM, the appropriate discount rate for a project depends solely on its beta, not its total volatility. A high-variance project with low beta requires a lower discount rate than a low-variance project with high beta.</p>
+            <h4>Key Concept: Beta and the Discount Rate</h4>
+            <p>Under the CAPM, the appropriate discount rate for a project depends solely on its beta. A high-variance project with low beta requires a lower discount rate than a low-variance project with high beta.</p>
         </div>
 
-        <h2>V. How Do You Estimate Beta?</h2>
+        <h2>V. Estimating Beta</h2>
 
-        <p>$\beta$ may be all we need, but it is not immediately clear how it should be estimated. What we really need is a quantitative estimate of how the future return changes in response to future changes in the world market portfolio. Good Luck! It is tough to even guess the empirical composition of the market portfolio, let alone estimate a beta. In practice (although it is not theoretically justified) analysts typically use the S&amp;P 500 equity risk premium in this calculation. To estimate beta, regress the security returns for the past several periods (usually 60 months) on the market returns. The slope in this regression is an estimate of $\beta$.</p>
+        <p>$\beta$ may be all we need, but it is not immediately clear how it should be estimated. What we need is a quantitative estimate of how the future return changes in response to future changes in the world market portfolio. Even the empirical composition of the market portfolio is difficult to determine, let alone its beta with a given security. In practice (although it is not theoretically justified) analysts typically use the S&amp;P 500 equity risk premium in this calculation. To estimate beta, regress the security returns for the past several periods (usually 60 months) on the market returns. The slope in this regression is an estimate of $\beta$.</p>
 
         <div class="figure">
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 10px">
@@ -405,7 +405,7 @@
             <div id="beta-chart"></div>
             <div id="beta-read" style="font-size:.94rem;color:#5c5344;margin-top:8px;line-height:1.7"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 5.6.</strong> Estimating beta from live data. Enter a ticker; the figure pulls up to <strong>60 months</strong> of dividend-adjusted prices for the stock and for <strong>SPY</strong> (the S&amp;P 500), computes monthly returns, and regresses the stock&rsquo;s return on the market&rsquo;s. The <span style="color:#bd5319;font-weight:700">fitted line&rsquo;s slope is beta</span> (systematic risk) and its <span style="color:#1e8b3a;font-weight:700">intercept is alpha</span> (average return unexplained by the market). Data: Yahoo Finance, via a public CORS proxy; the current riskless rate is the 13-week T-bill (^IRX).</p>
+          <p class="figure-caption"><strong>Figure 5.6.</strong> Estimating beta from live data. Enter a ticker; the figure retrieves up to 60 months of dividend-adjusted prices for the stock and for SPY (the S&amp;P 500), computes monthly returns, and regresses the stock&rsquo;s return on the market&rsquo;s. The <span style="color:#bd5319;font-weight:700">fitted line&rsquo;s slope is beta</span> (systematic risk) and its <span style="color:#1e8b3a;font-weight:700">intercept is alpha</span> (average return unexplained by the market). Data: Yahoo Finance, via a public CORS proxy; the current riskless rate is the 13-week T-bill (^IRX).</p>
         </div>
         <script>
         (function(){
@@ -480,23 +480,23 @@
             <p class="figure-caption"><strong>Figure 5.7.</strong> Beta versus average return for major asset classes, computed from SBBI data. The Security Market Line (SML) shows the CAPM-predicted linear relationship. The slope of the line through each point estimates $\beta$.</p>
         </div>
 
-        <p>Notice that this shows concretely the empirical property of $\beta$ as it measures the co-movement of the security with the market. Unfortunately, since the S&amp;P 500 is not the world market portfolio, we are somewhat in the dark about how well this beta measures the true systematic risk.</p>
+        <p>The figure shows concretely the empirical property of $\beta$ as it measures the co-movement of the security with the market. Since the S&amp;P 500 is not the world market portfolio, however, it is uncertain how well this beta measures the true systematic risk.</p>
 
         <h2>VI. Assessing the CAPM</h2>
 
-        <p>The CAPM is a classical model in finance. It is an equilibrium argument that, if true, answers most important investment questions. It tells us where to invest, how to invest and what discount rate to use for project cash flows. Not only that, it is a disarmingly simple model. The expected return of a security depends upon a simple statistic: $\beta$. The relationship between risk and return is linear. Calculation of portfolio risk is trivial.</p>
+        <p>The CAPM is a classical model in finance. It is an equilibrium argument that, if true, answers most important investment questions. It tells us where to invest, how to invest and what discount rate to use for project cash flows. The model is also simple. The expected return of a security depends upon a single statistic: $\beta$. The relationship between risk and return is linear. Calculation of portfolio risk is straightforward.</p>
 
-        <p>At the same time, the CAPM is revolutionary. It tells us that the variance of a project is NOT a factor in determining the appropriate, risk-adjusted discount rate. It turns financial research from roll-up-your-sleeves fundamental analysis into a statistics problem. In short, the CAPM turned Wall Street on its head.</p>
+        <p>The CAPM also departed sharply from earlier practice. It implies that the variance of a project is not a factor in determining the appropriate, risk-adjusted discount rate. It changed financial research from detailed fundamental analysis into a statistics problem. In short, the CAPM substantially changed investment practice.</p>
 
-        <h2>VII. Conclusion: Is the CAPM True?</h2>
+        <h2>VII. Conclusion: Empirical Tests of the CAPM</h2>
 
-        <p>Here comes the bad news. Despite twenty years of attempts to verify or refute the Capital Asset Pricing Model, there is no consensus on its legitimacy. There are a few hints that the model is incorrect. For starters, we all hold different portfolios. Therefore, it cannot be exactly true. Researchers have focused upon the more interesting issue of whether rates of return depend upon $\beta$ and whether the elegant, linear form of the model holds for stocks. What they have found is that real markets typically deviate broadly from the exact model. While there are long periods in U.S. Capital market history when realized returns are positively related to betas, there are also long periods when they are not.</p>
+        <p>Despite twenty years of attempts to verify or refute the Capital Asset Pricing Model, there is no consensus on its legitimacy. There are some indications that the model is incorrect. To begin with, investors hold different portfolios, so the model cannot be exactly true. Researchers have focused upon the more interesting issue of whether rates of return depend upon $\beta$ and whether the elegant, linear form of the model holds for stocks. Their evidence suggests that real markets typically deviate broadly from the exact model. While there are long periods in U.S. Capital market history when realized returns are positively related to betas, there are also long periods when they are not.</p>
 
-        <p>Among the most forceful arguments against the CAPM advanced in recent times is a study by Eugene Fama and Kenneth French. These authors found that "beta did a relatively poor job at explaining differences in the actual returns of portfolios of U.S. stocks." Instead, Fama and French noted that there were other variables besides beta with respect to the market that explained returns. Some of these were "fundamental" ratios long used by financial analysts in the pre-CAPM era such as Book to Market Ratio and Earnings Price Ratio. Another was simply the relative size of the company. The evidence against the CAPM continues to grow and despite its elegance, most researchers have turned to more complex, but more powerful models.</p>
+        <p>Among the most forceful arguments against the CAPM advanced in recent times is a study by Eugene Fama and Kenneth French. These authors found that "beta did a relatively poor job at explaining differences in the actual returns of portfolios of U.S. stocks." Instead, Fama and French noted that there were other variables besides beta with respect to the market that were associated with differences in returns. Some of these were "fundamental" ratios long used by financial analysts in the pre-CAPM era such as Book to Market Ratio and Earnings Price Ratio. Another was the relative size of the company. Evidence against the CAPM has continued to accumulate, and despite its elegance, most researchers have turned to more complex models with greater explanatory power.</p>
 
         <div class="key-concept">
-            <h4>Key Concept: Fama-French Challenge</h4>
-            <p>Fama and French found that firm size and book-to-market ratio explained cross-sectional return differences better than beta alone. This evidence spurred the development of multi-factor models that extend beyond the single-factor CAPM.</p>
+            <h4>Key Concept: The Fama-French Evidence</h4>
+            <p>Fama and French found that firm size and book-to-market ratio accounted for cross-sectional return differences better than beta alone. This evidence contributed to the development of multi-factor models that extend the single-factor CAPM.</p>
         </div>
 
     </div>
