@@ -210,7 +210,7 @@
             $$S = \frac{\bar{R}_p - R_f}{\sigma_p}$$
         </div>
 
-        <p>The shortfall ratio resembles a $t$-statistic; higher values indicate greater probability of exceeding the floor. The portfolio maximizing this value has the highest probability of surpassing $R_f$.</p>
+        <p>The shortfall ratio resembles a $z$-score; higher values indicate greater probability of exceeding the floor. The portfolio maximizing this value has the highest probability of surpassing $R_f$.</p>
 
         <h3>Graphical Solution</h3>
 
@@ -309,13 +309,13 @@
             <li><strong>Finding sustainable floors:</strong> Pose the inverse question &mdash; "Given my acceptable probability, what floor can I reliably achieve?"</li>
         </ol>
 
-        <p>For the third approach, set the slope equal to appropriate $t$-statistic values:</p>
+        <p>For the third approach, set the slope equal to the appropriate standard normal critical values ($z$-values):</p>
 
         <table>
             <thead>
                 <tr>
                     <th>Confidence Level</th>
-                    <th>Required Slope ($t$-value)</th>
+                    <th>Required Slope ($z$-value)</th>
                 </tr>
             </thead>
             <tbody>
@@ -325,11 +325,11 @@
                 </tr>
                 <tr>
                     <td>95%</td>
-                    <td>1.644</td>
+                    <td>1.645</td>
                 </tr>
                 <tr>
                     <td>99%</td>
-                    <td>2.32</td>
+                    <td>2.33</td>
                 </tr>
             </tbody>
         </table>
@@ -344,7 +344,7 @@
 
         <h3>Calculation Method</h3>
 
-        <p>Assuming normally distributed portfolio returns, VaR calculation requires the portfolio expected return $\bar{R}_p$, portfolio standard deviation $\sigma_p$, and the $t$-statistic $T$ for the chosen confidence interval:</p>
+        <p>Assuming normally distributed portfolio returns, VaR calculation requires the portfolio expected return $\bar{R}_p$, portfolio standard deviation $\sigma_p$, and the standard normal critical value $T$ for the chosen confidence level:</p>
 
         <div class="equation">
             <p class="equation-label">VaR Return Threshold</p>
@@ -372,7 +372,7 @@
             <li>Stock standard deviation: 17%</li>
             <li>Bond standard deviation: 7%</li>
             <li>Stock-bond correlation: 0.5</li>
-            <li>95% confidence $t$-statistic: 1.645</li>
+            <li>95% confidence $z$-value: 1.645</li>
         </ul>
 
         <p><strong>Portfolio Expected Return:</strong></p>
@@ -412,7 +412,7 @@
             <div id="var-chart"></div>
             <div id="var-read" style="font-size:.92rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 3.4.</strong> Value at Risk as a construction in mean&ndash;standard-deviation space &mdash; the safety-first line run in reverse. <strong>(1)</strong> The confidence level fixes the slope of the line (the $t$-value $T$: 1.28, 1.64, or 2.33). <strong>(2)</strong> The portfolio&rsquo;s risk, return, and the stock&ndash;bond correlation place it as a point in the space (slide the mix to move it along the combination curve). <strong>(3)</strong> Slide a line of that slope until it touches the portfolio. <strong>(4)</strong> Read the return where the line meets the vertical axis &mdash; that is $R_{\text{VaR}}$, the loss threshold. <strong>(5)</strong> Multiply by the dollar value of the portfolio to get the Value at Risk. Figures are annual, for a one-year horizon.</p>
+          <p class="figure-caption"><strong>Figure 3.4.</strong> Value at Risk as a construction in mean&ndash;standard-deviation space &mdash; the safety-first line run in reverse. <strong>(1)</strong> The confidence level fixes the slope of the line (the $z$-value $T$: 1.28, 1.645, or 2.33). <strong>(2)</strong> The portfolio&rsquo;s risk, return, and the stock&ndash;bond correlation place it as a point in the space (slide the mix to move it along the combination curve). <strong>(3)</strong> Slide a line of that slope until it touches the portfolio. <strong>(4)</strong> Read the return where the line meets the vertical axis &mdash; that is $R_{\text{VaR}}$, the loss threshold. <strong>(5)</strong> Multiply by the dollar value of the portfolio to get the Value at Risk. Figures are annual, for a one-year horizon.</p>
         </div>
         <script>
         (function(){

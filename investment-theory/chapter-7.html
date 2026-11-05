@@ -96,7 +96,7 @@
 
         <p>There are additional validity concerns. You may not have the right regressors in your model. The choice of regressors is an APT vs. CAPM issue. The factor (e.g. S&amp;P 500) may not completely capture systematic risk exposure. Suppose a company is very exposed to interest rate risk, but has a moderately low S&amp;P 500 beta. If interest rate risk demands market compensation by portfolio investors, then you will be underestimating the systematic risk of the company if you only use the S&amp;P 500 when calculating the expected return and discount rate via a single-factor model.</p>
 
-        <p>There are finally some crucial data issues. You might not have enough accurate data for beta estimation. When you only have a few points, the slope in the regression has a high standard error and you cannot trust it. When the t-statistic of beta is low, sometimes you cannot even reject the hypothesis that beta is different from zero, even though economic reasoning suggests that the firm is exposed to business cycle risk, or factor risk. In that case, rely on the economic reasoning.</p>
+        <p>There are finally some crucial data issues. You might not have enough accurate data for beta estimation. When you only have a few points, the slope in the regression has a high standard error and you cannot trust it. When the t-statistic of beta is low, sometimes you cannot even reject the hypothesis that beta is zero, even though economic reasoning suggests that the firm is exposed to business cycle risk, or factor risk. In that case, rely on the economic reasoning.</p>
 
         <p>The most extreme case of not enough data is when you have to estimate the beta of a firm that is not publicly traded. In that case, what do you do? Analysts usually rely upon "comparable" firm's betas. That is, they look for betas of firms in the same industry, and assume that the systematic risk exposures are the same throughout the industry. When using comparable betas, one other crucial thing to control for is <strong>leverage</strong>.</p>
 
@@ -286,7 +286,7 @@
 
         <h3>Example 2: Merger and Acquisition Application</h3>
 
-        <p>Another way firms move into a new industry is through acquisition -- that is, to buy the outstanding stock of another firm. Suppose you are an AT&amp;T analyst, and were considering the purchase of a successful cable television company CableVision, a firm with <span class="cur">$</span>3.6 billion in outstanding equity. Assume you have estimated CableVision's equity beta as 2, and that the earnings are <span class="cur">$</span>150/year. Also, assume that Paul Kagan, the media industry security analyst, estimates the growth in earnings to be 18% per year.</p>
+        <p>Another way firms move into a new industry is through acquisition -- that is, to buy the outstanding stock of another firm. Suppose you are an AT&amp;T analyst, and were considering the purchase of a successful cable television company CableVision, a firm with <span class="cur">$</span>3.6 billion in outstanding equity. Assume you have estimated CableVision's equity beta as 2, and that the earnings are <span class="cur">$</span>150 million per year. Also, assume that Paul Kagan, the media industry security analyst, estimates the growth in earnings to be 18% per year.</p>
 
         <p>To begin your analysis, assume earnings are a good estimate of net cash flow. Use the analyst's forecast of earnings growth to apply the perpetuity model with growth:</p>
 
@@ -302,7 +302,7 @@
         </div>
 
         <div class="equation">
-            $$P = \frac{\$150}{0.225 - 0.18} = \$3.33 \text{ Billion}$$
+            $$P = \frac{\$150 \text{ million}}{0.225 - 0.18} = \$3.33 \text{ billion}$$
         </div>
 
         <p>The estimate suggests that CableVision may be slightly overpriced (market value <span class="cur">$</span>3.6B vs. model value <span class="cur">$</span>3.33B).</p>
