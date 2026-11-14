@@ -342,6 +342,48 @@
 
         <p><strong>Value-at-Risk (VaR)</strong> measures potential portfolio losses over specified time horizons. It has become increasingly prevalent in banking (for capital requirements calculation) and investment management (for risk control). VaR provides a probability-based loss estimate given a particular confidence interval and time period.</p>
 
+        <h3 id="price-changes-to-var">From Price Changes to a Distribution</h3>
+
+        <p>A price chart shows the path of a security&rsquo;s price. For risk measurement the relevant information is the distribution of price changes: how large the daily changes are and how often large changes occur. Each day&rsquo;s percentage change is assigned to a bin according to its size. Large gains fall in the bins on the right, large losses in the bins on the left, and most days fall near zero.</p>
+
+        <div class="figure var-figure">
+            <video controls preload="metadata" playsinline poster="media/price_changes_to_VaR-poster.png">
+                <source src="media/price_changes_to_VaR.mp4" type="video/mp4">
+                <a href="media/price_changes_to_VaR.mp4">Download the video (MP4, 48 seconds)</a>
+            </video>
+            <p class="figure-caption"><strong>Figure 3.3.</strong> From a price series to a distribution of daily changes. Each day&rsquo;s change is added to a histogram; playback accelerates as observations accumulate, and the final frame marks the 95% one-day Value at Risk.</p>
+            <details class="var-transcript">
+                <summary>Description of the video</summary>
+                <p>A price series scrolls across the top of the screen. Each day, the percentage change in price leaves the series as a labeled marker and falls into a bin of a histogram below: losses in orange, gains in blue. At first the days arrive one at a time and the histogram is irregular. Playback then speeds up to about 150 times, and as about six years of trading days accumulate the histogram fills in to a stable bell shape. Finally the bars turn gray except the left tail, which turns red, and a dashed line marks the 95% one-day Value at Risk of &minus;1.8%: 5% of days fall to its left.</p>
+            </details>
+        </div>
+
+        <p>As observations accumulate, the histogram becomes smoother. With a few dozen days it is irregular; with several years of data its shape is stable, and additional days change it little. If future returns are drawn from the same distribution, the histogram gives the frequency of each size of loss.</p>
+
+        <p>The 95% one-day VaR is the loss exceeded on 5% of days: the point that separates the worst 5% of the histogram from the rest. In the simulated series it is &minus;1.8%, so on one day in twenty the loss exceeds 1.8%. The 99% VaR is defined in the same way for the worst 1% of days. A VaR read directly from the empirical distribution is called historical VaR.</p>
+
+        <h3>Historical and Lognormal VaR</h3>
+
+        <p>The alternative is to fit a parametric distribution and compute VaR from it. A standard choice is the lognormal, under which $\ln(1+r)$ is normally distributed. It requires two parameters, the mean $\mu$ and the standard deviation $\sigma$ of log returns, and yields a VaR at any confidence level; the 99% one-day lognormal VaR is $e^{\mu - 2.33\sigma} - 1$.</p>
+
+        <div class="figure var-figure">
+            <video controls preload="metadata" playsinline poster="media/historical_vs_lognormal_VaR-poster.png">
+                <source src="media/historical_vs_lognormal_VaR.mp4" type="video/mp4">
+                <a href="media/historical_vs_lognormal_VaR.mp4">Download the video (MP4, 38 seconds)</a>
+            </video>
+            <p class="figure-caption"><strong>Figure 3.4.</strong> A lognormal distribution fitted to the same simulated history. The two methods yield similar 95% VaRs and different 99% VaRs, because the left tail of the data is fatter than that of the fitted distribution.</p>
+            <details class="var-transcript">
+                <summary>Description of the video</summary>
+                <p>The histogram of about six years of daily changes is shown in gray, and a lognormal curve fitted to it is drawn in violet, with volatility of 1.20% per day. At the 95% level the historical VaR (&minus;1.8%, red dashed line) and the lognormal VaR (&minus;1.9%, violet dashed line) are close. The vertical scale then expands eight times to show the left tail. At the 99% level the historical VaR is &minus;3.2% and the lognormal VaR is &minus;2.7%. A box reports that the lognormal model predicts 16 days with losses beyond &minus;2.7%, and that 27 occurred.</p>
+            </details>
+        </div>
+
+        <p>At 95% the two estimates are close: &minus;1.8% historical and &minus;1.9% lognormal. At 99% the historical VaR is &minus;3.2% and the lognormal VaR &minus;2.7%. Over the same history the lognormal distribution predicts about 16 days with losses beyond &minus;2.7%; 27 occurred. The data have fat tails: extreme days are more frequent than a lognormal distribution with the same volatility implies. Daily stock returns typically have this property, so a model that matches the data at 95% can understate the loss at 99% and beyond.</p>
+
+        <p>Two limitations follow. VaR identifies the threshold of the worst outcomes and contains no information about the size of losses beyond it; two portfolios with the same VaR can have different losses in the tail. Expected shortfall, the average loss on days beyond the VaR, measures that size. In addition, historical VaR depends on the sample: a period that excludes a crisis yields a smaller tail estimate, and the far tail is the region of the distribution with the fewest observations.</p>
+
+        <p class="var-note">Both videos use a simulated price series of 1,556 trading days, with daily changes drawn from a Student-t distribution with 4 degrees of freedom and a daily volatility of 1.2%. The figures quoted above are from that simulation.</p>
+
         <h3>Calculation Method</h3>
 
         <p>Assuming normally distributed portfolio returns, VaR calculation requires the portfolio expected return $\bar{R}_p$, portfolio standard deviation $\sigma_p$, and the standard normal critical value $T$ for the chosen confidence level:</p>
@@ -358,7 +400,7 @@
 
         <div class="figure">
             <img src="figures/var_diagram.svg" alt="Value at Risk: normal density with 5% left tail shaded" style="width:100%; max-width:720px;">
-            <p class="figure-caption"><strong>Figure 3.3.</strong> Value at Risk (VaR) at the 95% confidence level. The shaded left tail represents the 5% probability of losses exceeding the VaR threshold. $R_{\text{VaR}} = \bar{R}_p - T \cdot \sigma_p$.</p>
+            <p class="figure-caption"><strong>Figure 3.5.</strong> Value at Risk (VaR) at the 95% confidence level. The shaded left tail represents the 5% probability of losses exceeding the VaR threshold. $R_{\text{VaR}} = \bar{R}_p - T \cdot \sigma_p$.</p>
         </div>
 
         <h3>Practical Example</h3>
@@ -412,7 +454,7 @@
             <div id="var-chart"></div>
             <div id="var-read" style="font-size:.92rem;color:#5c5344;margin-top:8px;line-height:1.6"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 3.4.</strong> Value at Risk as a construction in mean&ndash;standard-deviation space &mdash; the safety-first line run in reverse. <strong>(1)</strong> The confidence level fixes the slope of the line (the $z$-value $T$: 1.28, 1.645, or 2.33). <strong>(2)</strong> The portfolio&rsquo;s risk, return, and the stock&ndash;bond correlation place it as a point in the space (slide the mix to move it along the combination curve). <strong>(3)</strong> Slide a line of that slope until it touches the portfolio. <strong>(4)</strong> Read the return where the line meets the vertical axis &mdash; that is $R_{\text{VaR}}$, the loss threshold. <strong>(5)</strong> Multiply by the dollar value of the portfolio to get the Value at Risk. Figures are annual, for a one-year horizon.</p>
+          <p class="figure-caption"><strong>Figure 3.6.</strong> Value at Risk as a construction in mean&ndash;standard-deviation space &mdash; the safety-first line run in reverse. <strong>(1)</strong> The confidence level fixes the slope of the line (the $z$-value $T$: 1.28, 1.645, or 2.33). <strong>(2)</strong> The portfolio&rsquo;s risk, return, and the stock&ndash;bond correlation place it as a point in the space (slide the mix to move it along the combination curve). <strong>(3)</strong> Slide a line of that slope until it touches the portfolio. <strong>(4)</strong> Read the return where the line meets the vertical axis &mdash; that is $R_{\text{VaR}}$, the loss threshold. <strong>(5)</strong> Multiply by the dollar value of the portfolio to get the Value at Risk. Figures are annual, for a one-year horizon.</p>
         </div>
         <script>
         (function(){

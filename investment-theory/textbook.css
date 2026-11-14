@@ -416,3 +416,12 @@ blockquote {
 }
 .fn sup { font-weight: 600; color: var(--accent); margin-right: 3px; }
 .fn-back { text-decoration: none; margin-left: 4px; }
+
+/* Embedded videos and the supply-demand widget (Ch. III, Ch. VIII) */
+.var-figure video { width: 100%; height: auto; display: block; border: 1px solid var(--border); border-radius: 8px; }
+.var-transcript { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; text-align: left; }
+.var-transcript summary { cursor: pointer; }
+.var-note { font-size: 0.85rem; color: var(--text-secondary); }
+.sd-tape-figure { text-align: left; }
+.sd-tape-figure .sdt { --sdt-bg: #ffffff; --sdt-ink: #1a1a1a; --sdt-muted: #6b7280; --sdt-grid: #e0e7ec; --sdt-axis: #c3c2b7;
+       --sdt-price: #c0562f; --sdt-slope: #6250d6; --sdt-demand: #1a5276; --sdt-supply: #6b7280; --sdt-border: rgba(0,0,0,.15); }

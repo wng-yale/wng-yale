@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    <script src="js/sd-tape.js" defer></script>
 </head>
 <body class="chapter-page">
 
@@ -59,6 +60,50 @@
 
         <p>Information once traveled only as fast as people did. In the eighteenth century a price change in Amsterdam reached London on the Thursday after the Monday it occurred &mdash; the time a fast messenger needed to cross the Channel. Today the same information reaches every market within seconds.</p>
 
+        <h3 id="information-investors-prices">Information, Investors, and Prices</h3>
+
+        <p>Figure 8.1 summarizes the process by which information becomes a price. Information reaches the market as news and through research on firms, and investors use it to form beliefs about the cash flows a security will pay. Three groups of participants act on those beliefs: individuals, institutions such as pension funds and endowments, and intermediaries such as dealers and market makers. Their bids and offers meet in the market for the stock, where the number of shares outstanding is fixed in the short run. The price at which demand equals that fixed supply is recorded, trade by trade and day by day, as the price series. The arbitrageurs described above supply the research on the left of the figure; the next subsection models the market in the center.</p>
+
+        <div class="figure" id="fig-marketplace">
+            <svg viewBox="0 0 720 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;font-family:Georgia,serif" role="img" aria-label="Information, investors and the market for one stock"><defs><marker id="mk-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b08d3c"/></marker></defs><rect x="14" y="30" width="180" height="62" rx="10" fill="#eaf4fb" stroke="#1a5276" stroke-width="1.4"/><text x="104.0" y="57.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a5276">News and shocks</text><text x="104.0" y="76.0" text-anchor="middle" font-size="11.5" fill="#6b7280">a storm, a recall, a rate cut</text><rect x="14" y="130" width="180" height="62" rx="10" fill="#eaf4fb" stroke="#1a5276" stroke-width="1.4"/><text x="104.0" y="157.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a5276">Research on firms</text><text x="104.0" y="176.0" text-anchor="middle" font-size="11.5" fill="#6b7280">analysts, filings, data</text><rect x="14" y="238" width="180" height="72" rx="10" fill="#f7ece9" stroke="#7a1414" stroke-width="1.4"/><text x="104.0" y="279.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#7a1414">Beliefs about future</text><text x="104" y="292" text-anchor="middle" font-size="14.5" font-weight="600" fill="#7a1414">cash flows</text><line x1="104" y1="93" x2="104" y2="127" stroke="#b08d3c" stroke-width="2.2" marker-end="url(#mk-arrow)"/><line x1="104" y1="193" x2="104" y2="235" stroke="#b08d3c" stroke-width="2.2" marker-end="url(#mk-arrow)"/><line x1="196" y1="272" x2="252" y2="236" stroke="#b08d3c" stroke-width="2.2" marker-end="url(#mk-arrow)"/><rect x="256" y="30" width="220" height="290" fill="#ffffff" stroke="#1a5276" stroke-width="2"/><text x="266" y="50" font-size="11" letter-spacing="1" fill="#6b7280">THE MARKET FOR ONE STOCK</text><line x1="286" y1="72" x2="286" y2="292" stroke="#6b7280" stroke-width="1.2"/><line x1="286" y1="292" x2="461" y2="292" stroke="#6b7280" stroke-width="1.2"/><text x="272" y="78" font-size="13" font-weight="600" fill="#6b7280">P</text><text x="457" y="310" font-size="13" font-weight="600" fill="#6b7280">Q</text><line x1="396" y1="78" x2="396" y2="292" stroke="#1a1a1a" stroke-width="3"/><text x="402" y="88" font-size="11" fill="#1a1a1a">supply: shares</text><text x="402" y="102" font-size="11" fill="#1a1a1a">outstanding</text><line x1="298" y1="100" x2="456" y2="260" stroke="#1a5276" stroke-width="3"/><text x="410" y="282" font-size="11.5" fill="#1a5276">demand</text><line x1="286" y1="199.2" x2="389" y2="199.2" stroke="#7a1414" stroke-width="1.3" stroke-dasharray="5 3"/><circle cx="396" cy="199.2" r="7" fill="#7a1414" stroke="#ffffff" stroke-width="2"/><text x="292" y="191.2" font-size="12.5" font-weight="600" fill="#7a1414">price</text><rect x="528" y="30" width="180" height="62" rx="10" fill="#eaf4fb" stroke="#1a5276" stroke-width="1.4"/><text x="618.0" y="57.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a5276">Individuals</text><text x="618.0" y="76.0" text-anchor="middle" font-size="11.5" fill="#6b7280">households, 401(k) plans</text><line x1="526" y1="61" x2="480" y2="110" stroke="#b08d3c" stroke-width="2.2" marker-end="url(#mk-arrow)"/><rect x="528" y="130" width="180" height="62" rx="10" fill="#eaf4fb" stroke="#1a5276" stroke-width="1.4"/><text x="618.0" y="157.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a5276">Institutions</text><text x="618.0" y="176.0" text-anchor="middle" font-size="11.5" fill="#6b7280">pensions, endowments, funds</text><line x1="526" y1="161" x2="480" y2="180" stroke="#b08d3c" stroke-width="2.2" marker-end="url(#mk-arrow)"/><rect x="528" y="230" width="180" height="62" rx="10" fill="#eaf4fb" stroke="#1a5276" stroke-width="1.4"/><text x="618.0" y="257.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#1a5276">Intermediaries</text><text x="618.0" y="276.0" text-anchor="middle" font-size="11.5" fill="#6b7280">dealers, banks, market makers</text><line x1="526" y1="261" x2="480" y2="250" stroke="#b08d3c" stroke-width="2.2" marker-end="url(#mk-arrow)"/><text x="618" y="318" text-anchor="middle" font-size="12" font-style="italic" fill="#6b7280">bids and offers</text><line x1="366" y1="322" x2="366" y2="356" stroke="#7a1414" stroke-width="2.2" marker-end="url(#mk-arrow)"/><polyline points="296,400 306,394 316,398 326,388 336,392 346,384 356,390 366,380 376,386 386,376 396,382 406,372 416,378 426,370 436,374" fill="none" stroke="#7a1414" stroke-width="2"/><text x="450" y="390" font-size="13" font-weight="600" fill="#7a1414">the price series</text></svg>
+            <p class="figure-caption"><strong>Figure 8.1.</strong> Information, investors, and the market for one stock. News and research on firms inform beliefs about future cash flows. Individuals, institutions, and intermediaries submit bids and offers against a fixed supply of shares, and the price at which demand equals supply forms the price series.</p>
+        </div>
+
+        <h3 id="supply-demand-price-series">Supply, Demand, and the Price Series</h3>
+
+        <p>Over a short horizon the number of shares a firm has outstanding is fixed, so the supply curve for its stock is vertical. Changes in the price therefore originate on the demand side: in investors&rsquo; beliefs about future payoffs, in their willingness to bear risk, and in trades made for reasons unrelated to news.</p>
+
+        <p>Write the demand of the marginal investor as a downward-sloping line and set it equal to the fixed supply $\bar{Q}$. The market price is the height of the demand curve at the number of shares outstanding:</p>
+
+        <div class="equation">
+            <p class="equation-label">Price with a Fixed Supply of Shares</p>
+            $$P_t = a_t - b_t\,(\bar{Q} - z_t)$$
+        </div>
+
+        <p>The intercept $a_t$ reflects investors&rsquo; beliefs about the payoffs the stock will produce. The slope $b_t$ is the price concession required for investors to hold one more share; it increases with their risk aversion and with the riskiness of the stock. The term $z_t$ is order flow: shares bought or sold for liquidity, rebalancing, or sentiment. In the mean&ndash;variance framework, investors with constant absolute risk aversion $\gamma$, facing payoff variance $\sigma^2$ and gross riskless rate $R$, have demand of this form, with $a = E[X]/R$ and $b = \gamma\sigma^2/R$.</p>
+
+        <p>Figure 8.2 runs the model forward in time. In the right panel the demand curve moves while the supply line stays fixed. The price at which the two intersect is plotted, day by day, as the time series on the left. The lower panel plots the slope of the demand curve, which isolates the risk-aversion component of the price.</p>
+
+        <div class="figure sd-tape-figure" id="fig-sd-tape">
+            <div data-sd-tape data-seed="7"></div>
+            <noscript>
+                <video controls preload="metadata" poster="media/sd-tape-poster.png" style="width:100%;height:auto">
+                    <source src="media/supply_demand_price_tape.mp4" type="video/mp4">
+                </video>
+            </noscript>
+            <p class="figure-caption"><strong>Figure 8.2.</strong> Price formation with a fixed supply of shares. The controls set the size of order-flow shocks, the risk aversion of the marginal investor, the number of shares outstanding, and whether beliefs revert to a fixed value or follow a random walk. A 40-second captioned video of the animation is also available: <a href="media/supply_demand_price_tape.mp4">supply_demand_price_tape.mp4</a>.</p>
+        </div>
+
+        <p>The controls illustrate four properties of the model.</p>
+        <ul>
+            <li><strong>Risk aversion.</strong> Higher risk aversion lowers the price, because investors require a larger expected return to hold the same number of shares. It also raises volatility, because the same order flow moves the price further along a steeper demand curve.</li>
+            <li><strong>Order flow.</strong> With order-flow shocks set to zero, the price changes only with beliefs; with mean-reverting beliefs the series is nearly flat.</li>
+            <li><strong>Share issuance.</strong> Issuing shares moves the supply line to the right, and the price falls along the demand curve by an amount that depends on its slope. This is the price-pressure effect studied around seasoned equity offerings and index additions. If shares were perfect substitutes for other assets, the demand curve would be horizontal and the price would not change.</li>
+            <li><strong>Random-walk beliefs.</strong> When the intercept follows a random walk, new information permanently changes expected payoffs. The series then has no tendency to return to a fixed level and resembles an actual stock price, with order flow adding transitory fluctuations around it.</li>
+        </ul>
+
+        <p>A stock price series is thus a record of the marginal investor&rsquo;s willingness to hold a fixed number of shares. Beliefs about payoffs, attitudes toward risk, and the trades of investors who must buy or sell all affect it. The remainder of this chapter concerns the first of these: how quickly new information is reflected in beliefs, and therefore in the price.</p>
+
         <h2>II. Regnault and the Value of Private Information</h2>
 
         <p>The idea that prices already reflect what is knowable is usually dated to the 1950s and 1960s. The idea was stated and tested nearly a century earlier, by a practitioner who worked in the market. Jules Regnault (1834&ndash;1894), a broker&rsquo;s assistant in Second-Empire Paris, taught himself mathematics in a garret near the Bourse and in 1863 published <em>Calcul des chances et philosophie de la bourse</em>, arguably the first statistical theory of the stock market. He built the theory, tested it against data, and then applied it to become wealthy, retiring as a <em>rentier</em> with a fortune held mostly in bonds.</p>
@@ -101,7 +146,7 @@
             <text x="557.3" y="103.0" text-anchor="middle" font-size="10.5" fill="#5c5344">flat afterward:</text>
             <text x="557.3" y="116.0" text-anchor="middle" font-size="10.5" fill="#5c5344">news fully absorbed</text>
             </svg>
-            <p class="figure-caption"><strong>Figure 8.1.</strong> An event study of merger targets. The line is the cumulative abnormal return of firms that received a takeover bid, averaged and aligned on the announcement day (day 0). Roughly half of the total run-up occurs before the announcement, consistent with private information reaching the market ahead of the news, and the remainder arrives at once on the day itself. Afterward the return is flat, with no drift to trade on, consistent with the public news being fully reflected in the price. After Keown and Pinkerton, &ldquo;Merger Announcements and Insider Trading Activity,&rdquo; <em>Journal of Finance</em> (1981).</p>
+            <p class="figure-caption"><strong>Figure 8.3.</strong> An event study of merger targets. The line is the cumulative abnormal return of firms that received a takeover bid, averaged and aligned on the announcement day (day 0). Roughly half of the total run-up occurs before the announcement, consistent with private information reaching the market ahead of the news, and the remainder arrives at once on the day itself. Afterward the return is flat, with no drift to trade on, consistent with the public news being fully reflected in the price. After Keown and Pinkerton, &ldquo;Merger Announcements and Insider Trading Activity,&rdquo; <em>Journal of Finance</em> (1981).</p>
         </div>
 
         <p>The pattern is consistent with an efficient market, with one qualification. Part of the adjustment occurs on the announcement day and none afterward; there is no drift, because no public news remains to trade on. Much of the run-up, however, occurs before the announcement, consistent with private information entering the price ahead of the news, as Regnault described, until the announcement makes the information public and the remaining gap closes at once. Efficiency also constrains managers: in an efficient market, genuine news affects prices, cosmetic accounting changes do not, and a figure reported only in a footnote is still reflected in the price.</p>
@@ -133,7 +178,7 @@
                 <text x="400" y="253" text-anchor="end" font-family="Inter, sans-serif" font-size="9" fill="#4a90d9">Analyst reports, P/E ratios</text>
                 <text x="260" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#2d8f4e">Historical charts</text>
             </svg>
-            <p class="figure-caption"><strong>Figure 8.2.</strong> The three forms of market efficiency. Each form subsumes the one inside it: strong-form implies semi-strong, which implies weak-form efficiency.</p>
+            <p class="figure-caption"><strong>Figure 8.4.</strong> The three forms of market efficiency. Each form subsumes the one inside it: strong-form implies semi-strong, which implies weak-form efficiency.</p>
         </div>
 
         <p><strong>Strong-form</strong> efficiency holds that all information, even private, is already in the price &mdash; a demanding benchmark few accept. <strong>Semi-strong-form</strong> holds that all public information is reflected: annual reports, news, analyst opinion. Most believe the U.S. equity market is close to this standard, although the boundary of the definition is unclear: is a document public the instant it is posted online? <strong>Weak-form</strong> efficiency, the mildest claim, holds only that past prices cannot be used to earn excess profits. Each form contains the ones below it: past prices are themselves public, so strong implies semi-strong implies weak.</p>
@@ -168,7 +213,7 @@
             <div id="reg-chart"></div>
             <div id="reg-read" style="font-size:.92rem;color:#5c5344;margin-top:6px;line-height:1.55"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 8.3.</strong> Regnault&rsquo;s square-root-of-time law. If price changes are independent, the typical deviation of the price from its starting point grows as $\sqrt{\text{time}}$. Regnault&rsquo;s two measured deviations of the 3% <em>rente</em> &mdash; about 2.73 over a month and 9.50 over a year &mdash; fall almost exactly on the curve $2.73\sqrt{\text{months}}$: the law predicts $2.73\times\sqrt{12} = 9.46$, against his observed 9.50. Slide the horizon to read the predicted deviation. After W. N. Goetzmann, &ldquo;Pre-history of Efficient Market Theory,&rdquo; from Regnault (1863).</p>
+          <p class="figure-caption"><strong>Figure 8.5.</strong> Regnault&rsquo;s square-root-of-time law. If price changes are independent, the typical deviation of the price from its starting point grows as $\sqrt{\text{time}}$. Regnault&rsquo;s two measured deviations of the 3% <em>rente</em> &mdash; about 2.73 over a month and 9.50 over a year &mdash; fall almost exactly on the curve $2.73\sqrt{\text{months}}$: the law predicts $2.73\times\sqrt{12} = 9.46$, against his observed 9.50. Slide the horizon to read the predicted deviation. After W. N. Goetzmann, &ldquo;Pre-history of Efficient Market Theory,&rdquo; from Regnault (1863).</p>
         </div>
         <script>
         (function(){
@@ -217,7 +262,7 @@
           <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:14px 16px 8px">
             <div id="ffjr-chart"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 8.4.</strong> Prices rise before the split and remain flat afterward. Redrawn after Fama, Fisher, Jensen &amp; Roll (1969), Fig. 2b: the cumulative average residual return of 940 NYSE stocks in the months around a split (month 0 = the split). It climbs steeply beforehand, then goes flat &mdash; in their words, it rises &ldquo;dramatically up to the split month, but there is almost no further systematic movement thereafter.&rdquo;</p>
+          <p class="figure-caption"><strong>Figure 8.6.</strong> Prices rise before the split and remain flat afterward. Redrawn after Fama, Fisher, Jensen &amp; Roll (1969), Fig. 2b: the cumulative average residual return of 940 NYSE stocks in the months around a split (month 0 = the split). It climbs steeply beforehand, then goes flat &mdash; in their words, it rises &ldquo;dramatically up to the split month, but there is almost no further systematic movement thereafter.&rdquo;</p>
         </div>
         <script>
         (function(){
@@ -264,7 +309,7 @@
               <figcaption style="font-size:.8rem; color:#8a7f6c; margin-top:5px; font-style:italic; text-align:center;">Fama&ndash;French 49 industries, 1926&ndash;2024 &mdash; the modern era.</figcaption>
             </figure>
           </div>
-          <p class="figure-caption"><strong>Figure 8.5.</strong> Industry returns after booms and crashes in two eras. Industries with the largest twelve-month <span style="color:#1e8b3a;font-weight:600">run-ups</span> and <span style="color:#c0392b;font-weight:600">run-downs</span>, tracked from before the event (t = 0) to three years after, in returns measured net of the market. Before the event the two groups are far apart; after it, both earn essentially the market&rsquo;s return, their confidence bands overlapping. <strong>Right:</strong> modern Fama&ndash;French industries (1926&ndash;2024), reproducing the result of Greenwood, Shleifer, and You. <strong>Left:</strong> Cowles industries reaching back to 1870 &mdash; an out-of-sample test of that result on earlier history (Goetzmann and coauthors, &ldquo;Bubbles, Booms &amp; Crashes&rdquo;). The pattern is similar in both eras.</p>
+          <p class="figure-caption"><strong>Figure 8.7.</strong> Industry returns after booms and crashes in two eras. Industries with the largest twelve-month <span style="color:#1e8b3a;font-weight:600">run-ups</span> and <span style="color:#c0392b;font-weight:600">run-downs</span>, tracked from before the event (t = 0) to three years after, in returns measured net of the market. Before the event the two groups are far apart; after it, both earn essentially the market&rsquo;s return, their confidence bands overlapping. <strong>Right:</strong> modern Fama&ndash;French industries (1926&ndash;2024), reproducing the result of Greenwood, Shleifer, and You. <strong>Left:</strong> Cowles industries reaching back to 1870 &mdash; an out-of-sample test of that result on earlier history (Goetzmann and coauthors, &ldquo;Bubbles, Booms &amp; Crashes&rdquo;). The pattern is similar in both eras.</p>
           <div class="mf-use">
             <span class="mf-use-tag">How you use it</span>
             <p>Use it as a check before trading on a story. Ask what the price already reflects: if the market has already incorporated the news, the average path ahead is the same whether the recent history looks like a boom or a crash. The divergence occurs before the event, so an investor should not pay for a forecast that the price already contains.</p>
@@ -290,7 +335,7 @@
 
 <div class="figure">
           <div id="spiva-chart"></div>
-          <p class="figure-caption"><strong>Figure 8.6.</strong> The active-versus-passive scorecard. The share of actively managed U.S. large-cap funds that failed to beat the S&amp;P 500, by horizon. Over a single year most already trail the index; over twenty years more than nine in ten do. The share of funds trailing the index generally rises with the horizon, consistent with market efficiency. Figures approximate, from S&amp;P&rsquo;s SPIVA U.S. scorecard (year-end); the study is refreshed twice a year.</p>
+          <p class="figure-caption"><strong>Figure 8.8.</strong> The active-versus-passive scorecard. The share of actively managed U.S. large-cap funds that failed to beat the S&amp;P 500, by horizon. Over a single year most already trail the index; over twenty years more than nine in ten do. The share of funds trailing the index generally rises with the horizon, consistent with market efficiency. Figures approximate, from S&amp;P&rsquo;s SPIVA U.S. scorecard (year-end); the study is refreshed twice a year.</p>
         </div>
         <script>
         (function(){
