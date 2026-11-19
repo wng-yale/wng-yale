@@ -103,13 +103,13 @@
         
     
             var tile_layer_bafc0feb3594f0b2b1a642f4804a9972 = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
                 {
   "minZoom": 0,
   "maxZoom": 20,
-  "maxNativeZoom": 20,
+  "maxNativeZoom": 16,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; Esri, HERE, Garmin, \u0026copy; OpenStreetMap contributors",
   "subdomains": "abcd",
   "detectRetina": false,
   "tms": false,
@@ -120,6 +120,7 @@
         
     
             tile_layer_bafc0feb3594f0b2b1a642f4804a9972.addTo(map_5c2ff5c41c6c24363c8e08912a2235ed);
+            L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {"maxZoom": 20, "maxNativeZoom": 16}).addTo(map_5c2ff5c41c6c24363c8e08912a2235ed);
         
     
             var circle_marker_66156d82429ff99284fd627aaaf2df1a = L.circleMarker(
