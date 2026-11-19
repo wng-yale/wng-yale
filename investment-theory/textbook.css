@@ -425,3 +425,16 @@ blockquote {
 .sd-tape-figure { text-align: left; }
 .sd-tape-figure .sdt { --sdt-bg: #ffffff; --sdt-ink: #1a1a1a; --sdt-muted: #6b7280; --sdt-grid: #e0e7ec; --sdt-axis: #c3c2b7;
        --sdt-price: #c0562f; --sdt-slope: #6250d6; --sdt-demand: #1a5276; --sdt-supply: #6b7280; --sdt-border: rgba(0,0,0,.15); }
+.vmap-figure { text-align: left; }
+.vmap-figure .vmap { --vm-bg: #ffffff; --vm-ink: #1a1a1a; --vm-muted: #6b7280; --vm-grid: #e0e7ec; --vm-axis: #c3c2b7; --vm-bar: #d3d1c7;
+       --vm-dot: rgba(95,94,90,.28); --vm-curve: #1a5276; --vm-lin: #6250d6; --vm-tail: #c0392b; --vm-card: #f4f7f9; --vm-border: rgba(0,0,0,.15); }
+
+/* Clickable equation terms (js/eq-annotate.js) */
+.equation .eqt { cursor: pointer; border-radius: 3px; padding: 0 1px; transition: background .12s; }
+.equation .eqt.eqt-hover, .equation .eqt:focus { background: rgba(26, 82, 118, .10); outline: none; }
+.equation .eqt.eqt-on { background: rgba(185, 119, 14, .20); }
+.equation .eq-panel { font-family: 'Inter', sans-serif; font-size: .86rem; line-height: 1.5; color: #26221a; text-align: left;
+  margin: 10px auto 0; max-width: 620px; padding: 8px 12px; border-left: 3px solid #b9770e; background: #fbf6ea; border-radius: 0 6px 6px 0; }
+.equation .eq-panel .katex { font-size: 1em; }
+.equation .eq-hint { color: #8a7f6c; font-style: italic; }
+.equation dl.eq-terms { display: none; }

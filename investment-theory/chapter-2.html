@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="textbook.css">
+    <script defer src="js/eq-annotate.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}], trust: function(c){return c.command === '\\htmlClass';}, strict: function(code){return code === 'htmlExtension' ? 'ignore' : 'warn';}}); if (window.eqAnnotate) eqAnnotate();"></script>
 </head>
 <body class="chapter-page">
 
@@ -62,44 +63,91 @@
 
         <p>We can picture any security as a single point in risk&ndash;return space. By convention we put the <strong>risk</strong> &mdash; the standard deviation of returns &mdash; on the horizontal axis and the <strong>expected return</strong> on the vertical axis, both annualized. Plotting a handful of securities this way gives a visual representation of the investor's dilemma.</p>
 
-        <div class="figure">
-          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 6px">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px">
+        <div class="figure" id="rr-lab">
+          <div style="border:1px solid #d8ccb0;border-radius:8px;background:#fbf7ec;padding:12px 14px 8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px">
               <strong style="font-size:.95rem;color:#26221a">Six securities in risk&ndash;return space</strong>
-              <button id="rr-btn" type="button" style="font-family:inherit;font-size:.85rem;padding:5px 13px;border:1px solid #1a5276;border-radius:6px;background:#1a5276;color:#fff;cursor:pointer">Regenerate &#8635;</button>
+              <span style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+                <label style="font-size:.86rem;color:#26221a">Correlation &rho; (all pairs):
+                  <input id="rr-rho" type="range" min="-0.2" max="1" step="0.05" value="0.30" style="vertical-align:middle;width:160px">
+                  <strong id="rr-rhov" style="color:#1a5276">0.30</strong>
+                </label>
+                <button id="rr-btn" type="button" style="font-family:inherit;font-size:.85rem;padding:5px 13px;border:1px solid #1a5276;border-radius:6px;background:#1a5276;color:#fff;cursor:pointer">Regenerate &#8635;</button>
+              </span>
             </div>
             <div id="rr-chart" style="position:relative"></div>
+            <div id="rr-read" style="font-size:.82rem;color:#5c5344;margin-top:4px"></div>
           </div>
-          <p class="figure-caption"><strong>Figure 2.1.</strong> Six hypothetical securities, each a point set by its standard deviation (horizontal) and expected return (vertical), annualized. Which one would you choose? Is any of them dominant &mdash; offering both a higher return and a lower risk than all the others? The lowest-risk security is highlighted in <span style="color:#2a80c9;font-weight:700">light blue</span> and the highest-return one in <span style="color:#1e8b3a;font-weight:700">bright green</span>. Usually they are different securities, so no single one dominates, and this absence of a dominant security is the reason for combining them. Press <em>Regenerate</em> for a new draw.</p>
+          <p class="figure-caption"><strong>Figure 2.1.</strong> Six hypothetical securities, each a point set by its standard deviation (horizontal) and expected return (vertical), annualized. Which one would you choose? Is any of them dominant &mdash; offering both a higher return and a lower risk than all the others? The lowest-risk security is highlighted in <span style="color:#2a80c9;font-weight:700">light blue</span> and the highest-return one in <span style="color:#1e8b3a;font-weight:700">bright green</span>. Usually they are different securities, so no single one dominates. The <span style="color:#b9770e;font-weight:700">&#9670; diamond</span> is the equal-weighted portfolio, one-sixth in each security. Its expected return is the average of the six expected returns, whatever the correlation. Its standard deviation depends on the correlation, which the slider sets to the same value for every pair of securities. At $\rho = 1$ the portfolio&rsquo;s standard deviation is the average of the six standard deviations (the hollow circle); at lower correlations the diamond lies to the left of the hollow circle. The slider changes only the correlation; press <em>Regenerate</em> for a new draw of the six securities.</p>
         </div>
         <script>
         (function(){
           var W=680,H=420,mL=58,mR=26,mT=16,mB=46,pw=W-mL-mR,ph=H-mT-mB;
-          var RMAX=0.18,SMAX=0.30;
+          var RMAX=0.18,SMAX=0.30,N=6;
           function px(s){return mL+s/SMAX*pw;} function py(r){return mT+ph-r/RMAX*ph;}
           var names=['A','B','C','D','E','F'];
-          function render(){
-            var A,i,lo,hi;
+          var A,lo,hi;
+          function draw(){
+            var i;
             do{
               A=[];
-              for(i=0;i<6;i++)A.push({n:names[i],r:0.03+Math.random()*0.13,s:0.05+Math.random()*0.22});
-              lo=0;hi=0;for(i=1;i<6;i++){if(A[i].s<A[lo].s)lo=i;if(A[i].r>A[hi].r)hi=i;}
+              for(i=0;i<N;i++)A.push({n:names[i],r:0.03+Math.random()*0.13,s:0.05+Math.random()*0.22});
+              lo=0;hi=0;for(i=1;i<N;i++){if(A[i].s<A[lo].s)lo=i;if(A[i].r>A[hi].r)hi=i;}
             }while(lo===hi); // reject draws where one asset is both lowest-risk and highest-return
+            render();
+          }
+          function render(){
+            var rho=parseFloat(document.getElementById('rr-rho').value),i,j;
+            document.getElementById('rr-rhov').textContent=rho.toFixed(2);
+            // equal-weighted portfolio: mean = average mean; variance = (1/N^2)[sum s_i^2 + rho * sum_{i!=j} s_i s_j]
+            var rbar=0,sbar=0,ss=0,cross=0;
+            for(i=0;i<N;i++){rbar+=A[i].r/N;sbar+=A[i].s/N;ss+=A[i].s*A[i].s;}
+            for(i=0;i<N;i++)for(j=0;j<N;j++)if(i!==j)cross+=A[i].s*A[j].s;
+            var sew=Math.sqrt(Math.max(ss+rho*cross,0))/N;
             var s='<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;font-family:Georgia,serif">';
             for(var sd=0;sd<=0.30001;sd+=0.05){var x=px(sd);s+='<line x1="'+x+'" y1="'+mT+'" x2="'+x+'" y2="'+(mT+ph)+'" stroke="#e7ddc6"/><text x="'+x+'" y="'+(mT+ph+18)+'" text-anchor="middle" font-size="11" fill="#8a7f6c">'+Math.round(sd*100)+'%</text>';}
             for(var r=0;r<=0.18001;r+=0.03){var y=py(r);s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(mL+pw)+'" y2="'+y+'" stroke="#e7ddc6"/><text x="'+(mL-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#8a7f6c">'+Math.round(r*100)+'%</text>';}
             s+='<line x1="'+mL+'" y1="'+(mT+ph)+'" x2="'+(mL+pw)+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/><line x1="'+mL+'" y1="'+mT+'" x2="'+mL+'" y2="'+(mT+ph)+'" stroke="#26221a" stroke-width="1.3"/>';
             s+='<text x="'+(mL+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Standard deviation (risk)</text>';
             s+='<text transform="translate(15 '+(mT+ph/2)+') rotate(-90)" text-anchor="middle" font-size="12.5" font-style="italic" fill="#5c5344">Expected return (annualized)</text>';
-            for(i=0;i<6;i++){var a=A[i],fill='#6b6252';if(i===lo)fill='#7fb8e0';if(i===hi)fill='#33b558';
+            // the rho = 1 benchmark and the diversification gap
+            var yE=py(rbar),x1=px(sbar),xE=px(sew);
+            if(x1-xE>2)s+='<line x1="'+x1.toFixed(1)+'" y1="'+yE.toFixed(1)+'" x2="'+(xE+9).toFixed(1)+'" y2="'+yE.toFixed(1)+'" stroke="#b9770e" stroke-width="1.4" stroke-dasharray="4 3"/>';
+            s+='<circle cx="'+x1.toFixed(1)+'" cy="'+yE.toFixed(1)+'" r="7" fill="none" stroke="#b9770e" stroke-width="1.6"/>';
+            if(x1-xE>22){var rx=x1+11,ry=yE+4,anc='start',hit=false;
+              for(i=0;i<N;i++){if(Math.abs(px(A[i].s)-(x1+26))<30&&Math.abs(py(A[i].r)-yE)<16)hit=true;}
+              if(hit){rx=x1;ry=yE-12;anc='middle';}
+              s+='<text x="'+rx.toFixed(1)+'" y="'+ry.toFixed(1)+'" text-anchor="'+anc+'" font-size="10.5" font-style="italic" fill="#b9770e" stroke="#fbf7ec" stroke-width="3" paint-order="stroke">&rho; = 1</text>';}
+            for(i=0;i<N;i++){var a=A[i],fill='#6b6252';if(i===lo)fill='#7fb8e0';if(i===hi)fill='#33b558';
               s+='<circle cx="'+px(a.s).toFixed(1)+'" cy="'+py(a.r).toFixed(1)+'" r="11" fill="'+fill+'" stroke="#fff" stroke-width="2"/>';
               s+='<text x="'+px(a.s).toFixed(1)+'" y="'+(py(a.r)+4).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">'+a.n+'</text>';}
             s+='<text x="'+px(A[lo].s).toFixed(1)+'" y="'+(py(A[lo].r)+28).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#2a80c9">lowest risk</text>';
             s+='<text x="'+px(A[hi].s).toFixed(1)+'" y="'+(py(A[hi].r)-19).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#1e8b3a">highest return</text>';
+            // equal-weighted portfolio (diamond), drawn on top
+            var d=11;
+            s+='<path d="M'+xE.toFixed(1)+' '+(yE-d).toFixed(1)+'L'+(xE+d).toFixed(1)+' '+yE.toFixed(1)+'L'+xE.toFixed(1)+' '+(yE+d).toFixed(1)+'L'+(xE-d).toFixed(1)+' '+yE.toFixed(1)+'Z" fill="#b9770e" stroke="#fff" stroke-width="2"/>';
+            // place the label in the candidate position that overlaps least with the securities and the other labels
+            var obs=[];function box(cx,cy,w,h){return [cx-w/2,cy-h/2,cx+w/2,cy+h/2];}
+            for(i=0;i<N;i++)obs.push(box(px(A[i].s),py(A[i].r),26,26));
+            obs.push(box(px(A[lo].s),py(A[lo].r)+24,76,15));obs.push(box(px(A[hi].s),py(A[hi].r)-23,92,15));
+            if(x1-xE>2){obs.push(box(x1,yE,16,16));if(x1-xE>22)obs.push(box(x1+25,yE,32,13),box(x1,yE-15,32,13));obs.push([xE+9,yE-2,x1,yE+2]);}
+            var LW=94,LH=15,cand=[[0,-19],[0,24],[-62,0],[62,0],[-50,-17],[50,-17],[-50,21],[50,21],[0,-34],[0,39]],best=null,bs=1e18;
+            for(var c=0;c<cand.length;c++){var bx=box(xE+cand[c][0],yE+cand[c][1],LW,LH),sc=0;
+              if(bx[0]<mL+2||bx[2]>mL+pw-2||bx[1]<mT+2||bx[3]>mT+ph-2)continue;
+              for(var o=0;o<obs.length;o++){var ox=Math.min(bx[2],obs[o][2])-Math.max(bx[0],obs[o][0]),oy=Math.min(bx[3],obs[o][3])-Math.max(bx[1],obs[o][1]);if(ox>0&&oy>0)sc+=ox*oy;}
+              sc+=c*0.5; // prefer earlier candidates on ties
+              if(sc<bs){bs=sc;best=cand[c];}}
+            best=best||cand[0];
+            s+='<text x="'+(xE+best[0]).toFixed(1)+'" y="'+(yE+best[1]+4).toFixed(1)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#b9770e" stroke="#fbf7ec" stroke-width="3.5" paint-order="stroke">equal-weighted</text>';
             s+='</svg>';
             document.getElementById('rr-chart').innerHTML=s;
+            var smin=A[lo].s;
+            var msg=sew<smin-1e-9?'The portfolio has less risk than the lowest-risk security ('+(smin*100).toFixed(1)+'%).':'The portfolio has more risk than the lowest-risk security ('+(smin*100).toFixed(1)+'%) at this correlation.';
+            document.getElementById('rr-read').innerHTML='&rho; = '+rho.toFixed(2)+'. &nbsp;Equal-weighted portfolio: expected return <strong>'+(rbar*100).toFixed(1)+'%</strong>, &sigma; = <strong>'+(sew*100).toFixed(1)+'%</strong>, against an average security &sigma; of '+(sbar*100).toFixed(1)+'%. &nbsp;'+msg;
           }
-          document.getElementById('rr-btn').addEventListener('click',render); render();
+          document.getElementById('rr-btn').addEventListener('click',draw);
+          document.getElementById('rr-rho').addEventListener('input',render);
+          draw();
         })();
         </script>
 
@@ -108,13 +156,20 @@
             <p>No single asset class is universally "best." The optimal choice depends on the investor's willingness to bear risk &mdash; which leads naturally to the idea of combining assets into portfolios.</p>
         </div>
 
-        <h2>II. Portfolios of Assets</h2>
+        <h2 id="portfolios">II. Portfolios of Assets</h2>
 
         <p>Rather than selecting one asset, investors typically construct diversified portfolios. The <strong>correlation coefficient</strong> &mdash; ranging from $-1$ to $+1$ &mdash; measures co-movement between stock returns:</p>
 
         <div class="equation">
             <p class="equation-label">Correlation Coefficient</p>
-            $$\rho_{AB} = \frac{\sigma_{AB}}{\sigma_A \cdot \sigma_B}$$
+            $$\htmlClass{eqt t-rho}{\rho_{AB}} = \htmlClass{eqt t-ratio}{\frac{\htmlClass{eqt t-cov}{\sigma_{AB}}}{\htmlClass{eqt t-sa}{\sigma_A} \cdot \htmlClass{eqt t-sb}{\sigma_B}}}$$
+            <dl class="eq-terms">
+                <dt data-t="rho">$\rho_{AB}$, the correlation coefficient</dt><dd>A number between $-1$ and $+1$ that measures the degree to which the returns of A and B are linearly related. At $+1$ they are perfectly positively related, at $-1$ perfectly negatively related, and at $0$ there is no linear relationship. The Greek letter is rho.</dd>
+                <dt data-t="ratio">The ratio</dt><dd>Dividing the covariance by the product of the two standard deviations removes the units of the returns, so the correlation does not depend on the scale of either security&rsquo;s returns and always lies between $-1$ and $+1$.</dd>
+                <dt data-t="cov">$\sigma_{AB}$, the covariance</dt><dd>The average product of the two securities&rsquo; deviations from their means. It is positive when A and B tend to be above (or below) their means in the same periods and negative when one tends to be above its mean when the other is below. Its units are squared returns, so its size is hard to interpret by itself.</dd>
+                <dt data-t="sa">$\sigma_A$, the standard deviation of A</dt><dd>The risk of security A: the typical size of the deviation of its return from its mean, the measure of risk introduced in Chapter I.</dd>
+                <dt data-t="sb">$\sigma_B$, the standard deviation of B</dt><dd>The risk of security B, measured in the same way as $\sigma_A$.</dd>
+            </dl>
         </div>
 
         <p>where $\sigma_{AB}$ represents the covariance between securities A and B.</p>
@@ -123,14 +178,33 @@
 
         <div class="equation">
             <p class="equation-label">Two-Asset Portfolio Standard Deviation</p>
-            $$\sigma_p = \sqrt{w_A^2 \sigma_A^2 + w_B^2 \sigma_B^2 + 2\, w_A\, w_B\, \rho_{AB}\, \sigma_A\, \sigma_B}$$
+            $$\htmlClass{eqt t-sp}{\sigma_p} = \htmlClass{eqt t-sqrt}{\sqrt{\htmlClass{eqt t-va}{w_A^2 \sigma_A^2} + \htmlClass{eqt t-vb}{w_B^2 \sigma_B^2} + \htmlClass{eqt t-cross}{2\, \htmlClass{eqt t-wa}{w_A}\, \htmlClass{eqt t-wb}{w_B}\, \htmlClass{eqt t-rho}{\rho_{AB}}\, \htmlClass{eqt t-sa}{\sigma_A}\, \htmlClass{eqt t-sb}{\sigma_B}}}}$$
+            <dl class="eq-terms">
+                <dt data-t="sp">$\sigma_p$, the portfolio standard deviation</dt><dd>The risk of the portfolio as a whole: the standard deviation of the return on the combined holding of A and B.</dd>
+                <dt data-t="sqrt">The square root</dt><dd>The expression under the root is the portfolio <em>variance</em>, $\sigma_p^2$. Taking the square root converts the variance into a standard deviation, which is measured in the same units as returns.</dd>
+                <dt data-t="va">$w_A^2\sigma_A^2$, the variance contributed by A</dt><dd>The part of the portfolio variance that comes from A&rsquo;s own fluctuations: A&rsquo;s variance scaled by the square of its weight. Holding half the portfolio in A contributes one quarter of A&rsquo;s variance.</dd>
+                <dt data-t="vb">$w_B^2\sigma_B^2$, the variance contributed by B</dt><dd>The part of the portfolio variance that comes from B&rsquo;s own fluctuations, B&rsquo;s variance scaled by the square of its weight.</dd>
+                <dt data-t="cross">$2\,w_A w_B \rho_{AB}\sigma_A\sigma_B$, the covariance term</dt><dd>The contribution of the co-movement of A and B, equal to $2\,w_A w_B\,\sigma_{AB}$. It is the only term that depends on the correlation. At $\rho_{AB}=+1$ it is as large as possible and $\sigma_p$ equals the weighted average $w_A\sigma_A + w_B\sigma_B$. At any lower correlation $\sigma_p$ is below that average, which is the diversification benefit. A negative correlation makes the term negative.</dd>
+                <dt data-t="wa">$w_A$, the weight on A</dt><dd>The fraction of the portfolio&rsquo;s value invested in security A. The weights sum to one: $w_A + w_B = 1$.</dd>
+                <dt data-t="wb">$w_B$, the weight on B</dt><dd>The fraction of the portfolio&rsquo;s value invested in security B, equal to $1 - w_A$.</dd>
+                <dt data-t="rho">$\rho_{AB}$, the correlation coefficient</dt><dd>The correlation between the returns of A and B, defined in the equation above. It is the only input in this equation that measures the relationship between the two securities.</dd>
+                <dt data-t="sa">$\sigma_A$, the standard deviation of A</dt><dd>The risk of security A on its own.</dd>
+                <dt data-t="sb">$\sigma_B$, the standard deviation of B</dt><dd>The risk of security B on its own.</dd>
+            </dl>
         </div>
 
         <p>And the portfolio mean return is the weighted average:</p>
 
         <div class="equation">
             <p class="equation-label">Portfolio Expected Return</p>
-            $$\bar{R}_p = w_A \bar{R}_A + w_B \bar{R}_B$$
+            $$\htmlClass{eqt t-rp}{\bar{R}_p} = \htmlClass{eqt t-wa}{w_A} \htmlClass{eqt t-ra}{\bar{R}_A} + \htmlClass{eqt t-wb}{w_B} \htmlClass{eqt t-rb}{\bar{R}_B}$$
+            <dl class="eq-terms">
+                <dt data-t="rp">$\bar{R}_p$, the portfolio expected return</dt><dd>The mean return of the portfolio. The bar denotes a mean. It is the weighted average of the two securities&rsquo; mean returns, and unlike the portfolio standard deviation it does not depend on the correlation.</dd>
+                <dt data-t="wa">$w_A$, the weight on A</dt><dd>The fraction of the portfolio&rsquo;s value invested in A. The weights sum to one.</dd>
+                <dt data-t="ra">$\bar{R}_A$, the expected return of A</dt><dd>The mean return of security A.</dd>
+                <dt data-t="wb">$w_B$, the weight on B</dt><dd>The fraction of the portfolio&rsquo;s value invested in B, equal to $1 - w_A$.</dd>
+                <dt data-t="rb">$\bar{R}_B$, the expected return of B</dt><dd>The mean return of security B.</dd>
+            </dl>
         </div>
 
         <h3>Correlation Scenarios</h3>
@@ -199,7 +273,8 @@
             s+='<circle cx="'+px(SA)+'" cy="'+py(RA)+'" r="6.5" fill="#7a1414"/><text x="'+px(SA)+'" y="'+(py(RA)+22)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#7a1414">A</text>';
             s+='<circle cx="'+px(SB)+'" cy="'+py(RB)+'" r="6.5" fill="#7a1414"/><text x="'+(px(SB)+13)+'" y="'+(py(RB)+4)+'" font-size="12" font-weight="700" fill="#7a1414">B</text>';
             s+='<circle cx="'+px(smv)+'" cy="'+py(rmv)+'" r="6" fill="#b9770e" stroke="#fff" stroke-width="1.6"/>';
-            s+='<text x="'+(px(smv)-10)+'" y="'+(py(rmv)-9)+'" text-anchor="end" font-size="11" font-weight="700" fill="#b9770e">min variance</text>';
+            var lft=px(smv)<mL+90;
+            s+='<text x="'+(lft?px(smv)+10:px(smv)-10)+'" y="'+(py(rmv)-9)+'" text-anchor="'+(lft?'start':'end')+'" font-size="11" font-weight="700" fill="#b9770e">min variance</text>';
             s+='</svg>';
             document.getElementById('fl-chart').innerHTML=s;
             var msg;
